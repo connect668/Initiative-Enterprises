@@ -4,12 +4,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
-
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <p className="mb-4 text-sm uppercase tracking-[0.25em] text-white/60">
-          Initiative Enterprises
-        </p>
-
+      <HeroSection />
         <h1 className="max-w-4xl text-5xl font-semibold leading-tight md:text-7xl">
           We help operators improve consistency, train stronger managers, and grow smarter.
         </h1>
