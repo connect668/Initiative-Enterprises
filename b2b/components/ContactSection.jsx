@@ -23,7 +23,7 @@ export default function ContactSection() {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <a
-                href="mailto:youremail@example.com"
+                href="ethanodom19@gmail.com"
                 className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
               >
                 Email IE
