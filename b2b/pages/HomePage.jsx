@@ -1,6 +1,10 @@
+import Navbar from "../components/Navbar";
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-black text-white">
+      <Navbar />
+
       <section className="mx-auto max-w-7xl px-6 py-24">
         <p className="mb-4 text-sm uppercase tracking-[0.25em] text-white/60">
           Initiative Enterprises
