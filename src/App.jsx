@@ -1,3 +1,17 @@
 export default function App() {
-  return <h1 style={{ color: "red" }}>APP TEST</h1>;
+  return (
+    <div
+      style={{
+        background: "black",
+        color: "red",
+        minHeight: "100vh",
+        fontSize: "40px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      APP TEST
+    </div>
+  );
 }
