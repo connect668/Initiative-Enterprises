@@ -71,7 +71,10 @@ export default function LandingPage() {
         <div className="data-line" />
       </div>
 
-      <header className="top-wordmark" aria-label="Initiative Enterprises">
+      <header
+        className={`top-wordmark${showIntro ? "" : " is-revealed"}`}
+        aria-label="Initiative Enterprises"
+      >
         <div className="top-wordmark-line top-wordmark-left">
           <span>Initiative</span>
         </div>

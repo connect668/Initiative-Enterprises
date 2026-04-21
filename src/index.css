@@ -95,6 +95,9 @@ select {
   align-items: center;
   padding: 26px 36px 0;
   pointer-events: none;
+  opacity: 0;
+  transform: translateY(-18px);
+  animation: top-wordmark-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) 2.2s forwards;
 }
 
 .top-wordmark-line {
@@ -106,12 +109,20 @@ select {
 
 .top-wordmark-line span {
   display: inline-block;
-  font-size: clamp(1rem, 1.8vw, 1.6rem);
+  font-size: clamp(1.05rem, 1.95vw, 1.85rem);
   font-weight: 700;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.48em;
   text-transform: uppercase;
-  color: rgba(245, 232, 202, 0.9);
-  text-shadow: 0 0 24px rgba(152, 110, 36, 0.2);
+  color: rgba(249, 236, 206, 0.98);
+  text-shadow:
+    0 0 24px rgba(152, 110, 36, 0.2),
+    0 0 56px rgba(181, 129, 38, 0.14);
+}
+
+.top-wordmark.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
 }
 
 .top-wordmark-line::before,
@@ -139,6 +150,11 @@ select {
 .top-wordmark-right {
   justify-content: flex-start;
   padding-left: 26px;
+}
+
+.top-wordmark-left span,
+.top-wordmark-right span {
+  padding: 10px 0;
 }
 
 .top-wordmark-right::before {
@@ -581,6 +597,18 @@ select {
   }
 }
 
+@keyframes top-wordmark-in {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes data-drift {
   from {
     transform: translateX(-6%);
@@ -683,8 +711,8 @@ select {
 
 @media (max-width: 720px) {
   .top-wordmark-line span {
-    font-size: 0.88rem;
-    letter-spacing: 0.26em;
+    font-size: 0.96rem;
+    letter-spacing: 0.22em;
   }
 
   .intro-copy {
