@@ -1,5 +1,6 @@
 import MarketGridBackground from "./MarketGridBackground";
 import StatsBar from "./StatsBar";
+import TickerStrip from "./TickerStrip";
 
 export default function HeroSection() {
   return (
@@ -76,6 +77,10 @@ export default function HeroSection() {
         </div>
 
         <div className="mt-10">
+          <TickerStrip />
+        </div>
+
+        <div className="mt-6">
           <StatsBar />
         </div>
       </div>
