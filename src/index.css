@@ -32,6 +32,103 @@ a {
   min-height: 100vh;
 }
 
+.fallback-shell {
+  display: grid;
+  min-height: 100vh;
+  padding: 32px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 30%),
+    linear-gradient(180deg, #050505 0%, #020202 100%);
+}
+
+.fallback-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.fallback-brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.fallback-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.fallback-hero {
+  align-self: center;
+  max-width: 860px;
+  padding: 48px 0 72px;
+}
+
+.fallback-kicker {
+  margin: 0 0 16px;
+  font-size: 0.82rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.fallback-hero h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.fallback-copy {
+  max-width: 640px;
+  margin: 24px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.fallback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.fallback-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.fallback-button-primary {
+  background: #fff;
+  color: #050505;
+}
+
+.fallback-button-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .fallback-shell {
+    padding: 24px;
+  }
+
+  .fallback-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .fallback-hero {
+    padding: 32px 0 48px;
+  }
+}
+
 @keyframes ticker-scroll {
   from {
     transform: translateX(0);
