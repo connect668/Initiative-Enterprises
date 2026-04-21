@@ -15,7 +15,7 @@ export default function ContactSection() {
             </p>
 
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight md:text-5xl">
-              Let’s talk about your operation.
+              Let's talk about your operation.
             </h2>
 
             <p className="mt-5 max-w-2xl text-lg leading-8 text-white/65">
