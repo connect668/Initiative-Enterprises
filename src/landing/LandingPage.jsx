@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const INTRO_DURATION_MS = 2200;
-const INTRO_FADE_MS = 1050;
 
 function PanelChart({ variant }) {
   const strokePath =
@@ -45,20 +44,14 @@ function BrandPanel({ to, label, title, description, variant, metrics }) {
 
 export default function LandingPage() {
   const [introVisible, setIntroVisible] = useState(true);
-  const [splitVisible, setSplitVisible] = useState(false);
 
   useEffect(() => {
     const fadeTimer = window.setTimeout(() => {
       setIntroVisible(false);
     }, INTRO_DURATION_MS);
 
-    const revealTimer = window.setTimeout(() => {
-      setSplitVisible(true);
-    }, INTRO_DURATION_MS - 250);
-
     return () => {
       window.clearTimeout(fadeTimer);
-      window.clearTimeout(revealTimer);
     };
   }, []);
 
@@ -75,7 +68,7 @@ export default function LandingPage() {
         <div className="intro-copy">Initiative Enterprises</div>
       </div>
 
-      <section className={`split-screen${splitVisible ? " is-visible" : ""}`}>
+      <section className="split-screen">
         <BrandPanel
           to="/guardian"
           label="Brand 01"
