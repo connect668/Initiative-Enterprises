@@ -32,6 +32,127 @@ a {
   min-height: 100vh;
 }
 
+.site-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 72px;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0 24px;
+}
+
+.site-brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.site-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.site-nav-links a {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-block,
+.content-block {
+  padding: 40px 0;
+}
+
+.hero-block h1,
+.content-block h2 {
+  margin: 0;
+  font-size: clamp(2.3rem, 6vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.content-block h2 {
+  font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.hero-copy,
+.section-copy {
+  max-width: 720px;
+  margin: 24px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.hero-actions,
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.button-primary {
+  background: #ffffff;
+  color: #050505;
+}
+
+.button-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.info-card {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.info-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.3rem;
+}
+
+.info-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.contact-block {
+  padding-bottom: 24px;
+}
+
 .fallback-shell {
   display: grid;
   min-height: 100vh;
@@ -117,6 +238,20 @@ a {
 @media (max-width: 720px) {
   .fallback-shell {
     padding: 24px;
+  }
+
+  .site-shell {
+    width: min(100% - 24px, 1120px);
+    padding-top: 18px;
+  }
+
+  .site-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
   }
 
   .fallback-nav {
