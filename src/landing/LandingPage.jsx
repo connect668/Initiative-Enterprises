@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const INTRO_EXIT_MS = 1900;
 const INTRO_REMOVE_MS = 3050;
+const CONTENT_REVEAL_MS = 2150;
 
 function PanelChart({ variant }) {
   const strokePath =
@@ -46,11 +47,16 @@ function BrandPanel({ to, label, title, description, variant, metrics }) {
 export default function LandingPage() {
   const [introExiting, setIntroExiting] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
+  const [contentRevealed, setContentRevealed] = useState(false);
 
   useEffect(() => {
     const exitTimer = window.setTimeout(() => {
       setIntroExiting(true);
     }, INTRO_EXIT_MS);
+
+    const revealTimer = window.setTimeout(() => {
+      setContentRevealed(true);
+    }, CONTENT_REVEAL_MS);
 
     const removeTimer = window.setTimeout(() => {
       setShowIntro(false);
@@ -58,6 +64,7 @@ export default function LandingPage() {
 
     return () => {
       window.clearTimeout(exitTimer);
+      window.clearTimeout(revealTimer);
       window.clearTimeout(removeTimer);
     };
   }, []);
@@ -72,7 +79,7 @@ export default function LandingPage() {
       </div>
 
       <header
-        className={`top-wordmark${showIntro ? "" : " is-revealed"}`}
+        className={`top-wordmark${contentRevealed ? " is-revealed" : ""}`}
         aria-label="Initiative Enterprises"
       >
         <div className="top-wordmark-line top-wordmark-left">
@@ -83,6 +90,11 @@ export default function LandingPage() {
         </div>
       </header>
 
+      <div className={`umbrella-card${contentRevealed ? " is-visible" : ""}`}>
+        <p className="umbrella-card-label">Brand Architecture</p>
+        <p className="umbrella-card-title">Initiative Enterprises</p>
+      </div>
+
       {showIntro ? (
         <div className={`intro-overlay${introExiting ? " is-exiting" : ""}`}>
           <div className="intro-copy">
@@ -92,7 +104,7 @@ export default function LandingPage() {
         </div>
       ) : null}
 
-      <section className="split-screen">
+      <section className={`split-screen${contentRevealed ? " is-visible" : ""}`}>
         <BrandPanel
           to="/guardian"
           label="Brand 01"
