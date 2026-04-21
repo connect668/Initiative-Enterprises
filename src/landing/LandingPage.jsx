@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const INTRO_DURATION_MS = 2200;
+const INTRO_EXIT_MS = 1900;
+const INTRO_REMOVE_MS = 3050;
 
 function PanelChart({ variant }) {
   const strokePath =
@@ -43,15 +44,21 @@ function BrandPanel({ to, label, title, description, variant, metrics }) {
 }
 
 export default function LandingPage() {
-  const [introVisible, setIntroVisible] = useState(true);
+  const [introExiting, setIntroExiting] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
-    const fadeTimer = window.setTimeout(() => {
-      setIntroVisible(false);
-    }, INTRO_DURATION_MS);
+    const exitTimer = window.setTimeout(() => {
+      setIntroExiting(true);
+    }, INTRO_EXIT_MS);
+
+    const removeTimer = window.setTimeout(() => {
+      setShowIntro(false);
+    }, INTRO_REMOVE_MS);
 
     return () => {
-      window.clearTimeout(fadeTimer);
+      window.clearTimeout(exitTimer);
+      window.clearTimeout(removeTimer);
     };
   }, []);
 
@@ -64,9 +71,14 @@ export default function LandingPage() {
         <div className="data-line" />
       </div>
 
-      <div className={`intro-overlay${introVisible ? "" : " is-exiting"}`}>
-        <div className="intro-copy">Initiative Enterprises</div>
-      </div>
+      {showIntro ? (
+        <div className={`intro-overlay${introExiting ? " is-exiting" : ""}`}>
+          <div className="intro-copy">
+            <span className="intro-kicker">Initiative Enterprises</span>
+            <span className="intro-wordmark">Initiative Enterprises</span>
+          </div>
+        </div>
+      ) : null}
 
       <section className="split-screen">
         <BrandPanel

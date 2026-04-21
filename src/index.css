@@ -1,10 +1,9 @@
 :root {
   color-scheme: dark;
   font-family:
-    "Segoe UI", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
-  background: #05070c;
-  color: #f4f7fb;
+    "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  background: #090806;
+  color: #f5efe3;
 }
 
 * {
@@ -19,9 +18,9 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top, rgba(92, 124, 169, 0.16), transparent 28%),
-    linear-gradient(180deg, #05070c 0%, #06080d 52%, #04060a 100%);
-  color: #f4f7fb;
+    radial-gradient(circle at top, rgba(192, 147, 71, 0.15), transparent 28%),
+    linear-gradient(180deg, #090806 0%, #0b0907 52%, #060504 100%);
+  color: #f5efe3;
 }
 
 body::before {
@@ -30,8 +29,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    linear-gradient(rgba(212, 181, 122, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 181, 122, 0.035) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 90%);
   opacity: 0.72;
@@ -57,8 +56,8 @@ select {
   position: relative;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 50% 18%, rgba(133, 164, 210, 0.14), transparent 24%),
-    linear-gradient(180deg, #06080d 0%, #04060a 100%);
+    radial-gradient(circle at 50% 14%, rgba(211, 163, 80, 0.17), transparent 22%),
+    linear-gradient(180deg, #0a0806 0%, #090705 52%, #060504 100%);
   overflow: clip;
 }
 
@@ -72,15 +71,15 @@ select {
 
 .landing-shell::before {
   background:
-    linear-gradient(115deg, transparent 0%, rgba(157, 194, 255, 0.08) 48%, transparent 56%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 30%);
+    linear-gradient(115deg, transparent 0%, rgba(217, 174, 93, 0.12) 48%, transparent 56%),
+    linear-gradient(180deg, rgba(255, 240, 212, 0.035), transparent 30%);
   transform: translateX(-38%);
-  animation: light-sweep 9s linear infinite;
+  animation: light-sweep 10s linear infinite;
 }
 
 .landing-shell::after {
   background:
-    radial-gradient(circle at center, rgba(164, 196, 255, 0.09), transparent 34%),
+    radial-gradient(circle at center, rgba(172, 128, 58, 0.12), transparent 34%),
     linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.24));
   opacity: 0.9;
 }
@@ -90,8 +89,8 @@ select {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(rgba(120, 144, 177, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(120, 144, 177, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(181, 151, 94, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(181, 151, 94, 0.08) 1px, transparent 1px);
   background-size: 88px 88px;
   mask-image: radial-gradient(circle at center, black 35%, transparent 82%);
   opacity: 0.6;
@@ -109,8 +108,8 @@ select {
   left: -10%;
   width: 120%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(159, 198, 255, 0.3), transparent);
-  box-shadow: 0 0 14px rgba(117, 162, 255, 0.18);
+  background: linear-gradient(90deg, transparent, rgba(210, 169, 90, 0.38), transparent);
+  box-shadow: 0 0 14px rgba(170, 125, 42, 0.24);
   animation: data-drift linear infinite;
   opacity: 0.42;
 }
@@ -140,46 +139,66 @@ select {
   padding: 24px;
   z-index: 20;
   background:
-    radial-gradient(circle at center, rgba(81, 109, 150, 0.13), transparent 32%),
-    rgba(5, 7, 12, 0.94);
+    radial-gradient(circle at center, rgba(176, 129, 48, 0.18), transparent 30%),
+    rgba(8, 7, 5, 0.95);
   transition:
-    opacity 1.1s ease,
-    visibility 1.1s ease;
+    opacity 1.15s ease,
+    visibility 1.15s ease,
+    transform 1.15s ease;
 }
 
 .intro-overlay.is-exiting {
   opacity: 0;
   visibility: hidden;
+  transform: scale(1.025);
 }
 
 .intro-copy {
   position: relative;
+  display: grid;
+  gap: 18px;
   text-align: center;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-size: clamp(2rem, 5vw, 4.8rem);
-  font-weight: 700;
-  color: #f5f8ff;
-  text-shadow: 0 0 28px rgba(113, 150, 218, 0.18);
 }
 
-.intro-copy::before,
-.intro-copy::after {
+.intro-kicker {
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: rgba(224, 196, 145, 0.72);
+}
+
+.intro-wordmark {
+  position: relative;
+  display: inline-block;
+  padding: 0 24px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 5.2vw, 5.4rem);
+  font-weight: 700;
+  color: #f5ead1;
+  text-shadow:
+    0 0 28px rgba(166, 116, 32, 0.2),
+    0 0 80px rgba(122, 88, 28, 0.14);
+  animation: wordmark-breathe 3.4s ease-in-out infinite;
+}
+
+.intro-wordmark::before,
+.intro-wordmark::after {
   content: "";
   position: absolute;
   left: 50%;
-  width: 180px;
+  width: 220px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(190, 214, 255, 0.85), transparent);
+  background: linear-gradient(90deg, transparent, rgba(227, 194, 136, 0.85), transparent);
   transform: translateX(-50%);
 }
 
-.intro-copy::before {
-  top: -20px;
+.intro-wordmark::before {
+  top: -22px;
 }
 
-.intro-copy::after {
-  bottom: -20px;
+.intro-wordmark::after {
+  bottom: -22px;
 }
 
 .split-screen {
@@ -194,7 +213,7 @@ select {
 .brand-panel {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   min-height: 100vh;
   padding: 48px;
   isolation: isolate;
@@ -202,7 +221,8 @@ select {
   transition:
     background 260ms ease,
     filter 260ms ease,
-    transform 260ms ease;
+    transform 260ms ease,
+    box-shadow 260ms ease;
 }
 
 .brand-panel::before,
@@ -215,36 +235,38 @@ select {
 
 .brand-panel::before {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 22%, transparent 78%, rgba(0, 0, 0, 0.35)),
-    radial-gradient(circle at top, rgba(153, 182, 228, 0.1), transparent 28%);
+    linear-gradient(180deg, rgba(255, 243, 221, 0.04), transparent 22%, transparent 78%, rgba(0, 0, 0, 0.35)),
+    radial-gradient(circle at top, rgba(209, 164, 85, 0.12), transparent 28%);
   opacity: 0.95;
 }
 
 .brand-panel::after {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(226, 194, 140, 0.12);
   inset: 18px;
   opacity: 0.65;
 }
 
 .brand-panel.guardian {
   background:
-    linear-gradient(135deg, rgba(9, 17, 28, 0.96), rgba(8, 12, 19, 0.95)),
-    linear-gradient(180deg, transparent, rgba(28, 53, 79, 0.22));
+    linear-gradient(135deg, rgba(13, 11, 8, 0.98), rgba(10, 9, 7, 0.96)),
+    linear-gradient(180deg, transparent, rgba(92, 63, 17, 0.18));
 }
 
 .brand-panel.checkpoint {
   background:
-    linear-gradient(135deg, rgba(11, 12, 20, 0.96), rgba(9, 10, 15, 0.95)),
-    linear-gradient(180deg, transparent, rgba(55, 47, 84, 0.18));
+    linear-gradient(135deg, rgba(14, 10, 8, 0.98), rgba(9, 8, 7, 0.96)),
+    linear-gradient(180deg, transparent, rgba(110, 77, 26, 0.16));
 }
 
 .brand-panel:hover,
 .brand-panel:focus-visible {
   filter: brightness(1.08);
+  transform: translateY(-6px);
+  box-shadow: inset 0 0 0 1px rgba(228, 197, 143, 0.16);
 }
 
 .split-screen:hover .brand-panel:not(:hover) {
-  filter: brightness(0.72);
+  filter: brightness(0.78) saturate(0.88);
 }
 
 .brand-panel:focus-visible {
@@ -258,8 +280,8 @@ select {
   left: 50%;
   width: 1px;
   transform: translateX(-50%);
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.34), transparent);
-  box-shadow: 0 0 24px rgba(121, 160, 235, 0.14);
+  background: linear-gradient(180deg, transparent, rgba(219, 187, 132, 0.42), transparent);
+  box-shadow: 0 0 24px rgba(169, 121, 39, 0.18);
   z-index: 4;
 }
 
@@ -274,14 +296,18 @@ select {
   font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(209, 220, 242, 0.62);
+  color: rgba(219, 192, 146, 0.66);
 }
 
 .panel-title {
   margin: 0;
-  font-size: clamp(2.25rem, 5vw, 4.8rem);
+  max-width: 8ch;
+  font-size: clamp(2.4rem, 4.9vw, 5.1rem);
   font-weight: 700;
   letter-spacing: -0.05em;
+  line-height: 0.94;
+  color: #f7edd9;
+  text-wrap: balance;
 }
 
 .panel-description {
@@ -289,7 +315,7 @@ select {
   max-width: 420px;
   font-size: 1rem;
   line-height: 1.8;
-  color: rgba(225, 232, 244, 0.74);
+  color: rgba(234, 220, 192, 0.76);
 }
 
 .panel-cta {
@@ -298,18 +324,30 @@ select {
   gap: 12px;
   margin-top: 28px;
   padding: 13px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(225, 194, 138, 0.18);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(205, 164, 88, 0.08);
   backdrop-filter: blur(16px);
   font-size: 0.88rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: #f3e6ca;
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease;
 }
 
 .panel-cta::after {
   content: "\203A";
   font-size: 1.1rem;
+}
+
+.brand-panel:hover .panel-cta,
+.brand-panel:focus-visible .panel-cta {
+  transform: translateX(4px);
+  background: rgba(215, 170, 87, 0.12);
+  border-color: rgba(232, 200, 146, 0.28);
 }
 
 .panel-metrics {
@@ -323,14 +361,14 @@ select {
 
 .metric-pill {
   padding: 9px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(228, 196, 142, 0.12);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(205, 163, 85, 0.06);
   backdrop-filter: blur(16px);
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(223, 231, 245, 0.74);
+  color: rgba(231, 214, 184, 0.76);
 }
 
 .panel-chart {
@@ -349,15 +387,15 @@ select {
 }
 
 .guardian .panel-chart path {
-  stroke: rgba(145, 198, 255, 0.56);
+  stroke: rgba(216, 178, 101, 0.68);
 }
 
 .checkpoint .panel-chart path {
-  stroke: rgba(202, 193, 255, 0.54);
+  stroke: rgba(198, 154, 73, 0.62);
 }
 
 .panel-chart .chart-grid-line {
-  stroke: rgba(255, 255, 255, 0.08);
+  stroke: rgba(214, 181, 125, 0.1);
   stroke-width: 1;
 }
 
@@ -365,8 +403,8 @@ select {
   min-height: 100vh;
   padding: 32px;
   background:
-    radial-gradient(circle at top, rgba(89, 121, 169, 0.14), transparent 24%),
-    linear-gradient(180deg, #05070c 0%, #04060a 100%);
+    radial-gradient(circle at top, rgba(170, 127, 49, 0.16), transparent 24%),
+    linear-gradient(180deg, #090806 0%, #060504 100%);
 }
 
 .brand-page-shell {
@@ -386,7 +424,7 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: rgba(232, 238, 248, 0.74);
+  color: rgba(236, 220, 191, 0.78);
 }
 
 .brand-back::before {
@@ -404,9 +442,9 @@ select {
 .detail-panel {
   position: relative;
   padding: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(227, 194, 139, 0.1);
   border-radius: 28px;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 242, 216, 0.028);
   backdrop-filter: blur(18px);
   overflow: hidden;
 }
@@ -416,13 +454,14 @@ select {
   font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(201, 214, 237, 0.58);
+  color: rgba(219, 193, 145, 0.64);
 }
 
 .brand-heading {
   margin: 0;
   font-size: clamp(2.3rem, 5vw, 4.6rem);
   letter-spacing: -0.05em;
+  color: #f7edd9;
 }
 
 .brand-copy {
@@ -430,7 +469,7 @@ select {
   margin: 18px 0 0;
   font-size: 1.02rem;
   line-height: 1.8;
-  color: rgba(227, 233, 244, 0.76);
+  color: rgba(234, 220, 192, 0.76);
 }
 
 .detail-list {
@@ -441,15 +480,15 @@ select {
 
 .detail-item {
   padding: 14px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(227, 194, 139, 0.1);
   border-radius: 18px;
   background: rgba(0, 0, 0, 0.16);
-  color: rgba(228, 234, 243, 0.78);
+  color: rgba(239, 225, 197, 0.78);
 }
 
 .page-surface-note {
   margin-top: 28px;
-  color: rgba(217, 225, 238, 0.58);
+  color: rgba(213, 196, 168, 0.6);
 }
 
 @keyframes light-sweep {
@@ -475,6 +514,19 @@ select {
   to {
     transform: translateX(4%);
     opacity: 0.16;
+  }
+}
+
+@keyframes wordmark-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.96;
+  }
+
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
   }
 }
 
