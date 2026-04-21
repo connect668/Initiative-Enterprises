@@ -98,7 +98,6 @@ export default function LandingPage() {
       </header>
 
       <div className={`umbrella-card${brandRevealed ? " is-visible" : ""}`}>
-        <p className="umbrella-card-label">Brand Architecture</p>
         <p className="umbrella-card-title">Initiative Enterprises</p>
       </div>
 

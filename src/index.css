@@ -86,7 +86,7 @@ select {
 
 .top-wordmark {
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 0;
   right: 0;
   z-index: 8;
@@ -96,7 +96,7 @@ select {
   padding: 26px 36px 0;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(-18px);
+  transform: translateY(-14px);
 }
 
 .top-wordmark-line {
@@ -125,11 +125,11 @@ select {
 
 .umbrella-card {
   position: absolute;
-  top: 86px;
+  top: 66px;
   left: 50%;
   z-index: 9;
   min-width: min(420px, calc(100vw - 48px));
-  padding: 16px 22px;
+  padding: 14px 22px;
   border: 1px solid rgba(228, 196, 142, 0.14);
   border-radius: 22px;
   background:
@@ -139,11 +139,13 @@ select {
     0 18px 42px rgba(0, 0, 0, 0.32),
     0 0 0 1px rgba(222, 189, 132, 0.06) inset;
   backdrop-filter: blur(18px);
-  transform: translate(-50%, -20px);
+  transform: translate(-50%, -14px);
   opacity: 0;
   transition:
-    opacity 700ms ease,
-    transform 700ms ease;
+    opacity 1050ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1050ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 1050ms ease;
+  animation: umbrella-pulse 7.5s ease-in-out infinite;
 }
 
 .umbrella-card.is-visible {
@@ -151,24 +153,15 @@ select {
   transform: translate(-50%, 0);
 }
 
-.umbrella-card-label,
 .umbrella-card-title {
   margin: 0;
   text-align: center;
 }
 
-.umbrella-card-label {
-  font-size: 0.68rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(220, 192, 144, 0.66);
-}
-
 .umbrella-card-title {
-  margin-top: 6px;
   font-size: clamp(1rem, 1.5vw, 1.3rem);
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
   color: rgba(250, 238, 210, 0.96);
 }
@@ -341,8 +334,8 @@ select {
   opacity: 0;
   transform: translateY(34px) scale(1.01);
   transition:
-    opacity 900ms ease,
-    transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .split-screen.is-visible {
@@ -378,6 +371,7 @@ select {
     linear-gradient(180deg, rgba(255, 243, 221, 0.04), transparent 22%, transparent 78%, rgba(0, 0, 0, 0.35)),
     radial-gradient(circle at top, rgba(209, 164, 85, 0.12), transparent 28%);
   opacity: 0.95;
+  animation: panel-glow 7s ease-in-out infinite;
 }
 
 .brand-panel::after {
@@ -388,11 +382,11 @@ select {
 
 .brand-panel.guardian .panel-content,
 .brand-panel.checkpoint .panel-content {
-  animation: panel-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) 480ms both;
+  animation: panel-rise 1.15s cubic-bezier(0.22, 1, 0.36, 1) 520ms both;
 }
 
 .brand-panel.checkpoint .panel-content {
-  animation-delay: 100ms;
+  animation-delay: 180ms;
 }
 
 .brand-panel.guardian {
@@ -520,6 +514,7 @@ select {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(231, 214, 184, 0.76);
+  animation: pill-flicker 6.5s ease-in-out infinite;
 }
 
 .panel-chart {
@@ -672,7 +667,7 @@ select {
 @keyframes panel-rise {
   from {
     opacity: 0;
-    transform: translateY(34px);
+    transform: translateY(42px);
   }
 
   to {
@@ -689,6 +684,44 @@ select {
 
   50% {
     transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes panel-glow {
+  0%,
+  100% {
+    opacity: 0.88;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pill-flicker {
+  0%,
+  100% {
+    opacity: 0.78;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes umbrella-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 18px 42px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgba(222, 189, 132, 0.06) inset;
+  }
+
+  50% {
+    box-shadow:
+      0 22px 52px rgba(0, 0, 0, 0.36),
+      0 0 28px rgba(188, 138, 52, 0.14),
+      0 0 0 1px rgba(222, 189, 132, 0.08) inset;
   }
 }
 
@@ -709,11 +742,11 @@ select {
   .top-wordmark {
     grid-template-columns: 1fr;
     gap: 10px;
-    padding: 22px 24px 0;
+    padding: 18px 24px 0;
   }
 
   .umbrella-card {
-    top: 116px;
+    top: 94px;
     min-width: min(380px, calc(100vw - 32px));
   }
 
@@ -788,14 +821,14 @@ select {
   }
 
   .umbrella-card {
-    top: 106px;
+    top: 82px;
     min-width: calc(100vw - 24px);
-    padding: 14px 18px;
+    padding: 12px 16px;
   }
 
   .umbrella-card-title {
-    font-size: 0.96rem;
-    letter-spacing: 0.18em;
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
   }
 
   .panel-content {
