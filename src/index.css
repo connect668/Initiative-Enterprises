@@ -97,7 +97,6 @@ select {
   pointer-events: none;
   opacity: 0;
   transform: translateY(-18px);
-  animation: top-wordmark-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) 2.2s forwards;
 }
 
 .top-wordmark-line {
@@ -122,7 +121,6 @@ select {
 .top-wordmark.is-revealed {
   opacity: 1;
   transform: translateY(0);
-  animation: none;
 }
 
 .umbrella-card {
@@ -390,7 +388,7 @@ select {
 
 .brand-panel.guardian .panel-content,
 .brand-panel.checkpoint .panel-content {
-  animation: panel-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) 260ms both;
+  animation: panel-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) 480ms both;
 }
 
 .brand-panel.checkpoint .panel-content {
@@ -652,18 +650,6 @@ select {
 
   to {
     transform: translateX(58%);
-  }
-}
-
-@keyframes top-wordmark-in {
-  from {
-    opacity: 0;
-    transform: translateY(-18px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 

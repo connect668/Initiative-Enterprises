@@ -67,6 +67,9 @@
         align-items: center;
         padding: 26px 36px 0;
         pointer-events: none;
+        opacity: 0;
+        transform: translateY(-18px);
+        animation: html-brand-in 850ms cubic-bezier(0.2, 0.8, 0.2, 1) 2.75s forwards;
       }
 
       .html-top-line {
@@ -135,12 +138,57 @@
           linear-gradient(180deg, rgba(255, 240, 212, 0.035), transparent 30%);
       }
 
+      .html-umbrella-card {
+        position: absolute;
+        top: 86px;
+        left: 50%;
+        z-index: 5;
+        min-width: min(420px, calc(100vw - 48px));
+        padding: 16px 22px;
+        border: 1px solid rgba(228, 196, 142, 0.14);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(33, 24, 13, 0.88), rgba(15, 11, 8, 0.92)),
+          rgba(0, 0, 0, 0.22);
+        box-shadow:
+          0 18px 42px rgba(0, 0, 0, 0.32),
+          0 0 0 1px rgba(222, 189, 132, 0.06) inset;
+        backdrop-filter: blur(18px);
+        transform: translate(-50%, -20px);
+        opacity: 0;
+        animation: html-brand-in 850ms cubic-bezier(0.2, 0.8, 0.2, 1) 2.75s forwards;
+      }
+
+      .html-umbrella-card p {
+        margin: 0;
+        text-align: center;
+      }
+
+      .html-umbrella-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(220, 192, 144, 0.66);
+      }
+
+      .html-umbrella-title {
+        margin-top: 6px;
+        font-size: clamp(1rem, 1.5vw, 1.3rem);
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(250, 238, 210, 0.96);
+      }
+
       .html-split {
         position: relative;
         z-index: 2;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         min-height: 100vh;
+        opacity: 0;
+        transform: translateY(34px) scale(1.01);
+        animation: html-panels-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 2.15s forwards;
       }
 
       .html-panel {
@@ -197,6 +245,9 @@
       .html-panel-content {
         position: relative;
         max-width: 460px;
+        opacity: 0;
+        transform: translateY(34px);
+        animation: html-panel-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) 2.55s forwards;
       }
 
       .html-label {
@@ -247,6 +298,42 @@
         font-size: 1.1rem;
       }
 
+      @keyframes html-panels-in {
+        from {
+          opacity: 0;
+          transform: translateY(34px) scale(1.01);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes html-panel-rise {
+        from {
+          opacity: 0;
+          transform: translateY(34px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes html-brand-in {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+
       @media (max-width: 980px) {
         .html-top-wordmark {
           grid-template-columns: 1fr;
@@ -269,6 +356,11 @@
           grid-template-columns: 1fr;
         }
 
+        .html-umbrella-card {
+          top: 116px;
+          min-width: min(380px, calc(100vw - 32px));
+        }
+
         .html-panel {
           min-height: 50vh;
           padding: 32px 24px;
@@ -284,6 +376,19 @@
           transform: translateY(-50%);
         }
       }
+
+      @media (max-width: 720px) {
+        .html-umbrella-card {
+          top: 106px;
+          min-width: calc(100vw - 24px);
+          padding: 14px 18px;
+        }
+
+        .html-umbrella-title {
+          font-size: 0.96rem;
+          letter-spacing: 0.18em;
+        }
+      }
     </style>
   </head>
   <body>
@@ -297,6 +402,11 @@
             <span>Enterprises</span>
           </div>
         </header>
+
+        <div class="html-umbrella-card">
+          <p class="html-umbrella-label">Brand Architecture</p>
+          <p class="html-umbrella-title">Initiative Enterprises</p>
+        </div>
 
         <section class="html-split">
           <a class="html-panel guardian" href="#/guardian">
