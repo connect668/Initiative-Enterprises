@@ -1,0 +1,101 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+const INTRO_DURATION_MS = 2200;
+const INTRO_FADE_MS = 1050;
+
+function PanelChart({ variant }) {
+  const strokePath =
+    variant === "guardian"
+      ? "M0 116 L50 110 L104 92 L150 99 L204 72 L258 76 L316 44 L366 55 L420 14"
+      : "M0 126 L48 118 L96 120 L146 84 L198 95 L244 62 L296 72 L350 40 L420 48";
+
+  return (
+    <svg className="panel-chart" viewBox="0 0 420 180" aria-hidden="true">
+      <path className="chart-grid-line" d="M0 36 H420" />
+      <path className="chart-grid-line" d="M0 88 H420" />
+      <path className="chart-grid-line" d="M0 140 H420" />
+      <path d={strokePath} />
+    </svg>
+  );
+}
+
+function BrandPanel({ to, label, title, description, variant, metrics }) {
+  return (
+    <Link className={`brand-panel ${variant}`} to={to}>
+      <div className="panel-metrics">
+        {metrics.map((metric) => (
+          <span key={metric} className="metric-pill">
+            {metric}
+          </span>
+        ))}
+      </div>
+
+      <PanelChart variant={variant} />
+
+      <div className="panel-content">
+        <p className="panel-label">{label}</p>
+        <h2 className="panel-title">{title}</h2>
+        <p className="panel-description">{description}</p>
+        <span className="panel-cta">Enter {title}</span>
+      </div>
+    </Link>
+  );
+}
+
+export default function LandingPage() {
+  const [introVisible, setIntroVisible] = useState(true);
+  const [splitVisible, setSplitVisible] = useState(false);
+
+  useEffect(() => {
+    const fadeTimer = window.setTimeout(() => {
+      setIntroVisible(false);
+    }, INTRO_DURATION_MS);
+
+    const revealTimer = window.setTimeout(() => {
+      setSplitVisible(true);
+    }, INTRO_DURATION_MS - 250);
+
+    return () => {
+      window.clearTimeout(fadeTimer);
+      window.clearTimeout(revealTimer);
+    };
+  }, []);
+
+  return (
+    <main className="landing-shell">
+      <div className="landing-grid" />
+      <div className="data-lines" aria-hidden="true">
+        <div className="data-line" />
+        <div className="data-line" />
+        <div className="data-line" />
+      </div>
+
+      <div className={`intro-overlay${introVisible ? "" : " is-exiting"}`}>
+        <div className="intro-copy">Initiative Enterprises</div>
+      </div>
+
+      <section className={`split-screen${splitVisible ? " is-visible" : ""}`}>
+        <BrandPanel
+          to="/guardian"
+          label="Brand 01"
+          title="Guardian"
+          description="Operational structure and growth support for startups and scaling businesses."
+          variant="guardian"
+          metrics={["Ops Systems", "Scale Support"]}
+        />
+
+        <div className="panel-divider" aria-hidden="true" />
+
+        <BrandPanel
+          to="/checkpoint-media"
+          label="Brand 02"
+          title="Checkpoint Media"
+          description="Media, interviews, and brand storytelling that turn attention into authority."
+          variant="checkpoint"
+          metrics={["Media Signal", "Brand Authority"]}
+        />
+      </section>
+    </main>
+  );
+}

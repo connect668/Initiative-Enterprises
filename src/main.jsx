@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import HomePage from "./b2b/pages/HomePage";
+import { HashRouter } from "react-router-dom";
+import App from "./App";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HomePage />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>
 );
