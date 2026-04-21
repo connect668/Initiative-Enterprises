@@ -71,6 +71,15 @@ export default function LandingPage() {
         <div className="data-line" />
       </div>
 
+      <header className="top-wordmark" aria-label="Initiative Enterprises">
+        <div className="top-wordmark-line top-wordmark-left">
+          <span>Initiative</span>
+        </div>
+        <div className="top-wordmark-line top-wordmark-right">
+          <span>Enterprises</span>
+        </div>
+      </header>
+
       {showIntro ? (
         <div className={`intro-overlay${introExiting ? " is-exiting" : ""}`}>
           <div className="intro-copy">
