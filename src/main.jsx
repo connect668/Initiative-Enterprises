@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-function TestApp() {
-  return <h1 style={{ color: "red" }}>REACT TEST</h1>;
-}
+import App from "./App";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <TestApp />
+    <App />
   </React.StrictMode>
 );
