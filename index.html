@@ -75,7 +75,7 @@
         filter: blur(18px);
         pointer-events: none;
         opacity: 0;
-        animation: html-sunrise 1700ms cubic-bezier(0.19, 1, 0.22, 1) 1.05s forwards;
+        animation: html-sunrise 1700ms cubic-bezier(0.19, 1, 0.22, 1) 0.55s forwards;
       }
 
       .html-fallback::before {
@@ -97,7 +97,7 @@
         opacity: 0;
         filter: brightness(0.8) saturate(0.9);
         transform: translateY(78px) scale(1.015);
-        animation: html-panels-in 1500ms cubic-bezier(0.19, 1, 0.22, 1) 1.15s forwards;
+        animation: html-panels-in 1500ms cubic-bezier(0.19, 1, 0.22, 1) 0.65s forwards;
       }
 
       .html-panel {
@@ -209,7 +209,7 @@
         max-width: 460px;
         opacity: 0;
         transform: translateY(94px) scale(0.98);
-        animation: html-panel-rise 1.6s cubic-bezier(0.19, 1, 0.22, 1) 1.45s forwards;
+        animation: html-panel-rise 1.6s cubic-bezier(0.19, 1, 0.22, 1) 0.95s forwards;
         z-index: 2;
       }
 
@@ -915,6 +915,7 @@
 
             window.setTimeout(function () {
               window.location.hash = href.replace(/^#/, "");
+              renderRoute();
               locked = false;
             }, 520);
           });

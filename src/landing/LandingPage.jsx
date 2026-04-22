@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { Navigate } from "react-router-dom";
 
-const INTRO_EXIT_MS = 900;
-const INTRO_REMOVE_MS = 2050;
-const PANELS_REVEAL_MS = 1150;
+const INTRO_EXIT_MS = 400;
+const INTRO_REMOVE_MS = 1550;
+const PANELS_REVEAL_MS = 650;
 const NAV_TRANSITION_MS = 520;
 
 function BrandPanel({
@@ -55,6 +56,7 @@ export default function LandingPage() {
   const [showIntro, setShowIntro] = useState(true);
   const [panelsRevealed, setPanelsRevealed] = useState(false);
   const [activatingPanel, setActivatingPanel] = useState("");
+  const [pendingRoute, setPendingRoute] = useState("");
   const navigationTimerRef = useRef(null);
 
   useEffect(() => {
@@ -87,9 +89,13 @@ export default function LandingPage() {
 
     setActivatingPanel(variant);
     navigationTimerRef.current = window.setTimeout(() => {
-      window.location.hash = route;
+      setPendingRoute(route);
     }, NAV_TRANSITION_MS);
   };
+
+  if (pendingRoute) {
+    return <Navigate to={pendingRoute} replace />;
+  }
 
   return (
     <main className="landing-shell">
