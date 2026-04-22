@@ -23,10 +23,13 @@ export default function App() {
         element={
           <BrandPage
             eyebrow="Guardian"
-            title="Operational structure built for companies that need sharper execution."
-            description="Guardian is the Initiative Enterprises destination for operational structure and growth support for startups and scaling businesses."
-            accent="Structure / Execution / Scale"
-            items={guardianItems}
+            title="Empire Building Resources"
+            description="Guardian is opening as the Initiative Enterprises destination for empire-building resources, operational structure, and execution support."
+            accent="Resources / Execution / Scale"
+            items={[
+              "Empire building resources",
+              ...guardianItems,
+            ]}
           />
         }
       />

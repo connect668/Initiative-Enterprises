@@ -1,13 +1,35 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const INTRO_EXIT_MS = 1900;
 const INTRO_REMOVE_MS = 3050;
 const PANELS_REVEAL_MS = 2150;
+const NAV_TRANSITION_MS = 380;
 
-function BrandPanel({ to, label, title, description, variant }) {
+function BrandPanel({
+  label,
+  title,
+  description,
+  variant,
+  isActivating,
+  isDimmed,
+  onActivate,
+}) {
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onActivate(variant);
+    }
+  };
+
   return (
-    <Link className={`brand-panel ${variant}`} to={to}>
+    <article
+      className={`brand-panel ${variant}${isActivating ? " is-activating" : ""}${isDimmed ? " is-dimmed" : ""}`}
+      role="link"
+      tabIndex={0}
+      onClick={() => onActivate(variant)}
+      onKeyDown={handleKeyDown}
+    >
       <div className={`card-wordmark ${variant}`}>
         <span>{variant === "guardian" ? "Initiative" : "Enterprises"}</span>
       </div>
@@ -28,14 +50,17 @@ function BrandPanel({ to, label, title, description, variant }) {
         <p className="panel-description">{description}</p>
         <span className="panel-cta">Enter {title}</span>
       </div>
-    </Link>
+    </article>
   );
 }
 
 export default function LandingPage() {
+  const navigate = useNavigate();
   const [introExiting, setIntroExiting] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [panelsRevealed, setPanelsRevealed] = useState(false);
+  const [activatingPanel, setActivatingPanel] = useState("");
+  const navigationTimerRef = useRef(null);
 
   useEffect(() => {
     const exitTimer = window.setTimeout(() => {
@@ -54,8 +79,22 @@ export default function LandingPage() {
       window.clearTimeout(exitTimer);
       window.clearTimeout(panelsTimer);
       window.clearTimeout(removeTimer);
+      if (navigationTimerRef.current) {
+        window.clearTimeout(navigationTimerRef.current);
+      }
     };
   }, []);
+
+  const handleActivate = (variant) => {
+    if (activatingPanel) {
+      return;
+    }
+
+    setActivatingPanel(variant);
+    navigationTimerRef.current = window.setTimeout(() => {
+      navigate(variant === "guardian" ? "/guardian" : "/checkpoint-media");
+    }, NAV_TRANSITION_MS);
+  };
 
   return (
     <main className="landing-shell">
@@ -76,23 +115,29 @@ export default function LandingPage() {
         </div>
       ) : null}
 
-      <section className={`split-screen${panelsRevealed ? " is-visible" : ""}`}>
+      <section
+        className={`split-screen${panelsRevealed ? " is-visible" : ""}${activatingPanel ? " is-transitioning" : ""}`}
+      >
         <BrandPanel
-          to="/guardian"
           label="Brand 01"
           title="Guardian"
           description="Operational structure and growth support for startups and scaling businesses."
           variant="guardian"
+          isActivating={activatingPanel === "guardian"}
+          isDimmed={activatingPanel === "checkpoint"}
+          onActivate={handleActivate}
         />
 
         <div className="panel-divider" aria-hidden="true" />
 
         <BrandPanel
-          to="/checkpoint-media"
           label="Brand 02"
           title="Checkpoint Media"
           description="Media, interviews, and brand storytelling that turn attention into authority."
           variant="checkpoint"
+          isActivating={activatingPanel === "checkpoint"}
+          isDimmed={activatingPanel === "guardian"}
+          onActivate={handleActivate}
         />
       </section>
     </main>
