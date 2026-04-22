@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function BrandPage({
@@ -6,9 +7,23 @@ export default function BrandPage({
   description,
   accent,
   items,
+  variant = "guardian",
 }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      setIsVisible(true);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <main className="brand-page">
+    <main className={`brand-page ${variant}${isVisible ? " is-visible" : ""}`}>
+      <div className="brand-page-burst" aria-hidden="true" />
       <div className="brand-page-shell">
         <nav className="brand-page-nav">
           <Link className="brand-back" to="/">

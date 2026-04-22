@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const INTRO_EXIT_MS = 1900;
 const INTRO_REMOVE_MS = 3050;
 const PANELS_REVEAL_MS = 2150;
-const NAV_TRANSITION_MS = 380;
+const NAV_TRANSITION_MS = 520;
 
 function BrandPanel({
   label,
@@ -39,8 +39,8 @@ function BrandPanel({
         <span className="surface-wave wave-two" />
         <span className="surface-wave wave-three" />
         <span className="surface-beam beam-one" />
-        <span className="surface-beam beam-two" />
         <span className="surface-particles" />
+        <span className="surface-flash" />
       </div>
 
       <div className="panel-content">
@@ -91,8 +91,10 @@ export default function LandingPage() {
     }
 
     setActivatingPanel(variant);
+    const route = variant === "guardian" ? "/guardian" : "/checkpoint-media";
     navigationTimerRef.current = window.setTimeout(() => {
-      navigate(variant === "guardian" ? "/guardian" : "/checkpoint-media");
+      navigate(route);
+      window.location.hash = route;
     }, NAV_TRANSITION_MS);
   };
 

@@ -373,10 +373,11 @@ select {
 
 .brand-panel.is-activating {
   filter: brightness(1.2);
-  transform: scale(1.02);
+  transform: scale(1.03);
   box-shadow:
     inset 0 0 0 1px rgba(236, 208, 161, 0.2),
     0 40px 90px rgba(0, 0, 0, 0.34);
+  animation: panel-pop 460ms cubic-bezier(0.18, 0.88, 0.32, 1.18) forwards;
 }
 
 .brand-panel.is-activating::after {
@@ -397,28 +398,33 @@ select {
 .brand-panel.is-activating .surface-wave,
 .brand-panel.is-activating .surface-beam,
 .brand-panel.is-activating .surface-particles,
+.brand-panel.is-activating .surface-flash,
 .brand-panel.is-activating .panel-glow {
   opacity: 1;
 }
 
 .brand-panel.is-activating .wave-one {
-  animation: wave-float-one 2.8s ease-in-out infinite;
+  animation: wave-float-one 1.1s ease-out infinite;
 }
 
 .brand-panel.is-activating .wave-two {
-  animation: wave-float-two 3.2s ease-in-out infinite;
+  animation: wave-float-two 1.15s ease-out infinite;
 }
 
 .brand-panel.is-activating .wave-three {
-  animation: wave-float-three 3.6s ease-in-out infinite;
+  animation: wave-float-three 1.2s ease-out infinite;
 }
 
 .brand-panel.is-activating .surface-beam {
-  animation: beam-swell 2.4s ease-in-out infinite;
+  animation: beam-burst 460ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 .brand-panel.is-activating .surface-particles {
-  animation: particles-rise 2.8s ease-in-out infinite;
+  animation: particles-burst 520ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.brand-panel.is-activating .surface-flash {
+  animation: flash-burst 420ms cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }
 
 .brand-panel.is-activating .panel-glow::before,
@@ -455,7 +461,8 @@ select {
 
 .surface-wave,
 .surface-beam,
-.surface-particles {
+.surface-particles,
+.surface-flash {
   position: absolute;
   opacity: 0;
   transition:
@@ -546,6 +553,21 @@ select {
     radial-gradient(circle at 28% 70%, black 0 2px, transparent 3px),
     radial-gradient(circle at 84% 54%, black 0 2px, transparent 3px);
   transform: translate3d(20px, 14px, 0) scale(0.86);
+}
+
+.surface-flash {
+  inset: 18%;
+  border-radius: 999px;
+  filter: blur(12px);
+  transform: scale(0.34);
+}
+
+.guardian .surface-flash {
+  background: radial-gradient(circle, rgba(164, 202, 255, 0.94) 0%, rgba(86, 139, 255, 0.4) 26%, rgba(22, 41, 88, 0) 72%);
+}
+
+.checkpoint .surface-flash {
+  background: radial-gradient(circle, rgba(255, 224, 165, 0.94) 0%, rgba(228, 165, 72, 0.4) 26%, rgba(84, 39, 4, 0) 72%);
 }
 
 .brand-panel:hover .surface-wave,
@@ -717,11 +739,48 @@ select {
   background:
     radial-gradient(circle at top, rgba(170, 127, 49, 0.16), transparent 24%),
     linear-gradient(180deg, #090806 0%, #060504 100%);
+  opacity: 0;
+  transform: scale(0.985);
+  transition:
+    opacity 520ms cubic-bezier(0.19, 1, 0.22, 1),
+    transform 520ms cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: clip;
+}
+
+.brand-page.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.brand-page-burst {
+  position: absolute;
+  inset: auto 50% 12% auto;
+  width: min(520px, 44vw);
+  height: min(520px, 44vw);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(10px);
+  opacity: 0;
+  transform: translate3d(50%, 0, 0) scale(0.26);
+}
+
+.brand-page.guardian .brand-page-burst {
+  background: radial-gradient(circle, rgba(144, 192, 255, 0.82) 0%, rgba(74, 128, 255, 0.28) 28%, rgba(24, 42, 90, 0) 74%);
+}
+
+.brand-page.checkpoint .brand-page-burst {
+  background: radial-gradient(circle, rgba(255, 220, 160, 0.82) 0%, rgba(210, 146, 48, 0.28) 28%, rgba(85, 40, 5, 0) 74%);
+}
+
+.brand-page.is-visible .brand-page-burst {
+  animation: page-burst 640ms cubic-bezier(0.19, 1, 0.22, 1) both;
 }
 
 .brand-page-shell {
   width: min(1180px, 100%);
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .brand-page-nav {
@@ -748,6 +807,16 @@ select {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 24px;
+  opacity: 0;
+  transform: translateY(32px) scale(0.985);
+  transition:
+    opacity 520ms cubic-bezier(0.19, 1, 0.22, 1) 90ms,
+    transform 520ms cubic-bezier(0.19, 1, 0.22, 1) 90ms;
+}
+
+.brand-page.is-visible .brand-header {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .hero-panel,
@@ -899,6 +968,23 @@ select {
   }
 }
 
+@keyframes beam-burst {
+  0% {
+    opacity: 0.22;
+    transform: translate3d(30px, 20px, 0) scale(0.82);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.12);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-6px, -10px, 0) scale(1.32);
+  }
+}
+
 @keyframes particles-rise {
   0%,
   100% {
@@ -909,6 +995,71 @@ select {
   50% {
     opacity: 0.74;
     transform: translate3d(0, -12px, 0) scale(1);
+  }
+}
+
+@keyframes particles-burst {
+  0% {
+    opacity: 0.18;
+    transform: translate3d(20px, 14px, 0) scale(0.86);
+  }
+
+  50% {
+    opacity: 0.86;
+    transform: translate3d(-2px, -18px, 0) scale(1.06);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-8px, -34px, 0) scale(1.18);
+  }
+}
+
+@keyframes flash-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.34);
+  }
+
+  45% {
+    opacity: 0.92;
+    transform: scale(0.92);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.68);
+  }
+}
+
+@keyframes panel-pop {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.042);
+  }
+
+  100% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes page-burst {
+  0% {
+    opacity: 0;
+    transform: translate3d(50%, 0, 0) scale(0.26);
+  }
+
+  38% {
+    opacity: 0.88;
+    transform: translate3d(50%, -6%, 0) scale(0.92);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(50%, -10%, 0) scale(1.42);
   }
 }
 

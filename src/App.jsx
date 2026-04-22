@@ -26,6 +26,7 @@ export default function App() {
             title="Empire Building Resources"
             description="Guardian is opening as the Initiative Enterprises destination for empire-building resources, operational structure, and execution support."
             accent="Resources / Execution / Scale"
+            variant="guardian"
             items={[
               "Empire building resources",
               ...guardianItems,
@@ -41,6 +42,7 @@ export default function App() {
             title="Media and narrative systems that turn visibility into authority."
             description="Checkpoint Media is the Initiative Enterprises destination for media, interviews, and brand storytelling that turn attention into authority."
             accent="Media / Interviews / Authority"
+            variant="checkpoint"
             items={checkpointItems}
           />
         }
