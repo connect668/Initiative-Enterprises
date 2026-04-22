@@ -114,7 +114,7 @@ export default function LandingPage() {
         className={`split-screen${panelsRevealed ? " is-visible" : ""}${activatingPanel ? " is-transitioning" : ""}`}
       >
         <BrandPanel
-          to="/guardian"
+          to="/gaurdian-home"
           label="Brand 01"
           title="Guardian"
           description="Operational structure and growth support for startups and scaling businesses."

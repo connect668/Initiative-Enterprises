@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import LandingPage from "./landing/LandingPage";
 import BrandPage from "./landing/BrandPage";
+import GaurdianHomePage from "./landing/GaurdianHomePage";
 
 const guardianItems = [
   "Operational planning and decision support",
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/gaurdian-home" element={<GaurdianHomePage />} />
       <Route
         path="/guardian"
         element={
