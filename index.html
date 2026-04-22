@@ -54,6 +54,14 @@
           linear-gradient(180deg, #020202 0%, #090705 52%, #060504 100%);
       }
 
+      .html-fallback-route {
+        display: none;
+      }
+
+      .html-fallback-route.is-active {
+        display: block;
+      }
+
       .html-sunrise-glow {
         position: absolute;
         left: 50%;
@@ -431,6 +439,104 @@
         font-size: 1.1rem;
       }
 
+      .html-home {
+        position: relative;
+        min-height: 100vh;
+        padding: 36px;
+        background:
+          radial-gradient(circle at top right, rgba(89, 141, 255, 0.2), transparent 28%),
+          linear-gradient(180deg, #04070d 0%, #06070a 100%);
+      }
+
+      .html-home-shell {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+      }
+
+      .html-home-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 42px;
+      }
+
+      .html-home-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: rgba(236, 220, 191, 0.78);
+      }
+
+      .html-home-back::before {
+        content: "\2039";
+        font-size: 1.2rem;
+      }
+
+      .html-home-pill {
+        padding: 9px 14px;
+        border: 1px solid rgba(228, 196, 142, 0.14);
+        border-radius: 999px;
+        background: rgba(205, 163, 85, 0.06);
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(231, 214, 184, 0.76);
+      }
+
+      .html-home-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 24px;
+      }
+
+      .html-home-panel {
+        position: relative;
+        padding: 32px;
+        border: 1px solid rgba(227, 194, 139, 0.1);
+        border-radius: 28px;
+        background: rgba(255, 242, 216, 0.028);
+        backdrop-filter: blur(18px);
+        overflow: hidden;
+      }
+
+      .html-home-eyebrow {
+        margin: 0 0 16px;
+        font-size: 0.78rem;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(219, 193, 145, 0.64);
+      }
+
+      .html-home-title {
+        margin: 0;
+        font-size: clamp(2.3rem, 5vw, 4.6rem);
+        letter-spacing: -0.05em;
+        color: #f7edd9;
+      }
+
+      .html-home-copy {
+        max-width: 640px;
+        margin: 18px 0 0;
+        font-size: 1.02rem;
+        line-height: 1.8;
+        color: rgba(234, 220, 192, 0.76);
+      }
+
+      .html-home-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .html-home-item {
+        padding: 14px 16px;
+        border: 1px solid rgba(227, 194, 139, 0.1);
+        border-radius: 18px;
+        background: rgba(0, 0, 0, 0.16);
+        color: rgba(239, 225, 197, 0.78);
+      }
+
       .html-panel:hover .html-wave-one {
         animation: html-wave-float-one 4.4s ease-in-out infinite;
       }
@@ -621,6 +727,10 @@
           height: 1px;
           transform: translateY(-50%);
         }
+
+        .html-home-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 720px) {
@@ -676,12 +786,22 @@
           height: 36%;
           right: 0;
         }
+
+        .html-home {
+          padding: 20px;
+        }
+
+        .html-home-nav {
+          flex-direction: column;
+          align-items: flex-start;
+          margin-bottom: 28px;
+        }
       }
     </style>
   </head>
   <body>
     <div id="root">
-      <main class="html-fallback">
+      <main class="html-fallback html-fallback-route is-active" data-route="landing">
         <div class="html-sunrise-glow"></div>
 
         <section class="html-split">
@@ -728,13 +848,54 @@
           </article>
         </section>
       </main>
+
+      <main class="html-home html-fallback-route" data-route="gaurdian-home">
+        <div class="html-home-shell">
+          <nav class="html-home-nav">
+            <a class="html-home-back" href="#/">Back to Initiative Enterprises</a>
+            <div class="html-home-pill">Gaurdian / Home / Resources</div>
+          </nav>
+
+          <section class="html-home-grid">
+            <div class="html-home-panel">
+              <p class="html-home-eyebrow">Gaurdian Home</p>
+              <h1 class="html-home-title">Gaurdian Home</h1>
+              <p class="html-home-copy">
+                This is the dedicated Gaurdian Home fallback page. The route is now
+                real and connected directly to the Enter Guardian button.
+              </p>
+            </div>
+
+            <aside class="html-home-panel">
+              <p class="html-home-eyebrow">Placeholder</p>
+              <div class="html-home-list">
+                <div class="html-home-item">Empire-building resources</div>
+                <div class="html-home-item">Operational support</div>
+                <div class="html-home-item">Execution systems</div>
+              </div>
+            </aside>
+          </section>
+        </div>
+      </main>
     </div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
       (function () {
         const panels = document.querySelectorAll(".html-panel");
         const ctas = document.querySelectorAll(".html-cta-link");
+        const routes = document.querySelectorAll(".html-fallback-route");
         let locked = false;
+
+        function renderRoute() {
+          const hash = window.location.hash.replace(/^#\/?/, "");
+          const activeRoute = hash === "gaurdian-home" ? "gaurdian-home" : "landing";
+          routes.forEach((route) => {
+            route.classList.toggle("is-active", route.getAttribute("data-route") === activeRoute);
+          });
+        }
+
+        renderRoute();
+        window.addEventListener("hashchange", renderRoute);
 
         ctas.forEach((cta) => {
           cta.addEventListener("click", function (event) {
@@ -754,6 +915,7 @@
 
             window.setTimeout(function () {
               window.location.hash = href.replace(/^#/, "");
+              locked = false;
             }, 520);
           });
         });
