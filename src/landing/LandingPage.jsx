@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const INTRO_EXIT_MS = 1900;
 const INTRO_REMOVE_MS = 3050;
@@ -7,6 +7,7 @@ const PANELS_REVEAL_MS = 2150;
 const NAV_TRANSITION_MS = 520;
 
 function BrandPanel({
+  to,
   label,
   title,
   description,
@@ -22,12 +23,16 @@ function BrandPanel({
     }
   };
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    onActivate(variant);
+  };
+
   return (
-    <article
+    <Link
       className={`brand-panel ${variant}${isActivating ? " is-activating" : ""}${isDimmed ? " is-dimmed" : ""}`}
-      role="link"
-      tabIndex={0}
-      onClick={() => onActivate(variant)}
+      to={to}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
     >
       <div className={`card-wordmark ${variant}`}>
@@ -50,7 +55,7 @@ function BrandPanel({
         <p className="panel-description">{description}</p>
         <span className="panel-cta">Enter {title}</span>
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -121,6 +126,7 @@ export default function LandingPage() {
         className={`split-screen${panelsRevealed ? " is-visible" : ""}${activatingPanel ? " is-transitioning" : ""}`}
       >
         <BrandPanel
+          to="/guardian"
           label="Brand 01"
           title="Guardian"
           description="Operational structure and growth support for startups and scaling businesses."
@@ -133,6 +139,7 @@ export default function LandingPage() {
         <div className="panel-divider" aria-hidden="true" />
 
         <BrandPanel
+          to="/checkpoint-media"
           label="Brand 02"
           title="Checkpoint Media"
           description="Media, interviews, and brand storytelling that turn attention into authority."
