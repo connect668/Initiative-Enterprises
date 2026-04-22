@@ -79,23 +79,12 @@ export default function LandingPage() {
   return (
     <main className="landing-shell">
       <div className="landing-grid" />
+      <div className="sunrise-glow" aria-hidden="true" />
       <div className="data-lines" aria-hidden="true">
         <div className="data-line" />
         <div className="data-line" />
         <div className="data-line" />
       </div>
-
-      <header
-        className={`top-wordmark${brandRevealed ? " is-revealed" : ""}`}
-        aria-label="Initiative Enterprises"
-      >
-        <div className="top-wordmark-line top-wordmark-left">
-          <span>Initiative</span>
-        </div>
-        <div className="top-wordmark-line top-wordmark-right">
-          <span>Enterprises</span>
-        </div>
-      </header>
 
       <div className={`umbrella-card${brandRevealed ? " is-visible" : ""}`}>
         <p className="umbrella-card-title">Initiative Enterprises</p>
