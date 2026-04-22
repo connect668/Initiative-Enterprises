@@ -25,6 +25,10 @@ function PanelChart({ variant }) {
 function BrandPanel({ to, label, title, description, variant, metrics }) {
   return (
     <Link className={`brand-panel ${variant}`} to={to}>
+      <div className={`card-wordmark ${variant}`}>
+        <span>{variant === "guardian" ? "Initiative" : "Enterprises"}</span>
+      </div>
+
       <div className="panel-metrics">
         {metrics.map((metric) => (
           <span key={metric} className="metric-pill">
@@ -37,6 +41,7 @@ function BrandPanel({ to, label, title, description, variant, metrics }) {
 
       <div className="panel-content">
         <p className="panel-label">{label}</p>
+        <div className="panel-glow" aria-hidden="true" />
         <h2 className="panel-title">{title}</h2>
         <p className="panel-description">{description}</p>
         <span className="panel-cta">Enter {title}</span>
@@ -84,10 +89,6 @@ export default function LandingPage() {
         <div className="data-line" />
         <div className="data-line" />
         <div className="data-line" />
-      </div>
-
-      <div className={`umbrella-card${brandRevealed ? " is-visible" : ""}`}>
-        <p className="umbrella-card-title">Initiative Enterprises</p>
       </div>
 
       {showIntro ? (

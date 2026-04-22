@@ -17,8 +17,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background:
-    linear-gradient(180deg, #020202 0%, #090705 62%, #060504 100%);
+  background: #020202;
   color: #f5efe3;
 }
 
@@ -54,8 +53,7 @@ select {
 .landing-shell {
   position: relative;
   min-height: 100vh;
-  background:
-    linear-gradient(180deg, #020202 0%, #090705 52%, #060504 100%);
+  background: linear-gradient(180deg, #020202 0%, #050403 62%, #060504 100%);
   overflow: clip;
 }
 
@@ -72,14 +70,17 @@ select {
     linear-gradient(115deg, transparent 0%, rgba(217, 174, 93, 0.12) 48%, transparent 56%),
     linear-gradient(180deg, rgba(255, 240, 212, 0.035), transparent 30%);
   transform: translateX(-38%);
-  animation: light-sweep 10s linear infinite;
+  animation: light-sweep 8.5s linear infinite;
+  animation-delay: 2s;
+  opacity: 0;
 }
 
 .landing-shell::after {
   background:
     radial-gradient(circle at center, rgba(172, 128, 58, 0.12), transparent 34%),
     linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.24));
-  opacity: 0.9;
+  opacity: 0;
+  animation: shell-awaken 2.2s ease 1.8s forwards;
 }
 
 .sunrise-glow {
@@ -96,57 +97,14 @@ select {
   pointer-events: none;
   opacity: 0;
   transition:
-    opacity 1300ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1700ms cubic-bezier(0.19, 1, 0.22, 1);
+    opacity 1050ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1350ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .split-screen.is-visible ~ .sunrise-glow,
 .landing-shell:has(.split-screen.is-visible) .sunrise-glow {
   opacity: 1;
   transform: translateX(-50%) scale(1);
-}
-
-.umbrella-card {
-  position: absolute;
-  top: 18px;
-  left: 50%;
-  z-index: 9;
-  min-width: min(420px, calc(100vw - 48px));
-  padding: 12px 22px;
-  border: 1px solid rgba(228, 196, 142, 0.14);
-  border-radius: 22px;
-  background:
-    linear-gradient(180deg, rgba(33, 24, 13, 0.88), rgba(15, 11, 8, 0.92)),
-    rgba(0, 0, 0, 0.22);
-  box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.32),
-    0 0 0 1px rgba(222, 189, 132, 0.06) inset;
-  backdrop-filter: blur(18px);
-  transform: translate(-50%, -14px);
-  opacity: 0;
-  transition:
-    opacity 1050ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1050ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 1050ms ease;
-  animation: umbrella-pulse 7.5s ease-in-out infinite;
-}
-
-.umbrella-card.is-visible {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
-.umbrella-card-title {
-  margin: 0;
-  text-align: center;
-}
-
-.umbrella-card-title {
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(250, 238, 210, 0.96);
 }
 
 .landing-grid {
@@ -176,6 +134,7 @@ select {
   background: linear-gradient(90deg, transparent, rgba(210, 169, 90, 0.38), transparent);
   box-shadow: 0 0 14px rgba(170, 125, 42, 0.24);
   animation: data-drift linear infinite;
+  animation-delay: 2.2s;
   opacity: 0.42;
 }
 
@@ -292,7 +251,7 @@ select {
   display: flex;
   align-items: center;
   min-height: 100vh;
-  padding: 110px 48px 56px;
+  padding: 96px 48px 56px;
   isolation: isolate;
   overflow: hidden;
   transition:
@@ -326,11 +285,42 @@ select {
 
 .brand-panel.guardian .panel-content,
 .brand-panel.checkpoint .panel-content {
-  animation: panel-rise 1.6s cubic-bezier(0.19, 1, 0.22, 1) 420ms both;
+  animation: panel-rise 1.25s cubic-bezier(0.19, 1, 0.22, 1) 300ms both;
 }
 
 .brand-panel.checkpoint .panel-content {
-  animation-delay: 280ms;
+  animation-delay: 140ms;
+}
+
+.card-wordmark {
+  position: absolute;
+  top: 18px;
+  z-index: 5;
+  max-width: calc(50% - 42px);
+  pointer-events: none;
+}
+
+.card-wordmark.guardian {
+  right: 26px;
+  text-align: right;
+}
+
+.card-wordmark.checkpoint {
+  left: 26px;
+  text-align: left;
+}
+
+.card-wordmark span {
+  display: inline-block;
+  padding: 10px 0;
+  font-size: clamp(0.95rem, 1.35vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(249, 236, 206, 0.96);
+  text-shadow:
+    0 0 16px rgba(152, 110, 36, 0.18),
+    0 0 40px rgba(181, 129, 38, 0.12);
 }
 
 .brand-panel.guardian {
@@ -376,7 +366,7 @@ select {
   position: relative;
   z-index: 2;
   max-width: 460px;
-  padding-top: 34px;
+  padding-top: 26px;
 }
 
 .panel-label {
@@ -397,6 +387,51 @@ select {
   color: #f7edd9;
   text-wrap: balance;
   text-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+}
+
+.panel-glow {
+  position: absolute;
+  inset: -28px -42px -32px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.88;
+}
+
+.panel-glow::before,
+.panel-glow::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(60, 129, 255, 0), rgba(91, 154, 255, 0.78), rgba(60, 129, 255, 0));
+  box-shadow:
+    0 0 18px rgba(67, 131, 255, 0.34),
+    0 0 42px rgba(37, 97, 204, 0.2);
+  animation: blue-live 5.6s ease-in-out infinite;
+}
+
+.panel-glow::before {
+  top: 18%;
+  right: -4%;
+  width: 44%;
+  height: 2px;
+  transform: rotate(10deg);
+}
+
+.panel-glow::after {
+  left: -6%;
+  bottom: 18%;
+  width: 38%;
+  height: 2px;
+  transform: rotate(-12deg);
+  animation-delay: -1.6s;
+}
+
+.guardian .panel-glow {
+  transform: translateX(-18px);
+}
+
+.checkpoint .panel-glow {
+  transform: translateX(18px);
 }
 
 .panel-description {
@@ -584,11 +619,23 @@ select {
 
 @keyframes light-sweep {
   from {
+    opacity: 0.02;
     transform: translateX(-48%);
   }
 
   to {
+    opacity: 0.12;
     transform: translateX(58%);
+  }
+}
+
+@keyframes shell-awaken {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.85;
   }
 }
 
@@ -631,6 +678,19 @@ select {
   }
 }
 
+@keyframes blue-live {
+  0%,
+  100% {
+    opacity: 0.26;
+    filter: blur(0);
+  }
+
+  50% {
+    opacity: 0.92;
+    filter: blur(0.4px);
+  }
+}
+
 @keyframes panel-glow {
   0%,
   100% {
@@ -653,22 +713,6 @@ select {
   }
 }
 
-@keyframes umbrella-pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 18px 42px rgba(0, 0, 0, 0.32),
-      0 0 0 1px rgba(222, 189, 132, 0.06) inset;
-  }
-
-  50% {
-    box-shadow:
-      0 22px 52px rgba(0, 0, 0, 0.36),
-      0 0 28px rgba(188, 138, 52, 0.14),
-      0 0 0 1px rgba(222, 189, 132, 0.08) inset;
-  }
-}
-
 @keyframes wordmark-breathe {
   0%,
   100% {
@@ -683,9 +727,9 @@ select {
 }
 
 @media (max-width: 980px) {
-  .umbrella-card {
-    top: 16px;
-    min-width: min(380px, calc(100vw - 32px));
+  .sunrise-glow {
+    width: 150vw;
+    height: 60vh;
   }
 
   .split-screen {
@@ -695,6 +739,17 @@ select {
   .brand-panel {
     min-height: 50vh;
     padding: 96px 24px 34px;
+  }
+
+  .card-wordmark {
+    max-width: calc(100% - 48px);
+  }
+
+  .card-wordmark.guardian,
+  .card-wordmark.checkpoint {
+    left: 24px;
+    right: auto;
+    text-align: left;
   }
 
   .panel-divider {
@@ -742,15 +797,14 @@ select {
     padding: 94px 18px 26px;
   }
 
-  .umbrella-card {
-    top: 10px;
-    min-width: calc(100vw - 24px);
-    padding: 12px 16px;
+  .card-wordmark {
+    top: 12px;
+    max-width: calc(100% - 36px);
   }
 
-  .umbrella-card-title {
-    font-size: 0.84rem;
-    letter-spacing: 0.14em;
+  .card-wordmark span {
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
   }
 
   .panel-title {
@@ -767,6 +821,10 @@ select {
     min-height: 46px;
     padding: 0 16px;
     font-size: 0.78rem;
+  }
+
+  .panel-glow {
+    inset: -22px -18px -18px;
   }
 
   .panel-content {
