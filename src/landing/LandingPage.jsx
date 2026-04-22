@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 
-const INTRO_EXIT_MS = 1900;
-const INTRO_REMOVE_MS = 3050;
-const PANELS_REVEAL_MS = 2150;
+const INTRO_EXIT_MS = 900;
+const INTRO_REMOVE_MS = 2050;
+const PANELS_REVEAL_MS = 1150;
 const NAV_TRANSITION_MS = 520;
 
 function BrandPanel({
@@ -16,24 +15,14 @@ function BrandPanel({
   isDimmed,
   onActivate,
 }) {
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      onActivate(variant);
-    }
-  };
-
-  const handleClick = (event) => {
+  const handleButtonClick = (event) => {
     event.preventDefault();
-    onActivate(variant);
+    onActivate(variant, to);
   };
 
   return (
-    <Link
+    <article
       className={`brand-panel ${variant}${isActivating ? " is-activating" : ""}${isDimmed ? " is-dimmed" : ""}`}
-      to={to}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
     >
       <div className={`card-wordmark ${variant}`}>
         <span>{variant === "guardian" ? "Initiative" : "Enterprises"}</span>
@@ -53,14 +42,15 @@ function BrandPanel({
         <div className="panel-glow" aria-hidden="true" />
         <h2 className="panel-title">{title}</h2>
         <p className="panel-description">{description}</p>
-        <span className="panel-cta">Enter {title}</span>
+        <a className="panel-cta" href={`#${to}`} onClick={handleButtonClick}>
+          Enter {title}
+        </a>
       </div>
-    </Link>
+    </article>
   );
 }
 
 export default function LandingPage() {
-  const navigate = useNavigate();
   const [introExiting, setIntroExiting] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [panelsRevealed, setPanelsRevealed] = useState(false);
@@ -90,15 +80,13 @@ export default function LandingPage() {
     };
   }, []);
 
-  const handleActivate = (variant) => {
+  const handleActivate = (variant, route) => {
     if (activatingPanel) {
       return;
     }
 
     setActivatingPanel(variant);
-    const route = variant === "guardian" ? "/guardian" : "/checkpoint-media";
     navigationTimerRef.current = window.setTimeout(() => {
-      navigate(route);
       window.location.hash = route;
     }, NAV_TRANSITION_MS);
   };

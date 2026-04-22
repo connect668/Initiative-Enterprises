@@ -715,6 +715,8 @@ select {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #f3e6ca;
+  cursor: pointer;
+  pointer-events: auto;
   transition:
     transform 220ms ease,
     background 220ms ease,

@@ -67,7 +67,7 @@
         filter: blur(18px);
         pointer-events: none;
         opacity: 0;
-        animation: html-sunrise 1700ms cubic-bezier(0.19, 1, 0.22, 1) 2.05s forwards;
+        animation: html-sunrise 1700ms cubic-bezier(0.19, 1, 0.22, 1) 1.05s forwards;
       }
 
       .html-fallback::before {
@@ -89,7 +89,7 @@
         opacity: 0;
         filter: brightness(0.8) saturate(0.9);
         transform: translateY(78px) scale(1.015);
-        animation: html-panels-in 1500ms cubic-bezier(0.19, 1, 0.22, 1) 2.15s forwards;
+        animation: html-panels-in 1500ms cubic-bezier(0.19, 1, 0.22, 1) 1.15s forwards;
       }
 
       .html-panel {
@@ -201,7 +201,7 @@
         max-width: 460px;
         opacity: 0;
         transform: translateY(94px) scale(0.98);
-        animation: html-panel-rise 1.6s cubic-bezier(0.19, 1, 0.22, 1) 2.45s forwards;
+        animation: html-panel-rise 1.6s cubic-bezier(0.19, 1, 0.22, 1) 1.45s forwards;
         z-index: 2;
       }
 
@@ -422,6 +422,8 @@
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: #f3e6ca;
+        cursor: pointer;
+        pointer-events: auto;
       }
 
       .html-cta::after {
@@ -699,7 +701,7 @@
               <p class="html-description">
                 Operational structure and growth support for startups and scaling businesses.
               </p>
-              <span class="html-cta">Enter Guardian</span>
+              <a class="html-cta html-cta-link" href="#/guardian">Enter Guardian</a>
             </div>
           </a>
 
@@ -721,7 +723,7 @@
               <p class="html-description">
                 Media, interviews, and brand storytelling that turn attention into authority.
               </p>
-              <span class="html-cta">Enter Checkpoint Media</span>
+              <a class="html-cta html-cta-link" href="#/checkpoint-media">Enter Checkpoint Media</a>
             </div>
           </a>
         </section>
@@ -731,10 +733,11 @@
     <script>
       (function () {
         const panels = document.querySelectorAll(".html-panel");
+        const ctas = document.querySelectorAll(".html-cta-link");
         let locked = false;
 
-        panels.forEach((panel) => {
-          panel.addEventListener("click", function (event) {
+        ctas.forEach((cta) => {
+          cta.addEventListener("click", function (event) {
             if (locked) {
               event.preventDefault();
               return;
@@ -742,8 +745,8 @@
 
             locked = true;
             event.preventDefault();
-
-            const href = panel.getAttribute("href");
+            const panel = cta.closest(".html-panel");
+            const href = cta.getAttribute("href");
             panels.forEach((item) => {
               item.classList.toggle("is-activating", item === panel);
               item.classList.toggle("is-dimmed", item !== panel);
