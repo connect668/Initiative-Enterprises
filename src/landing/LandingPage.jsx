@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const INTRO_EXIT_MS = 250;
 const INTRO_REMOVE_MS = 1200;
 const PANELS_REVEAL_MS = 450;
-const NAV_TRANSITION_MS = 620;
+const NAV_TRANSITION_MS = 280;
 
 function BrandPanel({
   to,
