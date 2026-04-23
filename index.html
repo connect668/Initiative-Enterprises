@@ -191,7 +191,7 @@
       }
 
       .html-split:hover .html-panel:not(:hover) { filter: brightness(0.84) saturate(0.94); }
-      .html-panel:hover { transform: scale(1.002); filter: brightness(1.04); }
+      .html-panel:hover { transform: scale(1.002); filter: brightness(1.06); }
       .html-panel.is-dimmed { opacity: 0.48; transform: scale(0.992); }
       .html-panel.is-activating { filter: brightness(1.08); }
 
@@ -449,21 +449,26 @@
           linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 20%, transparent 82%, rgba(0, 0, 0, 0.34));
       }
 
-      .html-panel:hover .html-grid { opacity: 0.34; }
-      .guardian:hover .guardian-svg .svg-lines path { stroke: rgba(115, 153, 231, 0.34); }
-      .guardian:hover .guardian-svg .svg-arcs path { stroke: rgba(115, 153, 231, 0.24); }
+      .html-panel:hover .html-grid { opacity: 0.4; }
+      .guardian:hover .guardian-svg .svg-lines path { stroke: rgba(115, 153, 231, 0.34); filter: drop-shadow(0 0 3px rgba(92, 141, 232, 0.16)); }
+      .guardian:hover .guardian-svg .svg-arcs path { stroke: rgba(115, 153, 231, 0.24); filter: drop-shadow(0 0 2px rgba(92, 141, 232, 0.12)); }
       .guardian:hover .guardian-svg .svg-boxes rect { fill: rgba(132, 176, 255, 0.8); }
-      .html-panel:hover .html-nodes { filter: brightness(1.2); }
+      .html-panel:hover .html-nodes { filter: brightness(1.34) saturate(1.05); }
       .html-panel:hover .html-sweep { opacity: 1; }
-      .guardian:hover .html-sweep { animation: html-guardian-sweep 7.8s linear infinite; }
-      .checkpoint:hover .html-sweep { animation: html-checkpoint-sweep 8.2s linear infinite; }
-      .guardian:hover .html-bloom,
-      .checkpoint:hover .html-bloom { filter: blur(42px) brightness(1.16); opacity: 1; }
-      .guardian:hover .html-nodes { animation: html-nodes-pulse 4.8s ease-in-out infinite; }
-      .checkpoint:hover .html-nodes { animation: html-embers-pulse 5.2s ease-in-out infinite; }
-      .checkpoint:hover .html-spotlight { opacity: 0.72; transform: translateY(0); }
-      .checkpoint:hover .checkpoint-svg .svg-waves path { stroke: rgba(194, 145, 72, 0.4); }
+      .guardian:hover .html-sweep { animation: html-guardian-sweep 5.4s linear infinite; }
+      .checkpoint:hover .html-sweep { animation: html-checkpoint-sweep 5.8s linear infinite; }
+      .guardian:hover .html-bloom { filter: blur(42px) brightness(1.26); opacity: 1; }
+      .checkpoint:hover .html-bloom { filter: blur(42px) brightness(1.28); opacity: 1; }
+      .guardian:hover .html-nodes { animation: html-nodes-pulse 2.8s ease-in-out infinite; }
+      .checkpoint:hover .html-nodes { animation: html-embers-pulse 3.2s ease-in-out infinite; }
+      .checkpoint:hover .html-spotlight { opacity: 0.82; transform: translateY(0); }
+      .checkpoint:hover .checkpoint-svg .svg-waves path { stroke: rgba(194, 145, 72, 0.4); filter: drop-shadow(0 0 4px rgba(188, 142, 73, 0.18)); animation: html-checkpoint-wave-drift 5.6s ease-in-out infinite; }
       .checkpoint:hover .checkpoint-svg .svg-bars rect { fill: rgba(196, 149, 79, 0.28); }
+      .guardian:hover .guardian-svg { animation: html-guardian-diagram-drift 8s ease-in-out infinite; }
+      .guardian:hover .html-haze { animation: html-guardian-haze-breathe 4.8s ease-in-out infinite; }
+      .checkpoint:hover .html-haze { animation: html-checkpoint-haze-breathe 4.2s ease-in-out infinite; }
+      .checkpoint:hover .html-bars { animation: html-checkpoint-bars-rise 3.8s ease-in-out infinite; }
+      .checkpoint:hover .checkpoint-svg { animation: html-checkpoint-scene-drift 8.8s ease-in-out infinite; }
 
       .html-content {
         max-width: 470px;
@@ -691,6 +696,36 @@
       @keyframes html-embers-pulse {
         0%, 100% { opacity: 0.5; }
         50% { opacity: 0.76; }
+      }
+
+      @keyframes html-guardian-diagram-drift {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(0.6%, -0.4%, 0); }
+      }
+
+      @keyframes html-guardian-haze-breathe {
+        0%, 100% { opacity: 0.46; transform: scale(1); }
+        50% { opacity: 0.62; transform: scale(1.03); }
+      }
+
+      @keyframes html-checkpoint-haze-breathe {
+        0%, 100% { opacity: 0.72; transform: scale(1); }
+        50% { opacity: 0.88; transform: scale(1.035); }
+      }
+
+      @keyframes html-checkpoint-bars-rise {
+        0%, 100% { opacity: 0.44; transform: translateY(0); }
+        50% { opacity: 0.68; transform: translateY(-8px); }
+      }
+
+      @keyframes html-checkpoint-wave-drift {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(1.2%, -0.8%, 0); }
+      }
+
+      @keyframes html-checkpoint-scene-drift {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(-0.8%, 0.5%, 0); }
       }
 
       @keyframes html-line-breathe {

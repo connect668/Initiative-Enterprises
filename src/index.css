@@ -293,7 +293,7 @@ select {
 .brand-panel:hover,
 .brand-panel:focus-within {
   transform: scale(1.002);
-  filter: brightness(1.04);
+  filter: brightness(1.06);
 }
 
 .brand-panel.is-dimmed {
@@ -610,17 +610,19 @@ select {
 
 .brand-panel:hover .environment-grid,
 .brand-panel:focus-within .environment-grid {
-  opacity: 0.34;
+  opacity: 0.4;
 }
 
 .guardian:hover .guardian-svg .svg-lines path,
 .guardian:focus-within .guardian-svg .svg-lines path {
   stroke: rgba(115, 153, 231, 0.34);
+  filter: drop-shadow(0 0 3px rgba(92, 141, 232, 0.16));
 }
 
 .guardian:hover .guardian-svg .svg-arcs path,
 .guardian:focus-within .guardian-svg .svg-arcs path {
   stroke: rgba(115, 153, 231, 0.24);
+  filter: drop-shadow(0 0 2px rgba(92, 141, 232, 0.12));
 }
 
 .guardian:hover .guardian-svg .svg-boxes rect,
@@ -630,7 +632,7 @@ select {
 
 .brand-panel:hover .environment-nodes,
 .brand-panel:focus-within .environment-nodes {
-  filter: brightness(1.2);
+  filter: brightness(1.34) saturate(1.05);
 }
 
 .brand-panel:hover .environment-sweep,
@@ -640,50 +642,77 @@ select {
 
 .guardian:hover .environment-sweep,
 .guardian:focus-within .environment-sweep {
-  animation: guardian-sweep 7.8s linear infinite;
+  animation: guardian-sweep 5.4s linear infinite;
 }
 
 .checkpoint:hover .environment-sweep,
 .checkpoint:focus-within .environment-sweep {
-  animation: checkpoint-sweep 8.2s linear infinite;
+  animation: checkpoint-sweep 5.8s linear infinite;
 }
 
 .guardian:hover .environment-bloom,
 .guardian:focus-within .environment-bloom {
-  filter: blur(42px) brightness(1.16);
+  filter: blur(42px) brightness(1.26);
   opacity: 1;
 }
 
 .checkpoint:hover .environment-bloom,
 .checkpoint:focus-within .environment-bloom {
-  filter: blur(42px) brightness(1.18);
+  filter: blur(42px) brightness(1.28);
   opacity: 1;
 }
 
 .guardian:hover .environment-nodes,
 .guardian:focus-within .environment-nodes {
-  animation: nodes-pulse 4.8s ease-in-out infinite;
+  animation: nodes-pulse 2.8s ease-in-out infinite;
 }
 
 .checkpoint:hover .environment-nodes,
 .checkpoint:focus-within .environment-nodes {
-  animation: embers-pulse 5.2s ease-in-out infinite;
+  animation: embers-pulse 3.2s ease-in-out infinite;
 }
 
 .checkpoint:hover .environment-spotlight,
 .checkpoint:focus-within .environment-spotlight {
-  opacity: 0.72;
+  opacity: 0.82;
   transform: translateY(0);
 }
 
 .checkpoint:hover .checkpoint-svg .svg-waves path,
 .checkpoint:focus-within .checkpoint-svg .svg-waves path {
   stroke: rgba(194, 145, 72, 0.4);
+  filter: drop-shadow(0 0 4px rgba(188, 142, 73, 0.18));
+  animation: checkpoint-wave-drift 5.6s ease-in-out infinite;
 }
 
 .checkpoint:hover .checkpoint-svg .svg-bars rect,
 .checkpoint:focus-within .checkpoint-svg .svg-bars rect {
   fill: rgba(196, 149, 79, 0.28);
+}
+
+.guardian:hover .guardian-svg,
+.guardian:focus-within .guardian-svg {
+  animation: guardian-diagram-drift 8s ease-in-out infinite;
+}
+
+.guardian:hover .environment-haze,
+.guardian:focus-within .environment-haze {
+  animation: guardian-haze-breathe 4.8s ease-in-out infinite;
+}
+
+.checkpoint:hover .environment-haze,
+.checkpoint:focus-within .environment-haze {
+  animation: checkpoint-haze-breathe 4.2s ease-in-out infinite;
+}
+
+.checkpoint:hover .environment-bars,
+.checkpoint:focus-within .environment-bars {
+  animation: checkpoint-bars-rise 3.8s ease-in-out infinite;
+}
+
+.checkpoint:hover .checkpoint-svg,
+.checkpoint:focus-within .checkpoint-svg {
+  animation: checkpoint-scene-drift 8.8s ease-in-out infinite;
 }
 
 .panel-content {
@@ -1128,6 +1157,78 @@ select {
 
   50% {
     opacity: 0.76;
+  }
+}
+
+@keyframes guardian-diagram-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0.6%, -0.4%, 0);
+  }
+}
+
+@keyframes guardian-haze-breathe {
+  0%,
+  100% {
+    opacity: 0.46;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.62;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes checkpoint-haze-breathe {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.88;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes checkpoint-bars-rise {
+  0%,
+  100% {
+    opacity: 0.44;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.68;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes checkpoint-wave-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(1.2%, -0.8%, 0);
+  }
+}
+
+@keyframes checkpoint-scene-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-0.8%, 0.5%, 0);
   }
 }
 
