@@ -24,13 +24,70 @@ function BrandPanel({
       className={`brand-panel ${variant}${isActivating ? " is-activating" : ""}${isDimmed ? " is-dimmed" : ""}`}
     >
       <div className={`panel-environment ${variant}`} aria-hidden="true">
+        <span className="environment-base" />
         <span className="environment-grid" />
-        <span className="environment-lines" />
+        {variant === "guardian" ? (
+          <svg className="environment-svg guardian-svg" viewBox="0 0 1000 1200" preserveAspectRatio="none">
+            <g className="svg-lines">
+              <path d="M90 90H300V260H520V680" />
+              <path d="M120 480H420V930H720" />
+              <path d="M640 90V520H915V1040" />
+              <path d="M220 1040V780H470V560H730" />
+              <path d="M820 160V360H570V1040" />
+              <path d="M58 190H190V410H58V650" />
+              <path d="M290 1100V920H140" />
+            </g>
+            <g className="svg-arcs">
+              <path d="M38 250A240 240 0 0 1 280 8" />
+              <path d="M705 120A320 320 0 0 1 1020 438" />
+              <path d="M318 1104A280 280 0 0 0 596 826" />
+              <path d="M540 512A240 240 0 0 1 780 752" />
+              <path d="M600 1060A430 430 0 0 0 1012 648" />
+            </g>
+            <g className="svg-boxes">
+              <rect x="150" y="178" width="8" height="8" />
+              <rect x="780" y="560" width="10" height="10" />
+              <rect x="318" y="922" width="9" height="9" />
+              <rect x="628" y="244" width="8" height="8" />
+              <rect x="878" y="252" width="7" height="7" />
+            </g>
+          </svg>
+        ) : (
+          <svg className="environment-svg checkpoint-svg" viewBox="0 0 1000 1200" preserveAspectRatio="none">
+            <g className="svg-beams">
+              <path d="M770 20L680 360" />
+              <path d="M785 20L715 360" />
+              <path d="M800 20L750 360" />
+            </g>
+            <g className="svg-waves">
+              <path d="M170 868C312 804 382 958 520 904S740 786 1010 850" />
+              <path d="M120 938C272 874 396 1030 574 978S790 860 1024 920" />
+              <path d="M362 1038C512 988 602 1108 746 1064S900 1000 1030 1028" />
+            </g>
+            <g className="svg-bars">
+              <rect x="640" y="712" width="4" height="210" />
+              <rect x="668" y="738" width="4" height="184" />
+              <rect x="696" y="694" width="4" height="228" />
+              <rect x="724" y="758" width="4" height="164" />
+              <rect x="752" y="720" width="4" height="202" />
+              <rect x="780" y="744" width="4" height="178" />
+              <rect x="808" y="704" width="4" height="218" />
+              <rect x="836" y="764" width="4" height="158" />
+            </g>
+          </svg>
+        )}
         <span className="environment-nodes" />
+        <span className="environment-bloom bloom-one" />
+        <span className="environment-bloom bloom-two" />
+        <span className="environment-bloom bloom-three" />
+        <span className="environment-spotlight" />
+        <span className="environment-bars" />
         <span className="environment-sweep" />
         <span className="environment-haze" />
+        <span className="environment-grain" />
         <span className="environment-orbit orbit-one" />
         <span className="environment-orbit orbit-two" />
+        <span className="environment-vignette" />
       </div>
 
       <div className="panel-content">
