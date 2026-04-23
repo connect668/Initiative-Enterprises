@@ -821,7 +821,7 @@
               <p class="html-description">
                 Operational structure and growth support for startups and scaling businesses.
               </p>
-              <a class="html-cta html-cta-link" href="#/gaurdian-home">Enter Guardian</a>
+              <a class="html-cta html-cta-link" href="/gaurdian-home.html">Enter Guardian</a>
             </div>
           </article>
 
@@ -883,19 +883,7 @@
       (function () {
         const panels = document.querySelectorAll(".html-panel");
         const ctas = document.querySelectorAll(".html-cta-link");
-        const routes = document.querySelectorAll(".html-fallback-route");
         let locked = false;
-
-        function renderRoute() {
-          const hash = window.location.hash.replace(/^#\/?/, "");
-          const activeRoute = hash === "gaurdian-home" ? "gaurdian-home" : "landing";
-          routes.forEach((route) => {
-            route.classList.toggle("is-active", route.getAttribute("data-route") === activeRoute);
-          });
-        }
-
-        renderRoute();
-        window.addEventListener("hashchange", renderRoute);
 
         ctas.forEach((cta) => {
           cta.addEventListener("click", function (event) {
@@ -914,8 +902,7 @@
             });
 
             window.setTimeout(function () {
-              window.location.hash = href.replace(/^#/, "");
-              renderRoute();
+              window.location.href = href;
               locked = false;
             }, 520);
           });

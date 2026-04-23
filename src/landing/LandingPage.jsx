@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Navigate } from "react-router-dom";
 
 const INTRO_EXIT_MS = 400;
 const INTRO_REMOVE_MS = 1550;
@@ -56,7 +55,6 @@ export default function LandingPage() {
   const [showIntro, setShowIntro] = useState(true);
   const [panelsRevealed, setPanelsRevealed] = useState(false);
   const [activatingPanel, setActivatingPanel] = useState("");
-  const [pendingRoute, setPendingRoute] = useState("");
   const navigationTimerRef = useRef(null);
 
   useEffect(() => {
@@ -89,13 +87,9 @@ export default function LandingPage() {
 
     setActivatingPanel(variant);
     navigationTimerRef.current = window.setTimeout(() => {
-      setPendingRoute(route);
+      window.location.href = route;
     }, NAV_TRANSITION_MS);
   };
-
-  if (pendingRoute) {
-    return <Navigate to={pendingRoute} replace />;
-  }
 
   return (
     <main className="landing-shell">
@@ -120,7 +114,7 @@ export default function LandingPage() {
         className={`split-screen${panelsRevealed ? " is-visible" : ""}${activatingPanel ? " is-transitioning" : ""}`}
       >
         <BrandPanel
-          to="/gaurdian-home"
+          to="/gaurdian-home.html"
           label="Brand 01"
           title="Guardian"
           description="Operational structure and growth support for startups and scaling businesses."
