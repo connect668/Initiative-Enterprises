@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-const INTRO_EXIT_MS = 400;
-const INTRO_REMOVE_MS = 1550;
-const PANELS_REVEAL_MS = 650;
-const NAV_TRANSITION_MS = 520;
+const INTRO_EXIT_MS = 250;
+const INTRO_REMOVE_MS = 1200;
+const PANELS_REVEAL_MS = 450;
+const NAV_TRANSITION_MS = 620;
 
 function BrandPanel({
   to,
@@ -95,6 +95,10 @@ export default function LandingPage() {
     <main className="landing-shell">
       <div className="landing-grid" />
       <div className="sunrise-glow" aria-hidden="true" />
+      <div
+        className={`route-transition${activatingPanel ? " is-active" : ""}${activatingPanel ? ` ${activatingPanel}` : ""}`}
+        aria-hidden="true"
+      />
       <div className="data-lines" aria-hidden="true">
         <div className="data-line" />
         <div className="data-line" />
