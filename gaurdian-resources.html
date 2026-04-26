@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guardian Digital Resources | Initiative Enterprises</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family:
+          "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+        --bg: #040914;
+        --bg-deep: #02060d;
+        --surface: rgba(7, 15, 29, 0.92);
+        --surface-strong: rgba(5, 12, 24, 0.97);
+        --surface-soft: rgba(10, 21, 40, 0.78);
+        --text: #edf5ff;
+        --muted: rgba(186, 203, 229, 0.72);
+        --muted-strong: rgba(210, 224, 245, 0.82);
+        --blue: #74b7ff;
+        --blue-strong: #2f84ee;
+        --blue-ice: #d8efff;
+        --line: rgba(110, 170, 255, 0.12);
+        --line-soft: rgba(110, 170, 255, 0.08);
+        --glow: rgba(74, 141, 255, 0.2);
+        --shadow: 0 28px 64px rgba(0, 0, 0, 0.36);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 18% 10%, rgba(52, 104, 198, 0.14), transparent 22%),
+          radial-gradient(circle at 78% 0%, rgba(64, 132, 224, 0.14), transparent 24%),
+          radial-gradient(circle at 50% 42%, rgba(32, 78, 172, 0.1), transparent 28%),
+          linear-gradient(180deg, #07101b 0%, #030811 34%, #02060d 100%);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      body::before {
+        background:
+          linear-gradient(rgba(114, 168, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(114, 168, 255, 0.02) 1px, transparent 1px);
+        background-size: 46px 46px;
+        mask-image: radial-gradient(circle at center, black 38%, transparent 86%);
+      }
+
+      body::after {
+        background:
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.44) 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 16%, transparent 84%, rgba(0, 0, 0, 0.2));
+      }
+
+      button,
+      a {
+        color: inherit;
+        font: inherit;
+      }
+
+      button {
+        border: 0;
+        background: none;
+        cursor: pointer;
+      }
+
+      .page {
+        position: relative;
+        min-height: 100vh;
+      }
+
+      .shell {
+        width: min(1240px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 24px 0 72px;
+      }
+
+      .header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px 4px 24px;
+      }
+
+      .header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(104, 164, 255, 0), rgba(104, 164, 255, 0.28), rgba(104, 164, 255, 0));
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .back-link,
+      .menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        min-width: 40px;
+        padding: 0 15px;
+        border-radius: 999px;
+        background: rgba(7, 16, 30, 0.54);
+        box-shadow:
+          inset 0 1px 0 rgba(211, 231, 255, 0.06),
+          0 12px 28px rgba(0, 0, 0, 0.18);
+        color: rgba(230, 239, 251, 0.86);
+        transition:
+          transform 320ms var(--ease),
+          box-shadow 320ms var(--ease),
+          background 320ms var(--ease);
+      }
+
+      .back-link:hover,
+      .menu-button:hover {
+        transform: translateY(-2px);
+        background: rgba(9, 20, 36, 0.72);
+        box-shadow:
+          inset 0 1px 0 rgba(221, 238, 255, 0.08),
+          0 14px 30px rgba(0, 0, 0, 0.22),
+          0 0 24px rgba(58, 126, 236, 0.08);
+      }
+
+      .back-link {
+        gap: 8px;
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .back-link::before {
+        content: "\2039";
+        font-size: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 13px;
+        background:
+          linear-gradient(180deg, rgba(46, 118, 255, 0.96), rgba(17, 62, 162, 0.96));
+        box-shadow:
+          inset 0 1px 0 rgba(213, 229, 255, 0.14),
+          0 0 24px rgba(74, 146, 255, 0.18);
+      }
+
+      .brand-mark svg {
+        width: 21px;
+        height: 21px;
+        fill: #f6fbff;
+      }
+
+      .brand-copy {
+        display: grid;
+        gap: 3px;
+      }
+
+      .brand-wordmark {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .brand-subtitle {
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(192, 208, 231, 0.6);
+      }
+
+      .menu-button {
+        width: 42px;
+        border-radius: 14px;
+        padding: 0;
+      }
+
+      .menu-icon {
+        width: 16px;
+        display: grid;
+        gap: 4px;
+      }
+
+      .menu-icon span {
+        display: block;
+        height: 2px;
+        border-radius: 999px;
+        background: rgba(226, 236, 255, 0.9);
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 22px 0 18px;
+      }
+
+      .filter-wrap {
+        display: grid;
+        gap: 12px;
+      }
+
+      .filter-label {
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(193, 210, 234, 0.72);
+      }
+
+      .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .filter-chip {
+        min-height: 42px;
+        padding: 0 16px;
+        border-radius: 999px;
+        background:
+          linear-gradient(180deg, rgba(10, 22, 40, 0.92), rgba(6, 12, 24, 0.98));
+        box-shadow:
+          inset 0 1px 0 rgba(215, 234, 255, 0.05),
+          0 12px 26px rgba(0, 0, 0, 0.16);
+        color: rgba(215, 228, 246, 0.76);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        transition:
+          transform 280ms var(--ease),
+          box-shadow 280ms var(--ease),
+          color 280ms var(--ease),
+          background 280ms var(--ease);
+      }
+
+      .filter-chip:hover {
+        transform: translateY(-1px);
+        color: rgba(232, 240, 251, 0.94);
+        box-shadow:
+          inset 0 1px 0 rgba(222, 238, 255, 0.06),
+          0 16px 28px rgba(0, 0, 0, 0.2),
+          0 0 20px rgba(64, 130, 236, 0.08);
+      }
+
+      .filter-chip.is-active {
+        background:
+          linear-gradient(180deg, rgba(22, 52, 104, 0.92), rgba(8, 19, 40, 0.98));
+        color: rgba(240, 247, 255, 0.96);
+        box-shadow:
+          inset 0 1px 0 rgba(224, 239, 255, 0.08),
+          0 16px 34px rgba(0, 0, 0, 0.24),
+          0 0 24px rgba(74, 146, 255, 0.16);
+      }
+
+      .catalog {
+        display: grid;
+        gap: 22px;
+        padding-top: 8px;
+      }
+
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .resource-card {
+        position: relative;
+        min-height: 100%;
+        padding: 24px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(7, 16, 30, 0.96), rgba(5, 11, 22, 0.98));
+        box-shadow:
+          inset 0 1px 0 rgba(211, 231, 255, 0.04),
+          inset 0 18px 40px rgba(74, 144, 255, 0.025),
+          var(--shadow);
+        overflow: hidden;
+        transition:
+          transform 360ms var(--ease),
+          box-shadow 360ms var(--ease),
+          background 360ms var(--ease);
+      }
+
+      .resource-card::before,
+      .resource-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .resource-card::before {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 22%),
+          linear-gradient(112deg, transparent 14%, rgba(207, 234, 255, 0.018) 46%, rgba(100, 164, 255, 0.05) 54%, transparent 72%);
+        background-size: 100% 100%, 220% 100%;
+        background-position: center, 120% 0;
+        transition:
+          background-position 820ms var(--ease),
+          opacity 360ms var(--ease);
+      }
+
+      .resource-card::after {
+        background:
+          radial-gradient(circle at 84% 16%, rgba(86, 154, 255, 0.12), transparent 22%),
+          radial-gradient(circle at 14% 82%, rgba(72, 132, 232, 0.08), transparent 24%);
+        opacity: 0.92;
+        transition:
+          opacity 360ms var(--ease),
+          transform 360ms var(--ease);
+      }
+
+      .resource-card:hover {
+        transform: translateY(-6px);
+        box-shadow:
+          inset 0 1px 0 rgba(216, 235, 255, 0.06),
+          inset 0 22px 54px rgba(78, 146, 255, 0.04),
+          0 34px 66px rgba(0, 0, 0, 0.42),
+          0 0 28px rgba(56, 124, 236, 0.1);
+      }
+
+      .resource-card:hover::before {
+        background-position: center, 0 0;
+      }
+
+      .resource-card:hover::after {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+
+      .resource-card[data-type="pdf"] .card-preview {
+        background:
+          linear-gradient(180deg, rgba(10, 24, 48, 0.9), rgba(5, 11, 22, 0.98)),
+          linear-gradient(rgba(110, 166, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(110, 166, 255, 0.05) 1px, transparent 1px);
+        background-size: auto, 34px 34px, 34px 34px;
+      }
+
+      .resource-card[data-type="software"] .card-preview {
+        background:
+          linear-gradient(180deg, rgba(11, 24, 46, 0.9), rgba(6, 12, 24, 0.98)),
+          radial-gradient(circle at 72% 22%, rgba(88, 154, 255, 0.16), transparent 22%);
+      }
+
+      .resource-card[data-type="funding"] .card-preview {
+        background:
+          linear-gradient(180deg, rgba(10, 22, 42, 0.92), rgba(5, 11, 22, 0.98)),
+          radial-gradient(circle at 50% 50%, rgba(80, 146, 242, 0.14), transparent 24%);
+      }
+
+      .card-top {
+        position: relative;
+        display: grid;
+        gap: 18px;
+        z-index: 1;
+      }
+
+      .card-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .type-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: rgba(9, 20, 38, 0.72);
+        box-shadow:
+          inset 0 1px 0 rgba(216, 233, 255, 0.04),
+          0 10px 24px rgba(0, 0, 0, 0.18);
+        color: rgba(224, 235, 250, 0.84);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .type-pill svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--blue-ice);
+      }
+
+      .price {
+        color: #f2f7ff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .card-preview {
+        position: relative;
+        min-height: 170px;
+        padding: 18px;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow:
+          inset 0 1px 0 rgba(213, 232, 255, 0.03),
+          inset 0 -18px 36px rgba(2, 6, 12, 0.34);
+      }
+
+      .card-preview::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 84% 18%, rgba(134, 198, 255, 0.16), transparent 20%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 24%);
+        pointer-events: none;
+      }
+
+      .preview-window,
+      .preview-document,
+      .preview-funding {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .preview-document .preview-lines {
+        display: grid;
+        gap: 8px;
+      }
+
+      .preview-line {
+        height: 9px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(223, 240, 255, 0.22), rgba(112, 168, 255, 0.08));
+      }
+
+      .preview-line:nth-child(1) {
+        width: 62%;
+      }
+
+      .preview-line:nth-child(2) {
+        width: 84%;
+      }
+
+      .preview-line:nth-child(3) {
+        width: 72%;
+      }
+
+      .preview-line:nth-child(4) {
+        width: 88%;
+      }
+
+      .preview-window {
+        grid-template-rows: auto 1fr auto;
+      }
+
+      .window-bar {
+        display: flex;
+        gap: 6px;
+      }
+
+      .window-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(208, 228, 250, 0.28);
+      }
+
+      .window-panel {
+        display: grid;
+        grid-template-columns: 0.62fr 1fr;
+        gap: 12px;
+      }
+
+      .window-sidebar,
+      .window-main {
+        min-height: 84px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .window-main {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .window-main::before {
+        content: "";
+        position: absolute;
+        inset: 18% 12% 18% 12%;
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(140, 206, 255, 0.18), rgba(82, 142, 242, 0.06));
+        transform: rotate(-14deg);
+      }
+
+      .preview-funding {
+        align-content: center;
+      }
+
+      .funding-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .funding-cell {
+        min-height: 56px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .funding-cell:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .resource-body {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 12px;
+        padding-top: 20px;
+      }
+
+      .resource-title {
+        margin: 0;
+        font-size: clamp(1.45rem, 4vw, 1.9rem);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+      }
+
+      .resource-description {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.78;
+      }
+
+      .resource-actions {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-top: 20px;
+      }
+
+      .action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 999px;
+        background:
+          linear-gradient(180deg, rgba(10, 22, 41, 0.94), rgba(6, 12, 24, 0.98));
+        box-shadow:
+          inset 0 1px 0 rgba(220, 236, 255, 0.05),
+          0 12px 24px rgba(0, 0, 0, 0.16);
+        color: rgba(236, 243, 252, 0.92);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        transition:
+          transform 280ms var(--ease),
+          box-shadow 280ms var(--ease),
+          background 280ms var(--ease);
+      }
+
+      .action-button:hover {
+        transform: translateY(-1px);
+        box-shadow:
+          inset 0 1px 0 rgba(223, 239, 255, 0.07),
+          0 16px 28px rgba(0, 0, 0, 0.22),
+          0 0 20px rgba(66, 134, 238, 0.08);
+      }
+
+      .action-button.primary {
+        background:
+          linear-gradient(180deg, rgba(28, 74, 162, 0.96), rgba(9, 28, 68, 0.98));
+        box-shadow:
+          inset 0 1px 0 rgba(224, 238, 255, 0.08),
+          0 16px 30px rgba(0, 0, 0, 0.2),
+          0 0 22px rgba(70, 142, 255, 0.12);
+      }
+
+      .empty-state {
+        display: none;
+        padding: 44px 28px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(7, 16, 30, 0.92), rgba(5, 11, 22, 0.98));
+        box-shadow:
+          inset 0 1px 0 rgba(214, 231, 255, 0.04),
+          var(--shadow);
+        text-align: center;
+      }
+
+      .empty-state.is-visible {
+        display: block;
+      }
+
+      .empty-state h2 {
+        margin: 0 0 10px;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        letter-spacing: -0.04em;
+      }
+
+      .empty-state p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        z-index: 30;
+      }
+
+      .modal.is-open {
+        display: flex;
+      }
+
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(2, 6, 12, 0.78);
+        backdrop-filter: blur(14px);
+      }
+
+      .modal-panel {
+        position: relative;
+        width: min(760px, 100%);
+        border-radius: 30px;
+        background:
+          linear-gradient(180deg, rgba(8, 18, 34, 0.98), rgba(5, 11, 22, 1));
+        box-shadow:
+          inset 0 1px 0 rgba(219, 235, 255, 0.05),
+          0 34px 80px rgba(0, 0, 0, 0.46),
+          0 0 30px rgba(64, 128, 236, 0.1);
+        overflow: hidden;
+      }
+
+      .modal-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 84% 18%, rgba(92, 160, 242, 0.12), transparent 22%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%);
+        pointer-events: none;
+      }
+
+      .modal-header {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 26px 26px 18px;
+      }
+
+      .modal-copy {
+        display: grid;
+        gap: 8px;
+      }
+
+      .modal-eyebrow {
+        color: rgba(191, 208, 231, 0.62);
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .modal-title {
+        margin: 0;
+        font-size: clamp(1.6rem, 4vw, 2.3rem);
+        letter-spacing: -0.04em;
+      }
+
+      .modal-subtitle {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .modal-close {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: rgba(9, 20, 38, 0.74);
+        box-shadow:
+          inset 0 1px 0 rgba(223, 238, 255, 0.05),
+          0 10px 22px rgba(0, 0, 0, 0.18);
+        color: rgba(236, 243, 252, 0.82);
+      }
+
+      .modal-body {
+        position: relative;
+        z-index: 1;
+        padding: 0 26px 26px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .preview-sheet {
+        padding: 24px;
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(10, 22, 40, 0.96), rgba(5, 11, 22, 0.98));
+        box-shadow:
+          inset 0 1px 0 rgba(214, 231, 255, 0.04),
+          inset 0 -16px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .preview-sheet h3 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(206, 221, 243, 0.74);
+      }
+
+      .preview-sheet p {
+        margin: 0;
+        color: var(--muted-strong);
+        line-height: 1.9;
+        white-space: pre-line;
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      @media (max-width: 1080px) {
+        .resource-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 719px) {
+        .shell {
+          width: min(100% - 20px, 1240px);
+          padding-top: 18px;
+          padding-bottom: 44px;
+        }
+
+        .header {
+          gap: 14px;
+          padding-bottom: 18px;
+        }
+
+        .header-left {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .brand-subtitle {
+          display: none;
+        }
+
+        .controls {
+          padding-top: 18px;
+        }
+
+        .resource-grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .resource-card {
+          padding: 20px;
+          border-radius: 24px;
+        }
+
+        .modal {
+          padding: 16px;
+        }
+
+        .modal-header,
+        .modal-body {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="shell">
+        <header class="header">
+          <div class="header-left">
+            <a class="back-link" href="/gaurdian-home.html">Back</a>
+            <div class="brand">
+              <div class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2l7 3.6v5.7c0 4.8-2.8 8.9-7 10.7-4.2-1.8-7-5.9-7-10.7V5.6L12 2z" />
+                </svg>
+              </div>
+              <div class="brand-copy">
+                <div class="brand-wordmark">Guardian</div>
+                <div class="brand-subtitle">Digital Resources</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="menu-button" type="button" aria-label="Menu">
+            <span class="menu-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </header>
+
+        <section class="controls" aria-label="Resource controls">
+          <div class="filter-wrap">
+            <div class="filter-label">Filter Resources</div>
+            <div class="filter-bar" id="filterBar"></div>
+          </div>
+        </section>
+
+        <section class="catalog" aria-label="Digital resources store">
+          <div class="resource-grid" id="resourceGrid"></div>
+          <div class="empty-state" id="emptyState">
+            <h2>No resources match this filter.</h2>
+            <p>Try switching back to All to browse every Guardian offer.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="modal" id="previewModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-close-modal="true"></div>
+      <div class="modal-panel">
+        <div class="modal-header">
+          <div class="modal-copy">
+            <div class="modal-eyebrow">PDF Preview</div>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-subtitle" id="modalSubtitle"></p>
+          </div>
+          <button class="modal-close" type="button" id="modalClose" aria-label="Close preview">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="preview-sheet">
+            <h3>Partial Preview</h3>
+            <p id="modalPreview"></p>
+          </div>
+          <div class="modal-footer">
+            <button class="action-button primary" type="button" id="modalPurchase">Purchase PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const filters = [
+        { label: "All", value: "all" },
+        { label: "PDFs", value: "pdf" },
+        { label: "Software", value: "software" },
+        { label: "Funding", value: "funding" },
+      ];
+
+      const resources = [
+        {
+          id: "pdf-operations-audit",
+          title: "Operations Audit Workbook",
+          description: "A guided PDF for spotting friction in your business systems, workflows, and reporting.",
+          price: 19,
+          type: "pdf",
+          previewContent:
+            "Section 1: Decision bottlenecks\n- Where do approvals stall?\n- Which reports arrive too late to be useful?\n\nSection 2: Process drift\n- Which tasks are done differently each week?\n- Where are handoffs getting missed?\n\nSection 3: Immediate repairs\n- List 3 systems to tighten this month.",
+          actionUrl: "https://guardian.example.com/products/operations-audit-workbook",
+        },
+        {
+          id: "software-playbook-lite",
+          title: "Guardian Playbook Lite",
+          description: "A lightweight decision-support app for standard operating checklists and weekly scorecards.",
+          price: 29,
+          type: "software",
+          actionUrl: "https://guardian.example.com/demo/playbook-lite",
+        },
+        {
+          id: "funding-growth-bridge",
+          title: "Growth Bridge Funding Intake",
+          description: "An application flow for businesses seeking working capital to stabilize or expand.",
+          price: 49,
+          type: "funding",
+          actionUrl: "https://guardian.example.com/apply/growth-bridge",
+        },
+        {
+          id: "pdf-leadership-brief",
+          title: "Leadership Reinforcement Brief",
+          description: "A PDF guide for owners who need stronger team accountability and clearer execution rhythms.",
+          price: 59,
+          type: "pdf",
+          previewContent:
+            "Inside this preview:\n- Weekly leadership cadence template\n- Escalation ladder example\n- Team ownership prompts\n\nThe full purchase includes implementation worksheets and accountability maps.",
+          actionUrl: "https://guardian.example.com/products/leadership-brief",
+        },
+        {
+          id: "software-execution-hub",
+          title: "Execution Hub Demo",
+          description: "A software environment for assigning priorities, tracking blockers, and clarifying operating focus.",
+          price: 79,
+          type: "software",
+          actionUrl: "https://guardian.example.com/demo/execution-hub",
+        },
+        {
+          id: "funding-turnaround-support",
+          title: "Turnaround Support Application",
+          description: "A higher-touch funding intake for companies managing cash pressure, resets, or recovery plans.",
+          price: 129,
+          type: "funding",
+          actionUrl: "https://guardian.example.com/apply/turnaround-support",
+        },
+      ];
+
+      const iconMap = {
+        pdf: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm6 1.5V8h4.5" />
+          </svg>
+        `,
+        software: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-4l1.25 3H18v2H6v-2h2.75L10 16H6a2 2 0 0 1-2-2V5zm2 0v9h12V5H6z" />
+          </svg>
+        `,
+        funding: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 3h8l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm7 1.5V8h3.5M8 11h8v2H8v-2zm0 4h8v2H8v-2z" />
+          </svg>
+        `,
+      };
+
+      const labelMap = {
+        pdf: "PDF",
+        software: "Software",
+        funding: "Funding",
+      };
+
+      const previewMap = {
+        pdf: () => `
+          <div class="preview-document">
+            <div class="type-pill">${iconMap.pdf}<span>PDF</span></div>
+            <div class="preview-lines">
+              <div class="preview-line"></div>
+              <div class="preview-line"></div>
+              <div class="preview-line"></div>
+              <div class="preview-line"></div>
+            </div>
+          </div>
+        `,
+        software: () => `
+          <div class="preview-window">
+            <div class="window-bar">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+            </div>
+            <div class="window-panel">
+              <div class="window-sidebar"></div>
+              <div class="window-main"></div>
+            </div>
+            <div class="type-pill">${iconMap.software}<span>Demo Ready</span></div>
+          </div>
+        `,
+        funding: () => `
+          <div class="preview-funding">
+            <div class="type-pill">${iconMap.funding}<span>Application</span></div>
+            <div class="funding-grid">
+              <div class="funding-cell"></div>
+              <div class="funding-cell"></div>
+              <div class="funding-cell"></div>
+            </div>
+          </div>
+        `,
+      };
+
+      const actionTextMap = {
+        pdf: { primary: "Purchase", secondary: "Preview" },
+        software: { primary: "View Demo" },
+        funding: { primary: "Apply" },
+      };
+
+      const filterBar = document.getElementById("filterBar");
+      const resourceGrid = document.getElementById("resourceGrid");
+      const emptyState = document.getElementById("emptyState");
+      const previewModal = document.getElementById("previewModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalSubtitle = document.getElementById("modalSubtitle");
+      const modalPreview = document.getElementById("modalPreview");
+      const modalPurchase = document.getElementById("modalPurchase");
+      const modalClose = document.getElementById("modalClose");
+
+      let activeFilter = "all";
+      let modalPurchaseUrl = "";
+
+      const currency = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0,
+      });
+
+      function formatPrice(price) {
+        return price === 0 ? "Free" : currency.format(price);
+      }
+
+      function sortedResources(list) {
+        return [...list].sort((a, b) => a.price - b.price || a.title.localeCompare(b.title));
+      }
+
+      function getFilteredResources() {
+        const filtered = activeFilter === "all"
+          ? resources
+          : resources.filter((resource) => resource.type === activeFilter);
+        return sortedResources(filtered);
+      }
+
+      function createFilterButton(filter) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `filter-chip${activeFilter === filter.value ? " is-active" : ""}`;
+        button.textContent = filter.label;
+        button.addEventListener("click", () => {
+          activeFilter = filter.value;
+          renderFilters();
+          renderResources();
+        });
+        return button;
+      }
+
+      function createActionButton(label, isPrimary, onClick) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `action-button${isPrimary ? " primary" : ""}`;
+        button.textContent = label;
+        button.addEventListener("click", onClick);
+        return button;
+      }
+
+      function openPreview(resource) {
+        modalTitle.textContent = resource.title;
+        modalSubtitle.textContent = "Preview only. Full PDF unlocks after purchase.";
+        modalPreview.textContent = resource.previewContent;
+        modalPurchaseUrl = resource.actionUrl;
+        previewModal.classList.add("is-open");
+        previewModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closePreview() {
+        previewModal.classList.remove("is-open");
+        previewModal.setAttribute("aria-hidden", "true");
+      }
+
+      function openExternal(url) {
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
+
+      function createCard(resource) {
+        const card = document.createElement("article");
+        card.className = "resource-card";
+        card.dataset.type = resource.type;
+
+        const actions = actionTextMap[resource.type];
+
+        card.innerHTML = `
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="type-pill">${iconMap[resource.type]}<span>${labelMap[resource.type]}</span></div>
+              <div class="price">${formatPrice(resource.price)}</div>
+            </div>
+            <div class="card-preview">
+              ${previewMap[resource.type]()}
+            </div>
+          </div>
+          <div class="resource-body">
+            <h2 class="resource-title">${resource.title}</h2>
+            <p class="resource-description">${resource.description}</p>
+          </div>
+        `;
+
+        const actionsRow = document.createElement("div");
+        actionsRow.className = "resource-actions";
+
+        if (resource.type === "pdf") {
+          actionsRow.appendChild(createActionButton(actions.secondary, false, () => openPreview(resource)));
+          actionsRow.appendChild(createActionButton(actions.primary, true, () => openExternal(resource.actionUrl)));
+        } else if (resource.type === "software") {
+          actionsRow.appendChild(createActionButton(actions.primary, true, () => openExternal(resource.actionUrl)));
+        } else {
+          actionsRow.appendChild(createActionButton(actions.primary, true, () => openExternal(resource.actionUrl)));
+        }
+
+        card.appendChild(actionsRow);
+        return card;
+      }
+
+      function renderFilters() {
+        filterBar.innerHTML = "";
+        filters.forEach((filter) => {
+          filterBar.appendChild(createFilterButton(filter));
+        });
+      }
+
+      function renderResources() {
+        const items = getFilteredResources();
+        resourceGrid.innerHTML = "";
+
+        if (items.length === 0) {
+          emptyState.classList.add("is-visible");
+          return;
+        }
+
+        emptyState.classList.remove("is-visible");
+        items.forEach((resource) => {
+          resourceGrid.appendChild(createCard(resource));
+        });
+      }
+
+      modalClose.addEventListener("click", closePreview);
+      modalPurchase.addEventListener("click", () => openExternal(modalPurchaseUrl));
+      previewModal.addEventListener("click", (event) => {
+        if (event.target.dataset.closeModal === "true") {
+          closePreview();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closePreview();
+        }
+      });
+
+      renderFilters();
+      renderResources();
+    </script>
+  </body>
+</html>
