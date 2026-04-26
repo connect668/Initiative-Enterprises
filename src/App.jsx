@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LandingPage from "./landing/LandingPage";
 import BrandPage from "./landing/BrandPage";
 import GaurdianHomePage from "./landing/GaurdianHomePage";
+import CheckpointMediaHomePage from "./landing/CheckpointMediaHomePage";
 
 const guardianItems = [
   "Operational planning and decision support",
@@ -20,6 +21,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/gaurdian-home" element={<GaurdianHomePage />} />
+      <Route path="/checkpoint-media" element={<CheckpointMediaHomePage />} />
       <Route
         path="/guardian"
         element={
@@ -37,7 +39,7 @@ export default function App() {
         }
       />
       <Route
-        path="/checkpoint-media"
+        path="/checkpoint"
         element={
           <BrandPage
             eyebrow="Checkpoint Media"
