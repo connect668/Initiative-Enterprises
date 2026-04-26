@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const INTRO_EXIT_MS = 250;
 const INTRO_REMOVE_MS = 1200;
@@ -94,7 +95,7 @@ function BrandPanel({
         <div className="panel-glow" aria-hidden="true" />
         <h2 className="panel-title">{title}</h2>
         <p className="panel-description">{description}</p>
-        <a className="panel-cta" href={variant === "guardian" ? to : `#${to}`} onClick={handleButtonClick}>
+        <a className="panel-cta" href={variant === "guardian" ? to : to} onClick={handleButtonClick}>
           Enter {title}
         </a>
       </div>
@@ -103,6 +104,7 @@ function BrandPanel({
 }
 
 export default function LandingPage() {
+  const navigate = useNavigate();
   const [introExiting, setIntroExiting] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [panelsRevealed, setPanelsRevealed] = useState(false);
@@ -144,7 +146,7 @@ export default function LandingPage() {
         return;
       }
 
-      window.location.hash = route;
+      navigate(route);
     }, NAV_TRANSITION_MS);
   };
 
