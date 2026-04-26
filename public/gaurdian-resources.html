@@ -751,6 +751,75 @@
         gap: 18px;
       }
 
+      .application-form {
+        display: grid;
+        gap: 16px;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .form-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .form-field.is-full {
+        grid-column: 1 / -1;
+      }
+
+      .form-label {
+        color: rgba(206, 221, 243, 0.78);
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        border: 0;
+        border-radius: 18px;
+        background:
+          linear-gradient(180deg, rgba(10, 22, 40, 0.96), rgba(6, 12, 24, 0.98));
+        box-shadow:
+          inset 0 1px 0 rgba(216, 233, 255, 0.04),
+          inset 0 0 0 1px rgba(92, 146, 228, 0.08);
+        color: var(--text);
+        padding: 14px 16px;
+        outline: none;
+        transition: box-shadow 260ms var(--ease);
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        box-shadow:
+          inset 0 1px 0 rgba(224, 239, 255, 0.06),
+          inset 0 0 0 1px rgba(122, 184, 255, 0.16),
+          0 0 0 3px rgba(48, 126, 236, 0.1);
+      }
+
+      .form-textarea {
+        min-height: 128px;
+        resize: vertical;
+      }
+
+      .form-note,
+      .form-status {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .form-status {
+        min-height: 24px;
+      }
+
       .preview-sheet {
         padding: 24px;
         border-radius: 24px;
@@ -831,6 +900,10 @@
           padding-left: 18px;
           padding-right: 18px;
         }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -891,13 +964,7 @@
           <button class="modal-close" type="button" id="modalClose" aria-label="Close preview">✕</button>
         </div>
         <div class="modal-body">
-          <div class="preview-sheet">
-            <h3>Partial Preview</h3>
-            <p id="modalPreview"></p>
-          </div>
-          <div class="modal-footer">
-            <button class="action-button primary" type="button" id="modalPurchase">Purchase PDF</button>
-          </div>
+          <div id="modalContent"></div>
         </div>
       </div>
     </div>
@@ -912,56 +979,30 @@
 
       const resources = [
         {
-          id: "pdf-operations-audit",
-          title: "Operations Audit Workbook",
-          description: "A guided PDF for spotting friction in your business systems, workflows, and reporting.",
-          price: 19,
+          id: "pdf-presale-checklist",
+          title: "Presale Checklist PDF",
+          description: "A lightweight presale checklist to help you prepare your offer, process, and launch steps before you sell.",
+          price: 0.5,
           type: "pdf",
           previewContent:
-            "Section 1: Decision bottlenecks\n- Where do approvals stall?\n- Which reports arrive too late to be useful?\n\nSection 2: Process drift\n- Which tasks are done differently each week?\n- Where are handoffs getting missed?\n\nSection 3: Immediate repairs\n- List 3 systems to tighten this month.",
-          actionUrl: "https://guardian.example.com/products/operations-audit-workbook",
+            "Preview pages:\n- Offer readiness checkpoints\n- Presale timeline prompts\n- Fulfillment risk checks\n\nThe full PDF unlocks after purchase.",
+          actionUrl: "https://guardian.example.com/products/presale-checklist-pdf",
         },
         {
-          id: "software-playbook-lite",
-          title: "Guardian Playbook Lite",
-          description: "A lightweight decision-support app for standard operating checklists and weekly scorecards.",
-          price: 29,
+          id: "software-playbook",
+          title: "Playbook",
+          description: "Ensure all members of your business excecute to your standards.",
+          price: 20,
           type: "software",
-          actionUrl: "https://guardian.example.com/demo/playbook-lite",
+          actionUrl: "https://guardian.example.com/demo/playbook",
         },
         {
-          id: "funding-growth-bridge",
-          title: "Growth Bridge Funding Intake",
-          description: "An application flow for businesses seeking working capital to stabilize or expand.",
-          price: 49,
+          id: "funding-bridge-program",
+          title: "Bridge Program",
+          description: "Get funding to start your business without the preasure of an investor our ownership % only goes up based on how much we invest giving you a low risk support while retaining your power.",
+          price: 20,
           type: "funding",
-          actionUrl: "https://guardian.example.com/apply/growth-bridge",
-        },
-        {
-          id: "pdf-leadership-brief",
-          title: "Leadership Reinforcement Brief",
-          description: "A PDF guide for owners who need stronger team accountability and clearer execution rhythms.",
-          price: 59,
-          type: "pdf",
-          previewContent:
-            "Inside this preview:\n- Weekly leadership cadence template\n- Escalation ladder example\n- Team ownership prompts\n\nThe full purchase includes implementation worksheets and accountability maps.",
-          actionUrl: "https://guardian.example.com/products/leadership-brief",
-        },
-        {
-          id: "software-execution-hub",
-          title: "Execution Hub Demo",
-          description: "A software environment for assigning priorities, tracking blockers, and clarifying operating focus.",
-          price: 79,
-          type: "software",
-          actionUrl: "https://guardian.example.com/demo/execution-hub",
-        },
-        {
-          id: "funding-turnaround-support",
-          title: "Turnaround Support Application",
-          description: "A higher-touch funding intake for companies managing cash pressure, resets, or recovery plans.",
-          price: 129,
-          type: "funding",
-          actionUrl: "https://guardian.example.com/apply/turnaround-support",
+          actionUrl: "",
         },
       ];
 
@@ -1033,14 +1074,19 @@
         funding: { primary: "Apply" },
       };
 
+      const supabaseConfig = {
+        url: "",
+        anonKey: "",
+        table: "bridge_program_applications",
+      };
+
       const filterBar = document.getElementById("filterBar");
       const resourceGrid = document.getElementById("resourceGrid");
       const emptyState = document.getElementById("emptyState");
       const previewModal = document.getElementById("previewModal");
       const modalTitle = document.getElementById("modalTitle");
       const modalSubtitle = document.getElementById("modalSubtitle");
-      const modalPreview = document.getElementById("modalPreview");
-      const modalPurchase = document.getElementById("modalPurchase");
+      const modalContent = document.getElementById("modalContent");
       const modalClose = document.getElementById("modalClose");
 
       let activeFilter = "all";
@@ -1054,6 +1100,15 @@
 
       function formatPrice(price) {
         return price === 0 ? "Free" : currency.format(price);
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
       }
 
       function sortedResources(list) {
@@ -1092,8 +1147,63 @@
       function openPreview(resource) {
         modalTitle.textContent = resource.title;
         modalSubtitle.textContent = "Preview only. Full PDF unlocks after purchase.";
-        modalPreview.textContent = resource.previewContent;
         modalPurchaseUrl = resource.actionUrl;
+        modalContent.innerHTML = `
+          <div class="preview-sheet">
+            <h3>Partial Preview</h3>
+            <p>${escapeHtml(resource.previewContent)}</p>
+          </div>
+          <div class="modal-footer">
+            <button class="action-button primary" type="button" id="modalPurchase">Purchase PDF</button>
+          </div>
+        `;
+        document.getElementById("modalPurchase").addEventListener("click", () => openExternal(modalPurchaseUrl));
+        previewModal.classList.add("is-open");
+        previewModal.setAttribute("aria-hidden", "false");
+      }
+
+      function openFundingForm(resource) {
+        modalTitle.textContent = resource.title;
+        modalSubtitle.textContent = "Apply for the Bridge Program through Guardian.";
+        modalContent.innerHTML = `
+          <form class="application-form" id="bridgeProgramForm">
+            <div class="form-grid">
+              <label class="form-field">
+                <span class="form-label">Name</span>
+                <input class="form-input" type="text" name="name" autocomplete="name" required />
+              </label>
+              <label class="form-field">
+                <span class="form-label">Number</span>
+                <input class="form-input" type="tel" name="phone" autocomplete="tel" required />
+              </label>
+              <label class="form-field is-full">
+                <span class="form-label">Brief Description Of Business</span>
+                <textarea class="form-textarea" name="business_description" required></textarea>
+              </label>
+              <label class="form-field is-full">
+                <span class="form-label">How Soon Do You Want To Sale</span>
+                <select class="form-select" name="time_frame" required>
+                  <option value="">Select a time frame</option>
+                  <option value="within-30-days">Within 30 days</option>
+                  <option value="30-90-days">30 to 90 days</option>
+                  <option value="3-6-months">3 to 6 months</option>
+                  <option value="6-12-months">6 to 12 months</option>
+                  <option value="12-plus-months">12+ months</option>
+                </select>
+              </label>
+            </div>
+            <p class="form-note">Supabase is not connected yet. Add your project URL and anon key in this page script, then submissions will post there.</p>
+            <div class="form-status" id="formStatus"></div>
+            <div class="modal-footer">
+              <button class="action-button primary" type="submit">Submit Application</button>
+            </div>
+          </form>
+        `;
+
+        document
+          .getElementById("bridgeProgramForm")
+          .addEventListener("submit", async (event) => handleFundingSubmit(event, resource));
+
         previewModal.classList.add("is-open");
         previewModal.setAttribute("aria-hidden", "false");
       }
@@ -1101,10 +1211,61 @@
       function closePreview() {
         previewModal.classList.remove("is-open");
         previewModal.setAttribute("aria-hidden", "true");
+        modalContent.innerHTML = "";
       }
 
       function openExternal(url) {
         window.open(url, "_blank", "noopener,noreferrer");
+      }
+
+      async function handleFundingSubmit(event, resource) {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const status = document.getElementById("formStatus");
+        const submitButton = form.querySelector('button[type="submit"]');
+        const formData = new FormData(form);
+        const payload = {
+          resource_id: resource.id,
+          resource_title: resource.title,
+          name: formData.get("name"),
+          phone: formData.get("phone"),
+          business_description: formData.get("business_description"),
+          time_frame: formData.get("time_frame"),
+          submitted_at: new Date().toISOString(),
+        };
+
+        if (!supabaseConfig.url || !supabaseConfig.anonKey) {
+          status.textContent = "Connect your Supabase URL and anon key in this page script, then submissions will post there.";
+          return;
+        }
+
+        submitButton.disabled = true;
+        status.textContent = "Submitting...";
+
+        try {
+          const response = await fetch(`${supabaseConfig.url}/rest/v1/${supabaseConfig.table}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: supabaseConfig.anonKey,
+              Authorization: `Bearer ${supabaseConfig.anonKey}`,
+              Prefer: "return=minimal",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error("Supabase request failed.");
+          }
+
+          status.textContent = "Application submitted.";
+          form.reset();
+        } catch (error) {
+          status.textContent = "Submission failed. Check your Supabase configuration and table settings.";
+        } finally {
+          submitButton.disabled = false;
+        }
       }
 
       function createCard(resource) {
@@ -1139,7 +1300,7 @@
         } else if (resource.type === "software") {
           actionsRow.appendChild(createActionButton(actions.primary, true, () => openExternal(resource.actionUrl)));
         } else {
-          actionsRow.appendChild(createActionButton(actions.primary, true, () => openExternal(resource.actionUrl)));
+          actionsRow.appendChild(createActionButton(actions.primary, true, () => openFundingForm(resource)));
         }
 
         card.appendChild(actionsRow);
@@ -1169,7 +1330,6 @@
       }
 
       modalClose.addEventListener("click", closePreview);
-      modalPurchase.addEventListener("click", () => openExternal(modalPurchaseUrl));
       previewModal.addEventListener("click", (event) => {
         if (event.target.dataset.closeModal === "true") {
           closePreview();
