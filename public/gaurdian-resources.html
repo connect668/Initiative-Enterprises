@@ -9,21 +9,22 @@
         color-scheme: dark;
         font-family:
           "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
-        --bg: #040914;
-        --bg-deep: #02060d;
-        --surface: rgba(7, 15, 29, 0.92);
-        --surface-strong: rgba(5, 12, 24, 0.97);
-        --surface-soft: rgba(10, 21, 40, 0.78);
-        --text: #edf5ff;
-        --muted: rgba(186, 203, 229, 0.72);
-        --muted-strong: rgba(210, 224, 245, 0.82);
-        --blue: #74b7ff;
-        --blue-strong: #2f84ee;
-        --blue-ice: #d8efff;
-        --line: rgba(110, 170, 255, 0.12);
-        --line-soft: rgba(110, 170, 255, 0.08);
-        --glow: rgba(74, 141, 255, 0.2);
-        --shadow: 0 28px 64px rgba(0, 0, 0, 0.36);
+        --bg: #050b15;
+        --bg-deep: #030711;
+        --shell: #091221;
+        --surface: #0b1628;
+        --surface-strong: #0d192e;
+        --surface-soft: #101d34;
+        --surface-raised: #12213a;
+        --line: rgba(143, 178, 234, 0.12);
+        --line-strong: rgba(143, 178, 234, 0.2);
+        --text: #f3f7ff;
+        --muted: rgba(197, 211, 234, 0.74);
+        --muted-soft: rgba(197, 211, 234, 0.56);
+        --blue: #4d83ff;
+        --blue-strong: #2f6ef3;
+        --blue-soft: #8bb6ff;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
         --ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -40,10 +41,9 @@
         min-width: 320px;
         min-height: 100vh;
         background:
-          radial-gradient(circle at 18% 10%, rgba(52, 104, 198, 0.14), transparent 22%),
-          radial-gradient(circle at 78% 0%, rgba(64, 132, 224, 0.14), transparent 24%),
-          radial-gradient(circle at 50% 42%, rgba(32, 78, 172, 0.1), transparent 28%),
-          linear-gradient(180deg, #07101b 0%, #030811 34%, #02060d 100%);
+          radial-gradient(circle at 22% 0%, rgba(38, 83, 179, 0.16), transparent 26%),
+          radial-gradient(circle at 88% 14%, rgba(52, 103, 194, 0.14), transparent 24%),
+          linear-gradient(180deg, #07101d 0%, #050b15 42%, #030711 100%);
         color: var(--text);
         overflow-x: hidden;
       }
@@ -58,20 +58,23 @@
 
       body::before {
         background:
-          linear-gradient(rgba(114, 168, 255, 0.02) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(114, 168, 255, 0.02) 1px, transparent 1px);
-        background-size: 46px 46px;
-        mask-image: radial-gradient(circle at center, black 38%, transparent 86%);
+          linear-gradient(rgba(113, 146, 196, 0.022) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(113, 146, 196, 0.022) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: radial-gradient(circle at center, black 34%, transparent 86%);
       }
 
       body::after {
         background:
-          radial-gradient(circle at center, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.44) 100%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 16%, transparent 84%, rgba(0, 0, 0, 0.2));
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.38) 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 15%, transparent 84%, rgba(0, 0, 0, 0.2));
       }
 
       button,
-      a {
+      a,
+      input,
+      textarea,
+      select {
         color: inherit;
         font: inherit;
       }
@@ -88,28 +91,17 @@
       }
 
       .shell {
-        width: min(1240px, calc(100% - 40px));
+        width: min(1248px, calc(100% - 36px));
         margin: 0 auto;
         padding: 24px 0 72px;
       }
 
       .header {
-        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 18px;
-        padding: 12px 4px 24px;
-      }
-
-      .header::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 1px;
-        background: linear-gradient(90deg, rgba(104, 164, 255, 0), rgba(104, 164, 255, 0.28), rgba(104, 164, 255, 0));
+        padding: 2px 2px 24px;
       }
 
       .header-left {
@@ -118,48 +110,24 @@
         gap: 14px;
       }
 
-      .back-link,
-      .menu-button {
+      .back-link {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        min-height: 40px;
-        min-width: 40px;
-        padding: 0 15px;
-        border-radius: 999px;
-        background: rgba(7, 16, 30, 0.54);
-        box-shadow:
-          inset 0 1px 0 rgba(211, 231, 255, 0.06),
-          0 12px 28px rgba(0, 0, 0, 0.18);
-        color: rgba(230, 239, 251, 0.86);
-        transition:
-          transform 320ms var(--ease),
-          box-shadow 320ms var(--ease),
-          background 320ms var(--ease);
-      }
-
-      .back-link:hover,
-      .menu-button:hover {
-        transform: translateY(-2px);
-        background: rgba(9, 20, 36, 0.72);
-        box-shadow:
-          inset 0 1px 0 rgba(221, 238, 255, 0.08),
-          0 14px 30px rgba(0, 0, 0, 0.22),
-          0 0 24px rgba(58, 126, 236, 0.08);
-      }
-
-      .back-link {
         gap: 8px;
-        font-size: 0.74rem;
+        padding: 0 2px;
+        color: rgba(236, 243, 255, 0.94);
+        font-size: 0.78rem;
         font-weight: 600;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.02em;
         text-decoration: none;
-        text-transform: uppercase;
       }
 
       .back-link::before {
         content: "\2039";
-        font-size: 1rem;
+        font-size: 1.7rem;
+        line-height: 1;
+        margin-top: -2px;
+        color: rgba(244, 248, 255, 0.98);
       }
 
       .brand {
@@ -169,51 +137,56 @@
       }
 
       .brand-mark {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         display: grid;
         place-items: center;
-        border-radius: 13px;
-        background:
-          linear-gradient(180deg, rgba(46, 118, 255, 0.96), rgba(17, 62, 162, 0.96));
+        border-radius: 16px;
+        background: linear-gradient(180deg, #2d61dd, #1d49b4);
         box-shadow:
-          inset 0 1px 0 rgba(213, 229, 255, 0.14),
-          0 0 24px rgba(74, 146, 255, 0.18);
+          inset 0 1px 0 rgba(255, 255, 255, 0.12),
+          0 10px 28px rgba(24, 74, 180, 0.22);
       }
 
       .brand-mark svg {
-        width: 21px;
-        height: 21px;
-        fill: #f6fbff;
+        width: 24px;
+        height: 24px;
+        fill: #f8fbff;
       }
 
       .brand-copy {
         display: grid;
-        gap: 3px;
+        gap: 2px;
       }
 
       .brand-wordmark {
-        font-size: 1rem;
+        font-size: 1.05rem;
         font-weight: 700;
         letter-spacing: 0.18em;
         text-transform: uppercase;
       }
 
       .brand-subtitle {
-        font-size: 0.72rem;
-        letter-spacing: 0.16em;
+        font-size: 0.78rem;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: rgba(192, 208, 231, 0.6);
+        color: rgba(206, 219, 240, 0.74);
       }
 
       .menu-button {
-        width: 42px;
-        border-radius: 14px;
-        padding: 0;
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(10, 18, 32, 0.82);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.05),
+          0 14px 32px rgba(0, 0, 0, 0.24);
       }
 
       .menu-icon {
-        width: 16px;
+        width: 18px;
         display: grid;
         gap: 4px;
       }
@@ -222,693 +195,1038 @@
         display: block;
         height: 2px;
         border-radius: 999px;
-        background: rgba(226, 236, 255, 0.9);
+        background: rgba(236, 243, 255, 0.92);
       }
 
-      .controls {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 22px 0 18px;
-      }
-
-      .filter-wrap {
+      .featured {
+        position: relative;
+        min-height: 344px;
         display: grid;
-        gap: 12px;
+        grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr);
+        gap: 20px;
+        padding: 34px 36px 28px;
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(14, 24, 41, 0.96), rgba(8, 15, 28, 0.98)),
+          linear-gradient(90deg, rgba(80, 120, 196, 0.06), transparent 48%);
+        box-shadow:
+          inset 0 0 0 1px rgba(141, 171, 220, 0.11),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04),
+          var(--shadow);
+        overflow: hidden;
       }
 
-      .filter-label {
+      .featured::before,
+      .featured::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .featured::before {
+        inset: 0;
+        background:
+          radial-gradient(circle at 77% 74%, rgba(78, 132, 233, 0.2), transparent 24%),
+          radial-gradient(circle at 18% 0%, rgba(64, 108, 194, 0.12), transparent 24%);
+      }
+
+      .featured::after {
+        inset: 0;
+        background:
+          linear-gradient(rgba(134, 162, 208, 0.022) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(134, 162, 208, 0.022) 1px, transparent 1px);
+        background-size: 70px 70px;
+        opacity: 0.34;
+        mask-image: linear-gradient(90deg, black 42%, rgba(0, 0, 0, 0.3));
+      }
+
+      .featured-copy,
+      .featured-visual {
+        position: relative;
+        z-index: 1;
+      }
+
+      .featured-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 16px;
+        padding-right: 10px;
+      }
+
+      .featured-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: rgba(17, 31, 54, 0.92);
+        box-shadow: inset 0 0 0 1px rgba(137, 171, 225, 0.16);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(229, 238, 252, 0.9);
+      }
+
+      .featured-badge svg {
+        width: 15px;
+        height: 15px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+      }
+
+      .featured-title {
+        margin: 0;
+        font-size: clamp(2.3rem, 4vw, 3.5rem);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .featured-description {
+        max-width: 520px;
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .featured-price {
+        margin-top: 8px;
+        font-size: 2.1rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+
+      .primary-button,
+      .secondary-button,
+      .tile-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 20px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        transition:
+          transform 260ms var(--ease),
+          box-shadow 260ms var(--ease),
+          background 260ms var(--ease),
+          color 260ms var(--ease);
+      }
+
+      .primary-button {
+        background: linear-gradient(180deg, #3871ec, #2459ca);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          0 12px 28px rgba(24, 74, 180, 0.24);
+        color: #f8fbff;
+      }
+
+      .secondary-button,
+      .tile-button {
+        background: rgba(13, 22, 38, 0.92);
+        box-shadow: inset 0 0 0 1px rgba(138, 169, 220, 0.16);
+        color: rgba(238, 243, 252, 0.92);
+      }
+
+      .primary-button:hover,
+      .secondary-button:hover,
+      .tile-button:hover,
+      .menu-button:hover,
+      .filter-chip:hover,
+      .card:hover {
+        transform: translateY(-2px);
+      }
+
+      .primary-button:hover {
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          0 16px 34px rgba(24, 74, 180, 0.28);
+      }
+
+      .secondary-button:hover,
+      .tile-button:hover {
+        box-shadow:
+          inset 0 0 0 1px rgba(148, 180, 229, 0.2),
+          0 14px 28px rgba(0, 0, 0, 0.18);
+        background: rgba(16, 28, 47, 0.98);
+      }
+
+      .featured-visual {
+        display: grid;
+        place-items: center;
+        min-height: 280px;
+      }
+
+      .product-stage {
+        position: relative;
+        width: min(100%, 540px);
+        height: 100%;
+        min-height: 280px;
+      }
+
+      .product-stage::before {
+        content: "";
+        position: absolute;
+        inset: 12% 6% 14%;
+        background: radial-gradient(circle at center, rgba(61, 109, 211, 0.18), transparent 56%);
+        filter: blur(24px);
+      }
+
+      .guardian-watermark {
+        position: absolute;
+        right: 2%;
+        top: 8%;
+        width: 64%;
+        aspect-ratio: 1 / 1;
+        opacity: 0.08;
+      }
+
+      .guardian-watermark svg {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: rgba(170, 199, 246, 0.28);
+        stroke-width: 1.3;
+      }
+
+      .stage-base {
+        position: absolute;
+        right: 4%;
+        bottom: 2%;
+        width: 72%;
+        height: 68px;
+        border-radius: 6px;
+        background:
+          linear-gradient(180deg, rgba(32, 54, 89, 0.72), rgba(10, 16, 28, 0.98)),
+          linear-gradient(90deg, rgba(89, 130, 206, 0.08), transparent 42%);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 24px 36px rgba(0, 0, 0, 0.28);
+        transform: perspective(740px) rotateX(52deg);
+      }
+
+      .stage-base::after {
+        content: "";
+        position: absolute;
+        inset: auto 8% -26px;
+        height: 34px;
+        border-radius: 50%;
+        background: radial-gradient(circle at center, rgba(88, 140, 239, 0.36), transparent 70%);
+        filter: blur(20px);
+      }
+
+      .booklet {
+        position: absolute;
+        right: 16%;
+        bottom: 18%;
+        width: clamp(190px, 34vw, 248px);
+        aspect-ratio: 0.72 / 1;
+        transform: rotate(-6deg);
+      }
+
+      .booklet-shadow {
+        position: absolute;
+        inset: auto 10% 10% 18%;
+        height: 22px;
+        border-radius: 50%;
+        background: radial-gradient(circle at center, rgba(0, 0, 0, 0.5), transparent 74%);
+        filter: blur(16px);
+      }
+
+      .booklet-back,
+      .booklet-spine,
+      .booklet-front {
+        position: absolute;
+        border-radius: 10px;
+      }
+
+      .booklet-back {
+        inset: 4% 8% 2% 6%;
+        background: linear-gradient(180deg, #0f1c33, #09111f);
+        box-shadow: 0 18px 26px rgba(0, 0, 0, 0.24);
+      }
+
+      .booklet-spine {
+        left: 10%;
+        top: 3%;
+        bottom: 4%;
+        width: 8%;
+        background: linear-gradient(180deg, #1c2d4f, #0a1222);
+      }
+
+      .booklet-front {
+        inset: 0 0 0 12%;
+        padding: 16% 14%;
+        background:
+          linear-gradient(180deg, rgba(36, 56, 96, 0.54), rgba(10, 16, 28, 0.96)),
+          linear-gradient(145deg, rgba(116, 166, 255, 0.12), transparent 40%);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          inset 0 0 0 1px rgba(140, 172, 221, 0.12),
+          0 24px 42px rgba(0, 0, 0, 0.3);
+      }
+
+      .booklet-front::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%, transparent 80%, rgba(255, 255, 255, 0.02));
+        pointer-events: none;
+      }
+
+      .booklet-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 22%;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(244, 248, 255, 0.94);
+      }
+
+      .booklet-logo svg {
+        width: 16px;
+        height: 16px;
+        fill: rgba(245, 249, 255, 0.95);
+      }
+
+      .booklet-name {
+        font-size: clamp(1.3rem, 2vw, 1.72rem);
+        line-height: 1.05;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+
+      .booklet-accent {
+        margin-top: 12%;
         font-size: 0.74rem;
         font-weight: 600;
-        letter-spacing: 0.16em;
+        letter-spacing: 0.24em;
         text-transform: uppercase;
-        color: rgba(193, 210, 234, 0.72);
+        color: #7fb0ff;
+      }
+
+      .filter-section {
+        display: grid;
+        gap: 14px;
+        padding: 28px 0 20px;
       }
 
       .filter-bar {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .filter-chip {
-        min-height: 42px;
-        padding: 0 16px;
-        border-radius: 999px;
-        background:
-          linear-gradient(180deg, rgba(10, 22, 40, 0.92), rgba(6, 12, 24, 0.98));
-        box-shadow:
-          inset 0 1px 0 rgba(215, 234, 255, 0.05),
-          0 12px 26px rgba(0, 0, 0, 0.16);
-        color: rgba(215, 228, 246, 0.76);
-        font-size: 0.78rem;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        transition:
-          transform 280ms var(--ease),
-          box-shadow 280ms var(--ease),
-          color 280ms var(--ease),
-          background 280ms var(--ease);
-      }
-
-      .filter-chip:hover {
-        transform: translateY(-1px);
-        color: rgba(232, 240, 251, 0.94);
-        box-shadow:
-          inset 0 1px 0 rgba(222, 238, 255, 0.06),
-          0 16px 28px rgba(0, 0, 0, 0.2),
-          0 0 20px rgba(64, 130, 236, 0.08);
-      }
-
-      .filter-chip.is-active {
-        background:
-          linear-gradient(180deg, rgba(22, 52, 104, 0.92), rgba(8, 19, 40, 0.98));
-        color: rgba(240, 247, 255, 0.96);
-        box-shadow:
-          inset 0 1px 0 rgba(224, 239, 255, 0.08),
-          0 16px 34px rgba(0, 0, 0, 0.24),
-          0 0 24px rgba(74, 146, 255, 0.16);
-      }
-
-      .catalog {
-        display: grid;
-        gap: 22px;
-        padding-top: 8px;
-      }
-
-      .resource-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      .resource-card {
-        position: relative;
-        min-height: 100%;
-        padding: 24px;
-        border-radius: 28px;
-        background:
-          linear-gradient(180deg, rgba(7, 16, 30, 0.96), rgba(5, 11, 22, 0.98));
-        box-shadow:
-          inset 0 1px 0 rgba(211, 231, 255, 0.04),
-          inset 0 18px 40px rgba(74, 144, 255, 0.025),
-          var(--shadow);
-        overflow: hidden;
-        transition:
-          transform 360ms var(--ease),
-          box-shadow 360ms var(--ease),
-          background 360ms var(--ease);
-      }
-
-      .resource-card::before,
-      .resource-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-
-      .resource-card::before {
-        background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 22%),
-          linear-gradient(112deg, transparent 14%, rgba(207, 234, 255, 0.018) 46%, rgba(100, 164, 255, 0.05) 54%, transparent 72%);
-        background-size: 100% 100%, 220% 100%;
-        background-position: center, 120% 0;
-        transition:
-          background-position 820ms var(--ease),
-          opacity 360ms var(--ease);
-      }
-
-      .resource-card::after {
-        background:
-          radial-gradient(circle at 84% 16%, rgba(86, 154, 255, 0.12), transparent 22%),
-          radial-gradient(circle at 14% 82%, rgba(72, 132, 232, 0.08), transparent 24%);
-        opacity: 0.92;
-        transition:
-          opacity 360ms var(--ease),
-          transform 360ms var(--ease);
-      }
-
-      .resource-card:hover {
-        transform: translateY(-6px);
-        box-shadow:
-          inset 0 1px 0 rgba(216, 235, 255, 0.06),
-          inset 0 22px 54px rgba(78, 146, 255, 0.04),
-          0 34px 66px rgba(0, 0, 0, 0.42),
-          0 0 28px rgba(56, 124, 236, 0.1);
-      }
-
-      .resource-card:hover::before {
-        background-position: center, 0 0;
-      }
-
-      .resource-card:hover::after {
-        opacity: 1;
-        transform: scale(1.02);
-      }
-
-      .resource-card[data-type="pdf"] .card-preview {
-        background:
-          linear-gradient(180deg, rgba(10, 24, 48, 0.9), rgba(5, 11, 22, 0.98)),
-          linear-gradient(rgba(110, 166, 255, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(110, 166, 255, 0.05) 1px, transparent 1px);
-        background-size: auto, 34px 34px, 34px 34px;
-      }
-
-      .resource-card[data-type="software"] .card-preview {
-        background:
-          linear-gradient(180deg, rgba(11, 24, 46, 0.9), rgba(6, 12, 24, 0.98)),
-          radial-gradient(circle at 72% 22%, rgba(88, 154, 255, 0.16), transparent 22%);
-      }
-
-      .resource-card[data-type="funding"] .card-preview {
-        background:
-          linear-gradient(180deg, rgba(10, 22, 42, 0.92), rgba(5, 11, 22, 0.98)),
-          radial-gradient(circle at 50% 50%, rgba(80, 146, 242, 0.14), transparent 24%);
-      }
-
-      .card-top {
-        position: relative;
-        display: grid;
-        gap: 18px;
-        z-index: 1;
-      }
-
-      .card-meta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         gap: 12px;
       }
 
-      .type-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        min-height: 34px;
-        padding: 0 12px;
+      .filter-chip {
+        min-height: 46px;
+        padding: 0 20px;
         border-radius: 999px;
-        background: rgba(9, 20, 38, 0.72);
+        background: rgba(11, 19, 33, 0.96);
         box-shadow:
-          inset 0 1px 0 rgba(216, 233, 255, 0.04),
-          0 10px 24px rgba(0, 0, 0, 0.18);
-        color: rgba(224, 235, 250, 0.84);
-        font-size: 0.72rem;
+          inset 0 0 0 1px rgba(138, 168, 214, 0.08),
+          0 14px 32px rgba(0, 0, 0, 0.18);
+        font-size: 0.95rem;
         font-weight: 600;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(219, 228, 241, 0.84);
+        transition:
+          transform 260ms var(--ease),
+          box-shadow 260ms var(--ease),
+          background 260ms var(--ease),
+          color 260ms var(--ease);
+      }
+
+      .filter-chip.is-active {
+        background: linear-gradient(180deg, #2c61d6, #224cab);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.14),
+          0 14px 32px rgba(24, 74, 180, 0.26);
+        color: #f8fbff;
+      }
+
+      .market-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        position: relative;
+        display: grid;
+        overflow: hidden;
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(13, 23, 40, 0.98), rgba(7, 13, 24, 0.98)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 24%);
+        box-shadow:
+          inset 0 0 0 1px rgba(139, 169, 213, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.03),
+          0 18px 42px rgba(0, 0, 0, 0.22);
+        transition:
+          transform 280ms var(--ease),
+          box-shadow 280ms var(--ease),
+          background 280ms var(--ease);
+      }
+
+      .card:hover {
+        box-shadow:
+          inset 0 0 0 1px rgba(154, 182, 224, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04),
+          0 24px 48px rgba(0, 0, 0, 0.28);
+      }
+
+      .thumbnail {
+        position: relative;
+        min-height: 286px;
+        padding: 22px;
+        background:
+          linear-gradient(180deg, rgba(17, 30, 52, 0.98), rgba(10, 17, 30, 1)),
+          radial-gradient(circle at 20% 12%, rgba(85, 122, 200, 0.14), transparent 28%);
+        overflow: hidden;
+      }
+
+      .thumbnail::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 26%, transparent 82%, rgba(255, 255, 255, 0.02));
+        pointer-events: none;
+      }
+
+      .thumbnail-canvas {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .thumb-book {
+        position: absolute;
+        left: 6%;
+        top: 8%;
+        width: 48%;
+        aspect-ratio: 0.7 / 1;
+        border-radius: 10px;
+        background:
+          linear-gradient(180deg, #2a4172, #182845 44%, #101b30 100%);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 18px 28px rgba(0, 0, 0, 0.26);
+        transform: rotate(-5deg);
+      }
+
+      .thumb-book::before {
+        content: "";
+        position: absolute;
+        left: 9%;
+        top: 10%;
+        width: 82%;
+        height: 80%;
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%);
+      }
+
+      .thumb-book-title {
+        position: absolute;
+        left: 17%;
+        top: 26%;
+        width: 50%;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      .type-pill svg {
-        width: 16px;
-        height: 16px;
-        fill: var(--blue-ice);
+      .thumb-book-lines {
+        position: absolute;
+        left: 17%;
+        bottom: 22%;
+        width: 46%;
+        display: grid;
+        gap: 8px;
       }
 
-      .price {
-        color: #f2f7ff;
+      .thumb-book-lines span {
+        height: 3px;
+        border-radius: 999px;
+        background: rgba(187, 213, 255, 0.52);
+      }
+
+      .thumb-sheet {
+        position: absolute;
+        right: 10%;
+        top: 12%;
+        width: 46%;
+        aspect-ratio: 0.72 / 1;
+        border-radius: 6px;
+        background:
+          linear-gradient(180deg, #f5efe7, #ebe3d6 100%);
+        color: #151820;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.22);
+        transform: rotate(3deg);
+      }
+
+      .thumb-sheet::before {
+        content: "";
+        position: absolute;
+        inset: 10% 11%;
+        background:
+          linear-gradient(180deg, rgba(22, 29, 41, 0.18) 1px, transparent 1px);
+        background-size: 100% 18px;
+        opacity: 0.5;
+      }
+
+      .thumb-sheet-header {
+        position: absolute;
+        left: 12%;
+        top: 10%;
+        font-size: 0.44rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .thumb-checks {
+        position: absolute;
+        left: 14%;
+        top: 22%;
+        right: 14%;
+        display: grid;
+        gap: 11px;
+      }
+
+      .thumb-check {
+        display: grid;
+        grid-template-columns: 12px 1fr;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .thumb-check i {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        border: 1.6px solid rgba(21, 24, 32, 0.7);
+      }
+
+      .thumb-check span {
+        height: 2px;
+        border-radius: 999px;
+        background: rgba(21, 24, 32, 0.26);
+      }
+
+      .thumb-laptop {
+        position: absolute;
+        left: 6%;
+        right: 6%;
+        bottom: 12%;
+        height: 64%;
+      }
+
+      .thumb-screen {
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        top: 0;
+        height: 76%;
+        border-radius: 12px 12px 10px 10px;
+        background:
+          linear-gradient(180deg, #0e1a2f, #060d18),
+          linear-gradient(90deg, rgba(97, 133, 207, 0.08), transparent 52%);
+        box-shadow:
+          inset 0 0 0 1px rgba(137, 168, 215, 0.12),
+          0 18px 30px rgba(0, 0, 0, 0.24);
+      }
+
+      .thumb-screen::before {
+        content: "";
+        position: absolute;
+        inset: 7% 6%;
+        border-radius: 8px;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 22%, transparent 22%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 20%),
+          linear-gradient(180deg, #091321, #0b1630);
+      }
+
+      .thumb-nav {
+        position: absolute;
+        left: 9%;
+        top: 14%;
+        width: 18%;
+        bottom: 12%;
+        border-radius: 7px;
+        background: rgba(7, 14, 24, 0.72);
+      }
+
+      .thumb-nav span,
+      .thumb-card span,
+      .thumb-header span {
+        position: absolute;
+        display: block;
+        border-radius: 999px;
+        background: rgba(189, 212, 247, 0.18);
+      }
+
+      .thumb-header {
+        position: absolute;
+        left: 31%;
+        right: 9%;
+        top: 15%;
+        height: 10%;
+      }
+
+      .thumb-header span:first-child {
+        left: 0;
+        top: 0;
+        width: 36%;
+        height: 8px;
+      }
+
+      .thumb-header span:last-child {
+        right: 0;
+        top: 0;
+        width: 15%;
+        height: 8px;
+      }
+
+      .thumb-card {
+        position: absolute;
+        border-radius: 8px;
+        background: rgba(12, 25, 45, 0.92);
+        box-shadow: inset 0 0 0 1px rgba(138, 168, 214, 0.08);
+      }
+
+      .thumb-card.one {
+        left: 31%;
+        top: 30%;
+        width: 27%;
+        height: 18%;
+      }
+
+      .thumb-card.two {
+        right: 9%;
+        top: 30%;
+        width: 27%;
+        height: 18%;
+      }
+
+      .thumb-card.three {
+        left: 31%;
+        bottom: 16%;
+        width: 30%;
+        height: 18%;
+      }
+
+      .thumb-card.four {
+        right: 9%;
+        bottom: 16%;
+        width: 24%;
+        height: 18%;
+      }
+
+      .thumb-card span:nth-child(1) {
+        left: 14%;
+        top: 22%;
+        width: 24%;
+        height: 7px;
+      }
+
+      .thumb-card span:nth-child(2) {
+        left: 14%;
+        top: 42%;
+        width: 56%;
+        height: 6px;
+      }
+
+      .thumb-card span:nth-child(3) {
+        left: 14%;
+        top: 60%;
+        width: 38%;
+        height: 6px;
+      }
+
+      .thumb-base {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 16%;
+        border-radius: 0 0 18px 18px;
+        background: linear-gradient(180deg, #202736, #0f1420);
+        transform: perspective(600px) rotateX(72deg);
+      }
+
+      .thumb-form {
+        position: absolute;
+        right: 11%;
+        top: 14%;
+        width: 44%;
+        aspect-ratio: 0.74 / 1;
+        border-radius: 7px;
+        background: linear-gradient(180deg, #f5eee6, #ece3d8 100%);
+        box-shadow: 0 18px 28px rgba(0, 0, 0, 0.24);
+        transform: rotate(2.5deg);
+      }
+
+      .thumb-form::before {
+        content: "";
+        position: absolute;
+        left: 14%;
+        right: 14%;
+        top: 16%;
+        bottom: 12%;
+        background:
+          linear-gradient(180deg, rgba(21, 24, 32, 0.18) 1px, transparent 1px);
+        background-size: 100% 18px;
+        opacity: 0.48;
+      }
+
+      .thumb-funding-lines {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 8%;
+        height: 44%;
+        pointer-events: none;
+      }
+
+      .thumb-funding-lines svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .thumb-funding-lines path {
+        fill: none;
+        stroke: rgba(113, 153, 226, 0.22);
+        stroke-width: 1.4;
+      }
+
+      .card-body {
+        display: grid;
+        gap: 12px;
+        padding: 18px 24px 22px;
+      }
+
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(221, 232, 248, 0.9);
+      }
+
+      .meta svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: clamp(1.65rem, 2vw, 2.1rem);
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+      }
+
+      .card-description {
+        margin: 0;
+        font-size: 0.98rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin-top: 4px;
+      }
+
+      .card-price {
         font-size: 1.1rem;
         font-weight: 700;
         letter-spacing: -0.02em;
       }
 
-      .card-preview {
-        position: relative;
-        min-height: 170px;
-        padding: 18px;
-        border-radius: 22px;
-        overflow: hidden;
-        box-shadow:
-          inset 0 1px 0 rgba(213, 232, 255, 0.03),
-          inset 0 -18px 36px rgba(2, 6, 12, 0.34);
-      }
-
-      .card-preview::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(circle at 84% 18%, rgba(134, 198, 255, 0.16), transparent 20%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 24%);
-        pointer-events: none;
-      }
-
-      .preview-window,
-      .preview-document,
-      .preview-funding {
-        position: relative;
-        z-index: 1;
-        height: 100%;
-        display: grid;
-        gap: 14px;
-        align-content: start;
-      }
-
-      .preview-document .preview-lines {
-        display: grid;
-        gap: 8px;
-      }
-
-      .preview-line {
-        height: 9px;
-        border-radius: 999px;
-        background: linear-gradient(90deg, rgba(223, 240, 255, 0.22), rgba(112, 168, 255, 0.08));
-      }
-
-      .preview-line:nth-child(1) {
-        width: 62%;
-      }
-
-      .preview-line:nth-child(2) {
-        width: 84%;
-      }
-
-      .preview-line:nth-child(3) {
-        width: 72%;
-      }
-
-      .preview-line:nth-child(4) {
-        width: 88%;
-      }
-
-      .preview-window {
-        grid-template-rows: auto 1fr auto;
-      }
-
-      .window-bar {
-        display: flex;
-        gap: 6px;
-      }
-
-      .window-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: rgba(208, 228, 250, 0.28);
-      }
-
-      .window-panel {
-        display: grid;
-        grid-template-columns: 0.62fr 1fr;
-        gap: 12px;
-      }
-
-      .window-sidebar,
-      .window-main {
-        min-height: 84px;
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .window-main {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .window-main::before {
-        content: "";
-        position: absolute;
-        inset: 18% 12% 18% 12%;
-        border-radius: 999px;
-        background: linear-gradient(135deg, rgba(140, 206, 255, 0.18), rgba(82, 142, 242, 0.06));
-        transform: rotate(-14deg);
-      }
-
-      .preview-funding {
-        align-content: center;
-      }
-
-      .funding-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .funding-cell {
-        min-height: 56px;
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.04);
-      }
-
-      .funding-cell:last-child {
-        grid-column: 1 / -1;
-      }
-
-      .resource-body {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        gap: 12px;
-        padding-top: 20px;
-      }
-
-      .resource-title {
-        margin: 0;
-        font-size: clamp(1.45rem, 4vw, 1.9rem);
-        line-height: 1.1;
-        letter-spacing: -0.04em;
-      }
-
-      .resource-description {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.78;
-      }
-
-      .resource-actions {
-        position: relative;
-        z-index: 1;
+      .card-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        padding-top: 20px;
-      }
-
-      .action-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        min-height: 46px;
-        padding: 0 18px;
-        border-radius: 999px;
-        background:
-          linear-gradient(180deg, rgba(10, 22, 41, 0.94), rgba(6, 12, 24, 0.98));
-        box-shadow:
-          inset 0 1px 0 rgba(220, 236, 255, 0.05),
-          0 12px 24px rgba(0, 0, 0, 0.16);
-        color: rgba(236, 243, 252, 0.92);
-        font-size: 0.78rem;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        transition:
-          transform 280ms var(--ease),
-          box-shadow 280ms var(--ease),
-          background 280ms var(--ease);
-      }
-
-      .action-button:hover {
-        transform: translateY(-1px);
-        box-shadow:
-          inset 0 1px 0 rgba(223, 239, 255, 0.07),
-          0 16px 28px rgba(0, 0, 0, 0.22),
-          0 0 20px rgba(66, 134, 238, 0.08);
-      }
-
-      .action-button.primary {
-        background:
-          linear-gradient(180deg, rgba(28, 74, 162, 0.96), rgba(9, 28, 68, 0.98));
-        box-shadow:
-          inset 0 1px 0 rgba(224, 238, 255, 0.08),
-          0 16px 30px rgba(0, 0, 0, 0.2),
-          0 0 22px rgba(70, 142, 255, 0.12);
+        justify-content: flex-end;
       }
 
       .empty-state {
         display: none;
-        padding: 44px 28px;
-        border-radius: 28px;
-        background:
-          linear-gradient(180deg, rgba(7, 16, 30, 0.92), rgba(5, 11, 22, 0.98));
-        box-shadow:
-          inset 0 1px 0 rgba(214, 231, 255, 0.04),
-          var(--shadow);
+        padding: 38px 30px;
+        border-radius: 24px;
+        background: rgba(10, 18, 31, 0.94);
+        box-shadow: inset 0 0 0 1px rgba(139, 169, 213, 0.08);
         text-align: center;
+        color: var(--muted);
       }
 
       .empty-state.is-visible {
         display: block;
       }
 
-      .empty-state h2 {
-        margin: 0 0 10px;
-        font-size: clamp(1.5rem, 4vw, 2rem);
-        letter-spacing: -0.04em;
-      }
-
-      .empty-state p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .modal {
+      .modal-backdrop {
         position: fixed;
         inset: 0;
         display: none;
         align-items: center;
         justify-content: center;
         padding: 24px;
-        z-index: 30;
+        background: rgba(2, 6, 12, 0.82);
+        backdrop-filter: blur(10px);
+        z-index: 50;
       }
 
-      .modal.is-open {
+      .modal-backdrop.is-open {
         display: flex;
       }
 
-      .modal-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(2, 6, 12, 0.78);
-        backdrop-filter: blur(14px);
-      }
-
-      .modal-panel {
-        position: relative;
-        width: min(760px, 100%);
-        border-radius: 30px;
+      .modal {
+        width: min(720px, 100%);
+        border-radius: 24px;
         background:
-          linear-gradient(180deg, rgba(8, 18, 34, 0.98), rgba(5, 11, 22, 1));
+          linear-gradient(180deg, rgba(15, 25, 42, 0.98), rgba(8, 14, 25, 0.98));
         box-shadow:
-          inset 0 1px 0 rgba(219, 235, 255, 0.05),
-          0 34px 80px rgba(0, 0, 0, 0.46),
-          0 0 30px rgba(64, 128, 236, 0.1);
+          inset 0 0 0 1px rgba(140, 170, 214, 0.12),
+          0 32px 72px rgba(0, 0, 0, 0.38);
         overflow: hidden;
       }
 
-      .modal-panel::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(circle at 84% 18%, rgba(92, 160, 242, 0.12), transparent 22%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%);
-        pointer-events: none;
+      .modal-header,
+      .modal-body,
+      .modal-footer {
+        padding: 22px 24px;
       }
 
       .modal-header {
-        position: relative;
-        z-index: 1;
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 20px;
-        padding: 26px 26px 18px;
-      }
-
-      .modal-copy {
-        display: grid;
-        gap: 8px;
-      }
-
-      .modal-eyebrow {
-        color: rgba(191, 208, 231, 0.62);
-        font-size: 0.74rem;
-        font-weight: 600;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
+        gap: 18px;
+        border-bottom: 1px solid rgba(139, 169, 213, 0.1);
       }
 
       .modal-title {
         margin: 0;
-        font-size: clamp(1.6rem, 4vw, 2.3rem);
-        letter-spacing: -0.04em;
+        font-size: 1.45rem;
+        letter-spacing: -0.03em;
       }
 
       .modal-subtitle {
-        margin: 0;
+        margin: 8px 0 0;
         color: var(--muted);
         line-height: 1.7;
       }
 
-      .modal-close {
-        width: 42px;
-        height: 42px;
-        border-radius: 14px;
-        background: rgba(9, 20, 38, 0.74);
-        box-shadow:
-          inset 0 1px 0 rgba(223, 238, 255, 0.05),
-          0 10px 22px rgba(0, 0, 0, 0.18);
-        color: rgba(236, 243, 252, 0.82);
+      .close-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(12, 20, 36, 0.96);
+        box-shadow: inset 0 0 0 1px rgba(139, 169, 213, 0.12);
       }
 
-      .modal-body {
-        position: relative;
-        z-index: 1;
-        padding: 0 26px 26px;
-        display: grid;
-        gap: 18px;
+      .preview-panel {
+        border-radius: 20px;
+        padding: 22px;
+        background:
+          linear-gradient(180deg, rgba(10, 18, 32, 0.98), rgba(7, 13, 24, 0.98));
+        box-shadow: inset 0 0 0 1px rgba(139, 169, 213, 0.08);
       }
 
-      .application-form {
+      .preview-card {
         display: grid;
         gap: 16px;
       }
 
-      .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
+      .preview-page {
+        border-radius: 18px;
+        padding: 18px;
+        background: linear-gradient(180deg, #f4efe6, #e9e1d6);
+        color: #18202b;
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
       }
 
-      .form-field {
-        display: grid;
-        gap: 8px;
-      }
-
-      .form-field.is-full {
-        grid-column: 1 / -1;
-      }
-
-      .form-label {
-        color: rgba(206, 221, 243, 0.78);
-        font-size: 0.76rem;
-        font-weight: 600;
-        letter-spacing: 0.14em;
+      .preview-page h3 {
+        margin: 0 0 14px;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      .form-input,
-      .form-select,
-      .form-textarea {
-        width: 100%;
-        border: 0;
-        border-radius: 18px;
-        background:
-          linear-gradient(180deg, rgba(10, 22, 40, 0.96), rgba(6, 12, 24, 0.98));
-        box-shadow:
-          inset 0 1px 0 rgba(216, 233, 255, 0.04),
-          inset 0 0 0 1px rgba(92, 146, 228, 0.08);
-        color: var(--text);
-        padding: 14px 16px;
-        outline: none;
-        transition: box-shadow 260ms var(--ease);
+      .preview-list {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 10px;
+        color: rgba(24, 32, 43, 0.84);
       }
 
-      .form-input:focus,
-      .form-select:focus,
-      .form-textarea:focus {
-        box-shadow:
-          inset 0 1px 0 rgba(224, 239, 255, 0.06),
-          inset 0 0 0 1px rgba(122, 184, 255, 0.16),
-          0 0 0 3px rgba(48, 126, 236, 0.1);
-      }
-
-      .form-textarea {
-        min-height: 128px;
-        resize: vertical;
-      }
-
-      .form-note,
-      .form-status {
+      .locked-note {
+        margin: 0;
         color: var(--muted);
         line-height: 1.7;
       }
 
-      .form-status {
-        min-height: 24px;
+      .form-grid {
+        display: grid;
+        gap: 16px;
       }
 
-      .preview-sheet {
-        padding: 24px;
-        border-radius: 24px;
-        background:
-          linear-gradient(180deg, rgba(10, 22, 40, 0.96), rgba(5, 11, 22, 0.98));
-        box-shadow:
-          inset 0 1px 0 rgba(214, 231, 255, 0.04),
-          inset 0 -16px 30px rgba(0, 0, 0, 0.2);
+      .field {
+        display: grid;
+        gap: 8px;
       }
 
-      .preview-sheet h3 {
-        margin: 0 0 12px;
-        font-size: 1rem;
-        letter-spacing: 0.12em;
+      .field label {
+        font-size: 0.84rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: rgba(206, 221, 243, 0.74);
+        color: rgba(220, 230, 245, 0.76);
       }
 
-      .preview-sheet p {
+      .field input,
+      .field textarea,
+      .field select {
+        width: 100%;
+        border: 0;
+        border-radius: 14px;
+        padding: 14px 16px;
+        background: rgba(12, 20, 36, 0.98);
+        box-shadow: inset 0 0 0 1px rgba(139, 169, 213, 0.12);
+        color: var(--text);
+      }
+
+      .field textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      .status-copy {
         margin: 0;
-        color: var(--muted-strong);
-        line-height: 1.9;
-        white-space: pre-line;
+        color: var(--muted);
       }
 
-      .modal-footer {
-        display: flex;
-        justify-content: flex-end;
-      }
+      @media (max-width: 1120px) {
+        .featured {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
 
-      @media (max-width: 1080px) {
-        .resource-grid {
+        .featured-copy {
+          padding-right: 0;
+        }
+
+        .featured-visual {
+          min-height: 320px;
+        }
+
+        .market-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
-      @media (max-width: 719px) {
+      @media (max-width: 760px) {
         .shell {
-          width: min(100% - 20px, 1240px);
+          width: min(100% - 20px, 100%);
           padding-top: 18px;
-          padding-bottom: 44px;
+          padding-bottom: 40px;
         }
 
         .header {
-          gap: 14px;
           padding-bottom: 18px;
         }
 
         .header-left {
-          width: 100%;
-          justify-content: space-between;
+          flex-wrap: wrap;
+        }
+
+        .brand-wordmark {
+          font-size: 0.94rem;
         }
 
         .brand-subtitle {
-          display: none;
+          font-size: 0.7rem;
         }
 
-        .controls {
-          padding-top: 18px;
+        .featured {
+          padding: 24px 20px 20px;
+          border-radius: 22px;
         }
 
-        .resource-grid {
+        .featured-description {
+          font-size: 0.98rem;
+        }
+
+        .featured-visual {
+          min-height: 260px;
+        }
+
+        .booklet {
+          right: 10%;
+          width: 180px;
+        }
+
+        .filter-section {
+          padding-top: 22px;
+        }
+
+        .market-grid {
           grid-template-columns: 1fr;
-          gap: 18px;
         }
 
-        .resource-card {
-          padding: 20px;
-          border-radius: 24px;
+        .thumbnail {
+          min-height: 250px;
         }
 
-        .modal {
-          padding: 16px;
+        .card-body {
+          padding: 18px 18px 20px;
+        }
+
+        .card-footer {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .card-actions {
+          justify-content: flex-start;
         }
 
         .modal-header,
-        .modal-body {
-          padding-left: 18px;
-          padding-right: 18px;
-        }
-
-        .form-grid {
-          grid-template-columns: 1fr;
+        .modal-body,
+        .modal-footer {
+          padding: 18px;
         }
       }
     </style>
   </head>
   <body>
-    <main class="page">
+    <div class="page">
       <div class="shell">
         <header class="header">
           <div class="header-left">
@@ -916,7 +1234,7 @@
             <div class="brand">
               <div class="brand-mark" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
-                  <path d="M12 2l7 3.6v5.7c0 4.8-2.8 8.9-7 10.7-4.2-1.8-7-5.9-7-10.7V5.6L12 2z" />
+                  <path d="M12 1.8 5.6 4.5v5.1c0 4.3 2.7 8.3 6.4 10.3 3.7-2 6.4-6 6.4-10.3V4.5L12 1.8Zm0 3 3.7 1.5v3.2c0 2.7-1.4 5.5-3.7 7-2.3-1.5-3.7-4.3-3.7-7V6.3L12 4.8Zm0 2.1-1.9 3 1.4.8 1.5-2.3 1.1 2 .8-.4-.9-2.1-2-.9Zm-1.5 5.1c-.9 0-1.7.8-1.7 1.8 0 .9.8 1.7 1.7 1.7.7 0 1.3-.4 1.6-1 .3.6.9 1 1.6 1 .9 0 1.7-.8 1.7-1.7 0-1-.8-1.8-1.7-1.8-.7 0-1.3.5-1.6 1.1-.3-.6-.9-1.1-1.6-1.1Z" />
                 </svg>
               </div>
               <div class="brand-copy">
@@ -925,9 +1243,8 @@
               </div>
             </div>
           </div>
-
-          <button class="menu-button" type="button" aria-label="Menu">
-            <span class="menu-icon" aria-hidden="true">
+          <button class="menu-button" type="button" aria-label="Open navigation">
+            <span class="menu-icon">
               <span></span>
               <span></span>
               <span></span>
@@ -935,414 +1252,500 @@
           </button>
         </header>
 
-        <section class="controls" aria-label="Resource controls">
-          <div class="filter-wrap">
-            <div class="filter-label">Filter Resources</div>
-            <div class="filter-bar" id="filterBar"></div>
+        <section class="featured">
+          <div class="featured-copy">
+            <div class="featured-badge">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 3.5h7l3.5 3.5V20a1 1 0 0 1-1 1h-9A1.5 1.5 0 0 1 6 19.5V5a1.5 1.5 0 0 1 1-1.5Z"></path>
+                <path d="M14 3.5V8h4.5"></path>
+              </svg>
+              Featured
+            </div>
+            <h1 class="featured-title">Bridge Program</h1>
+            <p class="featured-description">
+              Get funding to start your business without the pressure of an investor.
+              Our ownership percentage only goes up based on how much we invest.
+            </p>
+            <div class="featured-price">$20</div>
+            <button class="primary-button" type="button" data-featured-action>
+              View Details
+            </button>
+          </div>
+
+          <div class="featured-visual" aria-hidden="true">
+            <div class="product-stage">
+              <div class="guardian-watermark">
+                <svg viewBox="0 0 400 400">
+                  <path d="M200 28 96 72v89c0 70 43 132 104 165 61-33 104-95 104-165V72L200 28Z"></path>
+                  <path d="M200 80 139 106v51c0 42 24 81 61 104 37-23 61-62 61-104v-51l-61-26Z"></path>
+                </svg>
+              </div>
+              <div class="stage-base"></div>
+              <div class="booklet-shadow"></div>
+              <div class="booklet">
+                <div class="booklet-back"></div>
+                <div class="booklet-spine"></div>
+                <div class="booklet-front">
+                  <div class="booklet-logo">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 2 6.5 4.3v4.5c0 3.7 2.3 7 5.5 8.7 3.2-1.7 5.5-5 5.5-8.7V4.3L12 2Z"></path>
+                    </svg>
+                    Guardian
+                  </div>
+                  <div class="booklet-name">Bridge Program</div>
+                  <div class="booklet-accent">Featured Funding</div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section class="catalog" aria-label="Digital resources store">
-          <div class="resource-grid" id="resourceGrid"></div>
-          <div class="empty-state" id="emptyState">
-            <h2>No resources match this filter.</h2>
-            <p>Try switching back to All to browse every Guardian offer.</p>
+        <section class="filter-section">
+          <div class="filter-bar" role="tablist" aria-label="Marketplace filters">
+            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="pdf">PDFs</button>
+            <button class="filter-chip" type="button" data-filter="software">Software</button>
+            <button class="filter-chip" type="button" data-filter="funding">Funding</button>
           </div>
         </section>
+
+        <section class="market-grid" id="market-grid"></section>
+        <div class="empty-state" id="empty-state">
+          No products match this filter right now.
+        </div>
       </div>
-    </main>
+    </div>
 
-    <div class="modal" id="previewModal" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="modal-backdrop" data-close-modal="true"></div>
-      <div class="modal-panel">
+    <div class="modal-backdrop" id="preview-backdrop">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="preview-title">
         <div class="modal-header">
-          <div class="modal-copy">
-            <div class="modal-eyebrow">PDF Preview</div>
-            <h2 class="modal-title" id="modalTitle"></h2>
-            <p class="modal-subtitle" id="modalSubtitle"></p>
+          <div>
+            <h2 class="modal-title" id="preview-title">Presale Checklist PDF</h2>
+            <p class="modal-subtitle" id="preview-subtitle">
+              Review a short preview before purchasing the full PDF.
+            </p>
           </div>
-          <button class="modal-close" type="button" id="modalClose" aria-label="Close preview">✕</button>
+          <button class="close-button" type="button" data-close-preview aria-label="Close preview">
+            x
+          </button>
         </div>
         <div class="modal-body">
-          <div id="modalContent"></div>
+          <div class="preview-panel">
+            <div class="preview-card">
+              <div class="preview-page">
+                <h3>Preview Page</h3>
+                <ol class="preview-list" id="preview-list"></ol>
+              </div>
+              <p class="locked-note">
+                This preview only shows the opening checklist. The full file remains locked until purchase.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="card-actions">
+            <button class="secondary-button" type="button" data-close-preview>Close</button>
+            <button class="primary-button" type="button" id="preview-buy-button">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="application-backdrop">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="application-title">
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title" id="application-title">Bridge Program Application</h2>
+            <p class="modal-subtitle">
+              Share a few details and we will review whether the Bridge Program is the right fit.
+            </p>
+          </div>
+          <button class="close-button" type="button" data-close-application aria-label="Close application">
+            x
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-grid" id="application-form">
+            <div class="field">
+              <label for="app-name">Name</label>
+              <input id="app-name" name="name" type="text" required />
+            </div>
+            <div class="field">
+              <label for="app-number">Number</label>
+              <input id="app-number" name="number" type="tel" required />
+            </div>
+            <div class="field">
+              <label for="app-description">Brief Description Of Business</label>
+              <textarea id="app-description" name="business_description" required></textarea>
+            </div>
+            <div class="field">
+              <label for="app-timeline">How Soon Do You Want To Sale</label>
+              <select id="app-timeline" name="sale_timeline" required>
+                <option value="">Select a timeframe</option>
+                <option value="within-30-days">Within 30 days</option>
+                <option value="30-90-days">30 to 90 days</option>
+                <option value="3-6-months">3 to 6 months</option>
+                <option value="6-12-months">6 to 12 months</option>
+                <option value="12-plus-months">12+ months</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <p class="status-copy" id="application-status">Your application will submit to Supabase once your project keys are connected.</p>
+          <div class="card-actions">
+            <button class="secondary-button" type="button" data-close-application>Close</button>
+            <button class="primary-button" type="submit" form="application-form" id="submit-application">
+              Submit Application
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <script>
-      const filters = [
-        { label: "All", value: "all" },
-        { label: "PDFs", value: "pdf" },
-        { label: "Software", value: "software" },
-        { label: "Funding", value: "funding" },
-      ];
-
-      const resources = [
+      const products = [
         {
           id: "pdf-presale-checklist",
           title: "Presale Checklist PDF",
-          description: "A lightweight presale checklist to help you prepare your offer, process, and launch steps before you sell.",
+          description:
+            "A lightweight presale checklist to help you prepare your offer, process, and launch steps before you sell.",
           price: 0.5,
           type: "pdf",
-          previewContent:
-            "Preview pages:\n- Offer readiness checkpoints\n- Presale timeline prompts\n- Fulfillment risk checks\n\nThe full PDF unlocks after purchase.",
-          actionUrl: "https://guardian.example.com/products/presale-checklist-pdf",
+          previewContent: [
+            "Clarify the exact offer and buyer before launch.",
+            "List the proof points, assets, and deadlines you need in place.",
+            "Prepare checkout, fulfillment, and follow-up steps before traffic starts."
+          ],
+          buttonLabel: "Buy Now"
         },
         {
           id: "software-playbook",
           title: "Playbook",
-          description: "Ensure all members of your business excecute to your standards.",
+          description:
+            "Ensure all members of your business execute to your standards with this guided operations system.",
           price: 20,
           type: "software",
-          actionUrl: "https://guardian.example.com/demo/playbook",
+          actionUrl: "https://example.com/playbook-demo",
+          buttonLabel: "View Demo"
         },
         {
           id: "funding-bridge-program",
           title: "Bridge Program",
-          description: "Get funding to start your business without the preasure of an investor our ownership % only goes up based on how much we invest giving you a low risk support while retaining your power.",
+          description:
+            "Get funding to start your business without the pressure of an investor. Our ownership % only goes up based on how much we invest.",
           price: 20,
           type: "funding",
-          actionUrl: "",
-        },
+          buttonLabel: "Apply Now"
+        }
       ];
 
-      const iconMap = {
-        pdf: `
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm6 1.5V8h4.5" />
-          </svg>
-        `,
-        software: `
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-4l1.25 3H18v2H6v-2h2.75L10 16H6a2 2 0 0 1-2-2V5zm2 0v9h12V5H6z" />
-          </svg>
-        `,
-        funding: `
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 3h8l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm7 1.5V8h3.5M8 11h8v2H8v-2zm0 4h8v2H8v-2z" />
-          </svg>
-        `,
-      };
-
-      const labelMap = {
-        pdf: "PDF",
-        software: "Software",
-        funding: "Funding",
-      };
-
-      const previewMap = {
-        pdf: () => `
-          <div class="preview-document">
-            <div class="type-pill">${iconMap.pdf}<span>PDF</span></div>
-            <div class="preview-lines">
-              <div class="preview-line"></div>
-              <div class="preview-line"></div>
-              <div class="preview-line"></div>
-              <div class="preview-line"></div>
-            </div>
-          </div>
-        `,
-        software: () => `
-          <div class="preview-window">
-            <div class="window-bar">
-              <span class="window-dot"></span>
-              <span class="window-dot"></span>
-              <span class="window-dot"></span>
-            </div>
-            <div class="window-panel">
-              <div class="window-sidebar"></div>
-              <div class="window-main"></div>
-            </div>
-            <div class="type-pill">${iconMap.software}<span>Demo Ready</span></div>
-          </div>
-        `,
-        funding: () => `
-          <div class="preview-funding">
-            <div class="type-pill">${iconMap.funding}<span>Application</span></div>
-            <div class="funding-grid">
-              <div class="funding-cell"></div>
-              <div class="funding-cell"></div>
-              <div class="funding-cell"></div>
-            </div>
-          </div>
-        `,
-      };
-
-      const actionTextMap = {
-        pdf: { primary: "Purchase", secondary: "Preview" },
-        software: { primary: "View Demo" },
-        funding: { primary: "Apply" },
-      };
-
       const supabaseConfig = {
-        url: "",
-        anonKey: "",
-        table: "bridge_program_applications",
+        url: window.NEXT_PUBLIC_SUPABASE_URL || "",
+        anonKey:
+          window.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+          window.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+          "",
+        table: "bridge_program_applications"
       };
 
-      const filterBar = document.getElementById("filterBar");
-      const resourceGrid = document.getElementById("resourceGrid");
-      const emptyState = document.getElementById("emptyState");
-      const previewModal = document.getElementById("previewModal");
-      const modalTitle = document.getElementById("modalTitle");
-      const modalSubtitle = document.getElementById("modalSubtitle");
-      const modalContent = document.getElementById("modalContent");
-      const modalClose = document.getElementById("modalClose");
+      const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+      const marketGrid = document.getElementById("market-grid");
+      const emptyState = document.getElementById("empty-state");
+      const previewBackdrop = document.getElementById("preview-backdrop");
+      const previewTitle = document.getElementById("preview-title");
+      const previewSubtitle = document.getElementById("preview-subtitle");
+      const previewList = document.getElementById("preview-list");
+      const previewBuyButton = document.getElementById("preview-buy-button");
+      const applicationBackdrop = document.getElementById("application-backdrop");
+      const applicationForm = document.getElementById("application-form");
+      const applicationStatus = document.getElementById("application-status");
+      const featuredAction = document.querySelector("[data-featured-action]");
 
       let activeFilter = "all";
-      let modalPurchaseUrl = "";
+
+      const typeMeta = {
+        pdf: {
+          label: "PDF",
+          icon:
+            '<svg viewBox="0 0 24 24"><path d="M7 3.5h7l3.5 3.5V20a1 1 0 0 1-1 1h-9A1.5 1.5 0 0 1 6 19.5V5a1.5 1.5 0 0 1 1-1.5Z"></path><path d="M14 3.5V8h4.5"></path></svg>'
+        },
+        software: {
+          label: "Software",
+          icon:
+            '<svg viewBox="0 0 24 24"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v8A1.5 1.5 0 0 1 18.5 16h-13A1.5 1.5 0 0 1 4 14.5v-8Z"></path><path d="M8.5 19h7"></path><path d="M12 16v3"></path></svg>'
+        },
+        funding: {
+          label: "Funding",
+          icon:
+            '<svg viewBox="0 0 24 24"><path d="M7 4.5h10A1.5 1.5 0 0 1 18.5 6v12A1.5 1.5 0 0 1 17 19.5H7A1.5 1.5 0 0 1 5.5 18V6A1.5 1.5 0 0 1 7 4.5Z"></path><path d="M9 8.5h6"></path><path d="M9 12h6"></path><path d="M9 15.5h4"></path><path d="M3.5 8.5h2"></path><path d="M3.5 12h2"></path><path d="M3.5 15.5h2"></path></svg>'
+        }
+      };
 
       const currency = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-        maximumFractionDigits: 0,
+        minimumFractionDigits: 2
       });
 
-      function formatPrice(price) {
-        return price === 0 ? "Free" : currency.format(price);
+      function sortProducts(items) {
+        return [...items].sort((a, b) => a.price - b.price || a.title.localeCompare(b.title));
       }
 
-      function escapeHtml(value) {
-        return String(value)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
+      function getFilteredProducts() {
+        const visible =
+          activeFilter === "all"
+            ? products
+            : products.filter((product) => product.type === activeFilter);
+        return sortProducts(visible);
       }
 
-      function sortedResources(list) {
-        return [...list].sort((a, b) => a.price - b.price || a.title.localeCompare(b.title));
-      }
-
-      function getFilteredResources() {
-        const filtered = activeFilter === "all"
-          ? resources
-          : resources.filter((resource) => resource.type === activeFilter);
-        return sortedResources(filtered);
-      }
-
-      function createFilterButton(filter) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = `filter-chip${activeFilter === filter.value ? " is-active" : ""}`;
-        button.textContent = filter.label;
-        button.addEventListener("click", () => {
-          activeFilter = filter.value;
-          renderFilters();
-          renderResources();
-        });
-        return button;
-      }
-
-      function createActionButton(label, isPrimary, onClick) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = `action-button${isPrimary ? " primary" : ""}`;
-        button.textContent = label;
-        button.addEventListener("click", onClick);
-        return button;
-      }
-
-      function openPreview(resource) {
-        modalTitle.textContent = resource.title;
-        modalSubtitle.textContent = "Preview only. Full PDF unlocks after purchase.";
-        modalPurchaseUrl = resource.actionUrl;
-        modalContent.innerHTML = `
-          <div class="preview-sheet">
-            <h3>Partial Preview</h3>
-            <p>${escapeHtml(resource.previewContent)}</p>
-          </div>
-          <div class="modal-footer">
-            <button class="action-button primary" type="button" id="modalPurchase">Purchase PDF</button>
-          </div>
-        `;
-        document.getElementById("modalPurchase").addEventListener("click", () => openExternal(modalPurchaseUrl));
-        previewModal.classList.add("is-open");
-        previewModal.setAttribute("aria-hidden", "false");
-      }
-
-      function openFundingForm(resource) {
-        modalTitle.textContent = resource.title;
-        modalSubtitle.textContent = "Apply for the Bridge Program through Guardian.";
-        modalContent.innerHTML = `
-          <form class="application-form" id="bridgeProgramForm">
-            <div class="form-grid">
-              <label class="form-field">
-                <span class="form-label">Name</span>
-                <input class="form-input" type="text" name="name" autocomplete="name" required />
-              </label>
-              <label class="form-field">
-                <span class="form-label">Number</span>
-                <input class="form-input" type="tel" name="phone" autocomplete="tel" required />
-              </label>
-              <label class="form-field is-full">
-                <span class="form-label">Brief Description Of Business</span>
-                <textarea class="form-textarea" name="business_description" required></textarea>
-              </label>
-              <label class="form-field is-full">
-                <span class="form-label">How Soon Do You Want To Sale</span>
-                <select class="form-select" name="time_frame" required>
-                  <option value="">Select a time frame</option>
-                  <option value="within-30-days">Within 30 days</option>
-                  <option value="30-90-days">30 to 90 days</option>
-                  <option value="3-6-months">3 to 6 months</option>
-                  <option value="6-12-months">6 to 12 months</option>
-                  <option value="12-plus-months">12+ months</option>
-                </select>
-              </label>
+      function renderThumbnail(product) {
+        if (product.type === "pdf") {
+          return `
+            <div class="thumbnail-canvas">
+              <div class="thumb-book"></div>
+              <div class="thumb-book-title">Presale Checklist</div>
+              <div class="thumb-book-lines"><span></span><span></span><span></span></div>
+              <div class="thumb-sheet">
+                <div class="thumb-sheet-header">Deliverables</div>
+                <div class="thumb-checks">
+                  <div class="thumb-check"><i></i><span></span></div>
+                  <div class="thumb-check"><i></i><span></span></div>
+                  <div class="thumb-check"><i></i><span></span></div>
+                  <div class="thumb-check"><i></i><span></span></div>
+                  <div class="thumb-check"><i></i><span></span></div>
+                </div>
+              </div>
             </div>
-            <p class="form-note">Supabase is not connected yet. Add your project URL and anon key in this page script, then submissions will post there.</p>
-            <div class="form-status" id="formStatus"></div>
-            <div class="modal-footer">
-              <button class="action-button primary" type="submit">Submit Application</button>
-            </div>
-          </form>
-        `;
-
-        document
-          .getElementById("bridgeProgramForm")
-          .addEventListener("submit", async (event) => handleFundingSubmit(event, resource));
-
-        previewModal.classList.add("is-open");
-        previewModal.setAttribute("aria-hidden", "false");
-      }
-
-      function closePreview() {
-        previewModal.classList.remove("is-open");
-        previewModal.setAttribute("aria-hidden", "true");
-        modalContent.innerHTML = "";
-      }
-
-      function openExternal(url) {
-        window.open(url, "_blank", "noopener,noreferrer");
-      }
-
-      async function handleFundingSubmit(event, resource) {
-        event.preventDefault();
-
-        const form = event.currentTarget;
-        const status = document.getElementById("formStatus");
-        const submitButton = form.querySelector('button[type="submit"]');
-        const formData = new FormData(form);
-        const payload = {
-          resource_id: resource.id,
-          resource_title: resource.title,
-          name: formData.get("name"),
-          phone: formData.get("phone"),
-          business_description: formData.get("business_description"),
-          time_frame: formData.get("time_frame"),
-          submitted_at: new Date().toISOString(),
-        };
-
-        if (!supabaseConfig.url || !supabaseConfig.anonKey) {
-          status.textContent = "Connect your Supabase URL and anon key in this page script, then submissions will post there.";
-          return;
+          `;
         }
 
-        submitButton.disabled = true;
-        status.textContent = "Submitting...";
-
-        try {
-          const response = await fetch(`${supabaseConfig.url}/rest/v1/${supabaseConfig.table}`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              apikey: supabaseConfig.anonKey,
-              Authorization: `Bearer ${supabaseConfig.anonKey}`,
-              Prefer: "return=minimal",
-            },
-            body: JSON.stringify(payload),
-          });
-
-          if (!response.ok) {
-            throw new Error("Supabase request failed.");
-          }
-
-          status.textContent = "Application submitted.";
-          form.reset();
-        } catch (error) {
-          status.textContent = "Submission failed. Check your Supabase configuration and table settings.";
-        } finally {
-          submitButton.disabled = false;
+        if (product.type === "software") {
+          return `
+            <div class="thumbnail-canvas">
+              <div class="thumb-laptop">
+                <div class="thumb-screen">
+                  <div class="thumb-nav"></div>
+                  <div class="thumb-header"><span></span><span></span></div>
+                  <div class="thumb-card one"><span></span><span></span><span></span></div>
+                  <div class="thumb-card two"><span></span><span></span><span></span></div>
+                  <div class="thumb-card three"><span></span><span></span><span></span></div>
+                  <div class="thumb-card four"><span></span><span></span><span></span></div>
+                </div>
+                <div class="thumb-base"></div>
+              </div>
+            </div>
+          `;
         }
-      }
 
-      function createCard(resource) {
-        const card = document.createElement("article");
-        card.className = "resource-card";
-        card.dataset.type = resource.type;
-
-        const actions = actionTextMap[resource.type];
-
-        card.innerHTML = `
-          <div class="card-top">
-            <div class="card-meta">
-              <div class="type-pill">${iconMap[resource.type]}<span>${labelMap[resource.type]}</span></div>
-              <div class="price">${formatPrice(resource.price)}</div>
+        return `
+          <div class="thumbnail-canvas">
+            <div class="thumb-book"></div>
+            <div class="thumb-book-title">Bridge Funding Application</div>
+            <div class="thumb-form"></div>
+            <div class="thumb-funding-lines">
+              <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+                <path d="M0 120C40 116 66 72 112 72s64 48 108 48 58-44 106-44 42 28 74 28"></path>
+                <path d="M0 146c44 0 62-30 108-30s68 34 122 34 74-28 122-28 32 18 48 18"></path>
+              </svg>
             </div>
-            <div class="card-preview">
-              ${previewMap[resource.type]()}
-            </div>
-          </div>
-          <div class="resource-body">
-            <h2 class="resource-title">${resource.title}</h2>
-            <p class="resource-description">${resource.description}</p>
           </div>
         `;
+      }
 
-        const actionsRow = document.createElement("div");
-        actionsRow.className = "resource-actions";
-
-        if (resource.type === "pdf") {
-          actionsRow.appendChild(createActionButton(actions.secondary, false, () => openPreview(resource)));
-          actionsRow.appendChild(createActionButton(actions.primary, true, () => openExternal(resource.actionUrl)));
-        } else if (resource.type === "software") {
-          actionsRow.appendChild(createActionButton(actions.primary, true, () => openExternal(resource.actionUrl)));
-        } else {
-          actionsRow.appendChild(createActionButton(actions.primary, true, () => openFundingForm(resource)));
+      function renderActions(product) {
+        if (product.type === "pdf") {
+          return `
+            <button class="secondary-button" type="button" data-preview="${product.id}">Preview</button>
+            <button class="tile-button" type="button" data-buy="${product.id}">Buy Now</button>
+          `;
         }
 
-        card.appendChild(actionsRow);
-        return card;
+        if (product.type === "software") {
+          return `
+            <button class="tile-button" type="button" data-demo="${product.id}">View Demo</button>
+          `;
+        }
+
+        return `
+          <button class="tile-button" type="button" data-apply="${product.id}">Apply Now</button>
+        `;
       }
 
-      function renderFilters() {
-        filterBar.innerHTML = "";
-        filters.forEach((filter) => {
-          filterBar.appendChild(createFilterButton(filter));
-        });
-      }
+      function renderCards() {
+        const visibleProducts = getFilteredProducts();
+        marketGrid.innerHTML = "";
 
-      function renderResources() {
-        const items = getFilteredResources();
-        resourceGrid.innerHTML = "";
-
-        if (items.length === 0) {
+        if (!visibleProducts.length) {
           emptyState.classList.add("is-visible");
           return;
         }
 
         emptyState.classList.remove("is-visible");
-        items.forEach((resource) => {
-          resourceGrid.appendChild(createCard(resource));
+
+        visibleProducts.forEach((product) => {
+          const meta = typeMeta[product.type];
+          const article = document.createElement("article");
+          article.className = "card";
+          article.innerHTML = `
+            <div class="thumbnail">
+              ${renderThumbnail(product)}
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                ${meta.icon}
+                <span>${meta.label}</span>
+              </div>
+              <h2 class="card-title">${product.title}</h2>
+              <p class="card-description">${product.description}</p>
+              <div class="card-footer">
+                <div class="card-price">${currency.format(product.price)}</div>
+                <div class="card-actions">
+                  ${renderActions(product)}
+                </div>
+              </div>
+            </div>
+          `;
+          marketGrid.appendChild(article);
         });
       }
 
-      modalClose.addEventListener("click", closePreview);
-      previewModal.addEventListener("click", (event) => {
-        if (event.target.dataset.closeModal === "true") {
+      function setActiveFilter(nextFilter) {
+        activeFilter = nextFilter;
+        filterButtons.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.filter === nextFilter);
+        });
+        renderCards();
+      }
+
+      function openPreview(productId) {
+        const product = products.find((item) => item.id === productId);
+        if (!product) return;
+
+        previewTitle.textContent = product.title;
+        previewSubtitle.textContent = "Review a short preview before purchasing the full PDF.";
+        previewList.innerHTML = "";
+        (product.previewContent || []).forEach((entry) => {
+          const li = document.createElement("li");
+          li.textContent = entry;
+          previewList.appendChild(li);
+        });
+        previewBuyButton.dataset.buy = product.id;
+        previewBackdrop.classList.add("is-open");
+      }
+
+      function closePreview() {
+        previewBackdrop.classList.remove("is-open");
+      }
+
+      function openApplication() {
+        applicationStatus.textContent =
+          "Your application will submit to Supabase once your project keys are connected.";
+        applicationBackdrop.classList.add("is-open");
+      }
+
+      function closeApplication() {
+        applicationBackdrop.classList.remove("is-open");
+      }
+
+      function handlePurchase(productId) {
+        const product = products.find((item) => item.id === productId);
+        if (!product) return;
+        window.alert(product.title + " checkout will connect once your payment flow is added.");
+      }
+
+      function handleDemo(productId) {
+        const product = products.find((item) => item.id === productId);
+        if (!product || !product.actionUrl) return;
+        window.open(product.actionUrl, "_blank", "noopener,noreferrer");
+      }
+
+      async function submitApplication(event) {
+        event.preventDefault();
+
+        const formData = new FormData(applicationForm);
+        const payload = {
+          name: formData.get("name"),
+          number: formData.get("number"),
+          business_description: formData.get("business_description"),
+          sale_timeline: formData.get("sale_timeline")
+        };
+
+        if (!supabaseConfig.url || !supabaseConfig.anonKey) {
+          applicationStatus.textContent =
+            "Supabase keys are not configured yet. Add them and this form will submit live.";
+          return;
+        }
+
+        try {
+          applicationStatus.textContent = "Submitting application...";
+          const response = await fetch(
+            supabaseConfig.url + "/rest/v1/" + supabaseConfig.table,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                apikey: supabaseConfig.anonKey,
+                Authorization: "Bearer " + supabaseConfig.anonKey,
+                Prefer: "return=minimal"
+              },
+              body: JSON.stringify(payload)
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Submission failed");
+          }
+
+          applicationStatus.textContent = "Application submitted successfully.";
+          applicationForm.reset();
+        } catch (error) {
+          applicationStatus.textContent =
+            "We could not submit right now. Please check your Supabase table and keys.";
+        }
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => setActiveFilter(button.dataset.filter));
+      });
+
+      document.addEventListener("click", (event) => {
+        const previewTrigger = event.target.closest("[data-preview]");
+        const buyTrigger = event.target.closest("[data-buy]");
+        const demoTrigger = event.target.closest("[data-demo]");
+        const applyTrigger = event.target.closest("[data-apply]");
+        const closePreviewTrigger = event.target.closest("[data-close-preview]");
+        const closeApplicationTrigger = event.target.closest("[data-close-application]");
+
+        if (previewTrigger) {
+          openPreview(previewTrigger.dataset.preview);
+        }
+
+        if (buyTrigger) {
+          handlePurchase(buyTrigger.dataset.buy);
+        }
+
+        if (demoTrigger) {
+          handleDemo(demoTrigger.dataset.demo);
+        }
+
+        if (applyTrigger) {
+          openApplication();
+        }
+
+        if (closePreviewTrigger || event.target === previewBackdrop) {
           closePreview();
         }
-      });
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closePreview();
+
+        if (closeApplicationTrigger || event.target === applicationBackdrop) {
+          closeApplication();
         }
       });
 
-      renderFilters();
-      renderResources();
+      featuredAction.addEventListener("click", openApplication);
+      applicationForm.addEventListener("submit", submitApplication);
+      renderCards();
     </script>
   </body>
 </html>
