@@ -8,16 +8,17 @@
       :root {
         color-scheme: dark;
         font-family: "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
-        --bg-0: #020710;
-        --bg-1: #061226;
-        --bg-2: #041a35;
-        --panel: #08162b;
-        --panel-deep: #071222;
-        --line: rgba(115, 157, 229, 0.18);
+        --bg-0: #040911;
+        --bg-1: #071426;
+        --bg-2: #081e3a;
+        --surface: #0a172b;
+        --surface-2: #0c1c33;
+        --line: rgba(108, 148, 217, 0.18);
         --text: #edf3ff;
-        --muted: rgba(179, 197, 224, 0.86);
+        --muted: rgba(185, 202, 228, 0.84);
         --blue: #4f8dff;
-        --blue-soft: #8bbcff;
+        --blue-soft: #98c3ff;
+        --shadow: 0 26px 56px rgba(0, 0, 0, 0.35);
         --ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -34,11 +35,11 @@
       body {
         margin: 0;
         min-width: 320px;
-        background:
-          radial-gradient(circle at 18% 12%, rgba(33, 81, 160, 0.16), transparent 24%),
-          radial-gradient(circle at 86% 14%, rgba(40, 103, 205, 0.14), transparent 24%),
-          linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 48%, var(--bg-0) 100%);
         color: var(--text);
+        background:
+          radial-gradient(circle at 12% 8%, rgba(44, 92, 172, 0.17), transparent 24%),
+          radial-gradient(circle at 86% 14%, rgba(56, 114, 214, 0.14), transparent 24%),
+          linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 46%, var(--bg-0) 100%);
         overflow-x: hidden;
       }
 
@@ -52,16 +53,16 @@
 
       body::before {
         background:
-          linear-gradient(rgba(114, 156, 226, 0.013) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(114, 156, 226, 0.013) 1px, transparent 1px);
+          linear-gradient(rgba(116, 154, 223, 0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(116, 154, 223, 0.012) 1px, transparent 1px);
         background-size: 58px 58px;
-        mask-image: radial-gradient(circle at center, black 26%, transparent 84%);
+        mask-image: radial-gradient(circle at center, black 26%, transparent 86%);
       }
 
       body::after {
         background:
-          radial-gradient(circle at center, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.34) 100%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 24%, transparent 82%, rgba(0, 0, 0, 0.16));
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.32) 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 24%, transparent 80%, rgba(0, 0, 0, 0.16));
       }
 
       a {
@@ -71,63 +72,54 @@
 
       .page {
         position: relative;
-        min-height: 100vh;
-        padding: 18px 18px 24px;
-      }
-
-      .hero-shell {
-        width: min(1800px, 100%);
-        margin: 0 auto;
-        min-height: calc(100vh - 42px);
-        display: grid;
-        grid-template-columns: minmax(520px, 46%) minmax(560px, 54%);
+        width: min(1280px, calc(100% - 40px));
+        margin: 20px auto 28px;
+        padding: 0;
         border-radius: 24px;
         overflow: hidden;
-        position: relative;
         background:
-          radial-gradient(circle at 28% 22%, rgba(36, 85, 168, 0.11), transparent 28%),
-          linear-gradient(150deg, transparent 44%, rgba(102, 142, 211, 0.05) 44.3%, transparent 44.8%),
-          linear-gradient(180deg, rgba(4, 10, 21, 0.55), rgba(3, 7, 15, 0.78));
+          radial-gradient(circle at 68% 36%, rgba(72, 130, 228, 0.1), transparent 38%),
+          linear-gradient(142deg, transparent 43%, rgba(103, 145, 214, 0.05) 43.2%, transparent 43.7%),
+          linear-gradient(180deg, rgba(10, 22, 40, 0.74), rgba(6, 13, 24, 0.82));
         box-shadow:
-          inset 0 0 0 1px rgba(108, 151, 224, 0.13),
-          0 34px 80px rgba(0, 0, 0, 0.36);
+          inset 0 0 0 1px rgba(109, 151, 219, 0.16),
+          var(--shadow);
       }
 
-      .left {
-        position: relative;
-        z-index: 2;
-        padding: 30px 34px 28px 42px;
+      .header {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 24px 30px 0;
       }
 
       .back-link {
-        width: fit-content;
-        min-height: 44px;
-        padding: 0 14px;
-        border-radius: 14px;
+        min-height: 42px;
         display: inline-flex;
         align-items: center;
         gap: 9px;
-        color: rgba(232, 240, 252, 0.94);
-        background: rgba(11, 22, 40, 0.76);
+        padding: 0 14px;
+        border-radius: 13px;
+        background: rgba(11, 22, 40, 0.78);
         box-shadow:
-          inset 0 0 0 1px rgba(102, 145, 219, 0.18),
-          0 10px 24px rgba(0, 0, 0, 0.2);
-        font-size: 0.92rem;
+          inset 0 0 0 1px rgba(106, 147, 216, 0.2),
+          0 10px 22px rgba(0, 0, 0, 0.22);
+        color: rgba(229, 238, 252, 0.95);
+        font-size: 0.93rem;
         font-weight: 500;
         transition:
           transform 200ms var(--ease),
-          box-shadow 200ms var(--ease),
-          background 200ms var(--ease);
+          background 200ms var(--ease),
+          box-shadow 200ms var(--ease);
       }
 
       .back-link:hover {
         transform: translateX(-2px);
-        background: rgba(14, 29, 53, 0.92);
+        background: rgba(15, 29, 53, 0.9);
         box-shadow:
-          inset 0 0 0 1px rgba(122, 174, 255, 0.26),
-          0 12px 26px rgba(0, 0, 0, 0.26);
+          inset 0 0 0 1px rgba(130, 180, 255, 0.28),
+          0 12px 24px rgba(0, 0, 0, 0.26);
       }
 
       .back-link svg {
@@ -138,21 +130,19 @@
         stroke-width: 2.2;
       }
 
-      .brand {
-        margin-top: 54px;
+      .wordmark {
         display: inline-flex;
         align-items: center;
-        gap: 14px;
+        gap: 12px;
       }
 
-      .brand-mark {
-        width: 40px;
-        height: 48px;
+      .wordmark-badge {
+        width: 30px;
+        height: 36px;
         color: var(--blue);
-        filter: drop-shadow(0 0 10px rgba(76, 136, 255, 0.14));
       }
 
-      .brand-mark svg {
+      .wordmark-badge svg {
         width: 100%;
         height: 100%;
         fill: none;
@@ -160,372 +150,303 @@
         stroke-width: 1.5;
       }
 
-      .brand-wordmark {
-        font-size: 2rem;
+      .wordmark-text {
+        font-size: 1.25rem;
         font-weight: 700;
-        letter-spacing: 0.23em;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
       }
 
-      .headline {
-        margin: 48px 0 0;
-        max-width: 8.5ch;
-        font-size: clamp(3rem, 5vw, 5.4rem);
-        line-height: 0.92;
-        letter-spacing: -0.068em;
-        font-weight: 800;
-      }
-
-      .headline .accent {
-        color: var(--blue);
-      }
-
-      .rule {
-        width: 72px;
-        height: 3px;
-        margin-top: 26px;
-        border-radius: 999px;
-        background: linear-gradient(90deg, rgba(79, 141, 255, 1), rgba(79, 141, 255, 0.14));
-        box-shadow: 0 0 16px rgba(79, 141, 255, 0.2);
-      }
-
-      .copy {
-        margin: 24px 0 0;
-        max-width: 34rem;
-        font-size: 1.05rem;
-        line-height: 1.62;
-        color: var(--muted);
-      }
-
-      .cards {
-        margin-top: 28px;
+      .hero {
+        padding: 20px 30px 42px;
         display: grid;
-        grid-template-columns: repeat(2, minmax(260px, 1fr));
-        gap: 16px;
-        width: 100%;
+        grid-template-columns: minmax(420px, 1fr) minmax(320px, 0.8fr);
+        gap: 28px;
+        align-items: center;
       }
 
-      .card {
-        position: relative;
-        min-height: 278px;
-        border-radius: 20px;
-        padding: 20px 20px 20px;
-        background:
-          linear-gradient(180deg, rgba(11, 22, 41, 0.98), rgba(8, 17, 33, 0.99)),
-          linear-gradient(132deg, rgba(89, 141, 237, 0.05), transparent 48%);
-        box-shadow:
-          inset 0 0 0 1px rgba(99, 141, 216, 0.16),
-          inset 0 1px 0 rgba(255, 255, 255, 0.028),
-          0 18px 36px rgba(0, 0, 0, 0.24);
-      }
-
-      .card-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: 16px;
-        display: grid;
-        place-items: center;
-        color: #63a2ff;
-        background: linear-gradient(180deg, rgba(28, 59, 106, 0.88), rgba(19, 41, 80, 0.88));
-        box-shadow:
-          inset 0 0 0 1px rgba(110, 157, 238, 0.18),
-          0 12px 22px rgba(0, 0, 0, 0.24);
-      }
-
-      .card-icon svg {
-        width: 24px;
-        height: 24px;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.9;
-      }
-
-      .card h2 {
-        margin: 18px 0 10px;
-        font-size: clamp(2rem, 2.3vw, 2.35rem);
-        line-height: 1;
-        letter-spacing: -0.03em;
-        font-weight: 700;
-      }
-
-      .card p {
+      .hero-copy h1 {
         margin: 0;
-        max-width: 24ch;
-        font-size: 0.98rem;
-        line-height: 1.5;
-        color: rgba(172, 193, 224, 0.84);
+        font-size: clamp(2.2rem, 4.8vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.045em;
+        max-width: 11ch;
       }
 
-      .card-link {
-        position: absolute;
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
-        min-height: 46px;
+      .hero-copy p {
+        margin: 18px 0 0;
+        max-width: 58ch;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.65;
+      }
+
+      .cta-wrap {
+        margin-top: 24px;
+        display: inline-flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .cta-main {
+        min-height: 50px;
+        padding: 0 26px;
         border-radius: 999px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        background: rgba(8, 20, 38, 0.84);
-        color: #7eb5ff;
-        box-shadow: inset 0 0 0 1px rgba(81, 136, 222, 0.45);
+        background: linear-gradient(180deg, rgba(82, 145, 255, 0.94), rgba(63, 120, 224, 0.94));
+        color: #f3f8ff;
+        font-size: 0.96rem;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        font-size: 0.92rem;
-        letter-spacing: 0.1em;
         font-weight: 700;
+        box-shadow:
+          inset 0 0 0 1px rgba(182, 218, 255, 0.18),
+          0 16px 32px rgba(18, 56, 122, 0.35);
+        transition:
+          transform 220ms var(--ease),
+          box-shadow 220ms var(--ease),
+          filter 220ms var(--ease);
       }
 
-      .card-link::after {
+      .cta-main::after {
         content: "\2192";
-        font-size: 1.02em;
+        font-size: 1.1em;
       }
 
-      .right {
+      .cta-main:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+        box-shadow:
+          inset 0 0 0 1px rgba(198, 228, 255, 0.24),
+          0 20px 34px rgba(18, 56, 122, 0.44);
+      }
+
+      .cta-note {
+        font-size: 0.84rem;
+        color: rgba(168, 189, 221, 0.76);
+      }
+
+      .hero-visual {
+        min-height: 270px;
+        border-radius: 22px;
         position: relative;
-        overflow: hidden;
         background:
-          radial-gradient(circle at 68% 42%, rgba(113, 170, 255, 0.22), transparent 30%),
-          radial-gradient(circle at 52% 62%, rgba(58, 121, 234, 0.18), transparent 36%),
-          linear-gradient(180deg, rgba(6, 20, 44, 0.7), rgba(5, 13, 27, 0.9));
+          radial-gradient(circle at 70% 30%, rgba(170, 216, 255, 0.18), transparent 24%),
+          radial-gradient(circle at 48% 56%, rgba(76, 136, 243, 0.24), transparent 36%),
+          linear-gradient(180deg, rgba(11, 30, 56, 0.82), rgba(8, 18, 34, 0.9));
+        box-shadow:
+          inset 0 0 0 1px rgba(111, 153, 221, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.03),
+          0 20px 42px rgba(0, 0, 0, 0.28);
+        overflow: hidden;
       }
 
-      .right::before,
-      .right::after {
+      .hero-visual::before,
+      .hero-visual::after {
         content: "";
         position: absolute;
         inset: 0;
         pointer-events: none;
       }
 
-      .right::before {
+      .hero-visual::before {
         background:
-          radial-gradient(circle at 74% 44%, rgba(186, 225, 255, 0.28), transparent 14%),
-          linear-gradient(90deg, rgba(5, 11, 22, 0.4), transparent 20%);
-        filter: blur(8px);
+          linear-gradient(rgba(132, 174, 242, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(132, 174, 242, 0.07) 1px, transparent 1px);
+        background-size: 44px 44px;
+        opacity: 0.32;
       }
 
-      .right::after {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 20%, transparent 82%, rgba(0, 0, 0, 0.2));
+      .hero-visual::after {
+        background:
+          linear-gradient(132deg, transparent 43%, rgba(149, 188, 247, 0.12) 43.1%, transparent 43.8%),
+          radial-gradient(circle at 64% 52%, rgba(91, 154, 255, 0.26), transparent 34%);
       }
 
-      .static-wave {
-        position: absolute;
-        inset: 0;
+      .what {
+        margin: 0 30px 32px;
+        padding: 24px 24px 26px;
+        border-radius: 20px;
+        background:
+          linear-gradient(180deg, rgba(10, 22, 40, 0.95), rgba(7, 16, 30, 0.96)),
+          linear-gradient(130deg, rgba(89, 145, 243, 0.06), transparent 52%);
+        box-shadow:
+          inset 0 0 0 1px rgba(106, 146, 214, 0.16),
+          0 20px 38px rgba(0, 0, 0, 0.26);
       }
 
-      .static-wave svg {
-        width: 100%;
-        height: 100%;
-        display: block;
+      .what h2 {
+        margin: 0;
+        font-size: clamp(1.45rem, 2.6vw, 2rem);
+        letter-spacing: -0.025em;
       }
 
-      .static-wave .glow {
-        filter: blur(20px);
-        opacity: 0.9;
+      .what-grid {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
       }
 
-      @media (max-width: 1320px) {
-        .hero-shell {
-          grid-template-columns: minmax(460px, 1fr) minmax(460px, 1fr);
+      .what-item {
+        padding: 14px 14px 12px;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(12, 24, 45, 0.8), rgba(9, 18, 33, 0.8));
+        box-shadow: inset 0 0 0 1px rgba(101, 142, 210, 0.14);
+      }
+
+      .what-item h3 {
+        margin: 0;
+        font-size: 1rem;
+        letter-spacing: 0.01em;
+      }
+
+      .what-item p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.52;
+      }
+
+      @media (max-width: 1120px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          padding: 16px 22px 30px;
         }
 
-        .left {
-          padding: 24px 24px 20px 26px;
+        .hero-copy h1 {
+          max-width: 14ch;
+          font-size: clamp(2rem, 6.5vw, 3.3rem);
         }
 
-        .brand {
-          margin-top: 40px;
+        .hero-visual {
+          min-height: 220px;
         }
 
-        .brand-wordmark {
-          font-size: 1.62rem;
-          letter-spacing: 0.2em;
+        .what {
+          margin: 0 22px 24px;
         }
 
-        .headline {
-          margin-top: 36px;
-          font-size: clamp(2.8rem, 4.9vw, 4.5rem);
-        }
-
-        .copy {
-          font-size: 1rem;
-          line-height: 1.58;
-        }
-
-        .cards {
+        .what-grid {
           grid-template-columns: 1fr;
         }
-
-        .card {
-          min-height: 248px;
-        }
       }
 
-      @media (max-width: 980px) {
+      @media (max-width: 700px) {
         .page {
-          padding: 12px;
+          width: calc(100% - 16px);
+          margin: 8px auto 16px;
+          border-radius: 16px;
         }
 
-        .hero-shell {
-          min-height: auto;
-          grid-template-columns: 1fr;
+        .header {
+          padding: 14px 12px 0;
         }
 
-        .left {
-          padding: 18px 16px 12px;
+        .wordmark-text {
+          font-size: 1.05rem;
+          letter-spacing: 0.14em;
         }
 
-        .brand {
-          margin-top: 30px;
+        .hero {
+          padding: 12px 12px 20px;
+          gap: 14px;
         }
 
-        .brand-wordmark {
-          font-size: 1.36rem;
-          letter-spacing: 0.16em;
+        .hero-copy h1 {
+          font-size: clamp(1.76rem, 9vw, 2.6rem);
+          max-width: none;
         }
 
-        .brand-mark {
-          width: 34px;
-          height: 40px;
+        .hero-copy p {
+          font-size: 0.95rem;
+          line-height: 1.56;
         }
 
-        .headline {
-          margin-top: 30px;
-          font-size: clamp(2.45rem, 10vw, 3.85rem);
-          max-width: 9.4ch;
-          line-height: 0.95;
-        }
-
-        .copy {
-          font-size: 0.98rem;
-        }
-
-        .cards {
-          margin-top: 22px;
-        }
-
-        .right {
-          min-height: 340px;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .headline {
-          font-size: clamp(2.1rem, 12vw, 3.15rem);
-        }
-
-        .card {
-          min-height: 236px;
-          padding: 18px 16px 18px;
-        }
-
-        .card-link {
-          left: 16px;
-          right: 16px;
-          bottom: 16px;
+        .cta-main {
+          min-height: 46px;
           font-size: 0.84rem;
+          letter-spacing: 0.065em;
+          padding: 0 18px;
         }
 
-        .card h2 {
-          font-size: 1.8rem;
+        .hero-visual {
+          min-height: 170px;
+          border-radius: 14px;
         }
 
-        .right {
-          min-height: 280px;
+        .what {
+          margin: 0 12px 14px;
+          padding: 14px 12px 16px;
+          border-radius: 14px;
+        }
+
+        .what-item {
+          border-radius: 10px;
+          padding: 11px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="page">
-      <section class="hero-shell">
-        <div class="left">
-          <a class="back-link" href="/#/" aria-label="Back to home">
-            <svg viewBox="0 0 24 24">
-              <path d="M15 5 8 12l7 7"></path>
+    <main class="page">
+      <header class="header">
+        <a class="back-link" href="/#/" aria-label="Back to home">
+          <svg viewBox="0 0 24 24">
+            <path d="M15 5 8 12l7 7"></path>
+          </svg>
+          Back to Home
+        </a>
+
+        <div class="wordmark" aria-label="Guardian logo">
+          <span class="wordmark-badge" aria-hidden="true">
+            <svg viewBox="0 0 64 76">
+              <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
+              <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
             </svg>
-            Back to Home
-          </a>
+          </span>
+          <span class="wordmark-text">Guardian</span>
+        </div>
+      </header>
 
-          <div class="brand" aria-label="Guardian brand">
-            <div class="brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 64 76">
-                <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
-                <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
-              </svg>
-            </div>
-            <div class="brand-wordmark">Guardian</div>
-          </div>
-
-          <h1 class="headline">
-            Built to <span class="accent">protect.</span><br />
-            Engineered to <span class="accent">grow.</span>
-          </h1>
-
-          <div class="rule"></div>
-
-          <p class="copy">
-            Guardian provides the digital resources, strategic support, and investment funding to help your business thrive in a connected world.
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Build and grow with real support.</h1>
+          <p>
+            Guardian is a focused system for founders and operators who need practical momentum. We combine digital resources,
+            funding support, and operational guidance to help you make stronger decisions and run with more confidence.
           </p>
 
-          <div class="cards">
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="6.8" y="3.5" width="10.4" height="17" rx="2.1"></rect>
-                  <path d="M10.3 16.8h3.4"></path>
-                </svg>
-              </div>
-              <h2>Digital Resources</h2>
-              <p>Powerful digital solutions and technology to streamline operations and unlock new opportunities.</p>
-              <a class="card-link" href="/gaurdian-resources.html">Explore Resources</a>
-            </article>
-
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2.4 6.5 4.8v4.4c0 3.7 2.3 7.1 5.5 8.8 3.2-1.7 5.5-5.1 5.5-8.8V4.8L12 2.4Z"></path>
-                  <path d="m9.1 11.4 2 2.1 3.8-4.4"></path>
-                </svg>
-              </div>
-              <h2>Funding</h2>
-              <p>Flexible funding and strategic investment to fuel growth and long-term success.</p>
-              <a class="card-link" href="/gaurdian-resources.html">Explore Funding</a>
-            </article>
+          <div class="cta-wrap">
+            <a class="cta-main" href="https://app.guardian.example.com">Create Account Now</a>
+            <span class="cta-note">Replace `https://app.guardian.example.com` with your live Guardian app URL.</span>
           </div>
         </div>
 
-        <div class="right" aria-hidden="true">
-          <div class="static-wave">
-            <svg viewBox="0 0 1200 820" preserveAspectRatio="xMidYMid slice">
-              <defs>
-                <linearGradient id="waveGlowA" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#1f4f9d" stop-opacity="0"></stop>
-                  <stop offset="42%" stop-color="#5da2ff" stop-opacity="0.8"></stop>
-                  <stop offset="100%" stop-color="#cde8ff" stop-opacity="0"></stop>
-                </linearGradient>
-                <linearGradient id="waveGlowB" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#2d65c8" stop-opacity="0"></stop>
-                  <stop offset="52%" stop-color="#9bc9ff" stop-opacity="0.86"></stop>
-                  <stop offset="100%" stop-color="#65a5ff" stop-opacity="0"></stop>
-                </linearGradient>
-              </defs>
+        <aside class="hero-visual" aria-hidden="true"></aside>
+      </section>
 
-              <path class="glow" d="M80 470c90-70 176-106 264-106 96 0 186 52 286 62 94 10 180-20 266-20 94 0 176 30 248 90" fill="none" stroke="url(#waveGlowA)" stroke-width="140" stroke-linecap="round"></path>
-              <path class="glow" d="M72 532c94-72 184-108 274-108 100 0 190 54 286 64 92 10 174-21 260-21 94 0 178 30 250 91" fill="none" stroke="url(#waveGlowB)" stroke-width="102" stroke-linecap="round"></path>
-              <path d="M84 506c95-70 183-104 270-104 98 0 187 52 284 61 92 9 176-19 260-19 92 0 174 30 246 86" fill="none" stroke="rgba(197,225,255,0.82)" stroke-width="38" stroke-linecap="round"></path>
-              <path d="M72 590c96-70 188-106 278-106 98 0 186 52 282 60 90 8 171-22 255-22 92 0 174 29 246 85" fill="none" stroke="rgba(130,183,255,0.52)" stroke-width="22" stroke-linecap="round"></path>
-
-              <path d="M60 392c122-30 228-20 326 28 104 50 190 118 300 132 102 13 185-18 274-8 76 9 149 30 220 67" fill="none" stroke="rgba(184,219,255,0.26)" stroke-width="4.2"></path>
-              <path d="M46 446c126-30 233-20 332 26 103 48 190 116 298 128 102 12 184-17 273-5 76 10 148 31 220 66" fill="none" stroke="rgba(168,207,255,0.24)" stroke-width="4"></path>
-              <path d="M34 500c130-30 238-20 338 24 103 46 190 112 296 124 102 11 183-16 272-2 75 11 147 32 219 65" fill="none" stroke="rgba(154,197,252,0.22)" stroke-width="3.8"></path>
-              <path d="M22 554c132-29 241-18 342 25 102 44 189 107 294 116 102 9 182-12 270 4 75 13 147 34 218 66" fill="none" stroke="rgba(146,190,250,0.2)" stroke-width="3.6"></path>
-              <path d="M10 610c133-27 244-13 344 29 102 42 188 101 292 108 101 7 182-8 268 10 74 15 146 35 216 67" fill="none" stroke="rgba(138,185,248,0.2)" stroke-width="3.4"></path>
-            </svg>
-          </div>
+      <section class="what" aria-labelledby="what-guardian-does">
+        <h2 id="what-guardian-does">What Guardian Does</h2>
+        <div class="what-grid">
+          <article class="what-item">
+            <h3>Digital Resources</h3>
+            <p>Frameworks and tools that support better decisions, clearer workflows, and stronger day-to-day execution.</p>
+          </article>
+          <article class="what-item">
+            <h3>Funding Support</h3>
+            <p>Practical funding guidance that helps you move forward with more stability and fewer blind spots.</p>
+          </article>
+          <article class="what-item">
+            <h3>Operational Guidance</h3>
+            <p>Business support that helps teams operate stronger, tighten priorities, and keep momentum under pressure.</p>
+          </article>
         </div>
       </section>
-    </div>
+    </main>
   </body>
 </html>
