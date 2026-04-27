@@ -9,20 +9,21 @@
         color-scheme: dark;
         font-family:
           "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
-        --bg: #050b16;
-        --bg-deep: #030711;
-        --shell: #07111f;
-        --surface: rgba(10, 19, 35, 0.96);
-        --surface-strong: rgba(13, 24, 43, 0.98);
-        --surface-soft: rgba(17, 31, 55, 0.8);
-        --text: #eef4ff;
-        --muted: rgba(189, 204, 229, 0.78);
-        --muted-soft: rgba(189, 204, 229, 0.58);
-        --line: rgba(118, 154, 216, 0.12);
-        --line-strong: rgba(118, 154, 216, 0.22);
-        --blue: #73abff;
-        --blue-strong: #3478f6;
-        --blue-bright: #d8ebff;
+        --bg: #040914;
+        --bg-deep: #02060f;
+        --shell: rgba(6, 12, 24, 0.98);
+        --shell-top: rgba(10, 20, 38, 0.98);
+        --panel: rgba(11, 20, 37, 0.96);
+        --panel-soft: rgba(14, 25, 46, 0.92);
+        --line: rgba(100, 142, 220, 0.14);
+        --line-strong: rgba(114, 161, 246, 0.24);
+        --text: #f2f7ff;
+        --muted: rgba(188, 203, 229, 0.8);
+        --muted-soft: rgba(188, 203, 229, 0.62);
+        --blue: #4f89ff;
+        --blue-strong: #2f73f1;
+        --blue-bright: #dff0ff;
+        --blue-glow: rgba(76, 136, 255, 0.3);
         --shadow: 0 34px 80px rgba(0, 0, 0, 0.34);
         --ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
@@ -40,9 +41,9 @@
         min-width: 320px;
         min-height: 100vh;
         background:
-          radial-gradient(circle at 16% 8%, rgba(29, 70, 146, 0.16), transparent 24%),
-          radial-gradient(circle at 88% 18%, rgba(47, 95, 184, 0.14), transparent 24%),
-          linear-gradient(180deg, #091120 0%, #050b16 50%, #030610 100%);
+          radial-gradient(circle at 16% 8%, rgba(25, 67, 146, 0.14), transparent 23%),
+          radial-gradient(circle at 86% 16%, rgba(45, 97, 190, 0.14), transparent 23%),
+          linear-gradient(180deg, #081120 0%, #040914 48%, #02060f 100%);
         color: var(--text);
         overflow-x: hidden;
       }
@@ -57,16 +58,16 @@
 
       body::before {
         background:
-          linear-gradient(rgba(108, 145, 205, 0.012) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(108, 145, 205, 0.012) 1px, transparent 1px);
-        background-size: 56px 56px;
-        mask-image: radial-gradient(circle at center, black 30%, transparent 86%);
+          linear-gradient(rgba(96, 140, 214, 0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(96, 140, 214, 0.012) 1px, transparent 1px);
+        background-size: 54px 54px;
+        mask-image: radial-gradient(circle at center, black 30%, transparent 88%);
       }
 
       body::after {
         background:
-          radial-gradient(circle at center, rgba(0, 0, 0, 0) 54%, rgba(0, 0, 0, 0.34) 100%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.14));
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.36) 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 18%, transparent 84%, rgba(0, 0, 0, 0.16));
       }
 
       a {
@@ -76,21 +77,21 @@
 
       .page {
         min-height: 100vh;
-        padding: 24px;
+        padding: 28px;
       }
 
       .shell {
         position: relative;
-        width: min(1680px, 100%);
-        min-height: calc(100vh - 48px);
+        width: min(1710px, 100%);
+        min-height: calc(100vh - 56px);
         margin: 0 auto;
         border-radius: 34px;
         overflow: hidden;
         background:
-          linear-gradient(180deg, rgba(8, 15, 29, 0.98), rgba(4, 10, 21, 0.98)),
-          radial-gradient(circle at 76% 52%, rgba(42, 95, 200, 0.12), transparent 24%);
+          linear-gradient(180deg, rgba(7, 14, 27, 0.985), rgba(4, 10, 20, 0.985)),
+          radial-gradient(circle at 73% 49%, rgba(48, 101, 205, 0.14), transparent 22%);
         box-shadow:
-          inset 0 0 0 1px rgba(118, 154, 216, 0.08),
+          inset 0 0 0 1px rgba(104, 146, 223, 0.08),
           inset 0 1px 0 rgba(255, 255, 255, 0.02),
           var(--shadow);
       }
@@ -105,29 +106,35 @@
 
       .shell::before {
         background:
-          radial-gradient(circle at 18% 22%, rgba(46, 88, 168, 0.08), transparent 20%),
-          radial-gradient(circle at 66% 64%, rgba(58, 114, 220, 0.08), transparent 24%);
+          radial-gradient(circle at 18% 24%, rgba(48, 89, 172, 0.08), transparent 20%),
+          radial-gradient(circle at 68% 62%, rgba(60, 116, 226, 0.08), transparent 24%);
       }
 
       .shell::after {
         background:
-          linear-gradient(138deg, transparent 42%, rgba(104, 139, 199, 0.045) 42.2%, transparent 42.5%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 24%);
+          linear-gradient(138deg, transparent 41%, rgba(101, 139, 198, 0.04) 41.2%, transparent 41.5%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 24%);
       }
 
       .layout {
         position: relative;
         z-index: 1;
         display: grid;
-        grid-template-columns: minmax(540px, 0.94fr) minmax(680px, 1.06fr);
-        min-height: calc(100vh - 48px);
+        grid-template-columns: minmax(560px, 0.95fr) minmax(700px, 1.05fr);
+        min-height: calc(100vh - 56px);
       }
 
       .left {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 42px 26px 42px 58px;
+        padding: 40px 28px 40px 58px;
+      }
+
+      .top-stack {
+        display: grid;
+        gap: 34px;
+        max-width: 790px;
       }
 
       .back-link {
@@ -135,30 +142,30 @@
         align-items: center;
         gap: 10px;
         width: fit-content;
-        min-height: 42px;
-        padding: 0 14px;
+        min-height: 44px;
+        padding: 0 16px;
         border-radius: 999px;
-        background: rgba(12, 22, 39, 0.82);
+        background: rgba(12, 21, 39, 0.78);
         box-shadow:
-          inset 0 0 0 1px rgba(118, 154, 216, 0.1),
-          0 12px 24px rgba(0, 0, 0, 0.16);
-        color: rgba(231, 239, 250, 0.9);
+          inset 0 0 0 1px rgba(107, 147, 220, 0.12),
+          0 12px 24px rgba(0, 0, 0, 0.14);
+        color: rgba(230, 239, 252, 0.92);
         font-size: 0.82rem;
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         transition:
           transform 240ms var(--ease),
-          box-shadow 240ms var(--ease),
-          background 240ms var(--ease);
+          background 240ms var(--ease),
+          box-shadow 240ms var(--ease);
       }
 
       .back-link:hover {
-        transform: translateY(-2px);
+        transform: translateX(-2px) translateY(-1px);
         background: rgba(15, 28, 49, 0.94);
         box-shadow:
-          inset 0 0 0 1px rgba(129, 172, 247, 0.14),
-          0 18px 34px rgba(0, 0, 0, 0.2);
+          inset 0 0 0 1px rgba(121, 169, 250, 0.16),
+          0 18px 34px rgba(0, 0, 0, 0.18);
       }
 
       .back-link svg {
@@ -169,16 +176,10 @@
         stroke-width: 2.2;
       }
 
-      .hero-stack {
-        margin-top: 34px;
-        max-width: 760px;
-      }
-
       .brand {
         display: inline-flex;
         align-items: center;
         gap: 14px;
-        margin-bottom: 34px;
       }
 
       .brand-mark {
@@ -187,7 +188,7 @@
         display: grid;
         place-items: center;
         color: var(--blue);
-        filter: drop-shadow(0 0 16px rgba(68, 128, 243, 0.14));
+        filter: drop-shadow(0 0 16px rgba(66, 126, 243, 0.14));
       }
 
       .brand-mark svg {
@@ -199,52 +200,64 @@
       }
 
       .brand-wordmark {
-        font-size: 2rem;
+        font-size: 1.94rem;
         font-weight: 700;
-        letter-spacing: 0.22em;
+        letter-spacing: 0.24em;
         text-transform: uppercase;
+      }
+
+      .hero-copy {
+        display: grid;
+        gap: 22px;
       }
 
       .headline {
         margin: 0;
-        max-width: 9.2ch;
-        font-size: clamp(4.3rem, 6.1vw, 6.2rem);
-        line-height: 0.93;
-        font-weight: 750;
-        letter-spacing: -0.065em;
+        max-width: 8.6ch;
+        font-size: clamp(4.6rem, 6.4vw, 6.75rem);
+        line-height: 0.92;
+        font-weight: 800;
+        letter-spacing: -0.075em;
       }
 
       .headline .accent {
         color: var(--blue);
       }
 
+      .rule {
+        width: 74px;
+        height: 3px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(74, 137, 255, 1), rgba(74, 137, 255, 0.12));
+        box-shadow: 0 0 18px rgba(74, 137, 255, 0.22);
+      }
+
       .copy {
         max-width: 31rem;
-        margin: 24px 0 0;
+        margin: 0;
         color: var(--muted);
-        font-size: 1.1rem;
+        font-size: 1.12rem;
         line-height: 1.72;
       }
 
       .cards {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-        margin-top: 34px;
+        gap: 18px;
       }
 
       .card {
         position: relative;
-        min-height: 260px;
-        padding: 22px 22px 20px;
-        border-radius: 20px;
+        min-height: 306px;
+        padding: 26px 26px 24px;
+        border-radius: 22px;
         background:
-          linear-gradient(180deg, rgba(13, 25, 46, 0.98), rgba(8, 17, 33, 0.98)),
-          linear-gradient(135deg, rgba(99, 156, 255, 0.05), transparent 46%);
+          linear-gradient(180deg, rgba(13, 24, 44, 0.98), rgba(8, 16, 31, 0.98)),
+          linear-gradient(135deg, rgba(102, 156, 255, 0.05), transparent 46%);
         box-shadow:
-          inset 0 0 0 1px rgba(118, 154, 216, 0.1),
+          inset 0 0 0 1px rgba(109, 149, 219, 0.1),
           inset 0 1px 0 rgba(255, 255, 255, 0.03),
-          0 18px 36px rgba(0, 0, 0, 0.18);
+          0 18px 38px rgba(0, 0, 0, 0.18);
         transition:
           transform 250ms var(--ease),
           box-shadow 250ms var(--ease),
@@ -263,31 +276,31 @@
       }
 
       .card::before {
-        inset: auto -10% -26% 10%;
-        height: 120px;
-        background: radial-gradient(circle, rgba(76, 131, 232, 0.18), transparent 72%);
+        inset: auto -12% -22% 8%;
+        height: 126px;
+        background: radial-gradient(circle, rgba(76, 131, 232, 0.16), transparent 72%);
         filter: blur(12px);
         opacity: 0.42;
       }
 
       .card::after {
         inset: 0;
-        background: linear-gradient(120deg, transparent 16%, rgba(123, 176, 255, 0.1) 54%, transparent 74%);
+        background: linear-gradient(122deg, transparent 14%, rgba(123, 176, 255, 0.08) 52%, transparent 74%);
         opacity: 0;
-        transform: translateX(-16%);
+        transform: translateX(-14%);
       }
 
       .card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-6px) scale(1.012);
         box-shadow:
-          inset 0 0 0 1px rgba(126, 173, 250, 0.14),
+          inset 0 0 0 1px rgba(125, 172, 249, 0.14),
           inset 0 1px 0 rgba(255, 255, 255, 0.03),
-          0 24px 46px rgba(0, 0, 0, 0.22),
+          0 26px 48px rgba(0, 0, 0, 0.22),
           0 0 24px rgba(65, 126, 243, 0.08);
       }
 
       .card:hover::before {
-        opacity: 0.6;
+        opacity: 0.58;
       }
 
       .card:hover::after {
@@ -296,14 +309,14 @@
       }
 
       .card-icon {
-        width: 56px;
-        height: 56px;
+        width: 62px;
+        height: 62px;
         display: grid;
         place-items: center;
-        border-radius: 16px;
-        background: linear-gradient(180deg, rgba(28, 51, 96, 0.98), rgba(17, 31, 57, 0.98));
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(27, 51, 97, 0.98), rgba(17, 31, 58, 0.98));
         box-shadow:
-          inset 0 0 0 1px rgba(123, 163, 232, 0.12),
+          inset 0 0 0 1px rgba(121, 162, 233, 0.12),
           0 10px 22px rgba(0, 0, 0, 0.16);
         color: var(--blue);
       }
@@ -317,43 +330,67 @@
       }
 
       .card h2 {
-        margin: 22px 0 10px;
-        font-size: 1.86rem;
-        line-height: 1.05;
-        font-weight: 700;
-        letter-spacing: -0.04em;
+        margin: 24px 0 12px;
+        font-size: 2rem;
+        line-height: 1.04;
+        font-weight: 750;
+        letter-spacing: -0.045em;
+      }
+
+      .card h2::after {
+        content: "";
+        display: block;
+        width: 44px;
+        height: 3px;
+        margin-top: 12px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(90, 148, 255, 1), rgba(90, 148, 255, 0.14));
       }
 
       .card p {
         margin: 0;
-        max-width: 16rem;
+        max-width: 17rem;
         color: var(--muted-soft);
-        font-size: 0.98rem;
-        line-height: 1.64;
+        font-size: 1rem;
+        line-height: 1.62;
       }
 
       .card-link {
         position: absolute;
-        left: 22px;
-        bottom: 20px;
+        left: 26px;
+        bottom: 24px;
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        min-height: 42px;
-        padding: 0 16px;
+        gap: 12px;
+        min-height: 48px;
+        padding: 0 20px;
         border-radius: 999px;
-        background: rgba(12, 21, 38, 0.94);
-        box-shadow: inset 0 0 0 1px rgba(118, 154, 216, 0.12);
-        color: var(--blue-bright);
-        font-size: 0.82rem;
+        background: rgba(12, 22, 39, 0.98);
+        box-shadow:
+          inset 0 0 0 1px rgba(104, 147, 223, 0.16),
+          0 10px 22px rgba(0, 0, 0, 0.14);
+        color: #7fb3ff;
+        font-size: 0.84rem;
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
+        transition:
+          transform 240ms var(--ease),
+          box-shadow 240ms var(--ease),
+          color 240ms var(--ease);
+      }
+
+      .card:hover .card-link {
+        transform: translateY(-1px);
+        box-shadow:
+          inset 0 0 0 1px rgba(126, 172, 249, 0.18),
+          0 14px 28px rgba(0, 0, 0, 0.18);
+        color: var(--blue-bright);
       }
 
       .card-link::after {
         content: "\2192";
-        font-size: 1.08rem;
+        font-size: 1.12rem;
         line-height: 1;
       }
 
@@ -367,8 +404,8 @@
         position: absolute;
         inset: 0;
         background:
-          radial-gradient(circle at 62% 48%, rgba(58, 114, 220, 0.14), transparent 22%),
-          linear-gradient(180deg, rgba(8, 15, 29, 0), rgba(4, 10, 20, 0.16));
+          radial-gradient(circle at 64% 48%, rgba(58, 114, 220, 0.16), transparent 20%),
+          linear-gradient(180deg, rgba(8, 15, 29, 0), rgba(4, 10, 20, 0.14));
         pointer-events: none;
       }
 
@@ -378,23 +415,23 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 18px 8px 8px 0;
+        padding: 12px 0 0 0;
       }
 
       .wave-scene {
         position: relative;
-        width: min(100%, 1220px);
-        height: min(100%, 820px);
+        width: min(100%, 1280px);
+        height: min(100%, 860px);
       }
 
       .wave-aura {
         position: absolute;
-        inset: 18% 4% 16% 10%;
+        inset: 16% 2% 12% 12%;
         background:
-          radial-gradient(circle at 62% 50%, rgba(95, 160, 255, 0.32), transparent 16%),
-          radial-gradient(circle at 48% 54%, rgba(57, 115, 236, 0.22), transparent 28%),
-          radial-gradient(circle at 78% 42%, rgba(173, 221, 255, 0.12), transparent 10%);
-        filter: blur(34px);
+          radial-gradient(circle at 62% 50%, rgba(93, 160, 255, 0.32), transparent 14%),
+          radial-gradient(circle at 48% 54%, rgba(55, 114, 236, 0.24), transparent 24%),
+          radial-gradient(circle at 76% 42%, rgba(181, 224, 255, 0.1), transparent 10%);
+        filter: blur(36px);
         animation: auraShift 10s ease-in-out infinite;
       }
 
@@ -408,62 +445,62 @@
 
       .mass {
         fill: url(#massGradient);
-        opacity: 0.92;
-        animation: massShift 9.2s ease-in-out infinite alternate;
+        opacity: 0.94;
+        animation: massShift 9.6s ease-in-out infinite alternate;
       }
 
       .band-back {
         fill: none;
         stroke: url(#backBand);
-        stroke-width: 68;
+        stroke-width: 86;
         stroke-linecap: round;
-        opacity: 0.22;
+        opacity: 0.24;
         filter: url(#blurHeavy);
-        animation: bandA 8.8s ease-in-out infinite alternate;
+        animation: bandA 8.6s ease-in-out infinite alternate;
       }
 
       .band-mid {
         fill: none;
         stroke: url(#midBand);
-        stroke-width: 40;
+        stroke-width: 50;
         stroke-linecap: round;
-        opacity: 0.74;
+        opacity: 0.78;
         filter: url(#blurSoft);
-        animation: bandB 7.8s ease-in-out infinite alternate;
+        animation: bandB 7.5s ease-in-out infinite alternate;
       }
 
       .band-front {
         fill: none;
         stroke: url(#frontBand);
-        stroke-width: 18;
+        stroke-width: 24;
         stroke-linecap: round;
         opacity: 0.98;
         filter: url(#blurTiny);
-        animation: bandC 6.8s ease-in-out infinite alternate;
+        animation: bandC 6.6s ease-in-out infinite alternate;
       }
 
       .band-fill {
         fill: url(#fillBand);
-        opacity: 0.48;
+        opacity: 0.56;
         filter: url(#blurSoft);
-        animation: fillShift 8.6s ease-in-out infinite alternate;
+        animation: fillShift 8.3s ease-in-out infinite alternate;
       }
 
       .strand {
         fill: none;
-        stroke: rgba(167, 210, 255, 0.68);
-        stroke-width: 3.4;
+        stroke: rgba(166, 209, 255, 0.72);
+        stroke-width: 3.8;
         stroke-linecap: round;
-        opacity: 0.84;
+        opacity: 0.86;
         animation: strandShift 7s ease-in-out infinite alternate;
       }
 
       .strand.faint {
-        stroke: rgba(112, 165, 244, 0.28);
+        stroke: rgba(112, 165, 244, 0.22);
       }
 
       .strand.alt {
-        animation-duration: 8.2s;
+        animation-duration: 8.1s;
       }
 
       .node {
@@ -473,7 +510,7 @@
       }
 
       .node.dim {
-        fill: rgba(146, 195, 255, 0.56);
+        fill: rgba(146, 195, 255, 0.5);
         animation-duration: 7.2s;
       }
 
@@ -485,7 +522,7 @@
         0%,
         100% {
           transform: scale(0.98) translate3d(-8px, 6px, 0);
-          opacity: 0.76;
+          opacity: 0.78;
         }
 
         50% {
@@ -496,7 +533,7 @@
 
       @keyframes massShift {
         0% {
-          transform: translate3d(-14px, 12px, 0) scaleY(0.98);
+          transform: translate3d(-16px, 12px, 0) scaleY(0.98);
         }
 
         100% {
@@ -510,7 +547,7 @@
         }
 
         100% {
-          transform: translate3d(26px, -18px, 0);
+          transform: translate3d(28px, -18px, 0);
         }
       }
 
@@ -520,7 +557,7 @@
         }
 
         100% {
-          transform: translate3d(20px, -14px, 0);
+          transform: translate3d(22px, -14px, 0);
         }
       }
 
@@ -530,7 +567,7 @@
         }
 
         100% {
-          transform: translate3d(16px, -10px, 0);
+          transform: translate3d(18px, -10px, 0);
         }
       }
 
@@ -540,19 +577,19 @@
         }
 
         100% {
-          transform: translate3d(18px, -10px, 0) scaleX(1.02);
+          transform: translate3d(18px, -10px, 0) scaleX(1.03);
         }
       }
 
       @keyframes strandShift {
         0% {
           transform: translate3d(-18px, 14px, 0);
-          opacity: 0.54;
+          opacity: 0.52;
         }
 
         100% {
-          transform: translate3d(20px, -14px, 0);
-          opacity: 0.88;
+          transform: translate3d(22px, -14px, 0);
+          opacity: 0.9;
         }
       }
 
@@ -575,10 +612,10 @@
         }
 
         .left {
-          padding: 32px 24px 18px;
+          padding: 30px 24px 18px;
         }
 
-        .hero-stack {
+        .top-stack {
           max-width: none;
         }
 
@@ -587,17 +624,17 @@
         }
 
         .right {
-          min-height: 450px;
+          min-height: 470px;
         }
 
         .visual-wrap {
           position: relative;
-          min-height: 450px;
-          padding: 12px 12px 18px;
+          min-height: 470px;
+          padding: 12px 6px 16px;
         }
 
         .wave-scene {
-          height: 430px;
+          height: 450px;
         }
       }
 
@@ -616,20 +653,11 @@
         }
 
         .left {
-          padding: 20px 16px 14px;
+          padding: 18px 16px 12px;
         }
 
-        .hero-stack {
-          margin-top: 24px;
-        }
-
-        .brand {
-          margin-bottom: 24px;
-        }
-
-        .brand-mark {
-          width: 34px;
-          height: 40px;
+        .top-stack {
+          gap: 24px;
         }
 
         .brand-wordmark {
@@ -637,23 +665,26 @@
           letter-spacing: 0.18em;
         }
 
+        .brand-mark {
+          width: 34px;
+          height: 40px;
+        }
+
         .headline {
           max-width: none;
-          font-size: clamp(3.1rem, 12vw, 4.3rem);
+          font-size: clamp(3.15rem, 12vw, 4.35rem);
         }
 
         .copy {
           font-size: 1rem;
-          margin-top: 18px;
         }
 
         .cards {
           grid-template-columns: 1fr;
-          margin-top: 24px;
         }
 
         .card {
-          min-height: 240px;
+          min-height: 256px;
         }
 
         .card h2 {
@@ -661,16 +692,16 @@
         }
 
         .right {
-          min-height: 320px;
+          min-height: 330px;
         }
 
         .visual-wrap {
-          min-height: 320px;
-          padding: 0 4px 12px;
+          min-height: 330px;
+          padding: 0;
         }
 
         .wave-scene {
-          height: 300px;
+          height: 305px;
         }
       }
     </style>
@@ -680,14 +711,14 @@
       <section class="shell">
         <div class="layout">
           <div class="left">
-            <a class="back-link" href="/#/" aria-label="Back to home">
-              <svg viewBox="0 0 24 24">
-                <path d="M15 5 8 12l7 7"></path>
-              </svg>
-              Back to Home
-            </a>
+            <div class="top-stack">
+              <a class="back-link" href="/#/" aria-label="Back to home">
+                <svg viewBox="0 0 24 24">
+                  <path d="M15 5 8 12l7 7"></path>
+                </svg>
+                Back to Home
+              </a>
 
-            <div class="hero-stack">
               <div class="brand" aria-label="Guardian brand">
                 <div class="brand-mark" aria-hidden="true">
                   <svg viewBox="0 0 64 76">
@@ -698,14 +729,16 @@
                 <div class="brand-wordmark">Guardian</div>
               </div>
 
-              <h1 class="headline">
-                Built to <span class="accent">protect.</span><br />
-                Engineered to <span class="accent">grow.</span>
-              </h1>
-
-              <p class="copy">
-                Guardian provides the digital resources, strategic support, and investment funding to help your business thrive in a connected world.
-              </p>
+              <div class="hero-copy">
+                <h1 class="headline">
+                  Built to <span class="accent">protect.</span><br />
+                  Engineered to <span class="accent">grow.</span>
+                </h1>
+                <div class="rule"></div>
+                <p class="copy">
+                  Guardian provides the digital resources, strategic support, and investment funding to help your business thrive in a connected world.
+                </p>
+              </div>
 
               <div class="cards">
                 <article class="card">
@@ -716,9 +749,7 @@
                     </svg>
                   </div>
                   <h2>Digital Resources</h2>
-                  <p>
-                    Powerful digital solutions and technology to streamline operations and drive your vision forward.
-                  </p>
+                  <p>Powerful digital solutions and technology to streamline operations and unlock new opportunities.</p>
                   <a class="card-link" href="/gaurdian-resources.html">Explore Resources</a>
                 </article>
 
@@ -730,9 +761,7 @@
                     </svg>
                   </div>
                   <h2>Funding</h2>
-                  <p>
-                    Flexible funding and strategic investment to fuel growth and unlock new opportunities.
-                  </p>
+                  <p>Flexible funding and strategic investment to fuel growth and long-term success.</p>
                   <a class="card-link" href="/gaurdian-resources.html">Explore Funding</a>
                 </article>
               </div>
