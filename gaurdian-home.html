@@ -10,20 +10,20 @@
         font-family:
           "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
         --bg: #050b16;
-        --bg-deep: #030813;
-        --surface: rgba(9, 18, 33, 0.94);
-        --surface-strong: rgba(11, 22, 40, 0.98);
-        --surface-soft: rgba(15, 28, 50, 0.82);
-        --line: rgba(121, 157, 219, 0.12);
-        --line-strong: rgba(121, 157, 219, 0.22);
-        --text: #eff5ff;
-        --muted: rgba(190, 205, 228, 0.78);
-        --muted-soft: rgba(190, 205, 228, 0.58);
-        --blue: #78adff;
-        --blue-strong: #3b7cff;
-        --blue-bright: #c9e4ff;
-        --blue-glow: rgba(72, 133, 255, 0.3);
-        --shadow: 0 32px 70px rgba(0, 0, 0, 0.34);
+        --bg-deep: #030711;
+        --shell: #07111f;
+        --surface: rgba(10, 19, 35, 0.96);
+        --surface-strong: rgba(13, 24, 43, 0.98);
+        --surface-soft: rgba(17, 31, 55, 0.8);
+        --text: #eef4ff;
+        --muted: rgba(189, 204, 229, 0.78);
+        --muted-soft: rgba(189, 204, 229, 0.58);
+        --line: rgba(118, 154, 216, 0.12);
+        --line-strong: rgba(118, 154, 216, 0.22);
+        --blue: #73abff;
+        --blue-strong: #3478f6;
+        --blue-bright: #d8ebff;
+        --shadow: 0 34px 80px rgba(0, 0, 0, 0.34);
         --ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -40,9 +40,9 @@
         min-width: 320px;
         min-height: 100vh;
         background:
-          radial-gradient(circle at 14% 10%, rgba(34, 72, 148, 0.16), transparent 24%),
-          radial-gradient(circle at 84% 18%, rgba(51, 99, 191, 0.14), transparent 24%),
-          linear-gradient(180deg, #09111f 0%, #050b16 48%, #030711 100%);
+          radial-gradient(circle at 16% 8%, rgba(29, 70, 146, 0.16), transparent 24%),
+          radial-gradient(circle at 88% 18%, rgba(47, 95, 184, 0.14), transparent 24%),
+          linear-gradient(180deg, #091120 0%, #050b16 50%, #030610 100%);
         color: var(--text);
         overflow-x: hidden;
       }
@@ -57,16 +57,16 @@
 
       body::before {
         background:
-          linear-gradient(rgba(109, 145, 203, 0.015) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(109, 145, 203, 0.015) 1px, transparent 1px);
-        background-size: 52px 52px;
-        mask-image: radial-gradient(circle at center, black 32%, transparent 86%);
+          linear-gradient(rgba(108, 145, 205, 0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(108, 145, 205, 0.012) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: radial-gradient(circle at center, black 30%, transparent 86%);
       }
 
       body::after {
         background:
           radial-gradient(circle at center, rgba(0, 0, 0, 0) 54%, rgba(0, 0, 0, 0.34) 100%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%, transparent 80%, rgba(0, 0, 0, 0.15));
+          linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.14));
       }
 
       a {
@@ -76,74 +76,118 @@
 
       .page {
         min-height: 100vh;
-        padding: 26px;
+        padding: 24px;
       }
 
-      .hero-shell {
+      .shell {
         position: relative;
-        width: min(1720px, 100%);
-        min-height: calc(100vh - 52px);
+        width: min(1680px, 100%);
+        min-height: calc(100vh - 48px);
         margin: 0 auto;
         border-radius: 34px;
         overflow: hidden;
         background:
-          linear-gradient(180deg, rgba(8, 16, 31, 0.98), rgba(5, 11, 22, 0.98)),
-          radial-gradient(circle at 72% 44%, rgba(46, 95, 191, 0.12), transparent 24%);
+          linear-gradient(180deg, rgba(8, 15, 29, 0.98), rgba(4, 10, 21, 0.98)),
+          radial-gradient(circle at 76% 52%, rgba(42, 95, 200, 0.12), transparent 24%);
         box-shadow:
-          inset 0 0 0 1px rgba(116, 149, 209, 0.08),
+          inset 0 0 0 1px rgba(118, 154, 216, 0.08),
           inset 0 1px 0 rgba(255, 255, 255, 0.02),
           var(--shadow);
       }
 
-      .hero-shell::before,
-      .hero-shell::after {
+      .shell::before,
+      .shell::after {
         content: "";
         position: absolute;
         inset: 0;
         pointer-events: none;
       }
 
-      .hero-shell::before {
+      .shell::before {
         background:
-          radial-gradient(circle at 18% 22%, rgba(51, 97, 182, 0.1), transparent 20%),
-          radial-gradient(circle at 68% 66%, rgba(58, 114, 220, 0.08), transparent 20%);
+          radial-gradient(circle at 18% 22%, rgba(46, 88, 168, 0.08), transparent 20%),
+          radial-gradient(circle at 66% 64%, rgba(58, 114, 220, 0.08), transparent 24%);
       }
 
-      .hero-shell::after {
+      .shell::after {
         background:
-          linear-gradient(140deg, transparent 44%, rgba(109, 145, 203, 0.05) 44.2%, transparent 44.5%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 24%);
+          linear-gradient(138deg, transparent 42%, rgba(104, 139, 199, 0.045) 42.2%, transparent 42.5%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 24%);
       }
 
-      .hero-grid {
+      .layout {
         position: relative;
         z-index: 1;
         display: grid;
-        grid-template-columns: minmax(520px, 0.92fr) minmax(640px, 1.08fr);
-        min-height: calc(100vh - 52px);
+        grid-template-columns: minmax(540px, 0.94fr) minmax(680px, 1.06fr);
+        min-height: calc(100vh - 48px);
       }
 
-      .copy-column {
+      .left {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 62px 30px 58px 64px;
+        padding: 42px 26px 42px 58px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: rgba(12, 22, 39, 0.82);
+        box-shadow:
+          inset 0 0 0 1px rgba(118, 154, 216, 0.1),
+          0 12px 24px rgba(0, 0, 0, 0.16);
+        color: rgba(231, 239, 250, 0.9);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition:
+          transform 240ms var(--ease),
+          box-shadow 240ms var(--ease),
+          background 240ms var(--ease);
+      }
+
+      .back-link:hover {
+        transform: translateY(-2px);
+        background: rgba(15, 28, 49, 0.94);
+        box-shadow:
+          inset 0 0 0 1px rgba(129, 172, 247, 0.14),
+          0 18px 34px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-link svg {
+        width: 14px;
+        height: 14px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2.2;
+      }
+
+      .hero-stack {
+        margin-top: 34px;
+        max-width: 760px;
       }
 
       .brand {
         display: inline-flex;
         align-items: center;
         gap: 14px;
-        margin-bottom: 42px;
+        margin-bottom: 34px;
       }
 
       .brand-mark {
-        width: 44px;
-        height: 52px;
+        width: 42px;
+        height: 48px;
         display: grid;
         place-items: center;
         color: var(--blue);
-        filter: drop-shadow(0 0 18px rgba(67, 126, 243, 0.16));
+        filter: drop-shadow(0 0 16px rgba(68, 128, 243, 0.14));
       }
 
       .brand-mark svg {
@@ -155,8 +199,7 @@
       }
 
       .brand-wordmark {
-        font-size: 2.2rem;
-        line-height: 1;
+        font-size: 2rem;
         font-weight: 700;
         letter-spacing: 0.22em;
         text-transform: uppercase;
@@ -164,49 +207,48 @@
 
       .headline {
         margin: 0;
-        max-width: 9.6ch;
-        font-size: clamp(4.2rem, 6vw, 6.15rem);
-        line-height: 0.94;
-        font-weight: 700;
-        letter-spacing: -0.06em;
+        max-width: 9.2ch;
+        font-size: clamp(4.3rem, 6.1vw, 6.2rem);
+        line-height: 0.93;
+        font-weight: 750;
+        letter-spacing: -0.065em;
       }
 
       .headline .accent {
         color: var(--blue);
       }
 
-      .support-copy {
+      .copy {
         max-width: 31rem;
-        margin: 28px 0 0;
+        margin: 24px 0 0;
         color: var(--muted);
-        font-size: 1.12rem;
-        line-height: 1.7;
+        font-size: 1.1rem;
+        line-height: 1.72;
       }
 
       .cards {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-        max-width: 760px;
-        margin-top: 38px;
+        gap: 16px;
+        margin-top: 34px;
       }
 
       .card {
         position: relative;
-        min-height: 274px;
-        padding: 24px 24px 22px;
+        min-height: 260px;
+        padding: 22px 22px 20px;
         border-radius: 20px;
         background:
-          linear-gradient(180deg, rgba(15, 27, 48, 0.98), rgba(9, 18, 34, 0.98)),
-          linear-gradient(135deg, rgba(113, 170, 255, 0.06), transparent 42%);
+          linear-gradient(180deg, rgba(13, 25, 46, 0.98), rgba(8, 17, 33, 0.98)),
+          linear-gradient(135deg, rgba(99, 156, 255, 0.05), transparent 46%);
         box-shadow:
-          inset 0 0 0 1px rgba(121, 157, 219, 0.1),
+          inset 0 0 0 1px rgba(118, 154, 216, 0.1),
           inset 0 1px 0 rgba(255, 255, 255, 0.03),
-          0 16px 34px rgba(0, 0, 0, 0.18);
+          0 18px 36px rgba(0, 0, 0, 0.18);
         transition:
-          transform 260ms var(--ease),
-          box-shadow 260ms var(--ease),
-          background 260ms var(--ease);
+          transform 250ms var(--ease),
+          box-shadow 250ms var(--ease),
+          background 250ms var(--ease);
         overflow: hidden;
       }
 
@@ -216,12 +258,12 @@
         position: absolute;
         pointer-events: none;
         transition:
-          opacity 260ms var(--ease),
-          transform 260ms var(--ease);
+          opacity 250ms var(--ease),
+          transform 250ms var(--ease);
       }
 
       .card::before {
-        inset: auto -6% -22% 12%;
+        inset: auto -10% -26% 10%;
         height: 120px;
         background: radial-gradient(circle, rgba(76, 131, 232, 0.18), transparent 72%);
         filter: blur(12px);
@@ -230,39 +272,39 @@
 
       .card::after {
         inset: 0;
-        background: linear-gradient(120deg, transparent 14%, rgba(118, 168, 255, 0.12) 52%, transparent 74%);
+        background: linear-gradient(120deg, transparent 16%, rgba(123, 176, 255, 0.1) 54%, transparent 74%);
         opacity: 0;
-        transform: translateX(-18%);
+        transform: translateX(-16%);
       }
 
       .card:hover {
-        transform: translateY(-6px) scale(1.012);
+        transform: translateY(-6px);
         box-shadow:
-          inset 0 0 0 1px rgba(130, 177, 255, 0.15),
+          inset 0 0 0 1px rgba(126, 173, 250, 0.14),
           inset 0 1px 0 rgba(255, 255, 255, 0.03),
           0 24px 46px rgba(0, 0, 0, 0.22),
-          0 0 26px rgba(68, 128, 243, 0.08);
+          0 0 24px rgba(65, 126, 243, 0.08);
       }
 
       .card:hover::before {
-        opacity: 0.62;
+        opacity: 0.6;
       }
 
       .card:hover::after {
         opacity: 1;
-        transform: translateX(10%);
+        transform: translateX(8%);
       }
 
       .card-icon {
-        width: 58px;
-        height: 58px;
+        width: 56px;
+        height: 56px;
         display: grid;
         place-items: center;
         border-radius: 16px;
-        background: linear-gradient(180deg, rgba(29, 53, 97, 0.98), rgba(19, 34, 62, 0.98));
+        background: linear-gradient(180deg, rgba(28, 51, 96, 0.98), rgba(17, 31, 57, 0.98));
         box-shadow:
-          inset 0 0 0 1px rgba(125, 161, 223, 0.12),
-          0 12px 24px rgba(0, 0, 0, 0.16);
+          inset 0 0 0 1px rgba(123, 163, 232, 0.12),
+          0 10px 22px rgba(0, 0, 0, 0.16);
         color: var(--blue);
       }
 
@@ -274,59 +316,59 @@
         stroke-width: 1.8;
       }
 
-      .card-title {
-        margin: 24px 0 10px;
-        font-size: 2rem;
-        line-height: 1.04;
+      .card h2 {
+        margin: 22px 0 10px;
+        font-size: 1.86rem;
+        line-height: 1.05;
         font-weight: 700;
         letter-spacing: -0.04em;
       }
 
-      .card-copy {
+      .card p {
         margin: 0;
         max-width: 16rem;
         color: var(--muted-soft);
-        font-size: 1rem;
+        font-size: 0.98rem;
         line-height: 1.64;
       }
 
       .card-link {
         position: absolute;
-        left: 24px;
-        bottom: 22px;
+        left: 22px;
+        bottom: 20px;
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        min-height: 44px;
+        min-height: 42px;
         padding: 0 16px;
         border-radius: 999px;
-        background: rgba(12, 22, 39, 0.92);
-        box-shadow: inset 0 0 0 1px rgba(121, 157, 219, 0.12);
-        font-size: 0.84rem;
+        background: rgba(12, 21, 38, 0.94);
+        box-shadow: inset 0 0 0 1px rgba(118, 154, 216, 0.12);
+        color: var(--blue-bright);
+        font-size: 0.82rem;
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--blue-bright);
       }
 
       .card-link::after {
         content: "\2192";
-        font-size: 1.12rem;
+        font-size: 1.08rem;
         line-height: 1;
       }
 
-      .visual-column {
+      .right {
         position: relative;
         overflow: hidden;
       }
 
-      .visual-column::before {
+      .right::before {
         content: "";
         position: absolute;
         inset: 0;
         background:
-          radial-gradient(circle at 60% 46%, rgba(60, 115, 220, 0.16), transparent 22%),
-          linear-gradient(180deg, rgba(8, 16, 30, 0), rgba(4, 10, 20, 0.16));
+          radial-gradient(circle at 62% 48%, rgba(58, 114, 220, 0.14), transparent 22%),
+          linear-gradient(180deg, rgba(8, 15, 29, 0), rgba(4, 10, 20, 0.16));
         pointer-events: none;
       }
 
@@ -336,23 +378,23 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 38px 12px 24px 0;
+        padding: 18px 8px 8px 0;
       }
 
       .wave-scene {
         position: relative;
-        width: min(100%, 1160px);
-        height: min(100%, 780px);
+        width: min(100%, 1220px);
+        height: min(100%, 820px);
       }
 
       .wave-aura {
         position: absolute;
-        inset: 22% 8% 18% 12%;
+        inset: 18% 4% 16% 10%;
         background:
-          radial-gradient(circle at 66% 48%, rgba(92, 156, 255, 0.3), transparent 16%),
-          radial-gradient(circle at 52% 52%, rgba(62, 118, 234, 0.2), transparent 28%),
-          radial-gradient(circle at 78% 40%, rgba(142, 207, 255, 0.12), transparent 10%);
-        filter: blur(28px);
+          radial-gradient(circle at 62% 50%, rgba(95, 160, 255, 0.32), transparent 16%),
+          radial-gradient(circle at 48% 54%, rgba(57, 115, 236, 0.22), transparent 28%),
+          radial-gradient(circle at 78% 42%, rgba(173, 221, 255, 0.12), transparent 10%);
+        filter: blur(34px);
         animation: auraShift 10s ease-in-out infinite;
       }
 
@@ -364,79 +406,79 @@
         overflow: visible;
       }
 
-      .wave-core {
-        fill: url(#waveCore);
-        opacity: 0.88;
-        animation: waveMass 9.6s ease-in-out infinite alternate;
+      .mass {
+        fill: url(#massGradient);
+        opacity: 0.92;
+        animation: massShift 9.2s ease-in-out infinite alternate;
       }
 
-      .wave-ribbon-soft {
+      .band-back {
         fill: none;
-        stroke: url(#ribbonSoft);
-        stroke-width: 44;
+        stroke: url(#backBand);
+        stroke-width: 68;
         stroke-linecap: round;
-        opacity: 0.2;
+        opacity: 0.22;
         filter: url(#blurHeavy);
-        animation: ribbonA 8.8s ease-in-out infinite alternate;
+        animation: bandA 8.8s ease-in-out infinite alternate;
       }
 
-      .wave-ribbon-main {
+      .band-mid {
         fill: none;
-        stroke: url(#ribbonMain);
-        stroke-width: 26;
+        stroke: url(#midBand);
+        stroke-width: 40;
         stroke-linecap: round;
-        opacity: 0.72;
+        opacity: 0.74;
         filter: url(#blurSoft);
-        animation: ribbonB 7.8s ease-in-out infinite alternate;
+        animation: bandB 7.8s ease-in-out infinite alternate;
       }
 
-      .wave-ribbon-bright {
+      .band-front {
         fill: none;
-        stroke: url(#ribbonBright);
-        stroke-width: 12;
+        stroke: url(#frontBand);
+        stroke-width: 18;
         stroke-linecap: round;
-        opacity: 0.96;
+        opacity: 0.98;
         filter: url(#blurTiny);
-        animation: ribbonC 6.8s ease-in-out infinite alternate;
+        animation: bandC 6.8s ease-in-out infinite alternate;
       }
 
-      .wave-ribbon-fill {
-        fill: url(#ribbonFill);
-        opacity: 0.45;
+      .band-fill {
+        fill: url(#fillBand);
+        opacity: 0.48;
         filter: url(#blurSoft);
-        animation: ribbonFillShift 9.2s ease-in-out infinite alternate;
+        animation: fillShift 8.6s ease-in-out infinite alternate;
       }
 
-      .wave-strand {
+      .strand {
         fill: none;
-        stroke: rgba(171, 209, 255, 0.72);
-        stroke-width: 2.4;
+        stroke: rgba(167, 210, 255, 0.68);
+        stroke-width: 3.4;
         stroke-linecap: round;
-        opacity: 0.82;
-        animation: strandMove 7.2s ease-in-out infinite alternate;
+        opacity: 0.84;
+        animation: strandShift 7s ease-in-out infinite alternate;
       }
 
-      .wave-strand.faint {
-        stroke: rgba(115, 169, 247, 0.34);
+      .strand.faint {
+        stroke: rgba(112, 165, 244, 0.28);
       }
 
-      .wave-strand.alt {
-        animation-duration: 8.4s;
+      .strand.alt {
+        animation-duration: 8.2s;
       }
 
-      .wave-node {
-        fill: rgba(191, 225, 255, 0.92);
+      .node {
+        fill: rgba(193, 226, 255, 0.92);
         filter: url(#nodeGlow);
-        animation: nodePulse 5.6s ease-in-out infinite;
+        animation: nodePulse 5.8s ease-in-out infinite;
       }
 
-      .wave-node.dim {
-        fill: rgba(144, 195, 255, 0.56);
-        animation-duration: 6.8s;
+      .node.dim {
+        fill: rgba(146, 195, 255, 0.56);
+        animation-duration: 7.2s;
       }
 
-      .wave-node.small {
-        animation-duration: 7.4s;
+      .node.small {
+        animation-duration: 6.6s;
       }
 
       @keyframes auraShift {
@@ -447,69 +489,69 @@
         }
 
         50% {
-          transform: scale(1.02) translate3d(10px, -8px, 0);
+          transform: scale(1.03) translate3d(10px, -8px, 0);
           opacity: 1;
         }
       }
 
-      @keyframes waveMass {
+      @keyframes massShift {
         0% {
-          transform: translate3d(-10px, 10px, 0) scaleY(0.98);
+          transform: translate3d(-14px, 12px, 0) scaleY(0.98);
         }
 
         100% {
-          transform: translate3d(14px, -12px, 0) scaleY(1.03);
+          transform: translate3d(18px, -14px, 0) scaleY(1.03);
         }
       }
 
-      @keyframes ribbonA {
+      @keyframes bandA {
         0% {
-          transform: translate3d(-20px, 14px, 0);
+          transform: translate3d(-24px, 18px, 0);
         }
 
         100% {
-          transform: translate3d(24px, -16px, 0);
+          transform: translate3d(26px, -18px, 0);
         }
       }
 
-      @keyframes ribbonB {
+      @keyframes bandB {
         0% {
-          transform: translate3d(-16px, 12px, 0);
+          transform: translate3d(-18px, 14px, 0);
         }
 
         100% {
-          transform: translate3d(18px, -12px, 0);
+          transform: translate3d(20px, -14px, 0);
         }
       }
 
-      @keyframes ribbonC {
+      @keyframes bandC {
         0% {
-          transform: translate3d(-12px, 8px, 0);
+          transform: translate3d(-14px, 10px, 0);
         }
 
         100% {
-          transform: translate3d(14px, -10px, 0);
+          transform: translate3d(16px, -10px, 0);
         }
       }
 
-      @keyframes ribbonFillShift {
+      @keyframes fillShift {
         0% {
-          transform: translate3d(-10px, 8px, 0) scaleX(0.99);
+          transform: translate3d(-12px, 8px, 0) scaleX(0.99);
         }
 
         100% {
-          transform: translate3d(16px, -10px, 0) scaleX(1.02);
+          transform: translate3d(18px, -10px, 0) scaleX(1.02);
         }
       }
 
-      @keyframes strandMove {
+      @keyframes strandShift {
         0% {
-          transform: translate3d(-16px, 12px, 0);
+          transform: translate3d(-18px, 14px, 0);
           opacity: 0.54;
         }
 
         100% {
-          transform: translate3d(20px, -12px, 0);
+          transform: translate3d(20px, -14px, 0);
           opacity: 0.88;
         }
       }
@@ -517,8 +559,8 @@
       @keyframes nodePulse {
         0%,
         100% {
-          opacity: 0.36;
-          transform: scale(0.92);
+          opacity: 0.34;
+          transform: scale(0.9);
         }
 
         50% {
@@ -528,34 +570,34 @@
       }
 
       @media (max-width: 1320px) {
-        .hero-grid {
+        .layout {
           grid-template-columns: 1fr;
         }
 
-        .copy-column {
-          padding: 52px 28px 24px;
+        .left {
+          padding: 32px 24px 18px;
         }
 
-        .headline {
-          max-width: 10ch;
+        .hero-stack {
+          max-width: none;
         }
 
         .cards {
           max-width: none;
         }
 
-        .visual-column {
-          min-height: 440px;
+        .right {
+          min-height: 450px;
         }
 
         .visual-wrap {
           position: relative;
-          min-height: 440px;
-          padding: 8px 18px 28px;
+          min-height: 450px;
+          padding: 12px 12px 18px;
         }
 
         .wave-scene {
-          height: 420px;
+          height: 430px;
         }
       }
 
@@ -564,63 +606,67 @@
           padding: 14px;
         }
 
-        .hero-shell {
+        .shell {
           min-height: calc(100vh - 28px);
           border-radius: 26px;
         }
 
-        .hero-grid {
+        .layout {
           min-height: calc(100vh - 28px);
         }
 
-        .copy-column {
-          padding: 34px 18px 18px;
+        .left {
+          padding: 20px 16px 14px;
+        }
+
+        .hero-stack {
+          margin-top: 24px;
         }
 
         .brand {
-          margin-bottom: 28px;
+          margin-bottom: 24px;
         }
 
         .brand-mark {
-          width: 36px;
-          height: 42px;
+          width: 34px;
+          height: 40px;
         }
 
         .brand-wordmark {
-          font-size: 1.46rem;
+          font-size: 1.4rem;
           letter-spacing: 0.18em;
         }
 
         .headline {
           max-width: none;
-          font-size: clamp(3.1rem, 12vw, 4.4rem);
+          font-size: clamp(3.1rem, 12vw, 4.3rem);
         }
 
-        .support-copy {
+        .copy {
           font-size: 1rem;
-          margin-top: 20px;
+          margin-top: 18px;
         }
 
         .cards {
           grid-template-columns: 1fr;
-          margin-top: 26px;
+          margin-top: 24px;
         }
 
         .card {
-          min-height: 248px;
+          min-height: 240px;
         }
 
-        .card-title {
+        .card h2 {
           font-size: 1.7rem;
         }
 
-        .visual-column {
+        .right {
           min-height: 320px;
         }
 
         .visual-wrap {
           min-height: 320px;
-          padding: 0 8px 16px;
+          padding: 0 4px 12px;
         }
 
         .wave-scene {
@@ -631,159 +677,150 @@
   </head>
   <body>
     <div class="page">
-      <section class="hero-shell">
-        <div class="hero-grid">
-          <div class="copy-column">
-            <div class="brand" aria-label="Guardian brand">
-              <div class="brand-mark" aria-hidden="true">
-                <svg viewBox="0 0 64 76">
-                  <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
-                  <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
-                </svg>
+      <section class="shell">
+        <div class="layout">
+          <div class="left">
+            <a class="back-link" href="/#/" aria-label="Back to home">
+              <svg viewBox="0 0 24 24">
+                <path d="M15 5 8 12l7 7"></path>
+              </svg>
+              Back to Home
+            </a>
+
+            <div class="hero-stack">
+              <div class="brand" aria-label="Guardian brand">
+                <div class="brand-mark" aria-hidden="true">
+                  <svg viewBox="0 0 64 76">
+                    <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
+                    <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
+                  </svg>
+                </div>
+                <div class="brand-wordmark">Guardian</div>
               </div>
-              <div class="brand-wordmark">Guardian</div>
-            </div>
 
-            <h1 class="headline">
-              Built to <span class="accent">protect.</span><br />
-              Engineered to <span class="accent">grow.</span>
-            </h1>
+              <h1 class="headline">
+                Built to <span class="accent">protect.</span><br />
+                Engineered to <span class="accent">grow.</span>
+              </h1>
 
-            <p class="support-copy">
-              Guardian provides the digital resources, strategic support, and investment funding to
-              help your business thrive in a connected world.
-            </p>
+              <p class="copy">
+                Guardian provides the digital resources, strategic support, and investment funding to help your business thrive in a connected world.
+              </p>
 
-            <div class="cards">
-              <article class="card">
-                <div class="card-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="6.8" y="3.5" width="10.4" height="17" rx="2.1"></rect>
-                    <path d="M10.3 16.8h3.4"></path>
-                  </svg>
-                </div>
-                <h2 class="card-title">Digital Resources</h2>
-                <p class="card-copy">
-                  Powerful digital solutions and technology to streamline operations and drive your
-                  vision forward.
-                </p>
-                <a class="card-link" href="/gaurdian-resources.html">Explore Resources</a>
-              </article>
+              <div class="cards">
+                <article class="card">
+                  <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="6.8" y="3.5" width="10.4" height="17" rx="2.1"></rect>
+                      <path d="M10.3 16.8h3.4"></path>
+                    </svg>
+                  </div>
+                  <h2>Digital Resources</h2>
+                  <p>
+                    Powerful digital solutions and technology to streamline operations and drive your vision forward.
+                  </p>
+                  <a class="card-link" href="/gaurdian-resources.html">Explore Resources</a>
+                </article>
 
-              <article class="card">
-                <div class="card-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 2.4 6.5 4.8v4.4c0 3.7 2.3 7.1 5.5 8.8 3.2-1.7 5.5-5.1 5.5-8.8V4.8L12 2.4Z"></path>
-                    <path d="m9.1 11.4 2 2.1 3.8-4.4"></path>
-                  </svg>
-                </div>
-                <h2 class="card-title">Funding</h2>
-                <p class="card-copy">
-                  Flexible funding and strategic investment to fuel growth and unlock new
-                  opportunities.
-                </p>
-                <a class="card-link" href="/gaurdian-resources.html">Explore Funding</a>
-              </article>
+                <article class="card">
+                  <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 2.4 6.5 4.8v4.4c0 3.7 2.3 7.1 5.5 8.8 3.2-1.7 5.5-5.1 5.5-8.8V4.8L12 2.4Z"></path>
+                      <path d="m9.1 11.4 2 2.1 3.8-4.4"></path>
+                    </svg>
+                  </div>
+                  <h2>Funding</h2>
+                  <p>
+                    Flexible funding and strategic investment to fuel growth and unlock new opportunities.
+                  </p>
+                  <a class="card-link" href="/gaurdian-resources.html">Explore Funding</a>
+                </article>
+              </div>
             </div>
           </div>
 
-          <div class="visual-column" aria-hidden="true">
+          <div class="right" aria-hidden="true">
             <div class="visual-wrap">
               <div class="wave-scene">
                 <div class="wave-aura"></div>
-                <svg class="wave-svg" viewBox="0 0 1100 760" preserveAspectRatio="xMidYMid slice">
+                <svg class="wave-svg" viewBox="0 0 1180 820" preserveAspectRatio="xMidYMid slice">
                   <defs>
-                    <linearGradient id="waveCore" x1="12%" y1="12%" x2="88%" y2="88%">
-                      <stop offset="0%" stop-color="rgba(20,44,90,0)"></stop>
-                      <stop offset="30%" stop-color="#10274f"></stop>
-                      <stop offset="68%" stop-color="#163364"></stop>
-                      <stop offset="100%" stop-color="rgba(16,39,79,0)"></stop>
+                    <linearGradient id="massGradient" x1="14%" y1="14%" x2="88%" y2="86%">
+                      <stop offset="0%" stop-color="rgba(16,36,75,0)"></stop>
+                      <stop offset="28%" stop-color="#0f264d"></stop>
+                      <stop offset="66%" stop-color="#143566"></stop>
+                      <stop offset="100%" stop-color="rgba(20,53,102,0)"></stop>
                     </linearGradient>
-                    <linearGradient id="ribbonSoft" x1="8%" y1="4%" x2="92%" y2="96%">
-                      <stop offset="0%" stop-color="#2852a1" stop-opacity="0"></stop>
+                    <linearGradient id="backBand" x1="8%" y1="8%" x2="94%" y2="92%">
+                      <stop offset="0%" stop-color="#264f9f" stop-opacity="0"></stop>
                       <stop offset="42%" stop-color="#4f89ef" stop-opacity="0.54"></stop>
-                      <stop offset="100%" stop-color="#88c2ff" stop-opacity="0"></stop>
+                      <stop offset="100%" stop-color="#8ec8ff" stop-opacity="0"></stop>
                     </linearGradient>
-                    <linearGradient id="ribbonMain" x1="8%" y1="8%" x2="94%" y2="92%">
-                      <stop offset="0%" stop-color="#2c5bb7" stop-opacity="0"></stop>
-                      <stop offset="36%" stop-color="#5c9bff" stop-opacity="0.82"></stop>
-                      <stop offset="72%" stop-color="#d7f0ff" stop-opacity="0.74"></stop>
-                      <stop offset="100%" stop-color="#7ab0ff" stop-opacity="0"></stop>
+                    <linearGradient id="midBand" x1="10%" y1="10%" x2="94%" y2="90%">
+                      <stop offset="0%" stop-color="#2b5ec0" stop-opacity="0"></stop>
+                      <stop offset="36%" stop-color="#5a9bff" stop-opacity="0.82"></stop>
+                      <stop offset="72%" stop-color="#d7efff" stop-opacity="0.76"></stop>
+                      <stop offset="100%" stop-color="#7bb3ff" stop-opacity="0"></stop>
                     </linearGradient>
-                    <linearGradient id="ribbonBright" x1="10%" y1="10%" x2="94%" y2="90%">
-                      <stop offset="0%" stop-color="#8dc6ff" stop-opacity="0"></stop>
-                      <stop offset="40%" stop-color="#c4e2ff" stop-opacity="0.84"></stop>
-                      <stop offset="66%" stop-color="#f6fbff" stop-opacity="1"></stop>
-                      <stop offset="100%" stop-color="#8dc6ff" stop-opacity="0"></stop>
+                    <linearGradient id="frontBand" x1="12%" y1="12%" x2="94%" y2="88%">
+                      <stop offset="0%" stop-color="#90c8ff" stop-opacity="0"></stop>
+                      <stop offset="40%" stop-color="#cbe5ff" stop-opacity="0.84"></stop>
+                      <stop offset="66%" stop-color="#fbfeff" stop-opacity="1"></stop>
+                      <stop offset="100%" stop-color="#90c8ff" stop-opacity="0"></stop>
                     </linearGradient>
-                    <linearGradient id="ribbonFill" x1="18%" y1="26%" x2="86%" y2="72%">
+                    <linearGradient id="fillBand" x1="18%" y1="26%" x2="86%" y2="72%">
                       <stop offset="0%" stop-color="rgba(48,92,180,0)"></stop>
-                      <stop offset="34%" stop-color="#20488d"></stop>
-                      <stop offset="76%" stop-color="#2b68d0"></stop>
+                      <stop offset="34%" stop-color="#1d4388"></stop>
+                      <stop offset="76%" stop-color="#2a68cf"></stop>
                       <stop offset="100%" stop-color="rgba(67,122,232,0)"></stop>
                     </linearGradient>
                     <filter id="blurHeavy">
-                      <feGaussianBlur stdDeviation="18"></feGaussianBlur>
+                      <feGaussianBlur stdDeviation="22"></feGaussianBlur>
                     </filter>
                     <filter id="blurSoft">
-                      <feGaussianBlur stdDeviation="7"></feGaussianBlur>
+                      <feGaussianBlur stdDeviation="8"></feGaussianBlur>
                     </filter>
                     <filter id="blurTiny">
                       <feGaussianBlur stdDeviation="3.2"></feGaussianBlur>
                     </filter>
                     <filter id="nodeGlow">
-                      <feGaussianBlur stdDeviation="1.7"></feGaussianBlur>
+                      <feGaussianBlur stdDeviation="1.9"></feGaussianBlur>
                     </filter>
                   </defs>
 
-                  <path
-                    class="wave-core"
-                    d="M164 476c72-86 154-128 244-126 90 2 170 51 268 54 94 4 172-34 254-34 77 0 149 28 219 88v206H152c-20-62-16-120 12-188Z"
-                  ></path>
+                  <path class="mass" d="M156 504c82-96 170-144 266-144 98 0 187 53 291 57 100 5 183-34 272-34 84 0 160 30 233 92v223H144c-18-54-14-116 12-194Z"></path>
 
-                  <path
-                    class="wave-ribbon-soft"
-                    d="M136 452c79-70 160-108 250-110 99-2 181 46 274 50 92 4 168-29 248-26 81 4 154 31 225 90"
-                  ></path>
-                  <path
-                    class="wave-ribbon-main"
-                    d="M148 470c80-70 164-108 257-108 99 0 181 46 275 50 92 4 169-31 249-28 79 3 152 30 223 87"
-                  ></path>
-                  <path
-                    class="wave-ribbon-bright"
-                    d="M160 490c81-70 165-108 258-107 98 2 181 48 274 53 92 5 169-31 250-29 79 2 152 30 224 88"
-                  ></path>
-                  <path
-                    class="wave-ribbon-fill"
-                    d="M168 500c78-62 159-95 246-94 92 1 169 42 256 46 88 4 163-25 241-23 71 2 135 27 200 76 12 62 8 110-12 159H172c-16-46-18-98-4-164Z"
-                  ></path>
+                  <path class="band-back" d="M138 470c92-80 179-121 272-122 103 0 191 49 291 54 96 5 177-29 260-26 85 3 160 31 230 92"></path>
+                  <path class="band-mid" d="M152 494c92-81 182-122 277-122 103 1 191 51 290 56 97 5 178-30 261-28 83 2 158 30 227 89"></path>
+                  <path class="band-front" d="M166 520c93-82 184-123 279-122 102 2 190 53 289 58 97 5 179-31 263-29 82 2 157 31 227 91"></path>
+                  <path class="band-fill" d="M172 528c88-67 176-102 267-101 97 0 178 45 272 50 94 5 173-24 253-23 76 1 144 28 206 80 14 68 10 122-10 164H182c-18-50-20-104-10-170Z"></path>
 
-                  <path class="wave-strand" d="M154 392c94-28 182-23 264 13 82 36 160 90 263 94 103 4 183-34 270-29 63 4 124 22 188 59"></path>
-                  <path class="wave-strand alt" d="M138 430c100-32 187-29 269 8 81 36 159 89 260 93 101 5 181-30 268-24 62 4 123 23 189 58"></path>
-                  <path class="wave-strand faint" d="M122 468c102-34 190-31 272 4 82 35 160 85 259 89 101 3 181-27 268-19 62 6 125 24 190 57"></path>
-                  <path class="wave-strand" d="M108 506c104-34 194-31 277 4 83 35 160 80 259 82 100 3 180-21 266-10 63 8 126 24 191 53"></path>
-                  <path class="wave-strand faint alt" d="M96 544c106-30 197-23 280 11 85 35 161 73 259 76 99 3 178-15 264-2 61 10 124 24 189 46"></path>
-                  <path class="wave-strand" d="M284 620c87-30 163-38 239-20 77 18 148 56 236 53 83-2 152-28 228-21 56 5 110 20 170 48"></path>
-                  <path class="wave-strand faint" d="M334 344c68 18 128 47 186 78 68 36 137 67 227 66 82-1 148-26 223-22 54 2 106 15 164 39"></path>
-                  <path class="wave-strand alt" d="M406 318c54 20 103 45 150 72 69 38 140 70 228 68 81-1 148-24 221-18 53 4 106 16 166 42"></path>
-                  <path class="wave-strand faint" d="M486 304c42 16 82 38 123 61 72 40 142 71 226 68 79-2 145-22 216-14 51 5 104 18 163 44"></path>
+                  <path class="strand" d="M148 412c100-29 193-23 280 15 88 38 171 96 280 101 107 5 190-35 280-30 66 4 129 23 196 61"></path>
+                  <path class="strand alt" d="M132 456c104-32 198-28 286 10 88 38 171 95 279 100 106 5 190-30 279-24 67 4 131 24 197 60"></path>
+                  <path class="strand faint" d="M118 500c108-33 203-28 292 8 89 36 171 89 278 94 107 5 190-25 278-17 66 6 132 24 198 57"></path>
+                  <path class="strand" d="M106 544c110-31 208-24 298 12 90 36 171 83 277 87 106 4 189-19 276-7 66 8 132 24 197 51"></path>
+                  <path class="strand faint alt" d="M96 590c112-27 211-17 302 18 91 35 171 76 276 80 105 4 188-13 273 0 65 10 130 24 193 45"></path>
+                  <path class="strand" d="M286 664c93-32 175-40 255-21 80 18 154 58 246 56 88-2 161-29 241-22 59 5 115 20 178 47"></path>
+                  <path class="strand faint" d="M354 350c73 20 137 50 200 83 73 38 146 71 240 70 87-1 157-26 235-22 56 2 111 15 171 39"></path>
+                  <path class="strand alt" d="M430 322c59 21 112 47 164 76 74 40 149 74 242 72 86-2 157-24 233-17 56 4 112 17 174 42"></path>
+                  <path class="strand faint" d="M516 308c46 17 90 40 136 65 76 42 151 75 240 72 84-3 153-22 227-13 55 5 111 18 174 45"></path>
 
-                  <circle class="wave-node" cx="368" cy="526" r="4"></circle>
-                  <circle class="wave-node dim" cx="438" cy="550" r="3.2"></circle>
-                  <circle class="wave-node small" cx="516" cy="544" r="2.8"></circle>
-                  <circle class="wave-node" cx="588" cy="536" r="4.2"></circle>
-                  <circle class="wave-node dim" cx="660" cy="528" r="3.4"></circle>
-                  <circle class="wave-node small" cx="732" cy="516" r="2.8"></circle>
-                  <circle class="wave-node" cx="806" cy="505" r="4"></circle>
-                  <circle class="wave-node dim" cx="876" cy="494" r="3.1"></circle>
-                  <circle class="wave-node small" cx="944" cy="484" r="2.7"></circle>
-                  <circle class="wave-node" cx="1006" cy="476" r="3.8"></circle>
-                  <circle class="wave-node dim" cx="462" cy="430" r="3"></circle>
-                  <circle class="wave-node small" cx="548" cy="420" r="2.6"></circle>
-                  <circle class="wave-node" cx="634" cy="414" r="3.6"></circle>
-                  <circle class="wave-node dim" cx="720" cy="398" r="3"></circle>
-                  <circle class="wave-node small" cx="804" cy="384" r="2.5"></circle>
-                  <circle class="wave-node" cx="896" cy="370" r="3.5"></circle>
+                  <circle class="node" cx="386" cy="554" r="4.4"></circle>
+                  <circle class="node dim" cx="458" cy="578" r="3.4"></circle>
+                  <circle class="node small" cx="540" cy="572" r="3"></circle>
+                  <circle class="node" cx="616" cy="564" r="4.6"></circle>
+                  <circle class="node dim" cx="692" cy="554" r="3.5"></circle>
+                  <circle class="node small" cx="770" cy="542" r="2.9"></circle>
+                  <circle class="node" cx="848" cy="528" r="4.2"></circle>
+                  <circle class="node dim" cx="922" cy="516" r="3.3"></circle>
+                  <circle class="node small" cx="994" cy="506" r="2.8"></circle>
+                  <circle class="node" cx="1060" cy="496" r="4"></circle>
+                  <circle class="node dim" cx="486" cy="444" r="3.1"></circle>
+                  <circle class="node small" cx="578" cy="434" r="2.7"></circle>
+                  <circle class="node" cx="668" cy="426" r="3.8"></circle>
+                  <circle class="node dim" cx="756" cy="408" r="3.2"></circle>
+                  <circle class="node small" cx="846" cy="394" r="2.6"></circle>
+                  <circle class="node" cx="940" cy="378" r="3.6"></circle>
                 </svg>
               </div>
             </div>
