@@ -10,18 +10,16 @@
         font-family:
           "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
         --bg: #030914;
-        --bg-deep: #01040b;
-        --surface: rgba(10, 20, 36, 0.94);
-        --surface-strong: rgba(12, 23, 42, 0.98);
-        --text: #f4f8ff;
-        --muted: rgba(192, 206, 229, 0.78);
-        --muted-soft: rgba(192, 206, 229, 0.58);
-        --line: rgba(97, 140, 217, 0.12);
-        --line-strong: rgba(103, 152, 237, 0.18);
+        --bg-deep: #01040a;
+        --text: #f2f6ff;
+        --muted: rgba(186, 202, 228, 0.78);
+        --muted-soft: rgba(186, 202, 228, 0.58);
         --blue: #4f89ff;
-        --blue-strong: #3679f1;
-        --blue-bright: #cfe4ff;
-        --shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
+        --blue-strong: #397ff4;
+        --blue-bright: #d8ecff;
+        --line: rgba(102, 145, 225, 0.14);
+        --line-soft: rgba(102, 145, 225, 0.08);
+        --shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
         --ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -40,9 +38,9 @@
         min-width: 320px;
         min-height: 100vh;
         background:
-          radial-gradient(circle at 16% 10%, rgba(32, 74, 151, 0.16), transparent 22%),
-          radial-gradient(circle at 82% 22%, rgba(48, 97, 189, 0.14), transparent 20%),
-          linear-gradient(180deg, #07101f 0%, #040914 48%, #02050d 100%);
+          radial-gradient(circle at 16% 8%, rgba(36, 78, 156, 0.18), transparent 22%),
+          radial-gradient(circle at 86% 16%, rgba(50, 102, 198, 0.16), transparent 22%),
+          linear-gradient(180deg, #081121 0%, #030914 50%, #01050d 100%);
         color: var(--text);
         overflow-x: hidden;
       }
@@ -57,16 +55,16 @@
 
       body::before {
         background:
-          linear-gradient(rgba(96, 138, 214, 0.01) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(96, 138, 214, 0.01) 1px, transparent 1px);
-        background-size: 58px 58px;
-        mask-image: radial-gradient(circle at center, black 26%, transparent 84%);
+          linear-gradient(rgba(94, 138, 219, 0.01) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(94, 138, 219, 0.01) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: radial-gradient(circle at center, black 24%, transparent 84%);
       }
 
       body::after {
         background:
-          radial-gradient(circle at center, rgba(0, 0, 0, 0) 56%, rgba(0, 0, 0, 0.34) 100%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.16));
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.34) 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 18%, transparent 84%, rgba(0, 0, 0, 0.16));
       }
 
       a {
@@ -84,10 +82,7 @@
         position: relative;
         min-height: 100vh;
         display: grid;
-        grid-template-columns: minmax(580px, 0.92fr) minmax(720px, 1.08fr);
-        background:
-          radial-gradient(circle at 24% 16%, rgba(37, 79, 158, 0.08), transparent 18%),
-          radial-gradient(circle at 70% 52%, rgba(52, 108, 214, 0.1), transparent 22%);
+        grid-template-columns: minmax(560px, 0.9fr) minmax(760px, 1.1fr);
       }
 
       .hero::before,
@@ -100,23 +95,23 @@
 
       .hero::before {
         background:
-          linear-gradient(138deg, transparent 41%, rgba(103, 141, 204, 0.045) 41.2%, transparent 41.5%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 24%);
+          radial-gradient(circle at 24% 20%, rgba(39, 80, 156, 0.1), transparent 19%),
+          radial-gradient(circle at 72% 56%, rgba(59, 118, 226, 0.12), transparent 21%),
+          linear-gradient(136deg, transparent 42%, rgba(99, 136, 194, 0.04) 42.2%, transparent 42.5%);
       }
 
       .hero::after {
         background:
-          radial-gradient(circle at 64% 52%, rgba(56, 110, 216, 0.12), transparent 20%),
-          linear-gradient(90deg, rgba(7, 14, 29, 0.04), transparent 26%, transparent 74%, rgba(7, 14, 29, 0.1));
+          linear-gradient(90deg, rgba(6, 14, 30, 0.06), transparent 24%, transparent 74%, rgba(6, 14, 30, 0.1)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 26%);
       }
 
       .left {
         position: relative;
         z-index: 1;
-        padding: 32px 22px 28px 48px;
+        padding: 32px 18px 26px 46px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
       }
 
       .back-link {
@@ -126,12 +121,12 @@
         width: fit-content;
         min-height: 44px;
         padding: 0 16px;
-        border-radius: 15px;
-        background: rgba(11, 22, 41, 0.74);
+        border-radius: 14px;
+        background: rgba(12, 23, 42, 0.74);
         box-shadow:
-          inset 0 0 0 1px rgba(102, 145, 222, 0.14),
+          inset 0 0 0 1px rgba(104, 148, 227, 0.14),
           0 14px 26px rgba(0, 0, 0, 0.14);
-        color: rgba(231, 239, 252, 0.92);
+        color: rgba(232, 240, 252, 0.92);
         font-size: 0.82rem;
         font-weight: 600;
         letter-spacing: 0.02em;
@@ -143,10 +138,10 @@
 
       .back-link:hover {
         transform: translateX(-2px);
-        background: rgba(15, 28, 49, 0.94);
+        background: rgba(15, 30, 52, 0.94);
         box-shadow:
-          inset 0 0 0 1px rgba(118, 166, 248, 0.18),
-          0 18px 34px rgba(0, 0, 0, 0.18);
+          inset 0 0 0 1px rgba(121, 170, 250, 0.2),
+          0 18px 34px rgba(0, 0, 0, 0.2);
       }
 
       .back-link svg {
@@ -182,19 +177,18 @@
       }
 
       .brand-wordmark {
-        font-size: 1.98rem;
+        font-size: 1.96rem;
         font-weight: 700;
         letter-spacing: 0.24em;
         text-transform: uppercase;
       }
 
       .headline {
-        margin: 48px 0 0;
-        max-width: 6.5ch;
-        font-size: clamp(4.9rem, 6.9vw, 7.55rem);
-        line-height: 0.94;
+        margin: 50px 0 0;
+        font-size: clamp(4.9rem, 6.7vw, 7.25rem);
+        line-height: 0.92;
         font-weight: 800;
-        letter-spacing: -0.082em;
+        letter-spacing: -0.078em;
       }
 
       .headline .accent {
@@ -202,17 +196,17 @@
       }
 
       .rule {
-        width: 74px;
+        width: 72px;
         height: 3px;
         margin-top: 32px;
         border-radius: 999px;
-        background: linear-gradient(90deg, rgba(79, 137, 255, 1), rgba(79, 137, 255, 0.12));
-        box-shadow: 0 0 18px rgba(79, 137, 255, 0.18);
+        background: linear-gradient(90deg, rgba(79, 137, 255, 1), rgba(79, 137, 255, 0.14));
+        box-shadow: 0 0 18px rgba(79, 137, 255, 0.2);
       }
 
       .copy {
-        max-width: 33rem;
-        margin: 32px 0 0;
+        max-width: 34rem;
+        margin: 30px 0 0;
         color: var(--muted);
         font-size: 1.15rem;
         line-height: 1.7;
@@ -222,18 +216,18 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
-        max-width: 796px;
-        margin-top: 34px;
+        max-width: 800px;
+        margin-top: 32px;
       }
 
       .card {
         position: relative;
-        min-height: 334px;
-        padding: 26px 26px 24px;
+        min-height: 324px;
+        padding: 24px 24px 22px;
         border-radius: 22px;
         background:
-          linear-gradient(180deg, rgba(13, 23, 41, 0.98), rgba(9, 18, 33, 0.98)),
-          linear-gradient(135deg, rgba(98, 150, 247, 0.05), transparent 48%);
+          linear-gradient(180deg, rgba(12, 22, 40, 0.98), rgba(8, 16, 31, 0.98)),
+          linear-gradient(135deg, rgba(96, 148, 243, 0.05), transparent 48%);
         box-shadow:
           inset 0 0 0 1px rgba(97, 141, 220, 0.12),
           inset 0 1px 0 rgba(255, 255, 255, 0.025),
@@ -257,7 +251,7 @@
 
       .card::before {
         inset: auto -14% -24% 8%;
-        height: 132px;
+        height: 130px;
         background: radial-gradient(circle, rgba(77, 137, 255, 0.16), transparent 72%);
         filter: blur(12px);
         opacity: 0.42;
@@ -289,12 +283,12 @@
       }
 
       .card-icon {
-        width: 64px;
-        height: 64px;
+        width: 62px;
+        height: 62px;
         display: grid;
         place-items: center;
         border-radius: 18px;
-        background: linear-gradient(180deg, rgba(28, 51, 96, 0.98), rgba(18, 32, 59, 0.98));
+        background: linear-gradient(180deg, rgba(27, 50, 94, 0.98), rgba(17, 31, 58, 0.98));
         box-shadow:
           inset 0 0 0 1px rgba(111, 158, 237, 0.12),
           0 12px 24px rgba(0, 0, 0, 0.16);
@@ -311,7 +305,7 @@
 
       .card h2 {
         margin: 24px 0 10px;
-        font-size: 2.06rem;
+        font-size: 2.02rem;
         line-height: 1.04;
         font-weight: 760;
         letter-spacing: -0.045em;
@@ -337,8 +331,8 @@
 
       .card-link {
         position: absolute;
-        left: 26px;
-        bottom: 24px;
+        left: 24px;
+        bottom: 22px;
         display: inline-flex;
         align-items: center;
         gap: 12px;
@@ -389,13 +383,13 @@
 
       .right::before {
         background:
-          radial-gradient(circle at 64% 48%, rgba(63, 121, 233, 0.16), transparent 18%),
-          linear-gradient(90deg, rgba(4, 9, 19, 0.08), transparent 24%);
+          radial-gradient(circle at 66% 48%, rgba(63, 121, 233, 0.18), transparent 17%),
+          linear-gradient(90deg, rgba(4, 9, 19, 0.08), transparent 22%);
       }
 
       .right::after {
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 18%, transparent 78%, rgba(0, 0, 0, 0.1));
+          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 20%, transparent 78%, rgba(0, 0, 0, 0.1));
       }
 
       .visual-wrap {
@@ -404,23 +398,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 22px 0 0 0;
       }
 
       .wave-scene {
         position: relative;
-        width: min(100%, 1350px);
-        height: min(100%, 900px);
+        width: min(100%, 1420px);
+        height: min(100%, 920px);
       }
 
       .wave-aura {
         position: absolute;
-        inset: 12% -4% 10% 10%;
+        inset: 10% -6% 8% 8%;
         background:
           radial-gradient(circle at 66% 50%, rgba(96, 162, 255, 0.34), transparent 14%),
-          radial-gradient(circle at 52% 54%, rgba(57, 116, 237, 0.24), transparent 24%),
-          radial-gradient(circle at 78% 40%, rgba(196, 232, 255, 0.1), transparent 10%);
-        filter: blur(40px);
+          radial-gradient(circle at 50% 54%, rgba(57, 116, 237, 0.24), transparent 24%),
+          radial-gradient(circle at 78% 42%, rgba(196, 232, 255, 0.1), transparent 10%);
+        filter: blur(42px);
         animation: auraShift 10s ease-in-out infinite;
       }
 
@@ -441,9 +434,9 @@
       .band-back {
         fill: none;
         stroke: url(#backBand);
-        stroke-width: 108;
+        stroke-width: 112;
         stroke-linecap: round;
-        opacity: 0.24;
+        opacity: 0.22;
         filter: url(#blurHeavy);
         animation: bandA 8.8s ease-in-out infinite alternate;
       }
@@ -451,9 +444,9 @@
       .band-mid {
         fill: none;
         stroke: url(#midBand);
-        stroke-width: 62;
+        stroke-width: 64;
         stroke-linecap: round;
-        opacity: 0.8;
+        opacity: 0.82;
         filter: url(#blurSoft);
         animation: bandB 7.6s ease-in-out infinite alternate;
       }
@@ -461,7 +454,7 @@
       .band-front {
         fill: none;
         stroke: url(#frontBand);
-        stroke-width: 28;
+        stroke-width: 30;
         stroke-linecap: round;
         opacity: 1;
         filter: url(#blurTiny);
@@ -470,22 +463,22 @@
 
       .band-fill {
         fill: url(#fillBand);
-        opacity: 0.6;
+        opacity: 0.62;
         filter: url(#blurSoft);
         animation: fillShift 8.3s ease-in-out infinite alternate;
       }
 
       .strand {
         fill: none;
-        stroke: rgba(172, 213, 255, 0.58);
-        stroke-width: 3.4;
+        stroke: rgba(170, 211, 255, 0.5);
+        stroke-width: 3;
         stroke-linecap: round;
-        opacity: 0.76;
+        opacity: 0.66;
         animation: strandShift 7.2s ease-in-out infinite alternate;
       }
 
       .strand.faint {
-        stroke: rgba(111, 163, 244, 0.18);
+        stroke: rgba(111, 163, 244, 0.14);
       }
 
       .strand.alt {
@@ -493,13 +486,13 @@
       }
 
       .node {
-        fill: rgba(199, 229, 255, 0.9);
+        fill: rgba(199, 229, 255, 0.78);
         filter: url(#nodeGlow);
         animation: nodePulse 5.8s ease-in-out infinite;
       }
 
       .node.dim {
-        fill: rgba(143, 195, 255, 0.44);
+        fill: rgba(143, 195, 255, 0.36);
         animation-duration: 7.2s;
       }
 
@@ -573,19 +566,19 @@
       @keyframes strandShift {
         0% {
           transform: translate3d(-18px, 14px, 0);
-          opacity: 0.5;
+          opacity: 0.44;
         }
 
         100% {
           transform: translate3d(22px, -14px, 0);
-          opacity: 0.82;
+          opacity: 0.74;
         }
       }
 
       @keyframes nodePulse {
         0%,
         100% {
-          opacity: 0.32;
+          opacity: 0.28;
           transform: scale(0.9);
         }
 
@@ -601,15 +594,11 @@
         }
 
         .left {
-          padding: 28px 22px 18px;
-        }
-
-        .top-stack {
-          max-width: none;
+          padding: 28px 20px 18px;
         }
 
         .headline {
-          max-width: 7.5ch;
+          font-size: clamp(4rem, 9vw, 6rem);
         }
 
         .cards {
@@ -623,7 +612,6 @@
         .visual-wrap {
           position: relative;
           min-height: 500px;
-          padding: 8px 0 12px;
         }
 
         .wave-scene {
@@ -632,16 +620,12 @@
       }
 
       @media (max-width: 860px) {
-        .page {
-          padding: 14px;
-        }
-
         .left {
           padding: 18px 14px 12px;
         }
 
         .brand {
-          margin-top: 8px;
+          margin-top: 42px;
         }
 
         .brand-wordmark {
@@ -655,13 +639,11 @@
         }
 
         .headline {
-          max-width: none;
           font-size: clamp(3.18rem, 12vw, 4.45rem);
         }
 
         .copy {
           font-size: 1rem;
-          margin-top: 24px;
         }
 
         .cards {
@@ -682,7 +664,6 @@
 
         .visual-wrap {
           min-height: 340px;
-          padding: 0;
         }
 
         .wave-scene {
@@ -695,60 +676,58 @@
     <div class="page">
       <section class="hero">
         <div class="left">
-          <div class="top-stack">
-            <a class="back-link" href="/#/" aria-label="Back to home">
-              <svg viewBox="0 0 24 24">
-                <path d="M15 5 8 12l7 7"></path>
-              </svg>
-              Back to Home
-            </a>
+          <a class="back-link" href="/#/" aria-label="Back to home">
+            <svg viewBox="0 0 24 24">
+              <path d="M15 5 8 12l7 7"></path>
+            </svg>
+            Back to Home
+          </a>
 
-            <div class="brand" aria-label="Guardian brand">
-              <div class="brand-mark" aria-hidden="true">
-                <svg viewBox="0 0 64 76">
-                  <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
-                  <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
+          <div class="brand" aria-label="Guardian brand">
+            <div class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 64 76">
+                <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
+                <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
+              </svg>
+            </div>
+            <div class="brand-wordmark">Guardian</div>
+          </div>
+
+          <h1 class="headline">
+            Built to <span class="accent">protect.</span><br />
+            Engineered to <span class="accent">grow.</span>
+          </h1>
+
+          <div class="rule"></div>
+
+          <p class="copy">
+            Guardian provides the digital resources, strategic support, and investment funding to help your business thrive in a connected world.
+          </p>
+
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="6.8" y="3.5" width="10.4" height="17" rx="2.1"></rect>
+                  <path d="M10.3 16.8h3.4"></path>
                 </svg>
               </div>
-              <div class="brand-wordmark">Guardian</div>
-            </div>
+              <h2>Digital Resources</h2>
+              <p>Powerful digital solutions and technology to streamline operations and unlock new opportunities.</p>
+              <a class="card-link" href="/gaurdian-resources.html">Explore Resources</a>
+            </article>
 
-            <h1 class="headline">
-              Built to <span class="accent">protect.</span><br />
-              Engineered to <span class="accent">grow.</span>
-            </h1>
-
-            <div class="rule"></div>
-
-            <p class="copy">
-              Guardian provides the digital resources, strategic support, and investment funding to help your business thrive in a connected world.
-            </p>
-
-            <div class="cards">
-              <article class="card">
-                <div class="card-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="6.8" y="3.5" width="10.4" height="17" rx="2.1"></rect>
-                    <path d="M10.3 16.8h3.4"></path>
-                  </svg>
-                </div>
-                <h2>Digital Resources</h2>
-                <p>Powerful digital solutions and technology to streamline operations and unlock new opportunities.</p>
-                <a class="card-link" href="/gaurdian-resources.html">Explore Resources</a>
-              </article>
-
-              <article class="card">
-                <div class="card-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 2.4 6.5 4.8v4.4c0 3.7 2.3 7.1 5.5 8.8 3.2-1.7 5.5-5.1 5.5-8.8V4.8L12 2.4Z"></path>
-                    <path d="m9.1 11.4 2 2.1 3.8-4.4"></path>
-                  </svg>
-                </div>
-                <h2>Funding</h2>
-                <p>Flexible funding and strategic investment to fuel growth and long-term success.</p>
-                <a class="card-link" href="/gaurdian-resources.html">Explore Funding</a>
-              </article>
-            </div>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2.4 6.5 4.8v4.4c0 3.7 2.3 7.1 5.5 8.8 3.2-1.7 5.5-5.1 5.5-8.8V4.8L12 2.4Z"></path>
+                  <path d="m9.1 11.4 2 2.1 3.8-4.4"></path>
+                </svg>
+              </div>
+              <h2>Funding</h2>
+              <p>Flexible funding and strategic investment to fuel growth and long-term success.</p>
+              <a class="card-link" href="/gaurdian-resources.html">Explore Funding</a>
+            </article>
           </div>
         </div>
 
