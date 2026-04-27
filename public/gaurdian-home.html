@@ -8,17 +8,16 @@
       :root {
         color-scheme: dark;
         font-family: "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
-        --bg-0: #01050d;
-        --bg-1: #020a18;
-        --bg-2: #031229;
-        --panel: #071426;
-        --panel-2: #091a31;
-        --line: rgba(102, 142, 214, 0.16);
-        --text: #eef3ff;
-        --muted: rgba(177, 197, 228, 0.82);
-        --blue: #4d8dff;
-        --blue-2: #3c79ee;
-        --blue-3: #9fceff;
+        --bg-0: #020710;
+        --bg-1: #061226;
+        --bg-2: #041a35;
+        --panel: #08162b;
+        --panel-deep: #071222;
+        --line: rgba(115, 157, 229, 0.18);
+        --text: #edf3ff;
+        --muted: rgba(179, 197, 224, 0.86);
+        --blue: #4f8dff;
+        --blue-soft: #8bbcff;
         --ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -36,9 +35,9 @@
         margin: 0;
         min-width: 320px;
         background:
-          radial-gradient(circle at 18% 10%, rgba(38, 82, 160, 0.17), transparent 24%),
-          radial-gradient(circle at 86% 14%, rgba(40, 91, 180, 0.14), transparent 22%),
-          linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 44%, var(--bg-0) 100%);
+          radial-gradient(circle at 18% 12%, rgba(33, 81, 160, 0.16), transparent 24%),
+          radial-gradient(circle at 86% 14%, rgba(40, 103, 205, 0.14), transparent 24%),
+          linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 48%, var(--bg-0) 100%);
         color: var(--text);
         overflow-x: hidden;
       }
@@ -53,16 +52,16 @@
 
       body::before {
         background:
-          linear-gradient(rgba(110, 154, 225, 0.015) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(110, 154, 225, 0.015) 1px, transparent 1px);
+          linear-gradient(rgba(114, 156, 226, 0.013) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(114, 156, 226, 0.013) 1px, transparent 1px);
         background-size: 58px 58px;
-        mask-image: radial-gradient(circle at center, black 22%, transparent 84%);
+        mask-image: radial-gradient(circle at center, black 26%, transparent 84%);
       }
 
       body::after {
         background:
-          radial-gradient(circle at center, rgba(0, 0, 0, 0) 62%, rgba(0, 0, 0, 0.34) 100%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.016), transparent 24%, transparent 82%, rgba(0, 0, 0, 0.18));
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.34) 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 24%, transparent 82%, rgba(0, 0, 0, 0.16));
       }
 
       a {
@@ -73,70 +72,62 @@
       .page {
         position: relative;
         min-height: 100vh;
+        padding: 18px 18px 24px;
       }
 
-      .hero {
-        position: relative;
-        min-height: 100vh;
+      .hero-shell {
+        width: min(1800px, 100%);
+        margin: 0 auto;
+        min-height: calc(100vh - 42px);
         display: grid;
-        grid-template-columns: minmax(560px, 46%) minmax(640px, 54%);
-        align-items: stretch;
-      }
-
-      .hero::before,
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-
-      .hero::before {
+        grid-template-columns: minmax(520px, 46%) minmax(560px, 54%);
+        border-radius: 24px;
+        overflow: hidden;
+        position: relative;
         background:
-          linear-gradient(129deg, transparent 43.2%, rgba(106, 144, 207, 0.055) 43.4%, transparent 43.8%),
-          radial-gradient(circle at 64% 58%, rgba(61, 116, 222, 0.1), transparent 23%);
-      }
-
-      .hero::after {
-        background: linear-gradient(90deg, rgba(6, 14, 28, 0.05), transparent 24%, transparent 72%, rgba(6, 14, 28, 0.08));
+          radial-gradient(circle at 28% 22%, rgba(36, 85, 168, 0.11), transparent 28%),
+          linear-gradient(150deg, transparent 44%, rgba(102, 142, 211, 0.05) 44.3%, transparent 44.8%),
+          linear-gradient(180deg, rgba(4, 10, 21, 0.55), rgba(3, 7, 15, 0.78));
+        box-shadow:
+          inset 0 0 0 1px rgba(108, 151, 224, 0.13),
+          0 34px 80px rgba(0, 0, 0, 0.36);
       }
 
       .left {
         position: relative;
         z-index: 2;
-        padding: 34px 28px 28px 48px;
+        padding: 30px 34px 28px 42px;
         display: flex;
         flex-direction: column;
       }
 
       .back-link {
         width: fit-content;
-        min-height: 46px;
+        min-height: 44px;
+        padding: 0 14px;
+        border-radius: 14px;
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        padding: 0 16px;
-        border-radius: 14px;
-        background: linear-gradient(180deg, rgba(15, 29, 53, 0.8), rgba(10, 20, 38, 0.76));
+        gap: 9px;
+        color: rgba(232, 240, 252, 0.94);
+        background: rgba(11, 22, 40, 0.76);
         box-shadow:
           inset 0 0 0 1px rgba(102, 145, 219, 0.18),
-          0 12px 28px rgba(0, 0, 0, 0.22);
-        color: rgba(230, 239, 255, 0.94);
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.015em;
+          0 10px 24px rgba(0, 0, 0, 0.2);
+        font-size: 0.92rem;
+        font-weight: 500;
         transition:
-          transform 220ms var(--ease),
-          box-shadow 220ms var(--ease),
-          background 220ms var(--ease);
+          transform 200ms var(--ease),
+          box-shadow 200ms var(--ease),
+          background 200ms var(--ease);
       }
 
       .back-link:hover {
         transform: translateX(-2px);
+        background: rgba(14, 29, 53, 0.92);
         box-shadow:
-          inset 0 0 0 1px rgba(118, 168, 252, 0.28),
-          0 16px 32px rgba(0, 0, 0, 0.26);
-        background: linear-gradient(180deg, rgba(18, 35, 64, 0.9), rgba(12, 23, 44, 0.86));
+          inset 0 0 0 1px rgba(122, 174, 255, 0.26),
+          0 12px 26px rgba(0, 0, 0, 0.26);
       }
 
       .back-link svg {
@@ -144,21 +135,21 @@
         height: 14px;
         fill: none;
         stroke: currentColor;
-        stroke-width: 2.3;
+        stroke-width: 2.2;
       }
 
       .brand {
-        margin-top: 58px;
+        margin-top: 54px;
         display: inline-flex;
         align-items: center;
-        gap: 16px;
+        gap: 14px;
       }
 
       .brand-mark {
-        width: 44px;
-        height: 52px;
+        width: 40px;
+        height: 48px;
         color: var(--blue);
-        filter: drop-shadow(0 0 14px rgba(72, 129, 245, 0.16));
+        filter: drop-shadow(0 0 10px rgba(76, 136, 255, 0.14));
       }
 
       .brand-mark svg {
@@ -166,23 +157,23 @@
         height: 100%;
         fill: none;
         stroke: currentColor;
-        stroke-width: 1.55;
+        stroke-width: 1.5;
       }
 
       .brand-wordmark {
-        text-transform: uppercase;
-        font-size: 1.9rem;
+        font-size: 2rem;
         font-weight: 700;
-        letter-spacing: 0.24em;
+        letter-spacing: 0.23em;
+        text-transform: uppercase;
       }
 
       .headline {
-        margin: 56px 0 0;
-        font-size: clamp(3.5rem, 5.75vw, 6.9rem);
+        margin: 48px 0 0;
+        max-width: 8.5ch;
+        font-size: clamp(3rem, 5vw, 5.4rem);
+        line-height: 0.92;
+        letter-spacing: -0.068em;
         font-weight: 800;
-        line-height: 0.93;
-        letter-spacing: -0.078em;
-        max-width: 8.4ch;
       }
 
       .headline .accent {
@@ -192,172 +183,111 @@
       .rule {
         width: 72px;
         height: 3px;
-        margin-top: 28px;
+        margin-top: 26px;
         border-radius: 999px;
-        background: linear-gradient(90deg, rgba(79, 137, 255, 1), rgba(79, 137, 255, 0.14));
-        box-shadow: 0 0 18px rgba(79, 137, 255, 0.2);
+        background: linear-gradient(90deg, rgba(79, 141, 255, 1), rgba(79, 141, 255, 0.14));
+        box-shadow: 0 0 16px rgba(79, 141, 255, 0.2);
       }
 
       .copy {
-        margin: 30px 0 0;
+        margin: 24px 0 0;
         max-width: 34rem;
-        font-size: 1.14rem;
-        line-height: 1.7;
+        font-size: 1.05rem;
+        line-height: 1.62;
         color: var(--muted);
       }
 
       .cards {
-        margin-top: 30px;
+        margin-top: 28px;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
         gap: 16px;
-        max-width: 800px;
+        width: 100%;
       }
 
       .card {
         position: relative;
-        min-height: 336px;
-        border-radius: 22px;
-        padding: 24px 24px 22px;
+        min-height: 278px;
+        border-radius: 20px;
+        padding: 20px 20px 20px;
         background:
-          linear-gradient(180deg, rgba(10, 21, 40, 0.96), rgba(7, 16, 31, 0.98)),
-          linear-gradient(132deg, rgba(86, 136, 232, 0.06), transparent 48%);
+          linear-gradient(180deg, rgba(11, 22, 41, 0.98), rgba(8, 17, 33, 0.99)),
+          linear-gradient(132deg, rgba(89, 141, 237, 0.05), transparent 48%);
         box-shadow:
-          inset 0 0 0 1px rgba(98, 138, 208, 0.16),
-          inset 0 1px 0 rgba(255, 255, 255, 0.03),
-          0 18px 40px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-        transition:
-          transform 260ms var(--ease),
-          box-shadow 260ms var(--ease),
-          background 260ms var(--ease);
-      }
-
-      .card::before,
-      .card::after {
-        content: "";
-        position: absolute;
-        pointer-events: none;
-        transition:
-          opacity 260ms var(--ease),
-          transform 260ms var(--ease);
-      }
-
-      .card::before {
-        inset: auto -12% -24% 10%;
-        height: 140px;
-        background: radial-gradient(circle, rgba(75, 136, 255, 0.16), transparent 70%);
-        filter: blur(12px);
-        opacity: 0.48;
-      }
-
-      .card::after {
-        inset: -120% auto auto -36%;
-        width: 72%;
-        height: 300%;
-        background: linear-gradient(90deg, transparent, rgba(165, 210, 255, 0.12), transparent);
-        transform: rotate(18deg);
-        opacity: 0;
-      }
-
-      .card:hover {
-        transform: translateY(-5px) scale(1.008);
-        box-shadow:
-          inset 0 0 0 1px rgba(126, 176, 255, 0.24),
-          inset 0 1px 0 rgba(255, 255, 255, 0.04),
-          0 26px 50px rgba(0, 0, 0, 0.28),
-          0 0 0 1px rgba(77, 140, 255, 0.12);
-      }
-
-      .card:hover::before {
-        opacity: 0.74;
-        transform: translateY(-6px);
-      }
-
-      .card:hover::after {
-        opacity: 1;
-        transform: rotate(18deg) translate3d(130%, 0, 0);
+          inset 0 0 0 1px rgba(99, 141, 216, 0.16),
+          inset 0 1px 0 rgba(255, 255, 255, 0.028),
+          0 18px 36px rgba(0, 0, 0, 0.24);
       }
 
       .card-icon {
-        width: 64px;
-        height: 64px;
-        border-radius: 18px;
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
         display: grid;
         place-items: center;
-        color: #5f9cff;
-        background: linear-gradient(180deg, rgba(26, 53, 98, 0.9), rgba(18, 37, 72, 0.9));
+        color: #63a2ff;
+        background: linear-gradient(180deg, rgba(28, 59, 106, 0.88), rgba(19, 41, 80, 0.88));
         box-shadow:
-          inset 0 0 0 1px rgba(102, 148, 231, 0.16),
-          0 14px 24px rgba(0, 0, 0, 0.22);
+          inset 0 0 0 1px rgba(110, 157, 238, 0.18),
+          0 12px 22px rgba(0, 0, 0, 0.24);
       }
 
       .card-icon svg {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
         fill: none;
         stroke: currentColor;
         stroke-width: 1.9;
       }
 
       .card h2 {
-        margin: 22px 0 10px;
-        font-size: 2.6rem;
-        letter-spacing: -0.035em;
-        line-height: 0.98;
-        font-weight: 720;
+        margin: 18px 0 10px;
+        font-size: clamp(2rem, 2.3vw, 2.35rem);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-weight: 700;
       }
 
       .card p {
         margin: 0;
-        max-width: 20ch;
-        color: var(--muted-soft);
-        font-size: 1.03rem;
-        line-height: 1.58;
+        max-width: 24ch;
+        font-size: 0.98rem;
+        line-height: 1.5;
+        color: rgba(172, 193, 224, 0.84);
       }
 
       .card-link {
         position: absolute;
-        left: 24px;
-        right: 24px;
-        bottom: 22px;
-        min-height: 48px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        min-height: 46px;
         border-radius: 999px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 11px;
+        gap: 10px;
+        background: rgba(8, 20, 38, 0.84);
+        color: #7eb5ff;
+        box-shadow: inset 0 0 0 1px rgba(81, 136, 222, 0.45);
         text-transform: uppercase;
-        font-size: 1.01rem;
+        font-size: 0.92rem;
+        letter-spacing: 0.1em;
         font-weight: 700;
-        letter-spacing: 0.11em;
-        color: #7db3ff;
-        background: rgba(7, 18, 34, 0.74);
-        box-shadow: inset 0 0 0 1px rgba(76, 130, 214, 0.46);
-        transition:
-          transform 220ms var(--ease),
-          color 220ms var(--ease),
-          box-shadow 220ms var(--ease),
-          background 220ms var(--ease);
       }
 
       .card-link::after {
         content: "\2192";
-        font-size: 1.05em;
-      }
-
-      .card:hover .card-link {
-        transform: translateY(-2px);
-        color: #b8d8ff;
-        background: rgba(10, 22, 42, 0.9);
-        box-shadow:
-          inset 0 0 0 1px rgba(121, 175, 255, 0.62),
-          0 0 20px rgba(73, 132, 255, 0.2);
+        font-size: 1.02em;
       }
 
       .right {
         position: relative;
         overflow: hidden;
+        background:
+          radial-gradient(circle at 68% 42%, rgba(113, 170, 255, 0.22), transparent 30%),
+          radial-gradient(circle at 52% 62%, rgba(58, 121, 234, 0.18), transparent 36%),
+          linear-gradient(180deg, rgba(6, 20, 44, 0.7), rgba(5, 13, 27, 0.9));
       }
 
       .right::before,
@@ -370,283 +300,57 @@
 
       .right::before {
         background:
-          radial-gradient(circle at 70% 56%, rgba(57, 116, 235, 0.2), transparent 18%),
-          linear-gradient(90deg, rgba(5, 10, 21, 0.14), transparent 24%);
+          radial-gradient(circle at 74% 44%, rgba(186, 225, 255, 0.28), transparent 14%),
+          linear-gradient(90deg, rgba(5, 11, 22, 0.4), transparent 20%);
+        filter: blur(8px);
       }
 
       .right::after {
-        background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.14));
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 20%, transparent 82%, rgba(0, 0, 0, 0.2));
       }
 
-      .visual-wrap {
+      .static-wave {
         position: absolute;
         inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
 
-      .wave-scene {
-        position: relative;
-        width: 110%;
-        height: 100%;
-        margin-left: -6%;
-      }
-
-      .wave-aura {
-        position: absolute;
-        inset: 7% -9% 8% 12%;
-        background:
-          radial-gradient(circle at 68% 50%, rgba(97, 164, 255, 0.34), transparent 15%),
-          radial-gradient(circle at 49% 57%, rgba(50, 111, 231, 0.26), transparent 26%),
-          radial-gradient(circle at 78% 43%, rgba(203, 236, 255, 0.1), transparent 10%);
-        filter: blur(46px);
-        animation: auraShift 10s ease-in-out infinite;
-      }
-
-      .wave-svg {
-        position: absolute;
-        inset: 0;
+      .static-wave svg {
         width: 100%;
         height: 100%;
-        overflow: visible;
+        display: block;
       }
 
-      .mass {
-        fill: url(#massGradient);
-        opacity: 0.95;
-        animation: massShift 9.6s ease-in-out infinite alternate;
+      .static-wave .glow {
+        filter: blur(20px);
+        opacity: 0.9;
       }
 
-      .band-back {
-        fill: none;
-        stroke: url(#backBand);
-        stroke-width: 132;
-        stroke-linecap: round;
-        filter: url(#blurHeavy);
-        opacity: 0.86;
-        animation: bandA 11s ease-in-out infinite alternate;
-      }
-
-      .band-mid {
-        fill: none;
-        stroke: url(#midBand);
-        stroke-width: 88;
-        stroke-linecap: round;
-        filter: url(#blurSoft);
-        opacity: 0.92;
-        animation: bandB 8.8s ease-in-out infinite alternate;
-      }
-
-      .band-front {
-        fill: none;
-        stroke: url(#frontBand);
-        stroke-width: 50;
-        stroke-linecap: round;
-        filter: url(#blurTiny);
-        opacity: 0.98;
-        animation: bandC 7.6s ease-in-out infinite alternate;
-      }
-
-      .band-fill {
-        fill: url(#fillBand);
-        opacity: 0.88;
-        animation: fillShift 10.2s ease-in-out infinite alternate;
-      }
-
-      .strand {
-        fill: none;
-        stroke: rgba(199, 228, 255, 0.62);
-        stroke-width: 4.2;
-        stroke-linecap: round;
-        opacity: 0.54;
-        animation: strandShift 8.8s ease-in-out infinite alternate;
-      }
-
-      .strand.alt {
-        stroke: rgba(173, 212, 255, 0.56);
-        opacity: 0.46;
-        animation-duration: 10.4s;
-        animation-delay: -3.2s;
-      }
-
-      .strand.faint {
-        stroke: rgba(147, 194, 255, 0.46);
-        stroke-width: 3.2;
-        opacity: 0.36;
-      }
-
-      .node {
-        fill: rgba(196, 232, 255, 0.94);
-        filter: url(#nodeGlow);
-        animation: nodePulse 3.2s ease-in-out infinite;
-      }
-
-      .node.small {
-        opacity: 0.7;
-        animation-duration: 4s;
-      }
-
-      .node.dim {
-        opacity: 0.56;
-        animation-duration: 4.6s;
-      }
-
-      @keyframes auraShift {
-        0%,
-        100% {
-          transform: scale(0.98) translate3d(-8px, 6px, 0);
-          opacity: 0.82;
-        }
-
-        50% {
-          transform: scale(1.03) translate3d(10px, -8px, 0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes massShift {
-        0% {
-          transform: translate3d(-18px, 14px, 0) scaleY(0.98);
-        }
-
-        100% {
-          transform: translate3d(24px, -16px, 0) scaleY(1.04);
-        }
-      }
-
-      @keyframes bandA {
-        0% {
-          transform: translate3d(-28px, 18px, 0);
-        }
-
-        100% {
-          transform: translate3d(32px, -18px, 0);
-        }
-      }
-
-      @keyframes bandB {
-        0% {
-          transform: translate3d(-22px, 16px, 0);
-        }
-
-        100% {
-          transform: translate3d(26px, -16px, 0);
-        }
-      }
-
-      @keyframes bandC {
-        0% {
-          transform: translate3d(-16px, 10px, 0);
-        }
-
-        100% {
-          transform: translate3d(22px, -11px, 0);
-        }
-      }
-
-      @keyframes fillShift {
-        0% {
-          transform: translate3d(-14px, 10px, 0) scaleX(0.99);
-        }
-
-        100% {
-          transform: translate3d(20px, -12px, 0) scaleX(1.03);
-        }
-      }
-
-      @keyframes strandShift {
-        0% {
-          transform: translate3d(-16px, 12px, 0);
-          opacity: 0.4;
-        }
-
-        100% {
-          transform: translate3d(20px, -12px, 0);
-          opacity: 0.72;
-        }
-      }
-
-      @keyframes nodePulse {
-        0%,
-        100% {
-          opacity: 0.3;
-          transform: scale(0.9);
-        }
-
-        50% {
-          opacity: 1;
-          transform: scale(1.18);
-        }
-      }
-
-      @media (max-width: 1100px) {
-        .hero {
-          grid-template-columns: 1fr;
+      @media (max-width: 1320px) {
+        .hero-shell {
+          grid-template-columns: minmax(460px, 1fr) minmax(460px, 1fr);
         }
 
         .left {
-          padding: 24px 20px 14px;
+          padding: 24px 24px 20px 26px;
         }
 
         .brand {
-          margin-top: 42px;
-        }
-
-        .headline {
-          font-size: clamp(3.8rem, 10vw, 5.6rem);
-          max-width: none;
-        }
-
-        .copy {
-          max-width: none;
-        }
-
-        .cards {
-          max-width: none;
-        }
-
-        .right {
-          min-height: 460px;
-        }
-
-        .visual-wrap {
-          position: relative;
-          min-height: 460px;
-        }
-
-        .wave-scene {
-          width: 100%;
-          height: 460px;
-          margin-left: 0;
-        }
-      }
-
-      @media (max-width: 760px) {
-        .left {
-          padding: 16px 14px 10px;
+          margin-top: 40px;
         }
 
         .brand-wordmark {
-          font-size: 1.48rem;
-          letter-spacing: 0.18em;
-        }
-
-        .brand-mark {
-          width: 36px;
-          height: 42px;
+          font-size: 1.62rem;
+          letter-spacing: 0.2em;
         }
 
         .headline {
-          margin-top: 44px;
-          font-size: clamp(2.86rem, 15vw, 4.2rem);
-          line-height: 0.96;
+          margin-top: 36px;
+          font-size: clamp(2.8rem, 4.9vw, 4.5rem);
         }
 
         .copy {
           font-size: 1rem;
-          line-height: 1.6;
+          line-height: 1.58;
         }
 
         .cards {
@@ -654,34 +358,88 @@
         }
 
         .card {
-          min-height: 266px;
+          min-height: 248px;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          padding: 12px;
         }
 
-        .card h2 {
-          font-size: 1.85rem;
+        .hero-shell {
+          min-height: auto;
+          grid-template-columns: 1fr;
         }
 
-        .card-link {
-          font-size: 0.9rem;
+        .left {
+          padding: 18px 16px 12px;
+        }
+
+        .brand {
+          margin-top: 30px;
+        }
+
+        .brand-wordmark {
+          font-size: 1.36rem;
+          letter-spacing: 0.16em;
+        }
+
+        .brand-mark {
+          width: 34px;
+          height: 40px;
+        }
+
+        .headline {
+          margin-top: 30px;
+          font-size: clamp(2.45rem, 10vw, 3.85rem);
+          max-width: 9.4ch;
+          line-height: 0.95;
+        }
+
+        .copy {
+          font-size: 0.98rem;
+        }
+
+        .cards {
+          margin-top: 22px;
         }
 
         .right {
-          min-height: 320px;
+          min-height: 340px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .headline {
+          font-size: clamp(2.1rem, 12vw, 3.15rem);
         }
 
-        .visual-wrap {
-          min-height: 320px;
+        .card {
+          min-height: 236px;
+          padding: 18px 16px 18px;
         }
 
-        .wave-scene {
-          height: 320px;
+        .card-link {
+          left: 16px;
+          right: 16px;
+          bottom: 16px;
+          font-size: 0.84rem;
+        }
+
+        .card h2 {
+          font-size: 1.8rem;
+        }
+
+        .right {
+          min-height: 280px;
         }
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <section class="hero">
+      <section class="hero-shell">
         <div class="left">
           <a class="back-link" href="/#/" aria-label="Back to home">
             <svg viewBox="0 0 24 24">
@@ -739,89 +497,32 @@
         </div>
 
         <div class="right" aria-hidden="true">
-          <div class="visual-wrap">
-            <div class="wave-scene">
-              <div class="wave-aura"></div>
-              <svg class="wave-svg" viewBox="0 0 1280 860" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                  <linearGradient id="massGradient" x1="14%" y1="14%" x2="88%" y2="86%">
-                    <stop offset="0%" stop-color="rgba(16,36,75,0)"></stop>
-                    <stop offset="28%" stop-color="#0f264d"></stop>
-                    <stop offset="66%" stop-color="#143566"></stop>
-                    <stop offset="100%" stop-color="rgba(20,53,102,0)"></stop>
-                  </linearGradient>
-                  <linearGradient id="backBand" x1="8%" y1="8%" x2="94%" y2="92%">
-                    <stop offset="0%" stop-color="#264f9f" stop-opacity="0"></stop>
-                    <stop offset="42%" stop-color="#4f89ef" stop-opacity="0.56"></stop>
-                    <stop offset="100%" stop-color="#8ec8ff" stop-opacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient id="midBand" x1="10%" y1="10%" x2="94%" y2="90%">
-                    <stop offset="0%" stop-color="#2b5ec0" stop-opacity="0"></stop>
-                    <stop offset="36%" stop-color="#5a9bff" stop-opacity="0.86"></stop>
-                    <stop offset="72%" stop-color="#d7efff" stop-opacity="0.78"></stop>
-                    <stop offset="100%" stop-color="#7bb3ff" stop-opacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient id="frontBand" x1="12%" y1="12%" x2="94%" y2="88%">
-                    <stop offset="0%" stop-color="#90c8ff" stop-opacity="0"></stop>
-                    <stop offset="40%" stop-color="#cbe5ff" stop-opacity="0.86"></stop>
-                    <stop offset="66%" stop-color="#fbfeff" stop-opacity="1"></stop>
-                    <stop offset="100%" stop-color="#90c8ff" stop-opacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient id="fillBand" x1="18%" y1="26%" x2="86%" y2="72%">
-                    <stop offset="0%" stop-color="rgba(48,92,180,0)"></stop>
-                    <stop offset="34%" stop-color="#1d4388"></stop>
-                    <stop offset="76%" stop-color="#2a68cf"></stop>
-                    <stop offset="100%" stop-color="rgba(67,122,232,0)"></stop>
-                  </linearGradient>
-                  <filter id="blurHeavy">
-                    <feGaussianBlur stdDeviation="24"></feGaussianBlur>
-                  </filter>
-                  <filter id="blurSoft">
-                    <feGaussianBlur stdDeviation="8"></feGaussianBlur>
-                  </filter>
-                  <filter id="blurTiny">
-                    <feGaussianBlur stdDeviation="3.2"></feGaussianBlur>
-                  </filter>
-                  <filter id="nodeGlow">
-                    <feGaussianBlur stdDeviation="1.9"></feGaussianBlur>
-                  </filter>
-                </defs>
+          <div class="static-wave">
+            <svg viewBox="0 0 1200 820" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="waveGlowA" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1f4f9d" stop-opacity="0"></stop>
+                  <stop offset="42%" stop-color="#5da2ff" stop-opacity="0.8"></stop>
+                  <stop offset="100%" stop-color="#cde8ff" stop-opacity="0"></stop>
+                </linearGradient>
+                <linearGradient id="waveGlowB" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#2d65c8" stop-opacity="0"></stop>
+                  <stop offset="52%" stop-color="#9bc9ff" stop-opacity="0.86"></stop>
+                  <stop offset="100%" stop-color="#65a5ff" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
 
-                <path class="mass" d="M138 520c84-103 176-154 280-154 106 0 202 56 314 61 107 4 194-37 290-37 90 0 171 31 249 98v241H120c-20-59-16-124 18-209Z"></path>
+              <path class="glow" d="M80 470c90-70 176-106 264-106 96 0 186 52 286 62 94 10 180-20 266-20 94 0 176 30 248 90" fill="none" stroke="url(#waveGlowA)" stroke-width="140" stroke-linecap="round"></path>
+              <path class="glow" d="M72 532c94-72 184-108 274-108 100 0 190 54 286 64 92 10 174-21 260-21 94 0 178 30 250 91" fill="none" stroke="url(#waveGlowB)" stroke-width="102" stroke-linecap="round"></path>
+              <path d="M84 506c95-70 183-104 270-104 98 0 187 52 284 61 92 9 176-19 260-19 92 0 174 30 246 86" fill="none" stroke="rgba(197,225,255,0.82)" stroke-width="38" stroke-linecap="round"></path>
+              <path d="M72 590c96-70 188-106 278-106 98 0 186 52 282 60 90 8 171-22 255-22 92 0 174 29 246 85" fill="none" stroke="rgba(130,183,255,0.52)" stroke-width="22" stroke-linecap="round"></path>
 
-                <path class="band-back" d="M130 476c98-87 191-131 288-132 106 0 198 53 301 59 99 5 184-31 271-28 90 3 169 33 244 99"></path>
-                <path class="band-mid" d="M144 504c100-89 194-133 294-133 107 1 198 55 300 61 100 5 185-33 272-30 88 2 168 33 241 97"></path>
-                <path class="band-front" d="M160 534c100-90 197-135 296-134 108 1 198 57 299 64 100 5 185-34 273-31 88 2 168 33 242 99"></path>
-                <path class="band-fill" d="M170 540c93-73 188-111 286-110 104 1 189 49 289 54 99 5 180-26 264-24 78 2 149 30 216 88 16 75 12 134-10 181H182c-22-54-24-111-12-189Z"></path>
-
-                <path class="strand" d="M160 420c107-31 207-25 300 16 95 42 183 104 301 110 114 5 202-38 297-33 70 4 137 24 207 65"></path>
-                <path class="strand alt" d="M144 468c111-35 213-31 307 12 95 42 184 104 300 109 113 5 201-32 297-26 71 4 139 25 208 63"></path>
-                <path class="strand faint" d="M130 516c115-36 218-31 313 9 95 39 184 97 299 102 113 5 201-26 296-18 71 6 140 24 209 60"></path>
-                <path class="strand" d="M118 566c118-34 223-26 319 14 96 39 184 90 297 95 113 4 200-20 294-8 71 8 140 24 208 54"></path>
-                <path class="strand faint alt" d="M108 618c120-29 226-19 324 21 97 38 184 83 295 87 112 5 199-13 291 1 70 10 138 24 204 48"></path>
-                <path class="strand" d="M320 700c99-34 186-42 271-22 84 19 161 60 259 58 92-2 169-31 252-24 61 5 120 20 186 49"></path>
-                <path class="strand faint" d="M394 344c77 21 145 52 211 86 77 39 154 74 252 73 90 0 163-27 244-23 58 3 116 15 179 40"></path>
-                <path class="strand alt" d="M478 316c62 22 118 49 173 79 79 42 156 77 254 76 89-2 163-25 242-18 58 4 117 17 182 43"></path>
-                <path class="strand faint" d="M570 300c49 18 95 41 144 68 80 44 159 78 252 76 87-3 158-23 236-14 57 5 116 19 181 47"></path>
-
-                <circle class="node" cx="420" cy="590" r="4.6"></circle>
-                <circle class="node dim" cx="500" cy="616" r="3.6"></circle>
-                <circle class="node small" cx="590" cy="610" r="3"></circle>
-                <circle class="node" cx="672" cy="600" r="4.8"></circle>
-                <circle class="node dim" cx="756" cy="590" r="3.6"></circle>
-                <circle class="node small" cx="840" cy="578" r="3"></circle>
-                <circle class="node" cx="924" cy="562" r="4.4"></circle>
-                <circle class="node dim" cx="1006" cy="548" r="3.3"></circle>
-                <circle class="node small" cx="1084" cy="536" r="2.8"></circle>
-                <circle class="node" cx="1152" cy="526" r="4"></circle>
-                <circle class="node dim" cx="534" cy="462" r="3.2"></circle>
-                <circle class="node small" cx="634" cy="450" r="2.8"></circle>
-                <circle class="node" cx="730" cy="440" r="3.9"></circle>
-                <circle class="node dim" cx="826" cy="420" r="3.3"></circle>
-                <circle class="node small" cx="922" cy="404" r="2.7"></circle>
-                <circle class="node" cx="1022" cy="386" r="3.7"></circle>
-              </svg>
-            </div>
+              <path d="M60 392c122-30 228-20 326 28 104 50 190 118 300 132 102 13 185-18 274-8 76 9 149 30 220 67" fill="none" stroke="rgba(184,219,255,0.26)" stroke-width="4.2"></path>
+              <path d="M46 446c126-30 233-20 332 26 103 48 190 116 298 128 102 12 184-17 273-5 76 10 148 31 220 66" fill="none" stroke="rgba(168,207,255,0.24)" stroke-width="4"></path>
+              <path d="M34 500c130-30 238-20 338 24 103 46 190 112 296 124 102 11 183-16 272-2 75 11 147 32 219 65" fill="none" stroke="rgba(154,197,252,0.22)" stroke-width="3.8"></path>
+              <path d="M22 554c132-29 241-18 342 25 102 44 189 107 294 116 102 9 182-12 270 4 75 13 147 34 218 66" fill="none" stroke="rgba(146,190,250,0.2)" stroke-width="3.6"></path>
+              <path d="M10 610c133-27 244-13 344 29 102 42 188 101 292 108 101 7 182-8 268 10 74 15 146 35 216 67" fill="none" stroke="rgba(138,185,248,0.2)" stroke-width="3.4"></path>
+            </svg>
           </div>
         </div>
       </section>
