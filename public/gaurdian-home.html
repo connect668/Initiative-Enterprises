@@ -8,17 +8,19 @@
       :root {
         color-scheme: dark;
         font-family: "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
-        --bg-0: #040911;
-        --bg-1: #071426;
-        --bg-2: #081e3a;
-        --surface: #0a172b;
-        --surface-2: #0c1c33;
-        --line: rgba(108, 148, 217, 0.18);
+        --bg: #04080f;
+        --bg-2: #08111d;
+        --bg-3: #0a1627;
+        --panel: #0c1728;
+        --panel-alt: #0f1c31;
+        --line: rgba(130, 159, 205, 0.18);
+        --line-strong: rgba(130, 159, 205, 0.28);
         --text: #edf3ff;
-        --muted: rgba(185, 202, 228, 0.84);
-        --blue: #4f8dff;
-        --blue-soft: #98c3ff;
-        --shadow: 0 26px 56px rgba(0, 0, 0, 0.35);
+        --muted: rgba(182, 200, 224, 0.86);
+        --label: rgba(147, 177, 222, 0.88);
+        --accent: #4d8dff;
+        --accent-2: #78abff;
+        --shadow: 0 24px 58px rgba(0, 0, 0, 0.42);
         --ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -37,9 +39,9 @@
         min-width: 320px;
         color: var(--text);
         background:
-          radial-gradient(circle at 12% 8%, rgba(44, 92, 172, 0.17), transparent 24%),
-          radial-gradient(circle at 86% 14%, rgba(56, 114, 214, 0.14), transparent 24%),
-          linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 46%, var(--bg-0) 100%);
+          radial-gradient(circle at 16% 8%, rgba(38, 76, 142, 0.16), transparent 26%),
+          radial-gradient(circle at 84% 14%, rgba(56, 113, 201, 0.12), transparent 26%),
+          linear-gradient(180deg, #0a1628 0%, var(--bg-2) 42%, var(--bg) 100%);
         overflow-x: hidden;
       }
 
@@ -53,16 +55,16 @@
 
       body::before {
         background:
-          linear-gradient(rgba(116, 154, 223, 0.012) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(116, 154, 223, 0.012) 1px, transparent 1px);
-        background-size: 58px 58px;
-        mask-image: radial-gradient(circle at center, black 26%, transparent 86%);
+          linear-gradient(rgba(116, 146, 196, 0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(116, 146, 196, 0.012) 1px, transparent 1px);
+        background-size: 52px 52px;
+        mask-image: radial-gradient(circle at center, black 24%, transparent 84%);
       }
 
       body::after {
         background:
-          radial-gradient(circle at center, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.32) 100%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 24%, transparent 80%, rgba(0, 0, 0, 0.16));
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.34) 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 24%, transparent 82%, rgba(0, 0, 0, 0.2));
       }
 
       a {
@@ -70,43 +72,60 @@
         text-decoration: none;
       }
 
-      .page {
+      .terminal-shell {
         position: relative;
-        width: min(1280px, calc(100% - 40px));
-        margin: 20px auto 28px;
-        padding: 0;
-        border-radius: 24px;
+        width: min(1320px, calc(100% - 40px));
+        margin: 22px auto 28px;
+        border-radius: 20px;
         overflow: hidden;
         background:
-          radial-gradient(circle at 68% 36%, rgba(72, 130, 228, 0.1), transparent 38%),
-          linear-gradient(142deg, transparent 43%, rgba(103, 145, 214, 0.05) 43.2%, transparent 43.7%),
-          linear-gradient(180deg, rgba(10, 22, 40, 0.74), rgba(6, 13, 24, 0.82));
+          linear-gradient(180deg, rgba(9, 18, 31, 0.92), rgba(7, 14, 24, 0.97)),
+          linear-gradient(145deg, transparent 44%, rgba(105, 139, 190, 0.05) 44.2%, transparent 44.7%);
         box-shadow:
-          inset 0 0 0 1px rgba(109, 151, 219, 0.16),
+          inset 0 0 0 1px rgba(114, 145, 194, 0.18),
           var(--shadow);
       }
 
+      .terminal-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(132deg, transparent 42%, rgba(123, 156, 204, 0.06) 42.1%, transparent 42.3%),
+          radial-gradient(circle at 76% 36%, rgba(73, 121, 204, 0.12), transparent 32%);
+      }
+
       .header {
+        position: relative;
+        z-index: 2;
+        min-height: 74px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        padding: 24px 30px 0;
+        padding: 16px 24px;
+        background: linear-gradient(180deg, rgba(9, 16, 28, 0.94), rgba(9, 16, 28, 0.76));
+        border-bottom: 1px solid rgba(118, 151, 201, 0.2);
+      }
+
+      .header-left {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
       }
 
       .back-link {
-        min-height: 42px;
+        min-height: 38px;
+        padding: 0 12px;
+        border-radius: 10px;
         display: inline-flex;
         align-items: center;
-        gap: 9px;
-        padding: 0 14px;
-        border-radius: 13px;
-        background: rgba(11, 22, 40, 0.78);
-        box-shadow:
-          inset 0 0 0 1px rgba(106, 147, 216, 0.2),
-          0 10px 22px rgba(0, 0, 0, 0.22);
-        color: rgba(229, 238, 252, 0.95);
-        font-size: 0.93rem;
+        gap: 8px;
+        background: rgba(10, 20, 36, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(118, 151, 201, 0.24);
+        color: rgba(216, 229, 248, 0.94);
+        font-size: 0.88rem;
         font-weight: 500;
         transition:
           transform 200ms var(--ease),
@@ -116,15 +135,13 @@
 
       .back-link:hover {
         transform: translateX(-2px);
-        background: rgba(15, 29, 53, 0.9);
-        box-shadow:
-          inset 0 0 0 1px rgba(130, 180, 255, 0.28),
-          0 12px 24px rgba(0, 0, 0, 0.26);
+        background: rgba(14, 28, 50, 0.96);
+        box-shadow: inset 0 0 0 1px rgba(135, 174, 237, 0.34);
       }
 
       .back-link svg {
-        width: 14px;
-        height: 14px;
+        width: 13px;
+        height: 13px;
         fill: none;
         stroke: currentColor;
         stroke-width: 2.2;
@@ -133,13 +150,13 @@
       .wordmark {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
       }
 
       .wordmark-badge {
-        width: 30px;
-        height: 36px;
-        color: var(--blue);
+        width: 28px;
+        height: 34px;
+        color: var(--accent);
       }
 
       .wordmark-badge svg {
@@ -151,60 +168,91 @@
       }
 
       .wordmark-text {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
       }
 
-      .hero {
-        padding: 20px 30px 42px;
-        display: grid;
-        grid-template-columns: minmax(420px, 1fr) minmax(320px, 0.8fr);
-        gap: 28px;
+      .header-state {
+        display: inline-flex;
         align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        padding: 0 11px;
+        border-radius: 999px;
+        background: rgba(11, 23, 41, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(118, 151, 201, 0.24);
+        color: var(--label);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.74rem;
+        font-weight: 600;
+      }
+
+      .header-state::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent-2);
+        box-shadow: 0 0 10px rgba(120, 171, 255, 0.5);
+      }
+
+      .hero {
+        position: relative;
+        z-index: 2;
+        padding: 28px 24px 22px;
+        display: grid;
+        grid-template-columns: minmax(420px, 1fr) minmax(360px, 0.86fr);
+        gap: 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-copy .kicker {
+        margin: 0;
+        color: var(--label);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.76rem;
+        font-weight: 600;
       }
 
       .hero-copy h1 {
-        margin: 0;
-        font-size: clamp(2.2rem, 4.8vw, 4rem);
-        line-height: 1.05;
-        letter-spacing: -0.045em;
+        margin: 12px 0 0;
         max-width: 11ch;
+        font-size: clamp(2.3rem, 4.5vw, 4rem);
+        line-height: 1.03;
+        letter-spacing: -0.048em;
       }
 
       .hero-copy p {
-        margin: 18px 0 0;
-        max-width: 58ch;
+        margin: 16px 0 0;
+        max-width: 64ch;
         color: var(--muted);
-        font-size: 1.05rem;
-        line-height: 1.65;
-      }
-
-      .cta-wrap {
-        margin-top: 24px;
-        display: inline-flex;
-        flex-direction: column;
-        gap: 8px;
+        line-height: 1.62;
+        font-size: 1rem;
       }
 
       .cta-main {
-        min-height: 50px;
-        padding: 0 26px;
-        border-radius: 999px;
+        margin-top: 22px;
+        min-height: 48px;
+        padding: 0 20px;
+        width: fit-content;
+        border-radius: 10px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        background: linear-gradient(180deg, rgba(82, 145, 255, 0.94), rgba(63, 120, 224, 0.94));
-        color: #f3f8ff;
-        font-size: 0.96rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-weight: 700;
+        background: linear-gradient(180deg, rgba(18, 31, 53, 0.94), rgba(12, 24, 44, 0.94));
+        color: #e5f0ff;
         box-shadow:
-          inset 0 0 0 1px rgba(182, 218, 255, 0.18),
-          0 16px 32px rgba(18, 56, 122, 0.35);
+          inset 0 0 0 1px rgba(122, 165, 236, 0.5),
+          0 14px 28px rgba(9, 21, 39, 0.44);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        font-size: 0.86rem;
+        font-weight: 700;
         transition:
           transform 220ms var(--ease),
           box-shadow 220ms var(--ease),
@@ -213,122 +261,169 @@
 
       .cta-main::after {
         content: "\2192";
-        font-size: 1.1em;
+        font-size: 1.08em;
       }
 
       .cta-main:hover {
         transform: translateY(-2px);
-        filter: brightness(1.05);
         box-shadow:
-          inset 0 0 0 1px rgba(198, 228, 255, 0.24),
-          0 20px 34px rgba(18, 56, 122, 0.44);
-      }
-
-      .cta-note {
-        font-size: 0.84rem;
-        color: rgba(168, 189, 221, 0.76);
+          inset 0 0 0 1px rgba(150, 193, 255, 0.62),
+          0 18px 32px rgba(9, 21, 39, 0.52),
+          0 0 20px rgba(77, 141, 255, 0.2);
+        filter: brightness(1.04);
       }
 
       .hero-visual {
-        min-height: 270px;
-        border-radius: 22px;
-        position: relative;
-        background:
-          radial-gradient(circle at 70% 30%, rgba(170, 216, 255, 0.18), transparent 24%),
-          radial-gradient(circle at 48% 56%, rgba(76, 136, 243, 0.24), transparent 36%),
-          linear-gradient(180deg, rgba(11, 30, 56, 0.82), rgba(8, 18, 34, 0.9));
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(12, 22, 38, 0.95), rgba(10, 18, 31, 0.95));
         box-shadow:
-          inset 0 0 0 1px rgba(111, 153, 221, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.03),
-          0 20px 42px rgba(0, 0, 0, 0.28);
+          inset 0 0 0 1px rgba(120, 152, 201, 0.22),
+          0 18px 36px rgba(0, 0, 0, 0.28);
         overflow: hidden;
       }
 
-      .hero-visual::before,
-      .hero-visual::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
+      .visual-head {
+        min-height: 44px;
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        background: rgba(8, 15, 27, 0.86);
       }
 
-      .hero-visual::before {
-        background:
-          linear-gradient(rgba(132, 174, 242, 0.07) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(132, 174, 242, 0.07) 1px, transparent 1px);
-        background-size: 44px 44px;
-        opacity: 0.32;
+      .visual-head strong {
+        font-size: 0.77rem;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+        color: var(--label);
       }
 
-      .hero-visual::after {
-        background:
-          linear-gradient(132deg, transparent 43%, rgba(149, 188, 247, 0.12) 43.1%, transparent 43.8%),
-          radial-gradient(circle at 64% 52%, rgba(91, 154, 255, 0.26), transparent 34%);
+      .visual-head span {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        color: rgba(169, 191, 222, 0.82);
+      }
+
+      .visual-grid {
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .visual-row {
+        padding: 10px 10px 11px;
+        border-radius: 10px;
+        background: linear-gradient(180deg, rgba(14, 25, 43, 0.9), rgba(10, 18, 31, 0.88));
+        box-shadow: inset 0 0 0 1px rgba(112, 144, 194, 0.2);
+      }
+
+      .row-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .row-top label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(173, 196, 228, 0.9);
+      }
+
+      .row-top b {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        color: rgba(193, 216, 252, 0.92);
+      }
+
+      .bar {
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(22, 35, 58, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(103, 136, 183, 0.2);
+        overflow: hidden;
+      }
+
+      .bar > i {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, rgba(76, 131, 230, 0.78), rgba(134, 186, 255, 0.86));
       }
 
       .what {
-        margin: 0 30px 32px;
-        padding: 24px 24px 26px;
-        border-radius: 20px;
-        background:
-          linear-gradient(180deg, rgba(10, 22, 40, 0.95), rgba(7, 16, 30, 0.96)),
-          linear-gradient(130deg, rgba(89, 145, 243, 0.06), transparent 52%);
-        box-shadow:
-          inset 0 0 0 1px rgba(106, 146, 214, 0.16),
-          0 20px 38px rgba(0, 0, 0, 0.26);
+        position: relative;
+        z-index: 2;
+        padding: 24px;
       }
 
       .what h2 {
         margin: 0;
-        font-size: clamp(1.45rem, 2.6vw, 2rem);
-        letter-spacing: -0.025em;
+        font-size: clamp(1.5rem, 2.3vw, 1.95rem);
+        letter-spacing: -0.02em;
+      }
+
+      .what-intro {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.62;
+        max-width: 76ch;
       }
 
       .what-grid {
-        margin-top: 14px;
+        margin-top: 18px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
+        gap: 14px;
       }
 
       .what-item {
+        border-radius: 12px;
         padding: 14px 14px 12px;
-        border-radius: 14px;
-        background: linear-gradient(180deg, rgba(12, 24, 45, 0.8), rgba(9, 18, 33, 0.8));
-        box-shadow: inset 0 0 0 1px rgba(101, 142, 210, 0.14);
+        background: linear-gradient(180deg, rgba(15, 26, 44, 0.86), rgba(11, 20, 35, 0.92));
+        box-shadow:
+          inset 0 0 0 1px rgba(112, 144, 194, 0.2),
+          0 14px 26px rgba(0, 0, 0, 0.2);
+        transition:
+          transform 200ms var(--ease),
+          box-shadow 200ms var(--ease);
+      }
+
+      .what-item:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          inset 0 0 0 1px rgba(132, 169, 226, 0.3),
+          0 18px 30px rgba(0, 0, 0, 0.26);
       }
 
       .what-item h3 {
         margin: 0;
-        font-size: 1rem;
-        letter-spacing: 0.01em;
+        font-size: 0.92rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--label);
       }
 
       .what-item p {
         margin: 8px 0 0;
         color: var(--muted);
-        font-size: 0.95rem;
-        line-height: 1.52;
+        font-size: 0.94rem;
+        line-height: 1.55;
       }
 
       @media (max-width: 1120px) {
         .hero {
           grid-template-columns: 1fr;
-          gap: 18px;
-          padding: 16px 22px 30px;
+          gap: 16px;
         }
 
         .hero-copy h1 {
-          max-width: 14ch;
-          font-size: clamp(2rem, 6.5vw, 3.3rem);
-        }
-
-        .hero-visual {
-          min-height: 220px;
-        }
-
-        .what {
-          margin: 0 22px 24px;
+          max-width: 13ch;
+          font-size: clamp(2rem, 6.4vw, 3.2rem);
         }
 
         .what-grid {
@@ -336,114 +431,161 @@
         }
       }
 
-      @media (max-width: 700px) {
-        .page {
-          width: calc(100% - 16px);
-          margin: 8px auto 16px;
-          border-radius: 16px;
+      @media (max-width: 760px) {
+        .terminal-shell {
+          width: calc(100% - 12px);
+          margin: 6px auto 12px;
+          border-radius: 14px;
         }
 
         .header {
-          padding: 14px 12px 0;
+          padding: 10px;
+          min-height: 62px;
+        }
+
+        .header-left {
+          gap: 8px;
+        }
+
+        .back-link {
+          min-height: 34px;
+          padding: 0 10px;
+          font-size: 0.8rem;
         }
 
         .wordmark-text {
-          font-size: 1.05rem;
-          letter-spacing: 0.14em;
+          font-size: 0.88rem;
+          letter-spacing: 0.13em;
+        }
+
+        .header-state {
+          display: none;
         }
 
         .hero {
-          padding: 12px 12px 20px;
-          gap: 14px;
+          padding: 14px 10px 16px;
         }
 
         .hero-copy h1 {
-          font-size: clamp(1.76rem, 9vw, 2.6rem);
           max-width: none;
+          font-size: clamp(1.7rem, 9vw, 2.5rem);
         }
 
-        .hero-copy p {
-          font-size: 0.95rem;
-          line-height: 1.56;
+        .hero-copy p,
+        .what-intro,
+        .what-item p {
+          font-size: 0.9rem;
         }
 
         .cta-main {
-          min-height: 46px;
-          font-size: 0.84rem;
+          min-height: 42px;
+          padding: 0 14px;
+          font-size: 0.77rem;
           letter-spacing: 0.065em;
-          padding: 0 18px;
         }
 
-        .hero-visual {
-          min-height: 170px;
-          border-radius: 14px;
+        .visual-head {
+          min-height: 40px;
+          padding: 0 10px;
+        }
+
+        .visual-grid {
+          padding: 10px;
         }
 
         .what {
-          margin: 0 12px 14px;
-          padding: 14px 12px 16px;
-          border-radius: 14px;
+          padding: 14px 10px 16px;
         }
 
         .what-item {
           border-radius: 10px;
-          padding: 11px;
+          padding: 12px 10px;
         }
       }
     </style>
   </head>
   <body>
-    <main class="page">
+    <main class="terminal-shell">
       <header class="header">
-        <a class="back-link" href="/#/" aria-label="Back to home">
-          <svg viewBox="0 0 24 24">
-            <path d="M15 5 8 12l7 7"></path>
-          </svg>
-          Back to Home
-        </a>
-
-        <div class="wordmark" aria-label="Guardian logo">
-          <span class="wordmark-badge" aria-hidden="true">
-            <svg viewBox="0 0 64 76">
-              <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
-              <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
+        <div class="header-left">
+          <a class="back-link" href="/#/" aria-label="Back to home">
+            <svg viewBox="0 0 24 24">
+              <path d="M15 5 8 12l7 7"></path>
             </svg>
-          </span>
-          <span class="wordmark-text">Guardian</span>
+            Back
+          </a>
+          <div class="wordmark" aria-label="Guardian logo">
+            <span class="wordmark-badge" aria-hidden="true">
+              <svg viewBox="0 0 64 76">
+                <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
+                <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
+              </svg>
+            </span>
+            <span class="wordmark-text">Guardian</span>
+          </div>
         </div>
+        <span class="header-state">System Active</span>
       </header>
 
       <section class="hero">
         <div class="hero-copy">
-          <h1>Build and grow with real support.</h1>
+          <p class="kicker">Guardian Control Center</p>
+          <h1>Business support with terminal-level clarity.</h1>
           <p>
-            Guardian is a focused system for founders and operators who need practical momentum. We combine digital resources,
-            funding support, and operational guidance to help you make stronger decisions and run with more confidence.
+            Guardian helps founders and operators run with structure through digital resources, funding support, and
+            operational guidance. The platform is built for sharper decisions, cleaner execution, and stronger growth momentum.
           </p>
-
-          <div class="cta-wrap">
-            <a class="cta-main" href="https://app.guardian.example.com">Create Account Now</a>
-            <span class="cta-note">Replace `https://app.guardian.example.com` with your live Guardian app URL.</span>
-          </div>
+          <a class="cta-main" href="https://app.guardian.example.com">Create Account Now</a>
         </div>
 
-        <aside class="hero-visual" aria-hidden="true"></aside>
+        <aside class="hero-visual" aria-hidden="true">
+          <div class="visual-head">
+            <strong>Support Matrix</strong>
+            <span>Live Overview</span>
+          </div>
+          <div class="visual-grid">
+            <div class="visual-row">
+              <div class="row-top">
+                <label>Digital Resources</label>
+                <b>Ready</b>
+              </div>
+              <div class="bar"><i style="width: 84%"></i></div>
+            </div>
+            <div class="visual-row">
+              <div class="row-top">
+                <label>Funding Support</label>
+                <b>In Review</b>
+              </div>
+              <div class="bar"><i style="width: 68%"></i></div>
+            </div>
+            <div class="visual-row">
+              <div class="row-top">
+                <label>Operational Guidance</label>
+                <b>Active</b>
+              </div>
+              <div class="bar"><i style="width: 91%"></i></div>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <section class="what" aria-labelledby="what-guardian-does">
         <h2 id="what-guardian-does">What Guardian Does</h2>
+        <p class="what-intro">
+          Guardian is a focused support system for businesses that need structure and momentum without noise.
+        </p>
         <div class="what-grid">
           <article class="what-item">
             <h3>Digital Resources</h3>
-            <p>Frameworks and tools that support better decisions, clearer workflows, and stronger day-to-day execution.</p>
+            <p>Tools and frameworks that improve decisions, tighten workflows, and make operations more consistent.</p>
           </article>
           <article class="what-item">
             <h3>Funding Support</h3>
-            <p>Practical funding guidance that helps you move forward with more stability and fewer blind spots.</p>
+            <p>Guidance that helps teams secure capital with more stability and a clearer path forward.</p>
           </article>
           <article class="what-item">
             <h3>Operational Guidance</h3>
-            <p>Business support that helps teams operate stronger, tighten priorities, and keep momentum under pressure.</p>
+            <p>Practical support to reinforce execution, reduce blind spots, and keep teams moving with discipline.</p>
           </article>
         </div>
       </section>
