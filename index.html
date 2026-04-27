@@ -930,7 +930,7 @@
               <div class="html-glow"></div>
               <h2 class="html-title">Checkpoint Media</h2>
               <p class="html-description">Media, interviews, and brand storytelling that turn attention into authority.</p>
-              <a class="html-cta html-cta-link" href="#/checkpoint-media">Enter Checkpoint Media</a>
+              <a class="html-cta html-cta-link" href="./checkpoint-media.html">Enter Checkpoint Media</a>
             </div>
           </article>
         </section>
@@ -950,6 +950,11 @@
         const ctas = document.querySelectorAll(".html-cta-link");
         const transition = document.querySelector(".html-route-transition");
         let locked = false;
+
+        function resolveTarget(href) {
+          const currentUrl = window.location.href.split("#")[0];
+          return new URL(href, currentUrl).toString();
+        }
 
         ctas.forEach((cta) => {
           cta.addEventListener("click", function (event) {
@@ -976,7 +981,7 @@
             }
 
             window.setTimeout(function () {
-              window.location.href = href;
+              window.location.assign(resolveTarget(href));
               locked = false;
             }, 320);
           });
