@@ -193,7 +193,7 @@ export default function LandingPage() {
         </div>
 
         <BrandPanel
-          to="./checkpoint-media.html"
+          to="./index.html#/checkpoint-media"
           title="Checkpoint Media"
           description="Media, interviews, and brand storytelling that turn attention into authority."
           variant="checkpoint"
