@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Initiative Enterprises | Brand Gateway</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family:
+          "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+        background: #050608;
+        color: #f2ead9;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: #050608;
+        color: #f2ead9;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      #root { min-height: 100vh; }
+
+      .html-landing {
+        position: relative;
+        min-height: 100vh;
+        overflow: clip;
+        isolation: isolate;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(214, 189, 140, 0.045), transparent 18%),
+          linear-gradient(180deg, rgba(12, 12, 12, 0.24), rgba(2, 3, 4, 0)),
+          linear-gradient(90deg, #05070c 0%, #03060c 49.7%, #0c0906 50.3%, #090705 100%);
+      }
+
+      .html-landing::before,
+      .html-landing::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .html-landing::before {
+        background:
+          radial-gradient(circle at 50% 4%, rgba(220, 199, 159, 0.08), transparent 10%),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.28));
+      }
+
+      .html-landing::after {
+        background:
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.3) 100%),
+          linear-gradient(90deg, transparent 49.9%, rgba(207, 180, 132, 0.08) 50%, transparent 50.1%);
+      }
+
+      .html-header,
+      .html-footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 6;
+        display: grid;
+        grid-template-columns: minmax(56px, 1fr) auto minmax(56px, 1fr);
+        align-items: center;
+        gap: 22px;
+        padding: 0 34px;
+      }
+
+      .html-header { top: 24px; }
+      .html-footer { bottom: 20px; }
+
+      .html-line {
+        position: relative;
+        display: block;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(197, 169, 121, 0.32), transparent);
+      }
+
+      .html-footer .html-line::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 46px;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(74, 126, 220, 0), rgba(205, 164, 92, 0.78), rgba(74, 126, 220, 0));
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 14px rgba(205, 166, 97, 0.16);
+      }
+
+      .html-header-copy,
+      .html-footer p { text-align: center; }
+
+      .html-header h1,
+      .html-footer p {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.34em;
+      }
+
+      .html-header h1 {
+        font-size: clamp(1rem, 1.35vw, 1.48rem);
+        font-weight: 500;
+        color: rgba(245, 235, 214, 0.96);
+        text-shadow:
+          0 0 12px rgba(237, 225, 200, 0.1),
+          0 0 30px rgba(96, 135, 210, 0.06),
+          0 0 30px rgba(188, 139, 74, 0.06);
+        animation: html-header-breathe 5.8s ease-in-out infinite;
+      }
+
+      .html-header p {
+        margin: 10px 0 0;
+        font-size: 0.72rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(212, 195, 164, 0.68);
+      }
+
+      .html-footer p {
+        font-size: 0.74rem;
+        color: rgba(220, 204, 171, 0.8);
+      }
+
+      .html-split {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        min-height: 100vh;
+        animation: html-shell-arrive 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        filter: brightness(1) blur(0);
+      }
+
+      .html-panel {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+        padding: 110px 52px 84px;
+        overflow: hidden;
+        isolation: isolate;
+        transform: scale(0.985);
+        animation: html-panel-arrive 540ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        transition:
+          transform 360ms ease,
+          filter 360ms ease,
+          opacity 320ms ease;
+      }
+
+      .html-panel.checkpoint { animation-delay: 60ms; }
+
+      .html-panel::before,
+      .html-panel::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .html-panel::before {
+        inset: 18px;
+        border: 1px solid rgba(171, 150, 113, 0.14);
+        z-index: 2;
+      }
+
+      .html-panel::after {
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 247, 232, 0.016), transparent 16%, transparent 82%, rgba(0, 0, 0, 0.46)),
+          radial-gradient(circle at top, rgba(255, 244, 222, 0.014), transparent 30%);
+      }
+
+      .html-panel.guardian {
+        background:
+          linear-gradient(180deg, rgba(8, 13, 26, 0.34), rgba(5, 8, 18, 0.7)),
+          linear-gradient(180deg, #060912 0%, #05070d 100%);
+      }
+
+      .html-panel.checkpoint {
+        background:
+          linear-gradient(180deg, rgba(21, 15, 8, 0.26), rgba(15, 11, 7, 0.72)),
+          linear-gradient(180deg, #0b0805 0%, #090705 100%);
+      }
+
+      .html-split:hover .html-panel:not(:hover) { filter: brightness(0.84) saturate(0.94); }
+      .html-panel:hover { transform: scale(1.002); filter: brightness(1.06); }
+      .html-panel.is-dimmed { opacity: 0.48; transform: scale(0.992); }
+      .html-panel.is-activating { filter: brightness(1.08); }
+
+      .html-environment,
+      .html-content { position: relative; z-index: 1; }
+
+      .html-environment {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .html-base,
+      .html-grid,
+      .html-svg,
+      .html-nodes,
+      .html-bloom,
+      .html-spotlight,
+      .html-bars,
+      .html-sweep,
+      .html-haze,
+      .html-grain,
+      .html-orbit,
+      .html-vignette {
+        position: absolute;
+        inset: 0;
+        transition:
+          opacity 700ms ease,
+          transform 900ms ease,
+          filter 700ms ease;
+      }
+
+      .guardian .html-base {
+        background:
+          radial-gradient(circle at 48% 52%, rgba(20, 35, 67, 0.46), transparent 34%),
+          radial-gradient(circle at 18% 36%, rgba(17, 28, 52, 0.28), transparent 26%),
+          linear-gradient(180deg, rgba(7, 13, 28, 0.84), rgba(5, 8, 18, 0.98));
+      }
+
+      .checkpoint .html-base {
+        background:
+          radial-gradient(circle at 76% 28%, rgba(70, 42, 17, 0.22), transparent 26%),
+          radial-gradient(circle at 72% 64%, rgba(55, 35, 16, 0.14), transparent 24%),
+          linear-gradient(180deg, rgba(17, 13, 9, 0.84), rgba(10, 8, 6, 0.98));
+      }
+
+      .guardian .html-grid {
+        background:
+          linear-gradient(rgba(96, 131, 205, 0.075) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(96, 131, 205, 0.075) 1px, transparent 1px);
+        background-size: 76px 76px;
+        opacity: 0.22;
+      }
+
+      .checkpoint .html-grid {
+        background:
+          radial-gradient(circle at 74% 18%, rgba(213, 170, 100, 0.16) 0 1px, transparent 2px),
+          linear-gradient(rgba(126, 92, 48, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(126, 92, 48, 0.04) 1px, transparent 1px);
+        background-size: 88px 88px;
+        opacity: 0.12;
+      }
+
+      .html-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .guardian-svg .svg-lines path,
+      .guardian-svg .svg-arcs path {
+        fill: none;
+        stroke: rgba(104, 141, 215, 0.24);
+        stroke-width: 1.4;
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+      }
+
+      .guardian-svg .svg-arcs path { stroke: rgba(109, 145, 217, 0.16); }
+      .guardian-svg .svg-boxes rect { fill: rgba(122, 160, 236, 0.5); }
+
+      .checkpoint-svg .svg-beams path,
+      .checkpoint-svg .svg-waves path {
+        fill: none;
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+      }
+
+      .checkpoint-svg .svg-beams path {
+        stroke: rgba(204, 161, 92, 0.18);
+        stroke-width: 1.1;
+      }
+
+      .checkpoint-svg .svg-waves path {
+        stroke: rgba(177, 129, 64, 0.28);
+        stroke-width: 2;
+      }
+
+      .checkpoint-svg .svg-bars rect { fill: rgba(180, 134, 67, 0.18); }
+
+      .guardian .html-nodes {
+        background:
+          radial-gradient(circle at 15% 32%, rgba(114, 159, 247, 0.9) 0 2px, rgba(114, 159, 247, 0.22) 4px, transparent 10px),
+          radial-gradient(circle at 69% 64%, rgba(114, 159, 247, 0.78) 0 2px, rgba(114, 159, 247, 0.2) 4px, transparent 10px),
+          radial-gradient(circle at 78% 33%, rgba(114, 159, 247, 0.36) 0 1px, transparent 7px),
+          radial-gradient(circle at 41% 90%, rgba(114, 159, 247, 0.34) 0 1px, transparent 7px);
+        opacity: 0.66;
+      }
+
+      .checkpoint .html-nodes {
+        background:
+          radial-gradient(circle at 73% 22%, rgba(221, 175, 104, 0.3) 0 1px, transparent 6px),
+          radial-gradient(circle at 80% 36%, rgba(221, 175, 104, 0.22) 0 1px, transparent 6px),
+          radial-gradient(circle at 86% 42%, rgba(221, 175, 104, 0.22) 0 1px, transparent 6px);
+        opacity: 0.5;
+      }
+
+      .html-bloom {
+        border-radius: 50%;
+        filter: blur(40px);
+      }
+
+      .guardian .bloom-one {
+        inset: 24% auto auto 8%;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(58, 101, 184, 0.22), transparent 70%);
+      }
+
+      .guardian .bloom-two {
+        inset: auto auto 20% 28%;
+        width: 250px;
+        height: 250px;
+        background: radial-gradient(circle, rgba(40, 73, 142, 0.18), transparent 72%);
+      }
+
+      .guardian .bloom-three {
+        inset: 40% 8% auto auto;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(64, 104, 178, 0.16), transparent 72%);
+      }
+
+      .checkpoint .bloom-one {
+        inset: 8% 6% auto auto;
+        width: 310px;
+        height: 310px;
+        background: radial-gradient(circle, rgba(176, 128, 61, 0.16), transparent 72%);
+      }
+
+      .checkpoint .bloom-two {
+        inset: auto 10% 10% auto;
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, rgba(144, 99, 40, 0.12), transparent 72%);
+      }
+
+      .checkpoint .bloom-three {
+        inset: 44% auto auto 34%;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(126, 84, 34, 0.09), transparent 72%);
+      }
+
+      .guardian .html-spotlight,
+      .guardian .html-bars { opacity: 0; }
+
+      .checkpoint .html-spotlight {
+        background:
+          radial-gradient(circle at 76% 18%, rgba(231, 189, 119, 0.48), rgba(189, 137, 61, 0.12) 18%, transparent 40%),
+          linear-gradient(165deg, rgba(231, 189, 119, 0) 10%, rgba(231, 189, 119, 0.16) 26%, rgba(231, 189, 119, 0.03) 52%, transparent 74%);
+        opacity: 0.58;
+        transform: translateY(-2%);
+        mask-image: radial-gradient(circle at 76% 14%, black 0 18%, transparent 56%);
+      }
+
+      .checkpoint .html-bars {
+        inset: auto 7% 16% 62%;
+        height: 180px;
+        background:
+          linear-gradient(90deg,
+            rgba(192, 141, 71, 0.08) 0 2px,
+            transparent 2px 20px,
+            rgba(192, 141, 71, 0.06) 20px 22px,
+            transparent 22px 38px,
+            rgba(192, 141, 71, 0.08) 38px 40px,
+            transparent 40px 56px,
+            rgba(192, 141, 71, 0.06) 56px 58px,
+            transparent 58px 72px);
+        filter: blur(0.4px);
+        opacity: 0.44;
+        mask-image: linear-gradient(180deg, transparent, black 20%, black 78%, transparent);
+      }
+
+      .guardian .html-sweep {
+        background: linear-gradient(108deg, transparent 22%, rgba(84, 133, 228, 0.14) 50%, transparent 66%);
+        opacity: 0;
+        transform: translateX(-18%);
+      }
+
+      .checkpoint .html-sweep {
+        inset: 42% -20% -8% 16%;
+        background: linear-gradient(98deg, transparent 22%, rgba(190, 140, 69, 0.14) 52%, transparent 74%);
+        opacity: 0;
+        transform: translateX(18%);
+      }
+
+      .guardian .html-haze {
+        background:
+          radial-gradient(circle at 16% 34%, rgba(63, 100, 181, 0.12), transparent 22%),
+          radial-gradient(circle at 78% 66%, rgba(44, 78, 146, 0.12), transparent 24%);
+        opacity: 0.46;
+      }
+
+      .checkpoint .html-haze {
+        background:
+          radial-gradient(circle at 74% 24%, rgba(193, 145, 70, 0.18), transparent 18%),
+          radial-gradient(circle at 78% 30%, rgba(175, 124, 59, 0.1), transparent 22%),
+          radial-gradient(circle at 80% 38%, rgba(199, 150, 76, 0.08), transparent 24%);
+        opacity: 0.72;
+      }
+
+      .html-grain {
+        opacity: 0.08;
+        background-image:
+          radial-gradient(circle at 20% 24%, rgba(255, 255, 255, 0.24) 0 0.7px, transparent 1px),
+          radial-gradient(circle at 74% 16%, rgba(255, 255, 255, 0.24) 0 0.7px, transparent 1px),
+          radial-gradient(circle at 82% 48%, rgba(255, 255, 255, 0.18) 0 0.8px, transparent 1px),
+          radial-gradient(circle at 32% 72%, rgba(255, 255, 255, 0.14) 0 0.7px, transparent 1px),
+          radial-gradient(circle at 64% 84%, rgba(255, 255, 255, 0.18) 0 0.7px, transparent 1px);
+        background-size: 240px 240px;
+        mix-blend-mode: screen;
+      }
+
+      .guardian .html-orbit {
+        border: 1px solid rgba(100, 139, 212, 0.13);
+        border-radius: 50%;
+      }
+
+      .guardian .orbit-one { inset: 22% -12% 8% 38%; }
+      .guardian .orbit-two { inset: 2% 18% 34% -12%; }
+
+      .checkpoint .html-orbit {
+        border: 1px solid rgba(140, 104, 54, 0.12);
+        border-radius: 50%;
+      }
+
+      .checkpoint .orbit-one { inset: -8% -8% 34% 42%; }
+      .checkpoint .orbit-two { inset: 64% 18% 4% 48%; }
+
+      .html-vignette {
+        background:
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.34) 100%),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.32), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.32)),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 20%, transparent 82%, rgba(0, 0, 0, 0.34));
+      }
+
+      .html-panel:hover .html-grid { opacity: 0.4; }
+      .guardian:hover .guardian-svg .svg-lines path { stroke: rgba(115, 153, 231, 0.34); filter: drop-shadow(0 0 3px rgba(92, 141, 232, 0.16)); }
+      .guardian:hover .guardian-svg .svg-arcs path { stroke: rgba(115, 153, 231, 0.24); filter: drop-shadow(0 0 2px rgba(92, 141, 232, 0.12)); }
+      .guardian:hover .guardian-svg .svg-boxes rect { fill: rgba(132, 176, 255, 0.8); }
+      .html-panel:hover .html-nodes { filter: brightness(1.34) saturate(1.05); }
+      .html-panel:hover .html-sweep { opacity: 1; }
+      .guardian:hover .html-sweep { animation: html-guardian-sweep 5.4s linear infinite; }
+      .checkpoint:hover .html-sweep { animation: html-checkpoint-sweep 5.8s linear infinite; }
+      .guardian:hover .html-bloom { filter: blur(42px) brightness(1.26); opacity: 1; }
+      .checkpoint:hover .html-bloom { filter: blur(42px) brightness(1.28); opacity: 1; }
+      .guardian:hover .html-nodes { animation: html-nodes-pulse 2.8s ease-in-out infinite; }
+      .checkpoint:hover .html-nodes { animation: html-embers-pulse 3.2s ease-in-out infinite; }
+      .checkpoint:hover .html-spotlight { opacity: 0.82; transform: translateY(0); }
+      .checkpoint:hover .checkpoint-svg .svg-waves path { stroke: rgba(194, 145, 72, 0.4); filter: drop-shadow(0 0 4px rgba(188, 142, 73, 0.18)); animation: html-checkpoint-wave-drift 5.6s ease-in-out infinite; }
+      .checkpoint:hover .checkpoint-svg .svg-bars rect { fill: rgba(196, 149, 79, 0.28); }
+      .guardian:hover .guardian-svg { animation: html-guardian-diagram-drift 8s ease-in-out infinite; }
+      .guardian:hover .html-haze { animation: html-guardian-haze-breathe 4.8s ease-in-out infinite; }
+      .checkpoint:hover .html-haze { animation: html-checkpoint-haze-breathe 4.2s ease-in-out infinite; }
+      .checkpoint:hover .html-bars { animation: html-checkpoint-bars-rise 3.8s ease-in-out infinite; }
+      .checkpoint:hover .checkpoint-svg { animation: html-checkpoint-scene-drift 8.8s ease-in-out infinite; }
+
+      .html-content {
+        max-width: 470px;
+        padding-left: clamp(14px, 8vw, 142px);
+        padding-right: 20px;
+      }
+
+      .checkpoint .html-content { padding-left: clamp(14px, 4.5vw, 90px); }
+
+      .html-title {
+        margin: 0;
+        max-width: 8ch;
+        font-size: clamp(3.5rem, 6vw, 6.05rem);
+        line-height: 0.92;
+        letter-spacing: -0.065em;
+        font-weight: 650;
+        color: #f5ead6;
+        text-shadow: 0 14px 40px rgba(0, 0, 0, 0.38);
+      }
+
+      .html-description {
+        margin: 22px 0 0;
+        max-width: 26rem;
+        font-size: 1.02rem;
+        line-height: 1.72;
+        color: rgba(233, 220, 197, 0.8);
+      }
+
+      .html-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 30px;
+        padding: 15px 24px;
+        border-radius: 999px;
+        border: 1px solid rgba(189, 157, 107, 0.46);
+        background: rgba(13, 14, 16, 0.2);
+        backdrop-filter: blur(12px);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.9rem;
+        color: rgba(246, 236, 220, 0.94);
+      }
+
+      .guardian .html-cta { border-color: rgba(82, 128, 219, 0.72); }
+      .checkpoint .html-cta { border-color: rgba(182, 137, 69, 0.72); }
+      .html-cta::after { content: "\203A"; font-size: 1.08rem; }
+      .html-panel:hover .html-cta { transform: translateX(4px); }
+
+      .html-glow {
+        position: absolute;
+        inset: -36px -32px -36px;
+        pointer-events: none;
+        opacity: 0.56;
+      }
+
+      .html-glow::before,
+      .html-glow::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        height: 1px;
+      }
+
+      .guardian .html-glow::before,
+      .guardian .html-glow::after {
+        background: linear-gradient(90deg, rgba(85, 133, 229, 0), rgba(105, 154, 252, 0.52), rgba(85, 133, 229, 0));
+        box-shadow: 0 0 18px rgba(81, 125, 214, 0.16);
+      }
+
+      .checkpoint .html-glow::before,
+      .checkpoint .html-glow::after {
+        background: linear-gradient(90deg, rgba(176, 124, 55, 0), rgba(205, 164, 92, 0.48), rgba(176, 124, 55, 0));
+        box-shadow: 0 0 18px rgba(175, 126, 59, 0.14);
+      }
+
+      .html-glow::before {
+        top: 18%;
+        right: 0;
+        width: 36%;
+        transform: rotate(8deg);
+      }
+
+      .html-glow::after {
+        bottom: 22%;
+        left: -4%;
+        width: 28%;
+        transform: rotate(-9deg);
+      }
+
+      .html-panel:hover .html-glow::before,
+      .html-panel:hover .html-glow::after {
+        animation: html-line-breathe 4.6s ease-in-out infinite;
+      }
+
+      .html-divider {
+        position: absolute;
+        top: 92px;
+        bottom: 92px;
+        left: 50%;
+        width: 34px;
+        transform: translateX(-50%);
+        z-index: 5;
+        pointer-events: none;
+        animation: html-divider-arrive 460ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+      }
+
+      .html-divider-line {
+        position: absolute;
+        left: 50%;
+        width: 1px;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, transparent, rgba(186, 159, 110, 0.52), transparent);
+      }
+
+      .html-divider-line.top { top: 0; bottom: calc(50% + 24px); }
+      .html-divider-line.bottom { top: calc(50% + 24px); bottom: 0; }
+
+      .html-emblem {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        transform: translate(-50%, -50%) rotate(45deg);
+        border: 1px solid rgba(191, 163, 114, 0.76);
+        background:
+          linear-gradient(135deg, rgba(8, 17, 38, 0.96) 0%, rgba(13, 15, 19, 0.98) 50%, rgba(28, 20, 9, 0.96) 100%);
+        box-shadow:
+          0 0 0 1px rgba(0, 0, 0, 0.3),
+          0 0 18px rgba(67, 117, 212, 0.1),
+          0 0 18px rgba(186, 135, 61, 0.1);
+        overflow: hidden;
+        isolation: isolate;
+        animation: html-emblem-breathe 5.4s ease-in-out infinite;
+      }
+
+      .html-emblem::before {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border: 1px solid rgba(191, 163, 114, 0.34);
+      }
+
+      .html-emblem::after {
+        content: "";
+        position: absolute;
+        inset: -12px;
+        background: linear-gradient(90deg, rgba(82, 135, 228, 0.08), rgba(203, 160, 90, 0.08));
+        filter: blur(12px);
+        opacity: 0.9;
+        z-index: -1;
+      }
+
+      .html-emblem span {
+        transform: rotate(-45deg);
+        font-size: 0.74rem;
+        letter-spacing: 0.12em;
+        font-weight: 600;
+        color: rgba(244, 232, 208, 0.94);
+        text-transform: uppercase;
+        text-shadow:
+          0 0 10px rgba(76, 131, 228, 0.18),
+          0 0 10px rgba(195, 147, 74, 0.18);
+      }
+
+      .html-split:hover .html-emblem {
+        box-shadow:
+          0 0 0 1px rgba(0, 0, 0, 0.3),
+          0 0 20px rgba(67, 117, 212, 0.14),
+          0 0 20px rgba(186, 135, 61, 0.14);
+      }
+
+      .html-route-transition {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        opacity: 0;
+        transform: translate3d(3%, 0, 0);
+      }
+
+      .html-route-transition.is-active {
+        animation: html-route-slide 320ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      .html-route-transition.guardian {
+        background:
+          linear-gradient(90deg, rgba(4, 8, 16, 0.82) 0%, rgba(18, 48, 112, 0.18) 28%, rgba(8, 18, 42, 0.94) 100%),
+          radial-gradient(circle at 34% 50%, rgba(103, 151, 246, 0.24), rgba(10, 20, 44, 0) 32%);
+      }
+
+      .html-route-transition.checkpoint {
+        background:
+          linear-gradient(90deg, rgba(8, 7, 6, 0.82) 0%, rgba(104, 70, 24, 0.16) 62%, rgba(26, 16, 8, 0.94) 100%),
+          radial-gradient(circle at 72% 50%, rgba(211, 161, 90, 0.2), rgba(33, 19, 8, 0) 32%);
+      }
+
+      @keyframes html-header-breathe {
+        0%, 100% { opacity: 0.92; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes html-guardian-sweep {
+        from { opacity: 0; transform: translateX(-18%); }
+        18% { opacity: 0.38; }
+        50% { opacity: 0.12; }
+        to { opacity: 0; transform: translateX(18%); }
+      }
+
+      @keyframes html-checkpoint-sweep {
+        from { opacity: 0; transform: translateX(18%); }
+        24% { opacity: 0.28; }
+        56% { opacity: 0.1; }
+        to { opacity: 0; transform: translateX(-12%); }
+      }
+
+      @keyframes html-nodes-pulse {
+        0%, 100% { opacity: 0.66; }
+        50% { opacity: 0.94; }
+      }
+
+      @keyframes html-embers-pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 0.76; }
+      }
+
+      @keyframes html-guardian-diagram-drift {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(0.6%, -0.4%, 0); }
+      }
+
+      @keyframes html-guardian-haze-breathe {
+        0%, 100% { opacity: 0.46; transform: scale(1); }
+        50% { opacity: 0.62; transform: scale(1.03); }
+      }
+
+      @keyframes html-checkpoint-haze-breathe {
+        0%, 100% { opacity: 0.72; transform: scale(1); }
+        50% { opacity: 0.88; transform: scale(1.035); }
+      }
+
+      @keyframes html-checkpoint-bars-rise {
+        0%, 100% { opacity: 0.44; transform: translateY(0); }
+        50% { opacity: 0.68; transform: translateY(-8px); }
+      }
+
+      @keyframes html-checkpoint-wave-drift {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(1.2%, -0.8%, 0); }
+      }
+
+      @keyframes html-checkpoint-scene-drift {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(-0.8%, 0.5%, 0); }
+      }
+
+      @keyframes html-line-breathe {
+        0%, 100% { opacity: 0.48; }
+        50% { opacity: 0.92; }
+      }
+
+      @keyframes html-emblem-breathe {
+        0%, 100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); }
+        50% { transform: translate(-50%, -50%) rotate(45deg) scale(1.04); }
+      }
+
+      @keyframes html-route-slide {
+        0% { opacity: 0; transform: translate3d(3%, 0, 0); filter: blur(0); }
+        55% { opacity: 0.74; transform: translate3d(0, 0, 0); filter: blur(1px); }
+        100% { opacity: 1; transform: translate3d(-1.5%, 0, 0); filter: blur(1.8px); }
+      }
+
+      @keyframes html-shell-arrive {
+        0% { opacity: 0; transform: translateY(24px) scale(0.982); filter: brightness(0.9) blur(2px); }
+        100% { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1) blur(0); }
+      }
+
+      @keyframes html-panel-arrive {
+        0% { opacity: 0; transform: translateY(20px) scale(0.965); filter: brightness(0.86); }
+        65% { opacity: 1; transform: translateY(-4px) scale(1.006); filter: brightness(1.02); }
+        100% { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1); }
+      }
+
+      @keyframes html-divider-arrive {
+        0% { opacity: 0; transform: translateX(-50%) scaleY(0.88); }
+        100% { opacity: 1; transform: translateX(-50%) scaleY(1); }
+      }
+
+      @media (max-width: 1080px) {
+        .html-content { padding-left: clamp(10px, 5vw, 72px); }
+        .checkpoint .html-content { padding-left: clamp(10px, 4vw, 54px); }
+      }
+
+      @media (max-width: 960px) {
+        .html-header,
+        .html-footer {
+          grid-template-columns: 1fr;
+          gap: 10px;
+          padding: 0 20px;
+        }
+
+        .html-line { display: none; }
+        .html-split { grid-template-columns: 1fr; }
+        .html-panel { min-height: 50vh; padding: 100px 24px 58px; }
+        .html-content,
+        .checkpoint .html-content { padding-left: 8px; padding-right: 8px; }
+
+        .html-divider {
+          top: 50%;
+          bottom: auto;
+          left: 50%;
+          width: calc(100% - 80px);
+          height: 34px;
+          transform: translate(-50%, -50%);
+        }
+
+        .html-divider-line {
+          top: 50%;
+          width: calc(50% - 30px);
+          height: 1px;
+          transform: translateY(-50%);
+          background: linear-gradient(90deg, transparent, rgba(186, 159, 110, 0.52), transparent);
+        }
+
+        .html-divider-line.top { left: 0; bottom: auto; }
+        .html-divider-line.bottom { right: 0; left: auto; top: 50%; bottom: auto; }
+      }
+
+      @media (max-width: 720px) {
+        .html-header { top: 20px; }
+        .html-footer { bottom: 16px; }
+        .html-header h1 { font-size: 0.9rem; letter-spacing: 0.24em; }
+        .html-header p,
+        .html-footer p { font-size: 0.66rem; letter-spacing: 0.2em; }
+        .html-panel { padding: 88px 18px 44px; }
+        .html-title { font-size: clamp(2.7rem, 12vw, 4.3rem); }
+        .html-description { font-size: 0.96rem; line-height: 1.68; }
+        .html-cta { padding: 13px 20px; font-size: 0.8rem; }
+        .html-divider { width: calc(100% - 36px); }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-C2Rr8PUE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DdjiMNKS.css">
+  </head>
+  <body>
+    <div id="root">
+      <main class="html-landing">
+        <div class="html-route-transition" aria-hidden="true"></div>
+
+        <header class="html-header">
+          <span class="html-line" aria-hidden="true"></span>
+          <div class="html-header-copy">
+            <h1>Initiative Enterprises</h1>
+            <p>Two divisions. One standard of excellence.</p>
+          </div>
+          <span class="html-line" aria-hidden="true"></span>
+        </header>
+
+        <section class="html-split">
+          <article class="html-panel guardian">
+            <div class="html-environment" aria-hidden="true">
+              <span class="html-base"></span>
+              <span class="html-grid"></span>
+              <svg class="html-svg guardian-svg" viewBox="0 0 1000 1200" preserveAspectRatio="none">
+                <g class="svg-lines">
+                  <path d="M90 90H300V260H520V680" />
+                  <path d="M120 480H420V930H720" />
+                  <path d="M640 90V520H915V1040" />
+                  <path d="M220 1040V780H470V560H730" />
+                  <path d="M820 160V360H570V1040" />
+                  <path d="M58 190H190V410H58V650" />
+                  <path d="M290 1100V920H140" />
+                </g>
+                <g class="svg-arcs">
+                  <path d="M38 250A240 240 0 0 1 280 8" />
+                  <path d="M705 120A320 320 0 0 1 1020 438" />
+                  <path d="M318 1104A280 280 0 0 0 596 826" />
+                  <path d="M540 512A240 240 0 0 1 780 752" />
+                  <path d="M600 1060A430 430 0 0 0 1012 648" />
+                </g>
+                <g class="svg-boxes">
+                  <rect x="150" y="178" width="8" height="8" />
+                  <rect x="780" y="560" width="10" height="10" />
+                  <rect x="318" y="922" width="9" height="9" />
+                  <rect x="628" y="244" width="8" height="8" />
+                  <rect x="878" y="252" width="7" height="7" />
+                </g>
+              </svg>
+              <span class="html-nodes"></span>
+              <span class="html-bloom bloom-one"></span>
+              <span class="html-bloom bloom-two"></span>
+              <span class="html-bloom bloom-three"></span>
+              <span class="html-spotlight"></span>
+              <span class="html-bars"></span>
+              <span class="html-sweep"></span>
+              <span class="html-haze"></span>
+              <span class="html-grain"></span>
+              <span class="html-orbit orbit-one"></span>
+              <span class="html-orbit orbit-two"></span>
+              <span class="html-vignette"></span>
+            </div>
+
+            <div class="html-content">
+              <div class="html-glow"></div>
+              <h2 class="html-title">Guardian</h2>
+              <p class="html-description">Operational structure and growth support for startups and scaling businesses.</p>
+              <a class="html-cta html-cta-link" href="/gaurdian-home.html">Enter Guardian</a>
+            </div>
+          </article>
+
+          <div class="html-divider" aria-hidden="true">
+            <span class="html-divider-line top"></span>
+            <div class="html-emblem"><span>IE</span></div>
+            <span class="html-divider-line bottom"></span>
+          </div>
+
+          <article class="html-panel checkpoint">
+            <div class="html-environment" aria-hidden="true">
+              <span class="html-base"></span>
+              <span class="html-grid"></span>
+              <svg class="html-svg checkpoint-svg" viewBox="0 0 1000 1200" preserveAspectRatio="none">
+                <g class="svg-beams">
+                  <path d="M770 20L680 360" />
+                  <path d="M785 20L715 360" />
+                  <path d="M800 20L750 360" />
+                </g>
+                <g class="svg-waves">
+                  <path d="M170 868C312 804 382 958 520 904S740 786 1010 850" />
+                  <path d="M120 938C272 874 396 1030 574 978S790 860 1024 920" />
+                  <path d="M362 1038C512 988 602 1108 746 1064S900 1000 1030 1028" />
+                </g>
+                <g class="svg-bars">
+                  <rect x="640" y="712" width="4" height="210" />
+                  <rect x="668" y="738" width="4" height="184" />
+                  <rect x="696" y="694" width="4" height="228" />
+                  <rect x="724" y="758" width="4" height="164" />
+                  <rect x="752" y="720" width="4" height="202" />
+                  <rect x="780" y="744" width="4" height="178" />
+                  <rect x="808" y="704" width="4" height="218" />
+                  <rect x="836" y="764" width="4" height="158" />
+                </g>
+              </svg>
+              <span class="html-nodes"></span>
+              <span class="html-bloom bloom-one"></span>
+              <span class="html-bloom bloom-two"></span>
+              <span class="html-bloom bloom-three"></span>
+              <span class="html-spotlight"></span>
+              <span class="html-bars"></span>
+              <span class="html-sweep"></span>
+              <span class="html-haze"></span>
+              <span class="html-grain"></span>
+              <span class="html-orbit orbit-one"></span>
+              <span class="html-orbit orbit-two"></span>
+              <span class="html-vignette"></span>
+            </div>
+
+            <div class="html-content">
+              <div class="html-glow"></div>
+              <h2 class="html-title">Checkpoint Media</h2>
+              <p class="html-description">Media, interviews, and brand storytelling that turn attention into authority.</p>
+              <a class="html-cta html-cta-link" href="./index.html#/checkpoint-media">Enter Checkpoint Media</a>
+            </div>
+          </article>
+        </section>
+
+        <footer class="html-footer">
+          <span class="html-line" aria-hidden="true"></span>
+          <p>Strategy. Operations. Storytelling. Growth.</p>
+          <span class="html-line" aria-hidden="true"></span>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const panels = document.querySelectorAll(".html-panel");
+        const ctas = document.querySelectorAll(".html-cta-link");
+        const transition = document.querySelector(".html-route-transition");
+        let locked = false;
+
+        function resolveTarget(href) {
+          const currentUrl = window.location.href.split("#")[0];
+          return new URL(href, currentUrl).toString();
+        }
+
+        ctas.forEach((cta) => {
+          cta.addEventListener("click", function (event) {
+            if (locked) {
+              event.preventDefault();
+              return;
+            }
+
+            locked = true;
+            event.preventDefault();
+
+            const panel = cta.closest(".html-panel");
+            const href = cta.getAttribute("href");
+
+            panels.forEach((item) => {
+              item.classList.toggle("is-activating", item === panel);
+              item.classList.toggle("is-dimmed", item !== panel);
+            });
+
+            if (transition) {
+              transition.className =
+                "html-route-transition is-active " +
+                (panel.classList.contains("guardian") ? "guardian" : "checkpoint");
+            }
+
+            window.setTimeout(function () {
+              window.location.assign(resolveTarget(href));
+              locked = false;
+            }, 320);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

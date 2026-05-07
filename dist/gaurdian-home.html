@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guardian | Initiative Enterprises</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Segoe UI", "Aptos", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+        --bg: #04080f;
+        --bg-2: #08111d;
+        --bg-3: #0a1627;
+        --panel: #0c1728;
+        --panel-alt: #0f1c31;
+        --line: rgba(130, 159, 205, 0.18);
+        --line-strong: rgba(130, 159, 205, 0.28);
+        --text: #edf3ff;
+        --muted: rgba(182, 200, 224, 0.86);
+        --label: rgba(147, 177, 222, 0.88);
+        --accent: #4d8dff;
+        --accent-2: #78abff;
+        --shadow: 0 24px 58px rgba(0, 0, 0, 0.42);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 16% 8%, rgba(38, 76, 142, 0.16), transparent 26%),
+          radial-gradient(circle at 84% 14%, rgba(56, 113, 201, 0.12), transparent 26%),
+          linear-gradient(180deg, #0a1628 0%, var(--bg-2) 42%, var(--bg) 100%);
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      body::before {
+        background:
+          linear-gradient(rgba(116, 146, 196, 0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(116, 146, 196, 0.012) 1px, transparent 1px);
+        background-size: 52px 52px;
+        mask-image: radial-gradient(circle at center, black 24%, transparent 84%);
+      }
+
+      body::after {
+        background:
+          radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.34) 100%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 24%, transparent 82%, rgba(0, 0, 0, 0.2));
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .terminal-shell {
+        position: relative;
+        width: min(1320px, calc(100% - 40px));
+        margin: 22px auto 28px;
+        border-radius: 20px;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgba(9, 18, 31, 0.92), rgba(7, 14, 24, 0.97)),
+          linear-gradient(145deg, transparent 44%, rgba(105, 139, 190, 0.05) 44.2%, transparent 44.7%);
+        box-shadow:
+          inset 0 0 0 1px rgba(114, 145, 194, 0.18),
+          var(--shadow);
+      }
+
+      .terminal-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(132deg, transparent 42%, rgba(123, 156, 204, 0.06) 42.1%, transparent 42.3%),
+          radial-gradient(circle at 76% 36%, rgba(73, 121, 204, 0.12), transparent 32%);
+      }
+
+      .header {
+        position: relative;
+        z-index: 2;
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 24px;
+        background: linear-gradient(180deg, rgba(9, 16, 28, 0.94), rgba(9, 16, 28, 0.76));
+        border-bottom: 1px solid rgba(118, 151, 201, 0.2);
+      }
+
+      .header-left {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .back-link {
+        min-height: 38px;
+        padding: 0 12px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(10, 20, 36, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(118, 151, 201, 0.24);
+        color: rgba(216, 229, 248, 0.94);
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition:
+          transform 200ms var(--ease),
+          background 200ms var(--ease),
+          box-shadow 200ms var(--ease);
+      }
+
+      .back-link:hover {
+        transform: translateX(-2px);
+        background: rgba(14, 28, 50, 0.96);
+        box-shadow: inset 0 0 0 1px rgba(135, 174, 237, 0.34);
+      }
+
+      .back-link svg {
+        width: 13px;
+        height: 13px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.2;
+      }
+
+      .wordmark {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .wordmark-badge {
+        width: 28px;
+        height: 34px;
+        color: var(--accent);
+      }
+
+      .wordmark-badge svg {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+      }
+
+      .wordmark-text {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .header-state {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        padding: 0 11px;
+        border-radius: 999px;
+        background: rgba(11, 23, 41, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(118, 151, 201, 0.24);
+        color: var(--label);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.74rem;
+        font-weight: 600;
+      }
+
+      .header-state::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent-2);
+        box-shadow: 0 0 10px rgba(120, 171, 255, 0.5);
+      }
+
+      .hero {
+        position: relative;
+        z-index: 2;
+        padding: 28px 24px 22px;
+        display: grid;
+        grid-template-columns: minmax(420px, 1fr) minmax(360px, 0.86fr);
+        gap: 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-copy .kicker {
+        margin: 0;
+        color: var(--label);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.76rem;
+        font-weight: 600;
+      }
+
+      .hero-copy h1 {
+        margin: 12px 0 0;
+        max-width: 11ch;
+        font-size: clamp(2.3rem, 4.5vw, 4rem);
+        line-height: 1.03;
+        letter-spacing: -0.048em;
+      }
+
+      .hero-copy p {
+        margin: 16px 0 0;
+        max-width: 64ch;
+        color: var(--muted);
+        line-height: 1.62;
+        font-size: 1rem;
+      }
+
+      .cta-main {
+        margin-top: 22px;
+        min-height: 48px;
+        padding: 0 20px;
+        width: fit-content;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: linear-gradient(180deg, rgba(18, 31, 53, 0.94), rgba(12, 24, 44, 0.94));
+        color: #e5f0ff;
+        box-shadow:
+          inset 0 0 0 1px rgba(122, 165, 236, 0.5),
+          0 14px 28px rgba(9, 21, 39, 0.44);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        font-size: 0.86rem;
+        font-weight: 700;
+        transition:
+          transform 220ms var(--ease),
+          box-shadow 220ms var(--ease),
+          filter 220ms var(--ease);
+      }
+
+      .cta-main::after {
+        content: "\2192";
+        font-size: 1.08em;
+      }
+
+      .cta-main:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          inset 0 0 0 1px rgba(150, 193, 255, 0.62),
+          0 18px 32px rgba(9, 21, 39, 0.52),
+          0 0 20px rgba(77, 141, 255, 0.2);
+        filter: brightness(1.04);
+      }
+
+      .hero-visual {
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(12, 22, 38, 0.95), rgba(10, 18, 31, 0.95));
+        box-shadow:
+          inset 0 0 0 1px rgba(120, 152, 201, 0.22),
+          0 18px 36px rgba(0, 0, 0, 0.28);
+        overflow: hidden;
+      }
+
+      .visual-head {
+        min-height: 44px;
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        background: rgba(8, 15, 27, 0.86);
+      }
+
+      .visual-head strong {
+        font-size: 0.77rem;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+        color: var(--label);
+      }
+
+      .visual-head span {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        color: rgba(169, 191, 222, 0.82);
+      }
+
+      .visual-grid {
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .visual-row {
+        padding: 10px 10px 11px;
+        border-radius: 10px;
+        background: linear-gradient(180deg, rgba(14, 25, 43, 0.9), rgba(10, 18, 31, 0.88));
+        box-shadow: inset 0 0 0 1px rgba(112, 144, 194, 0.2);
+      }
+
+      .row-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .row-top label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(173, 196, 228, 0.9);
+      }
+
+      .row-top b {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        color: rgba(193, 216, 252, 0.92);
+      }
+
+      .bar {
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(22, 35, 58, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(103, 136, 183, 0.2);
+        overflow: hidden;
+      }
+
+      .bar > i {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, rgba(76, 131, 230, 0.78), rgba(134, 186, 255, 0.86));
+      }
+
+      .what {
+        position: relative;
+        z-index: 2;
+        padding: 24px;
+      }
+
+      .what h2 {
+        margin: 0;
+        font-size: clamp(1.5rem, 2.3vw, 1.95rem);
+        letter-spacing: -0.02em;
+      }
+
+      .what-intro {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.62;
+        max-width: 76ch;
+      }
+
+      .what-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .what-item {
+        border-radius: 12px;
+        padding: 14px 14px 12px;
+        background: linear-gradient(180deg, rgba(15, 26, 44, 0.86), rgba(11, 20, 35, 0.92));
+        box-shadow:
+          inset 0 0 0 1px rgba(112, 144, 194, 0.2),
+          0 14px 26px rgba(0, 0, 0, 0.2);
+        transition:
+          transform 200ms var(--ease),
+          box-shadow 200ms var(--ease);
+      }
+
+      .what-item:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          inset 0 0 0 1px rgba(132, 169, 226, 0.3),
+          0 18px 30px rgba(0, 0, 0, 0.26);
+      }
+
+      .what-item h3 {
+        margin: 0;
+        font-size: 0.92rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--label);
+      }
+
+      .what-item p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.55;
+      }
+
+      @media (max-width: 1120px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .hero-copy h1 {
+          max-width: 13ch;
+          font-size: clamp(2rem, 6.4vw, 3.2rem);
+        }
+
+        .what-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .terminal-shell {
+          width: calc(100% - 12px);
+          margin: 6px auto 12px;
+          border-radius: 14px;
+        }
+
+        .header {
+          padding: 10px;
+          min-height: 62px;
+        }
+
+        .header-left {
+          gap: 8px;
+        }
+
+        .back-link {
+          min-height: 34px;
+          padding: 0 10px;
+          font-size: 0.8rem;
+        }
+
+        .wordmark-text {
+          font-size: 0.88rem;
+          letter-spacing: 0.13em;
+        }
+
+        .header-state {
+          display: none;
+        }
+
+        .hero {
+          padding: 14px 10px 16px;
+        }
+
+        .hero-copy h1 {
+          max-width: none;
+          font-size: clamp(1.7rem, 9vw, 2.5rem);
+        }
+
+        .hero-copy p,
+        .what-intro,
+        .what-item p {
+          font-size: 0.9rem;
+        }
+
+        .cta-main {
+          min-height: 42px;
+          padding: 0 14px;
+          font-size: 0.77rem;
+          letter-spacing: 0.065em;
+        }
+
+        .visual-head {
+          min-height: 40px;
+          padding: 0 10px;
+        }
+
+        .visual-grid {
+          padding: 10px;
+        }
+
+        .what {
+          padding: 14px 10px 16px;
+        }
+
+        .what-item {
+          border-radius: 10px;
+          padding: 12px 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="terminal-shell">
+      <header class="header">
+        <div class="header-left">
+          <a class="back-link" href="/#/" aria-label="Back to home">
+            <svg viewBox="0 0 24 24">
+              <path d="M15 5 8 12l7 7"></path>
+            </svg>
+            Back
+          </a>
+          <div class="wordmark" aria-label="Guardian logo">
+            <span class="wordmark-badge" aria-hidden="true">
+              <svg viewBox="0 0 64 76">
+                <path d="M32 3 9 12.6V34c0 15.6 9.4 29.8 23 37 13.6-7.2 23-21.4 23-37V12.6L32 3Z"></path>
+                <path d="M32 15.5c8.4 0 14.2 4.8 14.2 12.2 0 6-3.8 10.2-9 12.2 4 1.3 6.6 4.4 6.6 9 0 7.9-6.3 13.2-15.1 13.2-4.7 0-9.1-1.5-12.4-4.2l3.1-6.1c2.8 2.1 5.9 3.3 9.4 3.3 4 0 6.8-2.1 6.8-5.4 0-3.5-2.8-5.2-8.1-5.2h-3.3v-6.4h3.3c5.1 0 7.6-1.8 7.6-5.2 0-2.9-2.2-4.7-5.7-4.7-3 0-5.9 1.1-8.8 3.1l-3.2-5.8c4-3 9.4-4.8 15.6-4.8Z"></path>
+              </svg>
+            </span>
+            <span class="wordmark-text">Guardian</span>
+          </div>
+        </div>
+        <span class="header-state">System Active</span>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">Guardian Control Center</p>
+          <h1>Business support with terminal-level clarity.</h1>
+          <p>
+            Guardian helps founders and operators run with structure through digital resources, funding support, and
+            operational guidance. The platform is built for sharper decisions, cleaner execution, and stronger growth momentum.
+          </p>
+          <a class="cta-main" href="https://app.guardian.example.com">Create Account Now</a>
+        </div>
+
+        <aside class="hero-visual" aria-hidden="true">
+          <div class="visual-head">
+            <strong>Support Matrix</strong>
+            <span>Live Overview</span>
+          </div>
+          <div class="visual-grid">
+            <div class="visual-row">
+              <div class="row-top">
+                <label>Digital Resources</label>
+                <b>Ready</b>
+              </div>
+              <div class="bar"><i style="width: 84%"></i></div>
+            </div>
+            <div class="visual-row">
+              <div class="row-top">
+                <label>Funding Support</label>
+                <b>In Review</b>
+              </div>
+              <div class="bar"><i style="width: 68%"></i></div>
+            </div>
+            <div class="visual-row">
+              <div class="row-top">
+                <label>Operational Guidance</label>
+                <b>Active</b>
+              </div>
+              <div class="bar"><i style="width: 91%"></i></div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="what" aria-labelledby="what-guardian-does">
+        <h2 id="what-guardian-does">What Guardian Does</h2>
+        <p class="what-intro">
+          Guardian is a focused support system for businesses that need structure and momentum without noise.
+        </p>
+        <div class="what-grid">
+          <article class="what-item">
+            <h3>Digital Resources</h3>
+            <p>Tools and frameworks that improve decisions, tighten workflows, and make operations more consistent.</p>
+          </article>
+          <article class="what-item">
+            <h3>Funding Support</h3>
+            <p>Guidance that helps teams secure capital with more stability and a clearer path forward.</p>
+          </article>
+          <article class="what-item">
+            <h3>Operational Guidance</h3>
+            <p>Practical support to reinforce execution, reduce blind spots, and keep teams moving with discipline.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
